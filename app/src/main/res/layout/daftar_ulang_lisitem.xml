@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
+
+    <TextView
+        android:id="@+id/txtPeriode"
+        android:layout_width="230dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_gravity="top"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/txtUkt"
+        android:layout_width="150dp"
+        android:gravity="center"
+        android:layout_height="65dp"
+        android:layout_gravity="top"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/txtStatus"
+        android:layout_width="90dp"
+        android:gravity="center"
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/txtCetakKrs"
+        android:layout_width="110dp"
+        android:gravity="center"
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:textSize="18sp" />
+
+
+</LinearLayout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
+
+    <TextView
+        android:id="@+id/txtKode"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_gravity="top"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/txtNamaKuliah"
+        android:layout_width="260dp"
+        android:gravity="center"
+        android:layout_height="65dp"
+        android:layout_gravity="top"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/txtSks"
+        android:layout_width="128dp"
+        android:gravity="center"
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/txtNilaiAngka"
+        android:layout_width="128dp"
+        android:gravity="center"
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:textSize="18sp" />
+    <TextView
+        android:id="@+id/txtNilaiHuruf"
+        android:layout_width="128dp"
+        android:gravity="center"
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:textSize="18sp" />
+    <TextView
+        android:id="@+id/txtTotalNilai"
+        android:layout_width="128dp"
+        android:gravity="center"
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:textSize="18sp" />
+
+</LinearLayout>

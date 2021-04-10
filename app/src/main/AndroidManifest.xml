@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.studentportal">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:name=".app.AppController"
+        android:largeHeap="true"
+        android:allowBackup="true"
+        android:icon="@drawable/student_blue"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppThemeLogin">
+        <activity android:name=".data_ortu"></activity>
+        <activity android:name=".biodata"></activity>
+        <activity android:name=".HasilStudiAwal"></activity>
+<!--        <activity android:name=".HasilStudi"></activity>-->
+        <activity android:name=".presensi"></activity>
+<!--        <activity android:name=".Keterampilan"></activity>-->
+        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".DaftarUlang"></activity>
+<!--        <activity android:name=".pengumuman"></activity>-->
+        <activity android:name=".data_diri"></activity>
+
+        <activity android:name=".ubah_data_diri"></activity>
+        <activity android:name=".Splash"></activity>
+<!--        <activity android:name=".ubah_keterampilan"></activity>-->
+
+        <activity
+            android:name=".FragmentUtama">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".RegisterActivity"
+            android:theme="@style/AppThemeRegist" />
+    </application>
+
+</manifest>

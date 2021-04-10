@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/home"
+
+        android:title="Home"
+        />
+    <item
+        android:id="@+id/notif"
+        android:icon="@drawable/notification"
+        android:iconTint="@android:color/black"
+        android:title="Pengumuman"/>
+    <item
+        android:id="@+id/user"
+        android:icon="@drawable/user"
+        android:iconTint="@android:color/black"
+        android:title="Data Diri"/>
+
+    <item
+        android:id="@+id/setting"
+        android:icon="@drawable/setting"
+        android:iconTint="@android:color/black"
+        android:title="Setting"/>
+
+
+
+</menu>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <color name="colorText">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="colorPrimaryDark2">#106991</color>
+    <color name="colorPrimary2">#1984b4</color>
+
+    <color name="orange">#FFA500</color>
+<!--    <color name="colorPrimary">#008577</color>-->
+<!--    <color name="colorPrimaryDark">#00574B</color>-->
+<!--    <color name="colorAccent">#03A9F4</color>-->
+    <color name="starBlue">#09c6df</color>
+    <color name="graylight">#fafafa</color>
+    <color name="endblue">#0bcce6</color>
+    <color name="colorGreen">#96c896</color>
+
+    <color name="card_bg_color">#f6f6f6</color>
+    <color name="title_text_color">#258bd6</color>
+    <color name="content_text_color">#999da4</color>
+    <color name="siang">#FFA500</color>
+    <color name="Fire">#FC6A03</color>
+    <color name="timberwoll">#95918c</color>
+
+    <color name="datePrimary">#673AB7</color>
+    <color name="datePrimaryDark">#512DA8</color>
+    <color name="dateAccent">#03A9F4</color>
+    <color name="navigation_bottom">#141932</color>
+
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="list_divider">#d9d9d9</color>
+    <color name="list_row_start_color">#ffffff</color>
+    <color name="list_row_end_color">#ffffff</color>
+    <color name="list_row_hover_start_color">#ebeef0</color>
+    <color name="list_row_hover_end_color">#ebeef0</color>
+</resources>

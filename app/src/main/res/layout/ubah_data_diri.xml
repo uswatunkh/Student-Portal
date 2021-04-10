@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@android:color/holo_blue_dark"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="333dp"
+            android:layout_height="594dp"
+            android:background="@drawable/vie_bg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent=".78"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.582">
+
+
+            <ScrollView
+                android:id="@+id/scrollView3"
+                android:layout_width="283dp"
+                android:layout_height="462dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="vertical"
+                    android:padding="8.0dip">
+
+
+                    <!--      batas  -->
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="263dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="20dp"
+                        android:hint="NPM"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+                    <EditText
+                        android:id="@+id/npm"
+                        android:layout_width="262dp"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/edit_text_bg"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:textSize="15sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="263dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="0dp"
+                        android:hint="NIK"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+                    <EditText
+                        android:id="@+id/nik"
+                        android:layout_width="262dp"
+                        android:layout_height="45dp"
+                        android:background="@drawable/edit_text_bg"
+                        android:hint="NIK"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:textSize="15sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="263dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="0dp"
+                        android:hint="Nama Lengkap"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+                    <EditText
+                        android:id="@+id/namlep"
+                        android:layout_width="262dp"
+                        android:layout_height="45dp"
+                        android:background="@drawable/edit_text_bg"
+                        android:hint="Nama Lengkap"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:textSize="15sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="263dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="0dp"
+                        android:hint="Tempat Lahir"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+                    <EditText
+                        android:id="@+id/tempatLahir"
+                        android:layout_width="262dp"
+                        android:layout_height="45dp"
+                        android:background="@drawable/edit_text_bg"
+                        android:hint="Tempat Lahir"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:textSize="15sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="263dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="0dp"
+                        android:hint="Tanggal Lahir"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+                    <EditText
+                        android:id="@+id/tvSelectedDate"
+                        android:layout_width="262dp"
+                        android:layout_height="45dp"
+                        android:background="@drawable/edit_text_bg"
+                        android:hint="Tanggal Lahir"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:textSize="15sp"
+                        />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="263dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="0dp"
+                        android:hint="Jenis Kelamin"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+                    <EditText
+                        android:id="@+id/jenisKelamin"
+                        android:layout_width="262dp"
+                        android:layout_height="45dp"
+                        android:background="@drawable/edit_text_bg"
+                        android:hint="Jenis Kelamin"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:textSize="15sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <RadioGroup
+                        android:id="@+id/group"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <RadioButton android:id="@+id/perempuan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Perempuan"
+                            android:checked="true"
+                            android:onClick="onRadioButtonClicked"/>
+                        <RadioButton android:id="@+id/lakilaki"
+                            android:text="Laki-laki"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:onClick="onRadioButtonClicked"/>
+                    </RadioGroup>
+
+                    <com.google.android.material.textfield.TextInputLayout
+
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="263dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="20dp"
+                        android:hint="Agama"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+                    <EditText
+                        android:id="@+id/agama"
+                        android:layout_width="262dp"
+                        android:layout_height="45dp"
+                        android:background="@drawable/edit_text_bg"
+                        android:hint="Agama"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:textSize="15sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                 <com.google.android.material.textfield.TextInputLayout
+
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="263dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="0dp"
+                        android:hint="Provinsi Asal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/provinsiAsal"
+                        android:layout_width="262dp"
+                        android:layout_height="45dp"
+                        android:background="@drawable/edit_text_bg"
+                        android:text="Provinsi Asal"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:textSize="15sp" />
+                 </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="263dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="0dp"
+                        android:hint="Kota / Kabupaten Asal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+                    <EditText
+                        android:id="@+id/kotaAsal"
+                        android:layout_width="262dp"
+                        android:layout_height="45dp"
+                        android:background="@drawable/edit_text_bg"
+                        android:hint="Kota / Kabupaten Asal"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:textSize="15sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="263dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="0dp"
+                        android:hint="Kecamatan Asal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+                    <EditText
+                        android:id="@+id/kecamatanAsal"
+                        android:layout_width="262dp"
+                        android:layout_height="45dp"
+                        android:background="@drawable/edit_text_bg"
+                        android:hint="Kecamatan Asal"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:textSize="15sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="263dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="0dp"
+                        android:hint="Desa / Kelurahan"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    <EditText
+                        android:id="@+id/desa"
+                        android:layout_width="262dp"
+                        android:layout_height="45dp"
+                        android:background="@drawable/edit_text_bg"
+                        android:hint="Desa / Kelurahan"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:textSize="15sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="263dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="0dp"
+                        android:hint="Alamat Asal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+                    <EditText
+                        android:id="@+id/alamatAsal"
+                        android:layout_width="262dp"
+                        android:layout_height="45dp"
+                        android:background="@drawable/edit_text_bg"
+                        android:hint="Alamat Asal"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:textSize="15sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="263dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="0dp"
+                        android:hint="Alamat Sekarang"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+                    <EditText
+                        android:id="@+id/alamatSekarang"
+                        android:layout_width="262dp"
+                        android:layout_height="45dp"
+                        android:background="@drawable/edit_text_bg"
+                        android:hint="Alamat Sekarang"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:textSize="15sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="263dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="0dp"
+                        android:hint="Tahun Angkatan"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    <EditText
+                        android:id="@+id/tahunAngkatan"
+                        android:layout_width="262dp"
+                        android:layout_height="45dp"
+                        android:background="@drawable/edit_text_bg"
+                        android:hint="Tahun Angkatan"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:textSize="15sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="263dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="0dp"
+                        android:hint="Handphone Aktif"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+                    <EditText
+                        android:id="@+id/noHp"
+                        android:layout_width="262dp"
+                        android:layout_height="45dp"
+                        android:background="@drawable/edit_text_bg"
+                        android:hint="Handphone Aktif"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:textSize="15sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="263dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="0dp"
+                        android:hint="Email"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    <EditText
+                        android:id="@+id/email"
+                        android:layout_width="262dp"
+                        android:layout_height="45dp"
+                        android:background="@drawable/edit_text_bg"
+                        android:hint="Email"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:textSize="15sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                </LinearLayout>
+
+            </ScrollView>
+
+            <Button
+                android:id="@+id/tambah"
+                android:layout_width="80dp"
+                android:layout_height="46dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/buttonstyleithgradient"
+                android:text="Tambah"
+                android:textColor="#fff"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.894"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.307" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="124dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:layout_marginLeft="36dp"
+                android:text="Data Diri"
+                android:textColor="@android:color/black"
+                android:textSize="23sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/scrollView3"
+                app:layout_constraintEnd_toStartOf="@+id/butProfil"
+                app:layout_constraintHorizontal_bias="0.309"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.4" />
+
+            <!--      batas  -->
+            <!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+            <!--            </ScrollView>-->
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
