@@ -2,16 +2,17 @@ package com.example.studentportal.Fitur;
 
 public class DataKeterampilan {
 
-    private String idKeterampilan, namaKeterampilan, jenis,tingkat,scanBukti;
+    private String idKeterampilan, namaKeterampilan, jenis,tingkat,verifikasi,scanBukti;
 
     public DataKeterampilan() {
     }
 
-    public DataKeterampilan(String idKeterampilan, String namaKeterampilan, String jenis, String tingkat, String scanBukti) {
+    public DataKeterampilan(String idKeterampilan, String namaKeterampilan, String jenis, String tingkat, String verifikasi, String scanBukti) {
         this.idKeterampilan = idKeterampilan;
         this.namaKeterampilan = namaKeterampilan;
         this.jenis = jenis;
         this.tingkat = tingkat;
+        this.verifikasi = verifikasi;
         this.scanBukti = scanBukti;
     }
 
@@ -45,6 +46,14 @@ public class DataKeterampilan {
 
     public void setTingkat(String tingkat) {
         this.tingkat = tingkat;
+    }
+
+    public String getVerifikasi() {
+        return verifikasi;
+    }
+
+    public void setVerifikasi(String verifikasi) {
+        this.verifikasi = verifikasi;
     }
 
     public String getScanBukti() {

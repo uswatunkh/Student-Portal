@@ -123,6 +123,7 @@
                             android:id="@+id/tempatLahir"
                             android:layout_width="262dp"
                             android:layout_height="45dp"
+
                             android:background="@drawable/edit_text_bg"
                             android:hint="Tempat Lahir"
                             android:paddingLeft="20dp"
@@ -147,6 +148,7 @@
                             android:layout_height="45dp"
                             android:background="@drawable/edit_text_bg"
                             android:hint="Tanggal Lahir"
+                            android:focusable="false"
                             android:paddingLeft="20dp"
                             android:paddingTop="10dp"
                             android:paddingBottom="10dp"

@@ -89,7 +89,7 @@ public class LoginTabFragment extends Fragment {
                 if (!mNpm.isEmpty() || !mPassword.isEmpty()){
                     Login(mNpm, mPassword);
                 }else{
-                    npmUser.setError("Please insert email");
+                    npmUser.setError("Please insert NPM");
                     passwordUser.setError("Please insert password");
                 }
             }

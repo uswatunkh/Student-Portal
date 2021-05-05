@@ -216,6 +216,7 @@ public class SettingPasswordFragment extends Fragment {
                             }else{
                                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                                 builder.setMessage("konfirmasi password tidak sama")
+                                        .setIcon(R.drawable.error)
                                         .setNegativeButton("Ok",null)
                                         .create()
                                         .show();

@@ -29,14 +29,17 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.studentportal.DaftarUlang;
+import com.example.studentportal.Fitur.DaftarUlangFragment;
+import com.example.studentportal.Fitur.EvaluasiDosenFragment;
+import com.example.studentportal.Fitur.HasilStudiAwalFragment;
 import com.example.studentportal.Fitur.KeterampilanFragment;
-import com.example.studentportal.HasilStudiAwal;
+import com.example.studentportal.Fitur.MagangFragment;
+import com.example.studentportal.Fitur.PresensiSemesterFragment;
+import com.example.studentportal.Fitur.PrestasiFragment;
 import com.example.studentportal.HomeActivity;
-import com.example.studentportal.Keterampilan;
 import com.example.studentportal.R;
 import com.example.studentportal.Server;
 import com.example.studentportal.SessionManager;
-import com.example.studentportal.biodata;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
@@ -68,7 +71,9 @@ public class HomeFragment extends Fragment {
 
     private TextView name, email,greetText;
     private ImageView btn_logout;
-    ImageView greetImg,data_diri, keterampilan,pengumuman, daftarulang,hasilStudi,presensi;
+    ImageView greetImg,data_diri, keterampilan,pengumuman, daftarulang,hasilStudi,presensi,jadwalKuliah,evdos,magang
+            ,prestasi;
+    TextView status;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -124,8 +129,14 @@ public class HomeFragment extends Fragment {
         pengumuman= root.findViewById(R.id.pengumuman);
         daftarulang= root.findViewById(R.id.daftarulang);
         hasilStudi = root.findViewById(R.id.hasilStudi);
+        jadwalKuliah = root.findViewById(R.id.jadwalKuliah);
+        evdos = root.findViewById(R.id.evdos);
+        magang = root.findViewById(R.id.magang);
         presensi = root.findViewById(R.id.presensi);
+        prestasi = root.findViewById(R.id.prestasi);
         profile_image = root.findViewById(R.id.profile_imageHome);
+        status = root.findViewById(R.id.status);
+
 
         sessionManager = new SessionManager(getActivity());
         sessionManager.checkLogin();
@@ -142,52 +153,60 @@ public class HomeFragment extends Fragment {
                 diaBox.show();
             }
         });
-        data_diri.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent;
-                intent = new Intent(getActivity(), biodata.class);
-                startActivity(intent);
-            }
-        });
+
         hasilStudi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent;
-                intent = new Intent(getActivity(), HasilStudiAwal.class);
-                startActivity(intent);
+//                Intent intent;
+//                intent = new Intent(getActivity(), HasilStudiAwal.class);
+//                startActivity(intent);
+                openFragment(HasilStudiAwalFragment.newInstance("", ""));
             }
         });
+
         presensi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent;
-                intent = new Intent(getActivity(), com.example.studentportal.presensi.class);
-                startActivity(intent);
+                openFragment(PresensiSemesterFragment.newInstance("", ""));
             }
         });
         daftarulang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent;
-                intent = new Intent(getActivity(), DaftarUlang.class);
-                startActivity(intent);
+                openFragment(DaftarUlangFragment.newInstance("", ""));
             }
         });
         keterampilan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openFragment(KeterampilanFragment.newInstance("oke", "oke"));
+                openFragment(KeterampilanFragment.newInstance("", ""));
             }
         });
-        pengumuman.setOnClickListener(new View.OnClickListener() {
+        jadwalKuliah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent;
-                intent = new Intent(getActivity(), com.example.studentportal.pengumuman.class);
-                startActivity(intent);
+                openFragment(JadwalKuliahFragment.newInstance("", ""));
             }
         });
+        evdos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openFragment(EvaluasiDosenFragment.newInstance("", ""));
+            }
+        });
+        magang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openFragment(MagangFragment.newInstance("", ""));
+            }
+        });
+        prestasi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openFragment(PrestasiFragment.newInstance("", ""));
+            }
+        });
+
 
 
         return root;
@@ -205,7 +224,7 @@ public class HomeFragment extends Fragment {
                 // set message, title, and icon
                 .setTitle("Logout")
                 .setMessage("Yakin mau Logout?")
-                .setIcon(R.drawable.delete2)
+                .setIcon(R.drawable.logout)
 
                 .setPositiveButton("Logout", new DialogInterface.OnClickListener() {
 
@@ -279,6 +298,23 @@ public class HomeFragment extends Fragment {
                                     JSONObject object = jsonArray.getJSONObject(i);
 
                                     String strPhoto = object.getString("imageProfil").trim();
+                                    String strStatus = object.getString("statusDiri").trim();
+                                    status.setText(strStatus);
+                                    //status.setVisibility(View.GONE);
+
+                                    if(strStatus.isEmpty()){
+                                        status.setVisibility(View.GONE);
+                                    }else if (strStatus.equals("Aktif")){
+                                        status.setBackgroundResource(R.drawable.aktif);
+                                        status.setTextColor(Color.parseColor("#FFFFFF"));
+
+                                    }else if (strStatus.equals("Tidak Aktif")){
+                                        status.setBackgroundResource(R.drawable.tidakaktif);
+                                        status.setTextColor(Color.parseColor("#FFFFFF"));
+
+                                    }
+
+//                                    code Photo
                                     if (strPhoto.isEmpty()) {
                                         profile_image.setImageResource(R.drawable.ayah);
                                     } else {

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
+
+    <TextView
+        android:id="@+id/txtNomor"
+        android:layout_width="30dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_gravity="top"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/txtMingguKe"
+        android:layout_width="110dp"
+        android:gravity="center"
+        android:layout_height="65dp"
+        android:layout_gravity="top"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/txtTanggalPresensi"
+        android:layout_width="100dp"
+        android:gravity="center"
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/txtNamaMK"
+        android:layout_width="260dp"
+        android:gravity="center"
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:textSize="18sp" />
+    <TextView
+        android:id="@+id/txtKet"
+        android:layout_width="100dp"
+        android:gravity="center"
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:textSize="18sp" />
+
+
+</LinearLayout>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
+    <TextView
+        android:id="@+id/txtidEvdos"
+        android:layout_width="30dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_gravity="top"
+        android:textSize="15sp" />
+    <TextView
+        android:id="@+id/txtnomor"
+        android:layout_width="30dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_gravity="top"
+        android:textSize="15sp" />
+    <TextView
+        android:id="@+id/txtPertanyaan"
+        android:layout_width="200dp"
+        android:text="okeee"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_gravity="top"
+        android:textSize="15sp" />
+    <TextView
+        android:id="@+id/jawaban"
+        android:layout_width="200dp"
+        android:text="yuhuuu"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_gravity="top"
+        android:textSize="15sp" />
+
+    <RadioGroup
+        android:id="@+id/Rad_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/tidakPernah"
+            android:layout_width="105dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/ubunturegular"
+            android:text="Tidak Pernah"
+            android:checked="true"
+            android:textSize="12dp" />
+
+        <RadioButton
+            android:id="@+id/pernah"
+            android:layout_width="105dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/ubunturegular"
+            android:text="Pernah"
+            android:checked="true"
+            android:textSize="12dp" />
+
+        <RadioButton
+            android:id="@+id/sering"
+            android:layout_width="105dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:checked="true"
+            android:fontFamily="@font/ubunturegular"
+            android:text="Sering"
+            android:textSize="12dp" />
+
+        <RadioButton
+            android:id="@+id/selalu"
+            android:layout_width="105dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:checked="true"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/ubunturegular"
+            android:text="Selalu"
+            android:textSize="12dp" />
+    </RadioGroup>
+
+
+
+
+</LinearLayout>

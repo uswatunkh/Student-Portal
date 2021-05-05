@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -24,6 +25,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.studentportal.Fitur.Kuisioner;
 import com.example.studentportal.R;
 import com.example.studentportal.Server;
 import com.example.studentportal.SessionManager;
@@ -46,8 +48,9 @@ public class DataDiriUbahFragment extends Fragment {
 
     private static final String TAG= data_diri.class.getSimpleName() ;  //getting the info
 
-    private EditText npm,nik,namaLengkap,tempatLahir,tanggalLahir,jenisKelamin,agama,provinsiAsal,alamatAsal,kotaAsal,
-            kecamatanAsal, alamatSekarang,desa, tahunAngkatan,noHp,email;
+    private EditText npm,nik,namaLengkap,tempatLahir,tanggalLahir,jenisKelamin,agama,alamatAsal,kotaAsal,
+            kecamatanAsal, alamatSekarang,desa, tahunAngkatan,noHp,email,provinsiAsal;
+
     Button tambah;
     SessionManager sessionManager;
     String getId;  //updateprofil
@@ -60,7 +63,7 @@ public class DataDiriUbahFragment extends Fragment {
     int month;
     int dayOfMonth;
     Calendar calendar;
-    RadioGroup radio;
+    RadioGroup radioGroup;
     RadioButton perempuan,laki;
     String jk;
 
@@ -128,7 +131,7 @@ public class DataDiriUbahFragment extends Fragment {
 
         perempuan = root.findViewById(R.id.perempuan);
         laki= root.findViewById(R.id.lakilaki);
-        radio=root.findViewById(R.id.group);
+//        radio=root.findViewById(R.id.group);
 
         date = root.findViewById(R.id.tvSelectedDate);
         tambah =root.findViewById(R.id.tambah);
@@ -169,7 +172,7 @@ public class DataDiriUbahFragment extends Fragment {
         HashMap<String, String> user = sessionManager.getUserDetail();
         getId = user.get(sessionManager.ID);  //updateprofil
 
-        RadioGroup radioGroup = (RadioGroup) root.findViewById(R.id.group);
+        radioGroup = (RadioGroup) root.findViewById(R.id.group);
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
         {
             @Override
@@ -177,9 +180,11 @@ public class DataDiriUbahFragment extends Fragment {
                 // checkedId is the RadioButton selected
                 if (checkedId == R.id.perempuan){
                     jk = String.valueOf("Perempuan");
-                }else if (checkedId == R.id.lakilaki){
+                    //Toast.makeText(getActivity(), jk,Toast.LENGTH_SHORT).show();
+                }if (checkedId == R.id.lakilaki){
                     jk = String.valueOf("Laki-laki");
                 }
+                jenisKelamin.setText(jk);
             }
         });
 
@@ -250,7 +255,7 @@ public class DataDiriUbahFragment extends Fragment {
                                     String strKecamasal = object.getString("kecamatanAsal").trim();
                                     String strDesa = object.getString("desa").trim();
                                     String strAlamatSekarang = object.getString("alamatSekarang").trim();
-//                                    String strTahunAngkatan = object.getString("periode").trim();
+                                    String strTahunAngkatan = object.getString("tahunAngkatan").trim();
                                     String strNohp = object.getString("noHp").trim();
                                     String strEmail = object.getString("email").trim();
 
@@ -267,7 +272,7 @@ public class DataDiriUbahFragment extends Fragment {
                                     kecamatanAsal.setText(strKecamasal);
                                     desa.setText(strDesa);
                                     alamatSekarang.setText(strAlamatSekarang);
-//                                    tahunAngkatan.setText(strTahunAngkatan);
+                                    tahunAngkatan.setText(strTahunAngkatan);
                                     noHp.setText(strNohp);
                                     email.setText(strEmail);
 
@@ -314,7 +319,7 @@ public class DataDiriUbahFragment extends Fragment {
         final String namaLengkap = this.namaLengkap.getText().toString().trim();
         final String tempatLahir = this.tempatLahir.getText().toString().trim();
         final String date = this.date.getText().toString().trim();
-        final String jenisKelamin = jk.toString();
+        final String jenisKelamin = this.jenisKelamin.getText().toString().trim();
         final String agama = this.agama.getText().toString().trim();
         final String provinsiAsal = this.provinsiAsal.getText().toString().trim();
         final String kotaAsal = this.kotaAsal.getText().toString().trim();
@@ -380,7 +385,7 @@ public class DataDiriUbahFragment extends Fragment {
                 params.put("desa", desa);
                 params.put("alamatAsal", alamatAsal);
                 params.put("alamatSekarang", alamatSekarang);
-
+                params.put("tahunAngkatan", tahunAngkatan);
                 params.put("noHp", noHP);
                 params.put("email", email);
                 //                params.put("periode", periode);

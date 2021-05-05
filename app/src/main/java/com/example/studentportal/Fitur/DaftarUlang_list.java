@@ -1,4 +1,4 @@
-package com.example.studentportal;
+package com.example.studentportal.Fitur;
 
 public class DaftarUlang_list {
     private String periodeAkademik;

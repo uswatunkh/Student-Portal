@@ -14,7 +14,7 @@
         android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/txtNamaKuliah"
+        android:id="@+id/txtNamaMataKuliah"
         android:layout_width="260dp"
         android:gravity="center"
         android:layout_height="65dp"

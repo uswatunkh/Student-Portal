@@ -2,4 +2,24 @@
     <string name="app_name">Student Portal</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="jenis_keterampilan">
+        <item>-Pilih Jenis Keterampilan-</item>
+        <item>Teknis/Akademis (Hardskill)</item>
+        <item>Non Teknis/Non Akademis (Softskill)</item>
+
+    </string-array>
+    <string-array name="tingkat_prestasi">
+        <item>-Pilih Tingkat Kejuaraan-</item>
+        <item>Lokal</item>
+        <item>Regional</item>
+        <item>Nasional</item>
+        <item>Internasional</item>
+
+    </string-array>
+    <string-array name="jenis_prestasi">
+        <item>-Pilih Jenis Prestasi-</item>
+        <item>Individu</item>
+        <item>Kelompok</item>
+
+    </string-array>
 </resources>

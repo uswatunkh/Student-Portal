@@ -5,12 +5,12 @@ public class HasilStudi_list {
     private String kode;
     private String namaKuliah;
     private String sks;
-    private int nilaiAngka;
+    private String nilaiAngka;
     private String nilaiHuruf;
-    private int totalNilai;
+    private String totalNilai;
 
 
-    public HasilStudi_list(  String kode, String namaKuliah, String sks, int nilaiAngka,String nilaiHuruf, int totalNilai) {
+    public HasilStudi_list(  String kode, String namaKuliah, String sks, String nilaiAngka,String nilaiHuruf, String totalNilai) {
 
         this.kode = kode;
         this.namaKuliah = namaKuliah;
@@ -47,11 +47,11 @@ public class HasilStudi_list {
         this.sks = sks;
     }
 
-    public int getNilaiAngka() {
+    public String getNilaiAngka() {
         return nilaiAngka;
     }
 
-    public void setNilaiAngka(int nilaiAngka) {
+    public void setNilaiAngka() {
         this.nilaiAngka = nilaiAngka;
     }
 
@@ -63,11 +63,11 @@ public class HasilStudi_list {
         this.nilaiHuruf = nilaiHuruf;
     }
 
-    public int getTotalNilai() {
+    public String getTotalNilai() {
         return totalNilai;
     }
 
-    public void setTotalNilai(int totalNilai) {
+    public void setTotalNilai() {
         this.totalNilai = totalNilai;
     }
 }

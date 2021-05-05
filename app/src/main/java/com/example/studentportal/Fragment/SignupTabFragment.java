@@ -158,21 +158,7 @@ public class SignupTabFragment extends Fragment {
         }
     }
 
-    public void ConfirmPassword(){
-        final String password = passwordUser.getText().toString();
-        final String confirmPassword = confirm_pass.getText().toString();
-        if (!TextUtils.isEmpty(password) && !TextUtils.isEmpty(confirmPassword))
-        {
-            if(password.equals(confirmPassword))
-            {
-                //are equal
-                Toast.makeText(getActivity(), "Matching passwords="+confirmPassword, Toast.LENGTH_SHORT).show();
-            }
-            else {
-                //are different
-            }
-        }
-    }
+
     private void Regist(){
 
         final String npm = this.npm.getText().toString().trim();
@@ -199,18 +185,21 @@ public class SignupTabFragment extends Fragment {
                             }else if (success.equals("2")){
                                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                                 builder.setMessage("Npm yang ada masukkan sudah terdaftar")
+                                        .setIcon(R.drawable.error)
                                         .setNegativeButton("Ok",null)
                                         .create()
                                         .show();
                             }else if (success.equals("3")){
                                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                                 builder.setMessage("Aktivasi Gagal")
+                                        .setIcon(R.drawable.error)
                                         .setNegativeButton("Ok",null)
                                         .create()
                                         .show();
                             }else if (success.equals("4")){
                                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                                 builder.setMessage("Ulangi Kosfirmasi Lagi")
+                                        .setIcon(R.drawable.error)
                                         .setNegativeButton("Ok",null)
                                         .create()
                                         .show();

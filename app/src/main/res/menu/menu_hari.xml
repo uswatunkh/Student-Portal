@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/senin"
+        android:icon="@drawable/ayah"
+
+        android:title="Senin"
+        />
+    <item
+        android:id="@+id/selasa"
+        android:icon="@drawable/ayah"
+        android:iconTint="@android:color/black"
+        android:title="Selasa"/>
+    <item
+        android:id="@+id/rabu"
+        android:icon="@drawable/ayah"
+        android:iconTint="@android:color/black"
+        android:title="Rabu"/>
+
+    <item
+        android:id="@+id/kamis"
+        android:icon="@drawable/ayah"
+        android:iconTint="@android:color/black"
+        android:title="Kamis"/>
+    <item
+        android:id="@+id/jumat"
+        android:icon="@drawable/ayah"
+        android:iconTint="@android:color/black"
+        android:title="Jumat"/>
+
+
+
+</menu>

@@ -8,24 +8,48 @@
     tools:context=".HasilStudi">
 
     <RelativeLayout
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="0dp"
         android:id="@+id/llViewTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:background="@color/orange">
+        android:background="#ff0099cc">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/refresh"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="300dp"
+            android:layout_weight="50"
+            android:clickable="true"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="15dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/orange"
+                >
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/buton_refresh"
+                    android:background="@drawable/bg_refresh"
+                    /></LinearLayout>
+        </androidx.cardview.widget.CardView>
+
 
         <TextView
-            android:layout_marginLeft="70pt"
+            android:layout_marginLeft="60pt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/white"
             android:textStyle="bold"
+            android:fontFamily="@font/mench"
             android:gravity="center"
             android:text="Daftar Ulang"
-            android:textSize="18sp" />
+            android:textSize="25sp" />
 
     </RelativeLayout>
 

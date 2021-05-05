@@ -1,6 +1,7 @@
 package com.example.studentportal;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,17 +11,20 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.studentportal.Fitur.DataKuisioner;
+
 import java.util.List;
 
 public class HasilStudi_TableViewAdapter  extends RecyclerView.Adapter {
 
-    private List movieList;
+    List<HasilStudi_list> mData;
+    Context mContext;
 
 
 
-    public HasilStudi_TableViewAdapter(List movieList) {
-
-        this.movieList = movieList;
+    public HasilStudi_TableViewAdapter(Context mContext,List<HasilStudi_list> mData) {
+        this.mContext = mContext;
+        this.mData = mData;
     }
 
     @NonNull
@@ -62,14 +66,14 @@ public class HasilStudi_TableViewAdapter  extends RecyclerView.Adapter {
             rowViewHolder.txtTotalNilai.setText("Total Nilai");
             rowViewHolder.txtTotalNilai.setTextColor(Color.parseColor("#FFFFFF"));
         } else {
-            HasilStudi_list modal = (HasilStudi_list) movieList.get(rowPos - 1);
+            HasilStudi_list modal = (HasilStudi_list) mData.get(rowPos - 1);
 
-            rowViewHolder.txtKode.setBackgroundResource(R.drawable.table_bg_dua);
-            rowViewHolder.txtNamaKuliah.setBackgroundResource(R.drawable.table_bg_dua);
-            rowViewHolder.txtSks.setBackgroundResource(R.drawable.table_bg_dua);
-            rowViewHolder.txtNilaiAngka.setBackgroundResource(R.drawable.table_bg_dua);
-            rowViewHolder.txtNilaiHuruf.setBackgroundResource(R.drawable.table_bg_dua);
-            rowViewHolder.txtTotalNilai.setBackgroundResource(R.drawable.table_bg_dua);
+            rowViewHolder.txtKode.setBackgroundResource(R.drawable.cardview);
+            rowViewHolder.txtNamaKuliah.setBackgroundResource(R.drawable.cardview);
+            rowViewHolder.txtSks.setBackgroundResource(R.drawable.cardview);
+            rowViewHolder.txtNilaiAngka.setBackgroundResource(R.drawable.cardview);
+            rowViewHolder.txtNilaiHuruf.setBackgroundResource(R.drawable.cardview);
+            rowViewHolder.txtTotalNilai.setBackgroundResource(R.drawable.cardview);
 
             rowViewHolder.txtKode.setText(modal.getKode() + "");
             rowViewHolder.txtNamaKuliah.setText(modal.getNamaKuliah());
@@ -83,7 +87,7 @@ public class HasilStudi_TableViewAdapter  extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return movieList.size() + 1;
+        return mData.size() + 1;
     }
 
     public class RowViewHolder extends RecyclerView.ViewHolder {
@@ -97,7 +101,7 @@ public class HasilStudi_TableViewAdapter  extends RecyclerView.Adapter {
         RowViewHolder(View itemView) {
             super(itemView);
             txtKode = itemView.findViewById(R.id.txtKode);
-            txtNamaKuliah = itemView.findViewById(R.id.txtNamaKuliah);
+            txtNamaKuliah = itemView.findViewById(R.id.txtNamaMataKuliah);
             txtSks = itemView.findViewById(R.id.txtSks);
             txtNilaiAngka = itemView.findViewById(R.id.txtNilaiAngka);
             txtNilaiHuruf = itemView.findViewById(R.id.txtNilaiHuruf);

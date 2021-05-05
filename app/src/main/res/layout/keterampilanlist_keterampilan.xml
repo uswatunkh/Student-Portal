@@ -1,35 +1,432 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:padding="16dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:background="@drawable/cardview">
 
-    <TextView
-        android:id="@+id/idKeterampilan"
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/container"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"/>
+        android:layout_margin="16dp"
+        android:layout_marginLeft="50dp"
 
-    <TextView
-        android:id="@+id/namaKeterampilan"
-        android:layout_marginBottom="5dp"
-        android:textStyle="bold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        app:cardCornerRadius="6dp"
+        app:cardElevation="13dp">
 
-    <TextView
-        android:id="@+id/jenis"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:id="@+id/tingkat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:id="@+id/scanBukti"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/table_bg"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="0dp">
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:hint="Nama Keterampilan"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+                <EditText
+                    android:id="@+id/idKeterampilan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edit_text_bg"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:textSize="8sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nama Keterampilan"
+                android:focusable="false"
+                android:textColorHint="@android:color/white"
+                app:boxStrokeColor="@android:color/white"
+                app:boxBackgroundColor="@android:color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+                <EditText
+                    android:id="@+id/namaKeterampilan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:text="Belum Terisi"
+                    android:background="@drawable/edit_text_bg"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:textSize="10sp"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            
+
+        </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/table_bg"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="0dp">
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Jenis"
+                    android:focusable="false"
+                    android:textColorHint="@android:color/white"
+                    app:boxStrokeColor="@android:color/white"
+                    app:boxBackgroundColor="@android:color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+                    <EditText
+                        android:id="@+id/jenis"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:text="Belum Terisi"
+                        android:background="@drawable/edit_text_bg"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:textSize="10sp"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/table_bg"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="0dp">
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Tingkat"
+                    android:focusable="false"
+                    android:textColorHint="@android:color/white"
+                    app:boxStrokeColor="@android:color/white"
+                    app:boxBackgroundColor="@android:color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+                    <EditText
+                        android:id="@+id/tingkat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:text="Belum Terisi"
+                        android:background="@drawable/edit_text_bg"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:textSize="10sp"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/table_bg"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="0dp">
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Scan"
+                    android:focusable="false"
+                    android:textColorHint="@android:color/white"
+                    app:boxStrokeColor="@android:color/white"
+                    app:boxBackgroundColor="@android:color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+                    <EditText
+                        android:id="@+id/scanBukti"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:text="Belum Terisi"
+                        android:background="@drawable/edit_text_bg"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:textSize="10sp"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/table_bg"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="0dp">
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Verifikasi"
+                    android:focusable="false"
+                    android:textColorHint="@android:color/white"
+                    app:boxStrokeColor="@android:color/white"
+                    app:boxBackgroundColor="@android:color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+                    <EditText
+                        android:id="@+id/vertifikasi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:text="Belum Terisi"
+                        android:background="@drawable/edit_text_bg"
+                        android:paddingLeft="20dp"
+                        android:textColor="@android:color/holo_red_dark"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:textSize="10sp"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="55dp"-->
+<!--            android:gravity="center"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:padding="10dp">-->
+
+
+<!--                <com.google.android.material.textfield.TextInputLayout-->
+<!--                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:hint="JENIS"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent">-->
+<!--                    <EditText-->
+<!--                        android:id="@+id/jenis"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:background="@drawable/edit_text_bg"-->
+<!--                        android:paddingLeft="20dp"-->
+<!--                        android:paddingTop="10dp"-->
+<!--                        android:paddingBottom="10dp"-->
+<!--                        android:textSize="8sp" />-->
+<!--                </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--        </LinearLayout>-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="110dp"-->
+<!--            android:background="@drawable/table_bg"-->
+<!--            android:gravity="center"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:padding="10dp">-->
+<!--        <com.google.android.material.textfield.TextInputLayout-->
+<!--            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:hint="Tingkat"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent">-->
+<!--            <EditText-->
+<!--                android:id="@+id/tingkat"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="@drawable/edit_text_bg"-->
+<!--                android:paddingLeft="20dp"-->
+<!--                android:paddingTop="10dp"-->
+<!--                android:paddingBottom="10dp"-->
+<!--                android:textSize="8sp" />-->
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
+<!--        </LinearLayout>-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="170dp"-->
+<!--            android:gravity="center"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:padding="10dp">-->
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:hint="Scan"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent">-->
+<!--                <EditText-->
+<!--                    android:id="@+id/scanBukti"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:background="@drawable/edit_text_bg"-->
+<!--                    android:paddingLeft="20dp"-->
+<!--                    android:paddingTop="10dp"-->
+<!--                    android:paddingBottom="10dp"-->
+<!--                    android:textSize="8sp" />-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+<!--        </LinearLayout>-->
+
+
+    </androidx.cardview.widget.CardView>
+
+
+<!--    <androidx.cardview.widget.CardView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:cardCornerRadius="6dp"-->
+<!--         app:cardElevation="13dp"-->
+<!--        >-->
+<!--    <LinearLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical"-->
+<!--        android:layout_gravity="center"-->
+<!--        >-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/idKeterampilan"-->
+<!--        android:layout_width="94dp"-->
+<!--        android:layout_height="12dp"-->
+<!--        android:visibility="gone"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/container"-->
+<!--        app:layout_constraintEnd_toEndOf="parent" />-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal">-->
+<!--        <TextView-->
+<!--            android:layout_marginBottom="5dp"-->
+<!--            android:textStyle="bold"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Nama"-->
+<!--            android:textSize="20dp"/>-->
+<!--        <TextView-->
+<!--            android:id="@+id/namaKeterampilan"-->
+<!--            android:layout_marginBottom="5dp"-->
+<!--            android:textStyle="bold"-->
+<!--            android:text="Nama"-->
+<!--            android:layout_marginLeft="60dp"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textSize="20dp"/>-->
+
+<!--    </LinearLayout>-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal">-->
+<!--            <TextView-->
+<!--                android:layout_marginBottom="5dp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Jenis"-->
+<!--                android:textSize="20dp"/>-->
+<!--            <TextView-->
+<!--                android:id="@+id/jenis"-->
+<!--                android:layout_marginBottom="5dp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:text="Jenis"-->
+<!--                android:layout_marginLeft="64dp"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textSize="20dp"/>-->
+
+<!--        </LinearLayout>-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal">-->
+<!--            <TextView-->
+<!--                android:layout_marginBottom="5dp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Tingkat"-->
+<!--                android:textSize="20dp"/>-->
+<!--            <TextView-->
+<!--                android:id="@+id/tingkat"-->
+<!--                android:layout_marginBottom="5dp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:text="Tingkat"-->
+<!--                android:layout_marginLeft="43dp"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textSize="20dp"/>-->
+
+<!--        </LinearLayout>-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal">-->
+<!--            <TextView-->
+<!--                android:layout_marginBottom="5dp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Scan Bukti  "-->
+<!--                android:textSize="20dp"/>-->
+<!--            <TextView-->
+<!--                android:id="@+id/scanBukti"-->
+<!--                android:layout_marginBottom="5dp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:text="Scan"-->
+<!--                android:layout_marginLeft="6dp"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textSize="20dp"/>-->
+
+<!--        </LinearLayout>-->
+
+
+
+
+<!--    </LinearLayout>-->
+<!--    </androidx.cardview.widget.CardView>-->
+
+
 
 </LinearLayout>

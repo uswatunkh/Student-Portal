@@ -127,7 +127,7 @@
                 android:layout_width="263dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="185dp"
-                android:hint="Instansi/Perusahaan Ayah"
+                android:hint="Instansi Ayah"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -205,7 +205,7 @@
                 android:layout_width="263dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="350dp"
-                android:hint="Instansi/Perusahaan Ibu"
+                android:hint="Instansi Ibu"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -283,7 +283,7 @@
                 android:layout_width="263dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="515dp"
-                android:hint="Instansi/Perusahaan Wali"
+                android:hint="Instansi Wali"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">

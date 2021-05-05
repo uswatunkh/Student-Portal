@@ -2,6 +2,7 @@ package com.example.studentportal.Fitur;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,6 +52,7 @@ public class AdapterKeterampilan extends BaseAdapter {
         TextView namaKeterampilan = (TextView) convertView.findViewById(R.id.namaKeterampilan);
         TextView jenis = (TextView) convertView.findViewById(R.id.jenis);
         TextView tingkat = (TextView) convertView.findViewById(R.id.tingkat);
+        TextView verifikasi = (TextView) convertView.findViewById(R.id.vertifikasi);
         TextView scanBukti = (TextView) convertView.findViewById(R.id.scanBukti);
 
         DataKeterampilan data = items.get(position);
@@ -59,7 +61,12 @@ public class AdapterKeterampilan extends BaseAdapter {
         namaKeterampilan.setText(data.getNamaKeterampilan());
         jenis.setText(data.getJenis());
         tingkat.setText(data.getTingkat());
+        verifikasi.setText(data.getVerifikasi());
         scanBukti.setText(data.getScanBukti());
+
+        if(verifikasi.equals("Sudah Diverifikasi")){
+            verifikasi.setTextColor(Color.parseColor("#000000"));
+        }
 
         return convertView;
     }

@@ -39,7 +39,7 @@ import java.util.Map;
  * create an instance of this fragment.
  */
 public class DataOrangtuaFragment extends Fragment {
-    private static final String TAG= data_diri.class.getSimpleName() ;  //getting the info
+    private static final String TAG= DataOrangtuaFragment.class.getSimpleName() ;  //getting the info
 
     private EditText namaAyah, pekerjaanAyah,instansiAyah,namaIbu,pekerjaanIbu,instansiIbu,namaWali,pekerjaanWali,instansiWali;
     Button ubah;
@@ -111,28 +111,28 @@ public class DataOrangtuaFragment extends Fragment {
         ubah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                openFragment(DataOrangTuaUbahFragment.newInstance("oke", "oke"));
-                AlertDialog.Builder builder= new AlertDialog.Builder(getActivity());
-//                builder.setTitle("Welcome");
-                builder.setMessage("PILIH AKSI");
-                builder.setPositiveButton("Tambah", new DialogInterface.OnClickListener()
-                {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which)
-                    {
-                        openFragment(DataOrangTuaUbahFragment.newInstance("oke", "oke"));
-                    }
-                });
-                builder.setNegativeButton("Ubah", new DialogInterface.OnClickListener()
-                {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which)
-                    {
-                        openFragment(DataOrangTuaUbahFragment.newInstance("oke", "oke"));
-                    }
-                });
-                AlertDialog dialog = builder.create();
-                dialog.show();
+                openFragment(DataOrangTuaUbahFragment.newInstance("oke", "oke"));
+//                AlertDialog.Builder builder= new AlertDialog.Builder(getActivity());
+////                builder.setTitle("Welcome");
+//                builder.setMessage("PILIH AKSI");
+//                builder.setPositiveButton("Tambah", new DialogInterface.OnClickListener()
+//                {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which)
+//                    {
+//                        openFragment(DataOrangTuaUbahFragment.newInstance("oke", "oke"));
+//                    }
+//                });
+//                builder.setNegativeButton("Ubah", new DialogInterface.OnClickListener()
+//                {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which)
+//                    {
+//                        openFragment(DataOrangTuaUbahFragment.newInstance("oke", "oke"));
+//                    }
+//                });
+//                AlertDialog dialog = builder.create();
+//                dialog.show();
 
             }
         });

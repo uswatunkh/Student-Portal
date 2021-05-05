@@ -148,8 +148,12 @@ public class ScanKtpFragment extends Fragment {
                                     JSONObject object = jsonArray.getJSONObject(i);
                                     String strPhoto = object.getString("scanKtp").trim();
 
-                                    Picasso.get().load(strPhoto).memoryPolicy(MemoryPolicy.NO_CACHE).networkPolicy(NetworkPolicy.NO_CACHE).fit().centerCrop().into(ktp_image);
-
+                                  //  Picasso.get().load(strPhoto).memoryPolicy(MemoryPolicy.NO_CACHE).networkPolicy(NetworkPolicy.NO_CACHE).fit().centerCrop().into(ktp_image);
+                                    if (strPhoto.isEmpty()) {
+                                        ktp_image.setImageResource(R.drawable.image);
+                                    } else {
+                                        Picasso.get().load(strPhoto).memoryPolicy(MemoryPolicy.NO_CACHE).networkPolicy(NetworkPolicy.NO_CACHE).fit().centerCrop().into(ktp_image);
+                                    }
 
 
 

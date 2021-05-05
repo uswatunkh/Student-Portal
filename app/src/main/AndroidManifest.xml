@@ -1,36 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.studentportal">
+    package="com.example.studentportal"
+    android:targetSandboxVersion="1">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".app.AppController"
-        android:largeHeap="true"
         android:allowBackup="true"
         android:icon="@drawable/student_blue"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppThemeLogin">
-        <activity android:name=".data_ortu"></activity>
-        <activity android:name=".biodata"></activity>
-        <activity android:name=".HasilStudiAwal"></activity>
-<!--        <activity android:name=".HasilStudi"></activity>-->
-        <activity android:name=".presensi"></activity>
-<!--        <activity android:name=".Keterampilan"></activity>-->
-        <activity android:name=".LoginActivity"></activity>
-        <activity android:name=".DaftarUlang"></activity>
-<!--        <activity android:name=".pengumuman"></activity>-->
-        <activity android:name=".data_diri"></activity>
-
-        <activity android:name=".ubah_data_diri"></activity>
-        <activity android:name=".Splash"></activity>
-<!--        <activity android:name=".ubah_keterampilan"></activity>-->
-
-        <activity
-            android:name=".FragmentUtama">
+        android:theme="@style/AppThemeLogin"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".greeting_selamat"></activity>
+        <activity android:name=".contoh" />
+        <activity android:name=".Fitur.Kuisioner" />
+        <activity android:name=".data_ortu" />
+        <activity android:name=".biodata" />
+        <activity android:name=".HasilStudi" />
+        <activity android:name=".Presensi" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".DaftarUlang" /> <!-- <activity android:name=".pengumuman"></activity> -->
+        <activity android:name=".data_diri" />
+        <activity android:name=".ubah_data_diri" />
+        <activity android:name=".Splash" /> <!-- <activity android:name=".ubah_keterampilan"></activity> -->
+        <activity android:name=".FragmentUtama">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

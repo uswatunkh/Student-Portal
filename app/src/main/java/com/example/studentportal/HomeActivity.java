@@ -96,20 +96,18 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        hasilStudi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent;
-                intent = new Intent(HomeActivity.this,HasilStudiAwal.class);
-                startActivity(intent);
-            }
-        });
+//        hasilStudi.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent;
+//                intent = new Intent(HomeActivity.this,HasilStudiAwal.class);
+//                startActivity(intent);
+//            }
+//        });
         presensi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent;
-                intent = new Intent(HomeActivity.this,presensi.class);
-                startActivity(intent);
+                
             }
         });
         daftarulang.setOnClickListener(new View.OnClickListener() {

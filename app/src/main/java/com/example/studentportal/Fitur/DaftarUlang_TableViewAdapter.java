@@ -1,4 +1,4 @@
-package com.example.studentportal;
+package com.example.studentportal.Fitur;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.studentportal.R;
 
 import java.util.List;
 
@@ -61,10 +63,10 @@ public class DaftarUlang_TableViewAdapter extends RecyclerView.Adapter {
         } else {
             DaftarUlang_list modal = (DaftarUlang_list) mData.get(rowPos - 1);
 
-            rowViewHolder.txtPeriode.setBackgroundResource(R.drawable.table_bg_dua);
-            rowViewHolder.txtUkt.setBackgroundResource(R.drawable.table_bg_dua);
-            rowViewHolder.txtStatus.setBackgroundResource(R.drawable.table_bg_dua);
-            rowViewHolder.txtCetakKrs.setBackgroundResource(R.drawable.table_bg_dua);
+            rowViewHolder.txtPeriode.setBackgroundResource(R.drawable.cardview);
+            rowViewHolder.txtUkt.setBackgroundResource(R.drawable.cardview);
+            rowViewHolder.txtStatus.setBackgroundResource(R.drawable.cardview);
+            rowViewHolder.txtCetakKrs.setBackgroundResource(R.drawable.cardview);
 
             rowViewHolder.txtPeriode.setText(modal.getPeriodeAkademik() + "");
             rowViewHolder.txtUkt.setText(modal.getUkt());

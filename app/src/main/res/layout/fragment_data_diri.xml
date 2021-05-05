@@ -87,7 +87,7 @@
                     android:layout_height="45dp"
                     android:layout_marginTop="3dp"
                     android:focusable="false"
-                    android:text="nama"
+                    android:text="Belum Diisi"
                     android:textColor="@color/colorText"
                     android:textSize="13dp"
 
@@ -291,7 +291,7 @@
                 android:layout_width="263dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="447dp"
-                android:hint="No. Handphone"
+                android:hint="Nomor Handphone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">

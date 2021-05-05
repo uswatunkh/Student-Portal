@@ -1,10 +1,8 @@
 package com.example.studentportal;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +17,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.studentportal.Fitur.DaftarUlang_TableViewAdapter;
+import com.example.studentportal.Fitur.DaftarUlang_list;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,7 +32,7 @@ import java.util.Map;
 public class DaftarUlang extends AppCompatActivity {
     private static final String TAG= data_diri.class.getSimpleName() ;  //getting the info
     RecyclerView NewsRecyclerview;
-    DaftarUlang_TableViewAdapter DaftarUlang_TableViewAdapter;
+    com.example.studentportal.Fitur.DaftarUlang_TableViewAdapter DaftarUlang_TableViewAdapter;
     private JsonArrayRequest request;
     private RequestQueue requestQueue;
     List<DaftarUlang_list> mData;
