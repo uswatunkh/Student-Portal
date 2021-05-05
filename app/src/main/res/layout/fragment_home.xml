@@ -682,6 +682,7 @@
                         >
 
                         <ImageView
+                            android:id="@+id/organisasi"
                             android:layout_width="115dp"
                             android:layout_height="115dp"
                             android:layout_above="@+id/textView26"

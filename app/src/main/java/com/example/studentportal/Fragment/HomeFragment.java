@@ -34,6 +34,7 @@ import com.example.studentportal.Fitur.EvaluasiDosenFragment;
 import com.example.studentportal.Fitur.HasilStudiAwalFragment;
 import com.example.studentportal.Fitur.KeterampilanFragment;
 import com.example.studentportal.Fitur.MagangFragment;
+import com.example.studentportal.Fitur.OrganisasiFragment;
 import com.example.studentportal.Fitur.PresensiSemesterFragment;
 import com.example.studentportal.Fitur.PrestasiFragment;
 import com.example.studentportal.HomeActivity;
@@ -72,7 +73,7 @@ public class HomeFragment extends Fragment {
     private TextView name, email,greetText;
     private ImageView btn_logout;
     ImageView greetImg,data_diri, keterampilan,pengumuman, daftarulang,hasilStudi,presensi,jadwalKuliah,evdos,magang
-            ,prestasi;
+            ,prestasi,organisasi;
     TextView status;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -134,6 +135,7 @@ public class HomeFragment extends Fragment {
         magang = root.findViewById(R.id.magang);
         presensi = root.findViewById(R.id.presensi);
         prestasi = root.findViewById(R.id.prestasi);
+        organisasi = root.findViewById(R.id.organisasi);
         profile_image = root.findViewById(R.id.profile_imageHome);
         status = root.findViewById(R.id.status);
 
@@ -204,6 +206,12 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 openFragment(PrestasiFragment.newInstance("", ""));
+            }
+        });
+        organisasi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openFragment(OrganisasiFragment.newInstance("", ""));
             }
         });
 
