@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.Path;
 import android.net.Uri;
 import android.os.Bundle;
@@ -28,6 +29,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -41,11 +43,13 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.studentportal.Fragment.HomeFragment;
 import com.example.studentportal.R;
 import com.example.studentportal.Server;
 import com.example.studentportal.SessionManager;
 import com.example.studentportal.app.AppController;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.textfield.TextInputLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -67,9 +71,11 @@ import static android.app.Activity.RESULT_OK;
  * Use the {@link KeterampilanFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class KeterampilanFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
-
+public class  KeterampilanFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
+    EditText idKeterampilan,namaKeterampilan,jenisKet,tingkatKet,verifikasiKet,scanBuktiKet;
+    TextInputLayout inputVerifikasi;
     Toolbar toolbar;
+    ImageView backKeterampilan;
     FloatingActionButton fab;
     ListView list;
     SwipeRefreshLayout swipe;
@@ -78,8 +84,8 @@ public class KeterampilanFragment extends Fragment implements SwipeRefreshLayout
     int success;
     AlertDialog.Builder dialog;
     LayoutInflater inflater;
-    View dialogView;
-    EditText txt_id, txt_nama, txt_tingkat,txt_scan,jenis_hide;
+    View dialogView,dialogRead;
+    EditText txt_id, txt_nama,txt_jenisx, txt_tingkat,txt_scan,jenis_hide;
     Spinner txt_jenis;
     String jenis;
     Button upload;
@@ -168,6 +174,7 @@ public class KeterampilanFragment extends Fragment implements SwipeRefreshLayout
         fab     = (FloatingActionButton) root.findViewById(R.id.fab_add);
         swipe   = (SwipeRefreshLayout) root.findViewById(R.id.swipe_refresh_layout);
         list    = (ListView) root.findViewById(R.id.list);
+        backKeterampilan= (ImageView) root.findViewById(R.id.backKeterampilan);
 
         // untuk mengisi data dari JSON ke dalam adapter
         adapter = new AdapterKeterampilan(getActivity(), itemList);
@@ -202,6 +209,12 @@ public class KeterampilanFragment extends Fragment implements SwipeRefreshLayout
                 txt_scan.setVisibility(View.GONE);
             }
         });
+        backKeterampilan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openFragment(HomeFragment.newInstance("", ""));
+            }
+        });
 
         // listview ditekan lama akan menampilkan dua pilihan edit atau delete data
         list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -212,7 +225,7 @@ public class KeterampilanFragment extends Fragment implements SwipeRefreshLayout
                 // TODO Auto-generated method stub
                 idx = itemList.get(position).getIdKeterampilan();
 
-                final CharSequence[] dialogitem = {"Delete"};
+                final CharSequence[] dialogitem = {"View","Delete"};
                 dialog = new AlertDialog.Builder(getActivity());
                 dialog.setCancelable(true);
                 dialog.setItems(dialogitem, new DialogInterface.OnClickListener() {
@@ -221,11 +234,11 @@ public class KeterampilanFragment extends Fragment implements SwipeRefreshLayout
                     public void onClick(DialogInterface dialog, int which) {
                         // TODO Auto-generated method stub
                         switch (which) {
-//                            case 0:
-////                                edit(idx);
-//
-//                                break;
                             case 0:
+                                edit(idx);
+
+                                break;
+                            case 1:
                                 AlertDialog myQuittingDialogBox = new AlertDialog.Builder(getActivity())
                                         // set message, title, and icon
                                         .setTitle("Hapus")
@@ -261,6 +274,13 @@ public class KeterampilanFragment extends Fragment implements SwipeRefreshLayout
         return root;
     }
 
+    public void openFragment(Fragment fragment) {
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
 
     @Override
     public void onRefresh() {
@@ -285,7 +305,7 @@ public class KeterampilanFragment extends Fragment implements SwipeRefreshLayout
         dialogView = inflater.inflate(R.layout.keterampilanform_keterampilan, null);
         dialog.setView(dialogView);
         dialog.setCancelable(true);
-        dialog.setIcon(R.mipmap.ic_launcher);
+        dialog.setIcon(R.drawable.keterampilan);
         dialog.setTitle("Form Keterampilan");
 
         txt_id      = (EditText) dialogView.findViewById(R.id.txt_idKeterampilan);
@@ -401,6 +421,79 @@ public class KeterampilanFragment extends Fragment implements SwipeRefreshLayout
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
                 kosong();
+            }
+        });
+
+        dialog.show();
+
+    }
+
+    // untuk menampilkan dialog from biodata
+    private void DialogForm3(String idx, String namax, String jenisx,String tingkatx,String scanBuktix,String verifikasix, String button) {
+        dialog = new AlertDialog.Builder(getActivity());
+        inflater = getLayoutInflater();
+        dialogView = inflater.inflate(R.layout.keterampilan_view, null);
+        dialog.setView(dialogView);
+        dialog.setCancelable(true);
+        dialog.setIcon(R.drawable.keterampilan);
+        dialog.setTitle("Form Keterampilan");
+
+        txt_id      = (EditText) dialogView.findViewById(R.id.txt_idKeterampilan);
+        txt_nama    = (EditText) dialogView.findViewById(R.id.txt_namaKeterampilan);
+        txt_jenisx  = (EditText) dialogView.findViewById(R.id.txt_jenis);
+        txt_tingkat  = (EditText) dialogView.findViewById(R.id.txt_tingkat);
+        txt_scan=(EditText) dialogView.findViewById(R.id.txt_scan);
+        verifikasiKet  = (EditText) dialogView.findViewById(R.id.vertifikasi);
+        inputVerifikasi = (TextInputLayout) dialogView.findViewById(R.id.inputVerifikasi);
+
+
+
+
+//        txt_scanBukti  = (EditText) dialogView.findViewById(R.id.txt_scan);
+
+
+
+
+
+        if (!idx.isEmpty()){
+            txt_id.setText(idx);
+            txt_nama.setText(namax);
+
+            txt_jenisx.setText(jenisx);
+            verifikasiKet.setText(verifikasix);
+            txt_tingkat.setText(tingkatx);
+            txt_scan.setText(scanBuktix);
+
+        } else {
+            kosong();
+
+        }
+//        btnUpload.setOnClickListener(button ,new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                id      = txt_id.getText().toString();
+//                nama    = txt_nama.getText().toString();
+//                //jenis  = txt_jenis.getSelectedItem().toString();
+//                jenisHide=jenis_hide.getText().toString();
+//                tingkat= txt_tingkat.getText().toString();
+//                simpan_update();
+//
+//
+//                callVolley();
+//                dialog.dismiss();
+//            }
+//
+//
+//            });
+
+
+
+        dialog.setNegativeButton("BATAL", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                //kosong();
             }
         });
 
@@ -601,64 +694,72 @@ public class KeterampilanFragment extends Fragment implements SwipeRefreshLayout
         AppController.getInstance().addToRequestQueue(strReq, tag_json_obj);
     }
 
-    // fungsi untuk get edit data
-//    private void edit(final String idx){
-//        StringRequest strReq = new StringRequest(Request.Method.POST, url_edit, new Response.Listener<String>() {
-//
-//            @Override
-//            public void onResponse(String response) {
-//                Log.d(TAG, "Response: " + response.toString());
-//                try {
-//                    JSONObject jsonObject =new JSONObject(response);
-//                    String success = jsonObject.getString("success");
-//                    JSONArray jsonArray =jsonObject.getJSONArray("read");
-//
-//                    if(success.equals("1")){
-//                        for (int i=0; i< jsonArray.length(); i++){
-//                            JSONObject object = jsonArray.getJSONObject(i);
-//
-//                            String idx      = object.getString(TAG_ID);
-//                            String namax    = object.getString(TAG_NAMA);
-//                            String jenisx  = object.getString(TAG_JENIS);
-//                            String tingkatx  = object.getString(TAG_TINGKAT);
-//                            String scanBuktix  = object.getString(TAG_SCANBUKTI);
-//
-//                            DialogForm(idx, namax, jenisx,tingkatx,scanBuktix, "UPDATE");
-//                            //txt_jenis.setVisibility(View.GONE);
-//
-//                            adapter.notifyDataSetChanged();
-//
-//                        }
-//                    }
-//                }
-//                catch (JSONException e) {
-//                    // JSON error
-//                    e.printStackTrace();
-//                }
-//
-//            }
-//        }, new Response.ErrorListener() {
-//
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                Log.e(TAG, "Error: " + error.getMessage());
-//                Toast.makeText(getActivity(), error.getMessage(), Toast.LENGTH_LONG).show();
-//            }
-//        }) {
-//
-//            @Override
-//            protected Map<String, String> getParams() {
-//                // Posting parameters ke post url
-//                Map<String, String> params = new HashMap<String, String>();
-//                params.put("idKeterampilan", idx);
-//
-//                return params;
-//            }
-//
-//        };
-//
-//        AppController.getInstance().addToRequestQueue(strReq, tag_json_obj);
-//    }
+     //fungsi untuk get edit data
+    private void edit(final String idx){
+        StringRequest strReq = new StringRequest(Request.Method.POST, url_edit, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+                Log.d(TAG, "Response: " + response.toString());
+                try {
+                    JSONObject jsonObject =new JSONObject(response);
+                    String success = jsonObject.getString("success");
+                    JSONArray jsonArray =jsonObject.getJSONArray("read");
+
+                    if(success.equals("1")){
+                        for (int i=0; i< jsonArray.length(); i++){
+                            JSONObject object = jsonArray.getJSONObject(i);
+
+                            String idx      = object.getString(TAG_ID);
+                            String namax    = object.getString(TAG_NAMA);
+                            String jenisx  = object.getString(TAG_JENIS);
+                            String tingkatx  = object.getString(TAG_TINGKAT);
+                            String scanBuktix  = object.getString(TAG_SCANBUKTI);
+                            String verifikasix  = object.getString(TAG_Verifikasi);
+
+                            DialogForm3(idx, namax, jenisx,tingkatx,scanBuktix,verifikasix, "");
+                            //txt_jenis.setVisibility(View.GONE);
+                            if(verifikasix.equals("Sudah Diverifikasi")){
+                                verifikasiKet.setTextColor(Color.parseColor("#FFFFFF"));
+                                inputVerifikasi.setBackgroundColor(R.drawable.informasi);
+                            }else if(verifikasix.equals("Belum Diverifikasi")){
+                                inputVerifikasi.setBackgroundColor(R.drawable.peringatan);
+                                verifikasiKet.setTextColor(Color.parseColor("#FFFFFF  "));
+                            }
+
+                            adapter.notifyDataSetChanged();
+
+                        }
+                    }
+                }
+                catch (JSONException e) {
+                    // JSON error
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e(TAG, "Error: " + error.getMessage());
+                Toast.makeText(getActivity(), error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() {
+                // Posting parameters ke post url
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("idKeterampilan", idx);
+
+                return params;
+            }
+
+        };
+
+        AppController.getInstance().addToRequestQueue(strReq, tag_json_obj);
+    }
 
     // fungsi untuk menghapus
     private void delete(final String idx){

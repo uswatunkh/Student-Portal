@@ -64,9 +64,7 @@ public class AdapterKeterampilan extends BaseAdapter {
         verifikasi.setText(data.getVerifikasi());
         scanBukti.setText(data.getScanBukti());
 
-        if(verifikasi.equals("Sudah Diverifikasi")){
-            verifikasi.setTextColor(Color.parseColor("#000000"));
-        }
+
 
         return convertView;
     }

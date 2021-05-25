@@ -2,7 +2,7 @@
 	require_once 'connect.php';
 	
 	
-	$sql ="SELECT * FROM datadosen ";
+	$sql ="SELECT datadosen.idDosen,datadosen.namaDosen, matakuliah.namaMk FROM datadosen INNER JOIN matakuliah ON matakuliah.idMataKuliah=datadosen.idMataKuliah ";
 	
 	$result=mysqli_query($connect,$sql);
 	$json = array();

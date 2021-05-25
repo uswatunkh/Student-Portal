@@ -2,7 +2,7 @@
 <?php
 require_once 'connect.php';
  
-	$sql="SELECT * FROM `pengumuman` ";
+	$sql=" SELECT * FROM `pengumuman` 	ORDER BY idPengumuman DESC ";
 	$result=mysqli_query($connect,$sql);
  
 	$data=array();

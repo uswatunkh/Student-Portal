@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 05, 2021 at 07:05 PM
+-- Generation Time: May 25, 2021 at 10:17 PM
 -- Server version: 5.7.31
 -- PHP Version: 5.6.40
 
@@ -32,14 +32,23 @@ DROP TABLE IF EXISTS `bahasainternational`;
 CREATE TABLE IF NOT EXISTS `bahasainternational` (
   `idBahasa` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `npm` int(10) UNSIGNED NOT NULL,
+  `periodeWisuda` varchar(20) NOT NULL,
   `tahunWisuda` varchar(10) NOT NULL,
   `namaBahasa` varchar(30) NOT NULL,
   `skor` int(11) NOT NULL,
   `tanggalTes` date NOT NULL,
   `scanBukti` text NOT NULL,
+  `verifikasi` varchar(30) NOT NULL,
   PRIMARY KEY (`idBahasa`),
   KEY `Bahasa_FKIndex1` (`npm`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `bahasainternational`
+--
+
+INSERT INTO `bahasainternational` (`idBahasa`, `npm`, `periodeWisuda`, `tahunWisuda`, `namaBahasa`, `skor`, `tanggalTes`, `scanBukti`, `verifikasi`) VALUES
+(1, 12, '5455', '788', 'jhghj', 445, '2021-05-05', 'hbh', 'Sudah Diverifikasi');
 
 -- --------------------------------------------------------
 
@@ -61,14 +70,14 @@ CREATE TABLE IF NOT EXISTS `daftarulg` (
   PRIMARY KEY (`idDaftarUlang`),
   KEY `npm` (`npm`),
   KEY `idPeriode` (`idPeriode`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `daftarulg`
 --
 
 INSERT INTO `daftarulg` (`idDaftarUlang`, `npm`, `idPeriode`, `ukt`, `statusBayar`, `cetakKrs`, `semester`, `ip`, `ipk`) VALUES
-(20, 110, 4, '8000.000', 'lunas', 'DFFSDF', 1, NULL, NULL);
+(2, 12, 1, '3000.000', 'lunas', 'sas', 1, 34, 37);
 
 -- --------------------------------------------------------
 
@@ -86,17 +95,45 @@ CREATE TABLE IF NOT EXISTS `datadosen` (
   `noHp` int(15) NOT NULL,
   `alamat` varchar(70) NOT NULL,
   `email` varchar(50) NOT NULL,
+  `fotoDosen` text,
   PRIMARY KEY (`idDosen`),
   KEY `idMataKuliah` (`idMataKuliah`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `datadosen`
 --
 
-INSERT INTO `datadosen` (`idDosen`, `idMataKuliah`, `nip`, `namaDosen`, `nidn`, `noHp`, `alamat`, `email`) VALUES
-(6, 1, 56556, 'pak rahmat', 67567, 9987789, 'kjhzkjzj', 'uus@gmail.com'),
-(7, 1, 9, 'pak loi', 67567, 9987789, 'jnj', 'nnn');
+INSERT INTO `datadosen` (`idDosen`, `idMataKuliah`, `nip`, `namaDosen`, `nidn`, `noHp`, `alamat`, `email`, `fotoDosen`) VALUES
+(2, 3, 56556, 'pak rahmat', 67567, 9987789, 'kjhf', 'kdlmfk', 'http://192.168.1.44/studentPortal/profile_image/12.jpeg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `documents`
+--
+
+DROP TABLE IF EXISTS `documents`;
+CREATE TABLE IF NOT EXISTS `documents` (
+  `sn` int(10) NOT NULL AUTO_INCREMENT,
+  `title` varchar(30) NOT NULL,
+  `location` text NOT NULL,
+  PRIMARY KEY (`sn`)
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `documents`
+--
+
+INSERT INTO `documents` (`sn`, `title`, `location`) VALUES
+(10, 'myPDF', 'documents/myPDF.pdf'),
+(9, 'myPDF', 'documents/myPDF.pdf'),
+(8, 'myFile', 'documents/myFile.pdf'),
+(7, 'myPDF', 'documents/myPDF.pdf'),
+(11, 'myPDF', 'documents/myPDF.pdf'),
+(12, 'myPDF', 'documents/myPDF.pdf'),
+(13, 'myPDF', 'documents/myPDF.pdf'),
+(14, 'myFile', 'documents/myFile.pdf');
 
 -- --------------------------------------------------------
 
@@ -113,17 +150,40 @@ CREATE TABLE IF NOT EXISTS `evaluasidosen` (
   PRIMARY KEY (`idEvdos`),
   KEY `idDosen` (`idDosen`),
   KEY `idKuisioner` (`idKuisioner`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `evaluasidosen`
 --
 
 INSERT INTO `evaluasidosen` (`idEvdos`, `idDosen`, `idKuisioner`, `jawaban`) VALUES
-(14, 7, 16, ''),
-(15, 6, 16, ''),
-(16, 7, 17, ''),
-(17, 7, 15, '');
+(1, 2, 16, '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `evaluasikuisioner`
+--
+
+DROP TABLE IF EXISTS `evaluasikuisioner`;
+CREATE TABLE IF NOT EXISTS `evaluasikuisioner` (
+  `idEvaluasi` int(30) NOT NULL AUTO_INCREMENT,
+  `npm` int(11) UNSIGNED NOT NULL,
+  `idDosen` int(30) UNSIGNED NOT NULL,
+  `jawaban1_1` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`idEvaluasi`),
+  KEY `npm` (`npm`),
+  KEY `idEvdos` (`idDosen`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `evaluasikuisioner`
+--
+
+INSERT INTO `evaluasikuisioner` (`idEvaluasi`, `npm`, `idDosen`, `jawaban1_1`) VALUES
+(1, 12, 2, 'pernah'),
+(3, 12, 2, ''),
+(4, 12, 2, 'Tidak Pernah');
 
 -- --------------------------------------------------------
 
@@ -166,14 +226,7 @@ CREATE TABLE IF NOT EXISTS `jadwalkuliah` (
   KEY `idMataKuliah` (`idMataKuliah`),
   KEY `idRuang` (`idRuang`),
   KEY `npm` (`npm`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `jadwalkuliah`
---
-
-INSERT INTO `jadwalkuliah` (`idJadwal`, `npm`, `idDosen`, `idRuang`, `idMataKuliah`, `jamke`, `hari`) VALUES
-(8, 110, 7, 1, 1, '2-6', 'Senin');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -192,16 +245,14 @@ CREATE TABLE IF NOT EXISTS `keterampilan` (
   `scanBukti` text,
   PRIMARY KEY (`idKeterampilan`),
   KEY `Keterampilan_FKIndex1` (`npm`)
-) ENGINE=InnoDB AUTO_INCREMENT=438 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `keterampilan`
 --
 
 INSERT INTO `keterampilan` (`idKeterampilan`, `npm`, `namaKeterampilan`, `jenis`, `tingkat`, `verifikasi`, `scanBukti`) VALUES
-(433, 110, '', '-Pilih Jenis Keterampilan-', '', 'Sudah Diverifikasi', 'documents/110..pdf'),
-(436, 110, 'aaaa', 'Teknis/Akademis (Hardskill)', 'ddcf', 'Belum Diverifikasi', 'documents/110.aaaa.pdf'),
-(437, 110, 'aaaa', 'Teknis/Akademis (Hardskill)', 'ddcf', 'Belum Diverifikasi', 'documents/110.aaaa.pdf');
+(1, 12, 'ncjch', 'Teknis/Akademis (Hardskill)', 'jchc', 'Belum Diverifikasi', 'documents/12.ncjch.pdf');
 
 -- --------------------------------------------------------
 
@@ -249,15 +300,14 @@ CREATE TABLE IF NOT EXISTS `magang` (
   `verifikasi` varchar(30) NOT NULL,
   PRIMARY KEY (`idMagang`),
   KEY `Magang_FKIndex1` (`npm`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `magang`
 --
 
 INSERT INTO `magang` (`idMagang`, `npm`, `judul`, `tempat`, `provinsi`, `kota`, `tanggalmulaiMagang`, `tanggalselesaiMagang`, `ringkasan`, `scanBukti`, `uploadLaporan`, `verifikasi`) VALUES
-(6, 110, 'aaaa', 'aaaa', 'aaaaa', 'aaaaaa', '2021-05-04', '2021-05-04', 'aaaaa', 'scanBukti_Magang/110.aaaa.pdf', 'laporan_Magang/110.aaaa.pdf', 'Belum Diverifikasi'),
-(10, 110, 'cccc', 'cccc', 'cccc', 'cccc', '2021-05-05', '2021-05-05', 'ccc', 'scanBukti_Magang/110.cccc.pdf', 'laporan_Magang/110.cccc.pdf', 'Belum Diverifikasi');
+(1, 12, 'jvajvaja', 'ugusvuvs', 'hschschs', 'hschsc', '2021-05-12', '2021-05-12', 'ajvvaja', 'scanBukti_Magang/12.jvajvaja.pdf', 'laporan_Magang/12.jvajvaja.pdf', 'Belum Diverifikasi');
 
 -- --------------------------------------------------------
 
@@ -268,6 +318,7 @@ INSERT INTO `magang` (`idMagang`, `npm`, `judul`, `tempat`, `provinsi`, `kota`, 
 DROP TABLE IF EXISTS `mahasiswa`;
 CREATE TABLE IF NOT EXISTS `mahasiswa` (
   `npm` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `idProdi` int(10) UNSIGNED NOT NULL,
   `passwordUser` text,
   `statusDiri` enum('Aktif','Tidak Aktif') NOT NULL DEFAULT 'Aktif',
   `nik` varchar(15) NOT NULL DEFAULT '',
@@ -287,23 +338,17 @@ CREATE TABLE IF NOT EXISTS `mahasiswa` (
   `email` varchar(30) NOT NULL DEFAULT '',
   `scanKtp` text,
   `imageProfil` text,
-  PRIMARY KEY (`npm`)
-) ENGINE=InnoDB AUTO_INCREMENT=338 DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`npm`),
+  KEY `idProdi` (`idProdi`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `mahasiswa`
 --
 
-INSERT INTO `mahasiswa` (`npm`, `passwordUser`, `statusDiri`, `nik`, `namaLengkap`, `tempatLahir`, `tanggalLahir`, `jenisKelamin`, `agama`, `provinsiAsal`, `kotaAsal`, `kecamatanAsal`, `desa`, `alamatAsal`, `alamatSekarang`, `tahunAngkatan`, `noHp`, `email`, `scanKtp`, `imageProfil`) VALUES
-(11, '$2y$10$A1DTXxYoYLhq1ZUtpoI43.hqkvXsHmXQUM0HeK0o6CEZ7P4LUR3a.', 'Aktif', '', '', '', '2021-4-19', '', '', '', '', '', '', '', '', '', '', '', NULL, NULL),
-(22, '$2y$10$8/a1dn4oYUuhqSNUlV37GeElmT17.GWv009rQ/pHAht64fzQe78Ye', 'Aktif', '', '', '', '2021-4-27', '', '', '', '', '', '', '', '', '', '', '', NULL, NULL),
-(33, '$2y$10$MP8VAE0fR7euwqk4lLAN3e2/HZlJvPSMGXPKWLv7j1kIsv6n335Hm', 'Aktif', '', '', '', '2021-4-21', 'Perempuan', '', '', '', '', '', '', '', '', '', '', 'http://192.168.1.43/studentPortal/ktp_image/33.jpeg', 'http://192.168.1.43/studentPortal/profile_image/33.jpeg'),
-(66, '$2y$10$NIv1z7ppqe0Nw0sNmkZdzOl1iqpcsQZwv43X2E2RNDnMDlfWeB9gG', 'Aktif', '', '', '', '2021-4-15', '', '', '', '', '', '', '', '', '', '', '', NULL, NULL),
-(99, '$2y$10$O80rvqBHhfM1AKtq4ByycOfreO2/2f7AjsB3JHTaoMCofusRUoHIC', 'Aktif', '', '', '', '2021-4-15', '', '', '', '', '', '', '', '', '', '', '', NULL, NULL),
-(110, '$2y$10$tJRe/pzEKEZHaPqrfYEYTemRsarFt8ZGuK.5olO0HoIBZRWnNJFjC', 'Aktif', '', 'fhxfjxfxgjx', 'jvhch', '2021-4-9', '', '', '', 'gfychf', '', '', '', '', '', '', '', 'http://192.168.1.44/studentPortal/ktp_image/110.jpeg', 'http://192.168.1.44/studentPortal/profile_image/110.jpeg'),
-(112, '$2y$10$Xi8FKcbsp4X6G.MmY/n4Ueky2tLKcb9mczrGiPGTZHtlZ.Mfqy1A6', 'Aktif', '', '', '', '2021-4-1', '', '', '', '', '', '', '', '', '', '', '', 'http://192.168.10.62/studentPortal/ktp_image/112.jpeg', 'http://192.168.10.62/studentPortal/profile_image/112.jpeg'),
-(336, '$2y$10$kiEbYO2AgLGLLWWyT2.8peks1N1u4RX5LhdyJerQs2jkzhaZMwiN2', 'Aktif', '', '', '', '2021-4-8', '', '', '', '', '', '', '', '', '', '', '', NULL, NULL),
-(337, '$2y$10$5kx/1rMp6Lv8/Y3epWMydunMaoki.K0pmXfk2.wOHsv6grnhgQkUu', 'Aktif', '', '', '', '2021-4-1', '', '', '', '', '', '', '', '', '', '', '', NULL, NULL);
+INSERT INTO `mahasiswa` (`npm`, `idProdi`, `passwordUser`, `statusDiri`, `nik`, `namaLengkap`, `tempatLahir`, `tanggalLahir`, `jenisKelamin`, `agama`, `provinsiAsal`, `kotaAsal`, `kecamatanAsal`, `desa`, `alamatAsal`, `alamatSekarang`, `tahunAngkatan`, `noHp`, `email`, `scanKtp`, `imageProfil`) VALUES
+(11, 1, '$2y$10$Q/BUldYRH1GpR6ehA/JqbeoAIoEd5evlGXsQctwYnG.cU7iz0NVi6', 'Aktif', '', '', '', '2021-5-6', '', '', '', '', '', '', '', '', '', '', '', NULL, NULL),
+(12, 1, '$2y$10$D.zCUKxIshd9UUqkwl0meetGC.O3ysCPu6Ffhl0jeXAK8pfCsPkcu', 'Aktif', '', '', '', '2021-5-6', '', '', '', '', '', '', '', '', '', '', 'khasanahnganjuk1122@gmail.com', 'http://192.168.1.44/studentPortal/ktp_image/12.jpeg', 'http://192.168.1.44/studentPortal/profile_image/12.jpeg');
 
 -- --------------------------------------------------------
 
@@ -321,15 +366,15 @@ CREATE TABLE IF NOT EXISTS `matakuliah` (
   `jam` varchar(5) DEFAULT NULL,
   PRIMARY KEY (`idMataKuliah`),
   KEY `MataKuliah_FKIndex1` (`idProdi`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `matakuliah`
 --
 
 INSERT INTO `matakuliah` (`idMataKuliah`, `idProdi`, `namaMK`, `deskripsi`, `sks`, `jam`) VALUES
-(1, 1, 'Pemrogaman Web', 'peemrkdhskjs', 5, '12'),
-(2, 1, 'Pemrogaman Android', 'jsxjnw', 23, '12');
+(1, 1, 'Pemrogaman Web', 'kjdkj', 1, '12'),
+(3, 1, 'Pemrogamanann', 'uyguyg', 5, '12');
 
 -- --------------------------------------------------------
 
@@ -370,21 +415,15 @@ CREATE TABLE IF NOT EXISTS `orangtua` (
   `instansiWali` varchar(25) NOT NULL DEFAULT '',
   PRIMARY KEY (`idOrangTua`),
   KEY `OrangTua_FKIndex1` (`npm`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `orangtua`
 --
 
 INSERT INTO `orangtua` (`idOrangTua`, `npm`, `nikAyah`, `namaAyah`, `tglLahirAyah`, `pendidikanAyah`, `pekerjaanAyah`, `nipAyah`, `pangkatAyah`, `penghasilanAyah`, `instansiAyah`, `nikIbu`, `namaIbu`, `tglLahirIbu`, `pendidikanIbu`, `pekerjaanIbu`, `nipIbu`, `pangkatIbu`, `penghasilanIbu`, `instansiIbu`, `nikWali`, `namaWali`, `tglLahirWali`, `pendidikanWali`, `pekerjaanWali`, `nipWali`, `pangkatWali`, `penghasilanWali`, `instansiWali`) VALUES
-(28, 33, '', '', '2021-04-15', '', '', '', '', '', '', '', '', '1999-01-01', '', '', '', '', '', '', '', '', '1999-01-01', '', '', '', '', '', ''),
-(29, 22, '', '', '1999-01-01', '', '', '', '', '', '', '', '', '1999-01-01', '', '', '', '', '', '', '', '', '1999-01-01', '', '', '', '', '', ''),
-(30, 336, '', '', '1999-01-01', '', '', '', '', '', '', '', '', '1999-01-01', '', '', '', '', '', '', '', '', '1999-01-01', '', '', '', '', '', ''),
-(31, 11, '', '', '1999-01-01', '', '', '', '', '', '', '', '', '1999-01-01', '', '', '', '', '', '', '', '', '1999-01-01', '', '', '', '', '', ''),
-(32, 99, '', '', '1999-01-01', '', '', '', '', '', '', '', '', '1999-01-01', '', '', '', '', '', '', '', '', '1999-01-01', '', '', '', '', '', ''),
-(33, 66, '', '', '1999-01-01', '', '', '', '', '', '', '', '', '1999-01-01', '', '', '', '', '', '', '', '', '1999-01-01', '', '', '', '', '', ''),
-(35, 110, '', '', '1999-01-01', '', '', '', '', '', '', '', '', '1999-01-01', '', '', '', '', '', '', '', '', '1999-01-01', '', '', '', '', '', ''),
-(36, 112, 'rido', 'rido', '2021-04-08', 'ejbje', 'jevjvej', 'jsvjvsj', '', '', '', '', '', '1999-01-01', '', '', '', '', '', '', '', '', '1999-01-01', '', '', '', '', '', '');
+(44, 11, '', '', '1999-01-01', '', '', '', '', '', '', '', '', '1999-01-01', '', '', '', '', '', '', '', '', '1999-01-01', '', '', '', '', '', ''),
+(45, 12, '', '', '1999-01-01', '', '', '', '', '', '', '', '', '1999-01-01', '', '', '', '', '', '', '', '', '1999-01-01', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -405,15 +444,14 @@ CREATE TABLE IF NOT EXISTS `organisasi` (
   `verifikasi` varchar(30) NOT NULL DEFAULT '',
   PRIMARY KEY (`idOrganisasi`),
   KEY `Organisasi_FKIndex1` (`npm`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `organisasi`
 --
 
 INSERT INTO `organisasi` (`idOrganisasi`, `npm`, `namaOrganisasi`, `tempat`, `tahunMasuk`, `tahunKeluar`, `jabatan`, `scanBukti`, `verifikasi`) VALUES
-(1, 110, 'Hmjt', 'pnm', 2017, 2019, 'sosma', 'aa', 'Sudah Diverifikasi'),
-(2, 110, 'uuuu', 'uuuu', 2018, 2069, 'gvgg', 'scanBukti_Organisasi/110.uuuu.pdf', 'Belum Diverifikasi');
+(1, 12, 'jgufufhch', 'hfhfh', 255, 2556, 'hchch', 'scanBukti_Organisasi/12.jgufufhch.pdf', 'Belum Diverifikasi');
 
 -- --------------------------------------------------------
 
@@ -430,15 +468,7 @@ CREATE TABLE IF NOT EXISTS `pengisiankuisioner` (
   PRIMARY KEY (`idPengisian`),
   KEY `npm` (`npm`),
   KEY `idEvdos` (`idEvdos`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `pengisiankuisioner`
---
-
-INSERT INTO `pengisiankuisioner` (`idPengisian`, `npm`, `idEvdos`, `jawaban`) VALUES
-(1, 110, 17, ''),
-(9, 110, 15, 'pernah');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -449,18 +479,21 @@ INSERT INTO `pengisiankuisioner` (`idPengisian`, `npm`, `idEvdos`, `jawaban`) VA
 DROP TABLE IF EXISTS `pengumuman`;
 CREATE TABLE IF NOT EXISTS `pengumuman` (
   `idPengumuman` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `isiPengumuman` varchar(100) DEFAULT NULL,
+  `title` enum('INFORMASI','PERINGATAN','KUISIONER','DOWNLOAD') DEFAULT NULL,
+  `body` varchar(100) NOT NULL DEFAULT '',
   `tanggalPengumuman` date DEFAULT NULL,
   PRIMARY KEY (`idPengumuman`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pengumuman`
 --
 
-INSERT INTO `pengumuman` (`idPengumuman`, `isiPengumuman`, `tanggalPengumuman`) VALUES
-(11, 'ggh', '2021-04-01'),
-(12, 'hjhgh', '2021-04-02');
+INSERT INTO `pengumuman` (`idPengumuman`, `title`, `body`, `tanggalPengumuman`) VALUES
+(15, 'INFORMASI', ' Pengisian Kuesioner Evaluasi Mengajar Dosen Semester Genap TA 2020-2021', '2021-05-24'),
+(16, 'PERINGATAN', 'ttttt', '2021-05-25'),
+(17, 'KUISIONER', 'isiiiii', '2021-05-25'),
+(18, 'DOWNLOAD', 'download', '2021-05-25');
 
 -- --------------------------------------------------------
 
@@ -472,16 +505,17 @@ DROP TABLE IF EXISTS `periode`;
 CREATE TABLE IF NOT EXISTS `periode` (
   `idPeriode` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `periode` varchar(15) DEFAULT NULL,
+  `tanggalMulaiPeriode` date NOT NULL,
+  `tanggalSelesaiPeriode` date NOT NULL,
   PRIMARY KEY (`idPeriode`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `periode`
 --
 
-INSERT INTO `periode` (`idPeriode`, `periode`) VALUES
-(4, '2018/2019 Gasal'),
-(5, '2018/2019 Genap');
+INSERT INTO `periode` (`idPeriode`, `periode`, `tanggalMulaiPeriode`, `tanggalSelesaiPeriode`) VALUES
+(1, '2017/2018 gasal', '2021-05-04', '2021-05-18');
 
 -- --------------------------------------------------------
 
@@ -502,14 +536,7 @@ CREATE TABLE IF NOT EXISTS `presensi` (
   KEY `Presensi_FKIndex2` (`npm`),
   KEY `idJadwal` (`idJadwal`),
   KEY `idDaftarUlang` (`idDaftarUlang`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `presensi`
---
-
-INSERT INTO `presensi` (`idPresensi`, `npm`, `idJadwal`, `idDaftarUlang`, `mingguKe`, `tanggalPresensi`, `ket`) VALUES
-(4, 110, 8, 20, '1', '2021-04-06', 'Hadir');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -530,14 +557,7 @@ CREATE TABLE IF NOT EXISTS `prestasi` (
   `verifikasi` varchar(30) NOT NULL DEFAULT '',
   PRIMARY KEY (`idPrestasi`),
   KEY `Prestasi_FKIndex1` (`npm`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `prestasi`
---
-
-INSERT INTO `prestasi` (`idPrestasi`, `npm`, `namaLomba`, `tahun`, `juara`, `tingkat`, `jenis`, `scanBukti`, `verifikasi`) VALUES
-(5, 110, 'bbbbb', 'bbbb', 'bbbb', 'Nasional', 'Individu', 'scanBukti_Prestasi/110.bbbbb.pdf', 'Belum Diverifikasi');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -549,15 +569,17 @@ DROP TABLE IF EXISTS `prodi`;
 CREATE TABLE IF NOT EXISTS `prodi` (
   `idProdi` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `namaProdi` varchar(30) DEFAULT NULL,
+  `kelas` varchar(10) NOT NULL DEFAULT '',
   PRIMARY KEY (`idProdi`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `prodi`
 --
 
-INSERT INTO `prodi` (`idProdi`, `namaProdi`) VALUES
-(1, 'D3 Teknologi Informasi');
+INSERT INTO `prodi` (`idProdi`, `namaProdi`, `kelas`) VALUES
+(1, '-', '-'),
+(2, 'D3 Teknik Listrik', '6B');
 
 -- --------------------------------------------------------
 
@@ -611,6 +633,13 @@ ALTER TABLE `evaluasidosen`
   ADD CONSTRAINT `evaluasidosen_ibfk_3` FOREIGN KEY (`idKuisioner`) REFERENCES `kuisioner` (`idKuisioner`);
 
 --
+-- Constraints for table `evaluasikuisioner`
+--
+ALTER TABLE `evaluasikuisioner`
+  ADD CONSTRAINT `evaluasikuisioner_ibfk_1` FOREIGN KEY (`idDosen`) REFERENCES `datadosen` (`idDosen`),
+  ADD CONSTRAINT `evaluasikuisioner_ibfk_2` FOREIGN KEY (`npm`) REFERENCES `mahasiswa` (`npm`);
+
+--
 -- Constraints for table `hasilstd`
 --
 ALTER TABLE `hasilstd`
@@ -638,6 +667,12 @@ ALTER TABLE `keterampilan`
 --
 ALTER TABLE `magang`
   ADD CONSTRAINT `magang_ibfk_1` FOREIGN KEY (`npm`) REFERENCES `mahasiswa` (`npm`);
+
+--
+-- Constraints for table `mahasiswa`
+--
+ALTER TABLE `mahasiswa`
+  ADD CONSTRAINT `mahasiswa_ibfk_1` FOREIGN KEY (`idProdi`) REFERENCES `prodi` (`idProdi`);
 
 --
 -- Constraints for table `matakuliah`

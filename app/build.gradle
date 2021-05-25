@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.application'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -51,4 +52,18 @@ dependencies {
     implementation 'com.github.farizdotid:actdaerahindonesia:1.0.0.0'
     //Lottie implementation
     implementation 'com.airbnb.android:lottie:3.1.0'
+
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+
+
+
+
+
+    //FCM
+    implementation platform ('com.google.firebase:firebase-bom:27.0.0')
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-core:17.4.3'
+    implementation 'com.google.firebase:firebase-iid:20.2.1'
+    implementation 'com.google.firebase:firebase-messaging:20.2.1'
 }

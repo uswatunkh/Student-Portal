@@ -1,0 +1,126 @@
+{
+  "project_info": {
+    "project_number": "213570516941",
+    "project_id": "fcm-notif-7f666",
+    "storage_bucket": "fcm-notif-7f666.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:213570516941:android:ec18c83f6e4fd7f06bb684",
+        "android_client_info": {
+          "package_name": "com.example.fcmmysqlamiin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "213570516941-1rargh6cdk8ih0pa6i95n1lmrf2tmmrq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC27kuJsFgx_L9Pvw5fQqKt5zfaUuI-RKQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "213570516941-1rargh6cdk8ih0pa6i95n1lmrf2tmmrq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:213570516941:android:6e13b1740361b5286bb684",
+        "android_client_info": {
+          "package_name": "com.example.fcmtopic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "213570516941-1rargh6cdk8ih0pa6i95n1lmrf2tmmrq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC27kuJsFgx_L9Pvw5fQqKt5zfaUuI-RKQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "213570516941-1rargh6cdk8ih0pa6i95n1lmrf2tmmrq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:213570516941:android:30de6084b49a1f7d6bb684",
+        "android_client_info": {
+          "package_name": "com.example.studentportal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "213570516941-1rargh6cdk8ih0pa6i95n1lmrf2tmmrq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC27kuJsFgx_L9Pvw5fQqKt5zfaUuI-RKQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "213570516941-1rargh6cdk8ih0pa6i95n1lmrf2tmmrq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:213570516941:android:5d375f8686198e8e6bb684",
+        "android_client_info": {
+          "package_name": "com.khilman.www.fcmdemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "213570516941-1rargh6cdk8ih0pa6i95n1lmrf2tmmrq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC27kuJsFgx_L9Pvw5fQqKt5zfaUuI-RKQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "213570516941-1rargh6cdk8ih0pa6i95n1lmrf2tmmrq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

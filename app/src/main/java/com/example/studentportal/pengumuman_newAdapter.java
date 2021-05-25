@@ -1,6 +1,7 @@
 package com.example.studentportal;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -38,8 +40,23 @@ public class pengumuman_newAdapter  extends RecyclerView.Adapter<pengumuman_newA
 
 
         //bind data here
-        newsViewHolder.tv_content.setText(mData.get(position).getIsi());
-        newsViewHolder.tv_date.setText(mData.get(position).getTgl());
+        newsViewHolder.tv_title.setText(mData.get(position).getTitle());
+
+        newsViewHolder.tv_content.setText(mData.get(position).getBody());
+        newsViewHolder.tv_date.setText(mData.get(position).getTanggalPengumuman());
+        if (newsViewHolder.tv_title.getText().toString().equals("INFORMASI")){
+            newsViewHolder.tv_title.setBackgroundResource(R.drawable.informasi);
+            newsViewHolder.tv_title.setTextColor(Color.parseColor("#FFFFFF"));
+        } else if (newsViewHolder.tv_title.getText().toString().equals("PERINGATAN")){
+            newsViewHolder.tv_title.setBackgroundResource(R.drawable.peringatan);
+            newsViewHolder.tv_title.setTextColor(Color.parseColor("#FFFFFF"));
+        }else if (newsViewHolder.tv_title.getText().toString().equals("KUISIONER")){
+            newsViewHolder.tv_title.setBackgroundResource(R.drawable.kuisioner);
+            newsViewHolder.tv_title.setTextColor(Color.parseColor("#FFFFFF"));
+        }else if (newsViewHolder.tv_title.getText().toString().equals("DOWNLOAD")){
+            newsViewHolder.tv_title.setBackgroundResource(R.drawable.download_pengumuman);
+            newsViewHolder.tv_title.setTextColor(Color.parseColor("#FFFFFF"));
+        }
     }
 
     @Override
@@ -50,11 +67,11 @@ public class pengumuman_newAdapter  extends RecyclerView.Adapter<pengumuman_newA
     public class NewsViewHolder extends  RecyclerView.ViewHolder {
 
         TextView tv_title, tv_content, tv_date;
-        RelativeLayout container;
+        CardView container;
         public NewsViewHolder(@NonNull View itemVew){
             super(itemVew);
             container = itemVew.findViewById(R.id.container);
-//            tv_title = itemVew.findViewById(R.id.tv_title);
+            tv_title = itemVew.findViewById(R.id.tv_title);
             tv_content = itemVew.findViewById(R.id.tv_description);
             tv_date = itemVew.findViewById(R.id.tv_date);
 

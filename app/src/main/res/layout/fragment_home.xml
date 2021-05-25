@@ -108,79 +108,200 @@
                         android:orientation="horizontal">
 
                         <RelativeLayout
-                            android:layout_width="153dp"
+                            android:layout_width="298dp"
                             android:layout_height="70dp"
                             android:layout_weight="0.10"
                             android:background="?attr/selectableItemBackground"
-                            android:gravity="center">
+                            >
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/data_diri"
-                                android:layout_alignParentEnd="true"
-                                android:layout_alignParentRight="true"
-                                android:layout_marginEnd="0dp"
-                                android:layout_marginRight="0dp"
-                                android:gravity="center"
-                                android:text="NPM"
-                                android:textColor="#000"
-                                android:textSize="14dp"
-                                android:layout_marginTop="0dp"/>
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/data_diri"
-                                android:layout_alignParentEnd="true"
-                                android:layout_alignParentRight="true"
-                                android:layout_marginEnd="0dp"
-                                android:layout_marginRight="0dp"
-                                android:gravity="center"
-                                android:layout_marginTop="20dp"
-                                android:text="Angkatan"
-                                android:textColor="#000"
-                                android:textSize="14dp" />
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/data_diri"
-                                android:layout_alignParentEnd="true"
-                                android:layout_alignParentRight="true"
-                                android:layout_marginEnd="0dp"
-                                android:layout_marginRight="0dp"
-                                android:gravity="center"
-                                android:layout_marginTop="40dp"
-                                android:text="D3 TI"
-                                android:textColor="#000"
-                                android:textSize="14dp" />
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_alignParentLeft="true"
+                                    android:layout_marginLeft="25dp"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="NPM"
+                                        android:textColor="@android:color/black"
+                                        android:textSize="12dp"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="35dp"
+                                        android:textColor="@android:color/black"
+                                        android:text=":"
+                                        android:textSize="12dp"/>
+                                    <TextView
+                                        android:id="@+id/npmHome"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textColor="@android:color/black"
+                                        android:layout_marginLeft="5dp"
+                                        android:text="1727"
+                                        android:textSize="12dp"/>
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_alignParentLeft="true"
+                                    android:layout_marginLeft="25dp"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Angkatan"
+                                        android:textColor="@android:color/black"
+                                        android:textSize="12dp"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="12dp"
+                                        android:text=":"
+                                        android:textColor="@android:color/black"
+                                        android:textSize="12dp"/>
+                                    <TextView
+                                        android:id="@+id/angkatanHome"
+                                        android:layout_width="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:textColor="@android:color/black"
+                                        android:layout_height="wrap_content"
+                                        android:text="1727"
+                                        android:textSize="12dp"/>
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_alignParentLeft="true"
+                                    android:layout_marginLeft="25dp"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Prodi"
+                                        android:textColor="@android:color/black"
+                                        android:textSize="12dp"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="35dp"
+                                        android:textColor="@android:color/black"
+                                        android:text=":"
+                                        android:textSize="12dp"/>
+                                    <TextView
+                                        android:id="@+id/prodiHome"
+                                        android:layout_width="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_height="wrap_content"
+                                        android:textColor="@android:color/black"
+                                        android:text="1727"
+                                        android:textSize="12dp"/>
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_alignParentLeft="true"
+                                    android:layout_marginLeft="25dp"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Kelas"
+                                        android:textColor="@android:color/black"
+                                        android:textSize="12dp"/>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="34dp"
+                                        android:textColor="@android:color/black"
+                                        android:text=":"
+                                        android:textSize="12dp"/>
+                                    <TextView
+                                        android:id="@+id/kelasHome"
+                                        android:layout_width="wrap_content"
+                                        android:textColor="@android:color/black"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:text="1727"
+                                        android:textSize="12dp"/>
+                                </LinearLayout>
+                            </LinearLayout>
+
+
+<!--                            <TextView-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_below="@+id/data_diri"-->
+<!--                                android:layout_alignParentEnd="true"-->
+<!--                                android:layout_alignParentRight="true"-->
+<!--                                android:layout_marginTop="0dp"-->
+<!--                                android:layout_marginEnd="0dp"-->
+<!--                                android:layout_marginRight="0dp"-->
+<!--                                android:gravity="center"-->
+<!--                                android:text="NPM"-->
+<!--                                android:textColor="#000"-->
+<!--                                android:textSize="14dp" />-->
+
+<!--                            <TextView-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_below="@+id/data_diri"-->
+<!--                                android:layout_alignParentEnd="true"-->
+<!--                                android:layout_alignParentRight="true"-->
+<!--                                android:layout_marginTop="20dp"-->
+<!--                                android:layout_marginEnd="0dp"-->
+<!--                                android:layout_marginRight="0dp"-->
+<!--                                android:gravity="center"-->
+<!--                                android:text="Angkatan"-->
+<!--                                android:textColor="#000"-->
+<!--                                android:textSize="14dp" />-->
+
+<!--                            <TextView-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_below="@+id/data_diri"-->
+<!--                                android:layout_alignParentEnd="true"-->
+<!--                                android:layout_alignParentRight="true"-->
+<!--                                android:layout_marginTop="40dp"-->
+<!--                                android:layout_marginEnd="0dp"-->
+<!--                                android:layout_marginRight="0dp"-->
+<!--                                android:gravity="center"-->
+<!--                                android:text="D3 TI"-->
+<!--                                android:textColor="#000"-->
+<!--                                android:textSize="14dp" />-->
 
                         </RelativeLayout>
 
-                        <RelativeLayout
-                            android:layout_width="389dp"
-                            android:layout_height="70dp"
-                            android:layout_marginRight="25dp"
-                            android:layout_weight="0.50"
-                            android:background="?attr/selectableItemBackground"
-                            android:gravity="center">
+<!--                        <RelativeLayout-->
+<!--                            android:layout_width="389dp"-->
+<!--                            android:layout_height="70dp"-->
+<!--                            android:layout_marginRight="25dp"-->
+<!--                            android:layout_weight="0.50"-->
+<!--                            android:background="?attr/selectableItemBackground"-->
+<!--                            android:gravity="center">-->
 
-                            <ImageView
-                                android:id="@+id/pengumuman"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:layout_centerHorizontal="true"
-                                android:src="@drawable/notification_pengumuman" />
+<!--                            <ImageView-->
+<!--                                android:id="@+id/pengumuman"-->
+<!--                                android:layout_width="40dp"-->
+<!--                                android:layout_height="40dp"-->
+<!--                                android:layout_centerHorizontal="true"-->
+<!--                                android:src="@drawable/notification_pengumuman" />-->
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/pengumuman"
-                                android:gravity="center"
-                                android:text="Pengumuman"
-                                android:textColor="#000"
-                                android:textSize="12dp" />
+<!--                            <TextView-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_below="@+id/pengumuman"-->
+<!--                                android:gravity="center"-->
+<!--                                android:text="Pengumuman"-->
+<!--                                android:textColor="#000"-->
+<!--                                android:textSize="12dp" />-->
 
-                        </RelativeLayout>
+<!--                        </RelativeLayout>-->
 
                         <RelativeLayout
                             android:layout_width="348dp"
@@ -276,12 +397,13 @@
                     app:cardElevation="5dp">
 
                     <RelativeLayout
+                        android:id="@+id/hasilStudi"
                         android:layout_width="match_parent"
                         android:layout_height="90dp"
                         android:background="?attr/selectableItemBackground">
 
                         <ImageView
-                            android:id="@+id/hasilStudi"
+
                             android:layout_width="115dp"
                             android:layout_height="115dp"
                             android:layout_above="@+id/textView3"
@@ -317,13 +439,14 @@
                     app:cardElevation="5dp">
 
                     <RelativeLayout
+                        android:id="@+id/keterampilan"
                         android:layout_width="match_parent"
                         android:layout_height="90dp"
                         android:background="?attr/selectableItemBackground"
                         >
 
                         <ImageView
-                            android:id="@+id/keterampilan"
+
                             android:layout_width="115dp"
                             android:layout_height="115dp"
                             android:layout_above="@+id/textView2"
@@ -359,13 +482,14 @@
                     app:cardElevation="5dp">
 
                     <RelativeLayout
+                        android:id="@+id/magang"
                         android:layout_width="match_parent"
                         android:layout_height="90dp"
                         android:background="?attr/selectableItemBackground"
                         >
 
                         <ImageView
-                            android:id="@+id/magang"
+
                             android:layout_width="115dp"
                             android:layout_height="115dp"
                             android:layout_above="@+id/textView1"
@@ -409,13 +533,14 @@
                     app:cardElevation="5dp">
 
                     <RelativeLayout
+                        android:id="@+id/jadwalKuliah"
                         android:layout_width="match_parent"
                         android:layout_height="90dp"
                         android:background="?attr/selectableItemBackground"
                         >
 
                         <ImageView
-                            android:id="@+id/jadwalKuliah"
+
                             android:layout_width="115dp"
                             android:layout_height="115dp"
                             android:layout_above="@+id/textView12"
@@ -451,13 +576,14 @@
                     app:cardElevation="5dp">
 
                     <RelativeLayout
+                        android:id="@+id/presensi"
                         android:layout_width="match_parent"
                         android:layout_height="90dp"
                         android:background="?attr/selectableItemBackground"
                         >
 
                         <ImageView
-                            android:id="@+id/presensi"
+
                             android:layout_width="115dp"
                             android:layout_height="115dp"
                             android:layout_above="@+id/textView10"
@@ -492,12 +618,14 @@
                     app:cardElevation="5dp">
 
                     <RelativeLayout
+                        android:id="@+id/kalenderAkademik"
                         android:layout_width="match_parent"
                         android:layout_height="90dp"
                         android:background="?attr/selectableItemBackground"
                         >
 
                         <ImageView
+
                             android:layout_width="115dp"
                             android:layout_height="115dp"
                             android:layout_above="@+id/textView0"
@@ -542,13 +670,14 @@
                     app:cardElevation="5dp">
 
                     <RelativeLayout
+                        android:id="@+id/evdos"
                         android:layout_width="match_parent"
                         android:layout_height="90dp"
                         android:background="?attr/selectableItemBackground"
                         >
 
                         <ImageView
-                            android:id="@+id/evdos"
+
                             android:layout_width="115dp"
                             android:layout_height="115dp"
                             android:layout_above="@+id/textView21"
@@ -584,13 +713,14 @@
                     app:cardElevation="5dp">
 
                     <RelativeLayout
+                        android:id="@+id/daftarulang"
                         android:layout_width="match_parent"
                         android:layout_height="90dp"
                         android:background="?attr/selectableItemBackground"
                         >
 
                         <ImageView
-                            android:id="@+id/daftarulang"
+
                             android:layout_width="115dp"
                             android:layout_height="115dp"
                             android:layout_above="@+id/textView23"
@@ -626,13 +756,14 @@
                     app:cardElevation="5dp">
 
                     <RelativeLayout
+                        android:id="@+id/prestasi"
                         android:layout_width="match_parent"
                         android:layout_height="90dp"
                         android:background="?attr/selectableItemBackground"
                         >
 
                         <ImageView
-                            android:id="@+id/prestasi"
+
                             android:layout_width="115dp"
                             android:layout_height="115dp"
                             android:layout_above="@+id/textView25"
@@ -676,13 +807,14 @@
                     app:cardElevation="5dp">
 
                     <RelativeLayout
+                        android:id="@+id/organisasi"
                         android:layout_width="match_parent"
                         android:layout_height="90dp"
                         android:background="?attr/selectableItemBackground"
                         >
 
                         <ImageView
-                            android:id="@+id/organisasi"
+
                             android:layout_width="115dp"
                             android:layout_height="115dp"
                             android:layout_above="@+id/textView26"
@@ -720,12 +852,14 @@
                     app:cardElevation="5dp">
 
                     <RelativeLayout
+                        android:id="@+id/bahasa"
                         android:layout_width="match_parent"
                         android:layout_height="90dp"
                         android:background="?attr/selectableItemBackground"
                         >
 
                         <ImageView
+
                             android:layout_width="115dp"
                             android:layout_height="115dp"
                             android:layout_above="@+id/textView27"

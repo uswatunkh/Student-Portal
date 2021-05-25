@@ -2,7 +2,7 @@
 
 $curl = curl_init();
 $authKey = "key=AAAAMbnLd80:APA91bFnIYbC1_dz9RHEcmhWakO1rW_gujQrlPvwkxCbWlQkfM2Q1krg0BKvBg6MGmhTIVT_gGpF1iHIXsh-6WKNYL_Pp-6KZ-lVK6OKHz9nofVYOHEpEP2MkdDSamoLBPEfZpAxB7Cb";
-$registration_ids = '["fdLOoNVgl6Y:APA91bHPGzYAGBdy6WLPVjFFkOqlaCLnY__V6xhl9bJ2Fv0jPyR7XM5sfdxmi8FNAct8h9U1PLMaOqLXkG2CztLLWo219IWqrdR79PaJfL-LerdUe4R3qXeY31DfpXEgh9MoXZjaCCfO"]';
+$registration_ids = '["cxgmsMjB8A8:APA91bHFQ6-sox_iRudO_4gLBqIy4nIR_jaQnqRYI8koYa0u4ApEnvBM5etndIqhWV7QWAieICDIq32HKZkGgEcF3Zf8Q84Drg-Q1gF2baWA3y1_p2Z4cfvHZ6y01WuUVYnz1Wf2HPPb"]';
 curl_setopt_array($curl, array(
   CURLOPT_URL => "https://fcm.googleapis.com/fcm/send",
   CURLOPT_RETURNTRANSFER => true,

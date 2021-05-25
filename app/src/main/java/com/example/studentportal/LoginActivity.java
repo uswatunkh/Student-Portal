@@ -8,11 +8,13 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.studentportal.Fragment.LoginTabFragment;
+import com.example.studentportal.Fragment.SignupTabFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 //panggil di manifest
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements LoginTabFragment.onFragmentInteractionListener, SignupTabFragment.onFragmentInteractionListener {
     TabLayout tabLayout;
     ViewPager viewPager;
     FloatingActionButton fb,google,twitter;
@@ -37,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("Aktivasi"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
+
         final LoginAdapter adapter = new LoginAdapter(getSupportFragmentManager(), this,tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
 
@@ -50,6 +53,23 @@ public class LoginActivity extends AppCompatActivity {
 
 
         tabLayout.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(100).start();
+
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
 
 
 

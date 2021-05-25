@@ -31,6 +31,7 @@ public class greeting_selamat extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent= new Intent(greeting_selamat.this, LoginActivity.class);
                 startActivity(intent);
+                greeting_selamat.this.finish();
             }
         });
     }

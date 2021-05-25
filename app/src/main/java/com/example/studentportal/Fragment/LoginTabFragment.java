@@ -1,5 +1,6 @@
 package com.example.studentportal.Fragment;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,9 +26,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.studentportal.FragmentUtama;
+import com.example.studentportal.LoginActivity;
 import com.example.studentportal.R;
 import com.example.studentportal.Server;
 import com.example.studentportal.SessionManager;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -38,6 +41,7 @@ import java.util.Map;
 
 public class LoginTabFragment extends Fragment {
     EditText npmUser, passwordUser;
+    TextView forgotPassword;
     TextView forgetPass;
     public Context context;
     Button login;
@@ -45,12 +49,14 @@ public class LoginTabFragment extends Fragment {
     float v=0;
     SessionManager sessionManager;
     private static String URL_LOGIN = Server.URL + "loginUser.php";
+    private static String URL_ForgotPass = Server.URL + "forgot.php";
 
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.login_tab_fragment, container, false);
+        FirebaseMessaging.getInstance().unsubscribeFromTopic("pengumuman");
         sessionManager = new SessionManager(getActivity());
 
 //        email= root.findViewById(R.id.email);
@@ -60,6 +66,7 @@ public class LoginTabFragment extends Fragment {
         npmUser = root.findViewById(R.id.npm);
         passwordUser = root.findViewById(R.id.passwordUser);
         showPassword = root.findViewById(R.id.show_pass_btn);
+        forgotPassword =root.findViewById(R.id.forgotPassword);
 
 
 
@@ -88,6 +95,7 @@ public class LoginTabFragment extends Fragment {
 
                 if (!mNpm.isEmpty() || !mPassword.isEmpty()){
                     Login(mNpm, mPassword);
+
                 }else{
                     npmUser.setError("Please insert NPM");
                     passwordUser.setError("Please insert password");
@@ -108,6 +116,13 @@ public class LoginTabFragment extends Fragment {
         passwordUser.animate().translationY(0).alpha(1).setDuration(800).setStartDelay(500).start();
         login.animate().translationY(0).alpha(1).setDuration(800).setStartDelay(700).start();
 
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UserForgetPasswordwithEmail();
+            }
+        });
+
 
 
         return root;
@@ -115,6 +130,91 @@ public class LoginTabFragment extends Fragment {
 
 
     }
+
+    private void UserForgetPasswordwithEmail(){
+        View forget_password_layout = LayoutInflater.from(getActivity()).inflate(R.layout.forget_password,null);
+        final EditText forgot_email =forget_password_layout.findViewById(R.id.forgot_email);
+        Button btnForgotPass = forget_password_layout.findViewById(R.id.button_forgot_pass);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Forgot Password");
+        builder.setView(forget_password_layout);
+        builder.setCancelable(true);
+        AlertDialog dialog =builder.create();
+        dialog.show();
+        btnForgotPass.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                final ProgressDialog progressDialog = new ProgressDialog(getActivity());
+                progressDialog.setMessage("Loading....");
+                progressDialog.show();
+                String email = forgot_email.getText().toString().trim();
+
+                if (email.isEmpty() ){
+                    progressDialog.dismiss();
+                    message("Enter a Email");
+                }else{
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_ForgotPass,
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+//                        message(response);
+                                    try {
+                                        JSONObject jsonObject = new JSONObject(response);
+                                        String mail = jsonObject.getString("mail");
+                                        if(mail.equals("send")){
+                                            progressDialog.dismiss();
+                                            dialog.dismiss();
+                                            Toast.makeText(getActivity(), "Email are successfully send",Toast. LENGTH_SHORT).show();
+//                                            //message("Email are successfully send");
+//                                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+//                                            builder.setMessage("Email berhasil dikirim")
+//                                                    .setNegativeButton("Ok",null)
+//                                                    .create()
+//                                                    .show();
+
+                                        }else {
+                                            progressDialog.dismiss();
+                                            Toast.makeText(getActivity(), "Failed",Toast. LENGTH_SHORT).show();
+                                            //message(response);
+                                        }
+
+
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+
+
+                                }
+                            },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    progressDialog.dismiss();
+                                    dialog.dismiss();
+                                    message(error.toString());
+                                }
+                            })
+                    {
+                        @Override
+                        protected Map<String, String> getParams() throws AuthFailureError{
+                            Map<String, String> forgetparams = new HashMap<>();
+//                params.put("npm", npm);
+
+                            forgetparams.put("email", email);
+                            return forgetparams;
+                        }
+                    };
+                    RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+                    requestQueue.add(stringRequest);
+
+                }
+            }
+        });
+    }
+    public void message (String message){
+        Toast.makeText(getActivity(), message,Toast. LENGTH_SHORT).show();
+    }
+
+
     //Code hide-show password
     public void ShowHidePass (View view){
         if(view.getId()==R.id.show_pass_btn){
@@ -161,7 +261,7 @@ public class LoginTabFragment extends Fragment {
 //                                                    +name+ "\nYour Email:"
 //                                                    +email,   Toast.LENGTH_SHORT).show();
 //
-//
+
                                     Intent intent = new Intent(getActivity(), FragmentUtama.class);
                                     intent.putExtra("npm", npm);
                                     startActivity(intent);
@@ -200,6 +300,9 @@ public class LoginTabFragment extends Fragment {
 
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         requestQueue.add(stringRequest);
+    }
+
+    public interface onFragmentInteractionListener {
     }
 }
 

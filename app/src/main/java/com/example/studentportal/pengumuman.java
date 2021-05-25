@@ -54,7 +54,7 @@ public class pengumuman extends AppCompatActivity {
                     JSONArray array=jsonObject.getJSONArray("data");
                     for (int i=0; i<array.length(); i++ ){
                         JSONObject ob=array.getJSONObject(i);
-                        PengumumanItem listData=new PengumumanItem(ob.getString("isiPengumuman")
+                        PengumumanItem listData=new PengumumanItem(ob.getString("title"),ob.getString("body")
                                 ,ob.getString("tanggalPengumuman"));
                         mData.add(listData);
                     }

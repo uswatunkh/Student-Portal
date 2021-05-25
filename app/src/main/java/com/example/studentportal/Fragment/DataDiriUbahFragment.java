@@ -255,9 +255,10 @@ public class DataDiriUbahFragment extends Fragment {
                                     String strKecamasal = object.getString("kecamatanAsal").trim();
                                     String strDesa = object.getString("desa").trim();
                                     String strAlamatSekarang = object.getString("alamatSekarang").trim();
-                                    String strTahunAngkatan = object.getString("tahunAngkatan").trim();
+                                    String strTahunAngkatan = object.getString("tanggalMulaiPeriode").trim();
                                     String strNohp = object.getString("noHp").trim();
                                     String strEmail = object.getString("email").trim();
+
 
                                     npm.setText(strNpm);
                                     nik.setText(strNik);

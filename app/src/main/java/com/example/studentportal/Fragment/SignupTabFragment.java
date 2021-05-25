@@ -236,7 +236,9 @@ public class SignupTabFragment extends Fragment {
 
     }
 
-        }
+    public interface onFragmentInteractionListener {
+    }
+}
 
 
 

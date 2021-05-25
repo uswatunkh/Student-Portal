@@ -1,5 +1,6 @@
 package com.example.studentportal;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -104,9 +105,11 @@ public class PengumumanFragment extends Fragment {
                     JSONArray array=jsonObject.getJSONArray("data");
                     for (int i=0; i<array.length(); i++ ){
                         JSONObject ob=array.getJSONObject(i);
-                        PengumumanItem listData=new PengumumanItem(ob.getString("isiPengumuman")
+                        PengumumanItem listData=new PengumumanItem(ob.getString("title"),ob.getString("body")
                                 ,ob.getString("tanggalPengumuman"));
                         mData.add(listData);
+                       // String strPhoto = object.getString("imageProfil").trim();
+
                     }
                     NewsRecyclerview.setAdapter(pengumuman_newAdapter);
                 } catch (JSONException e) {

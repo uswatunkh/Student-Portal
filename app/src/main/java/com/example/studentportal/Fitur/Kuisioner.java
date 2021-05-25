@@ -69,7 +69,7 @@ public class Kuisioner extends AppCompatActivity {
 
         Intent intent = getIntent();
         position = intent.getExtras().getInt("position");
-       // idDosen.setText("ID:"+EvaluasiDosenFragment.itemList.get(position).getIdDosen());
+        idDosen.setText("ID:"+EvaluasiDosenFragment.itemList.get(position).getNamaDosen());
         getIdDosen=EvaluasiDosenFragment.itemList.get(position).getIdDosen();
 
 
@@ -104,7 +104,8 @@ public class Kuisioner extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SaveEditDetail();
+               // SaveEditDetail();
+                ((AdapterTable_Kuisioner)adapter).SaveEditDetail();
             }
         });
 

@@ -27,6 +27,9 @@ import com.example.studentportal.R;
 import com.example.studentportal.Server;
 import com.example.studentportal.app.AppController;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -155,36 +158,40 @@ public class EvaluasiDosenFragment extends Fragment implements SwipeRefreshLayou
 
 
         // listview ditekan lama akan menampilkan dua pilihan edit atau delete data
-        list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
-            public boolean onItemLongClick(final AdapterView<?> parent, View view,
+            public void onItemClick(final AdapterView<?> parent, View view,
                                            final int position, long id) {
                 // TODO Auto-generated method stub
                 final String idx = itemList.get(position).getIdMatakuliah();
+//                startActivity(new Intent(getActivity(), Kuisioner.class).
+//                        putExtra("position",position));
+                startActivity(new Intent(getActivity(), kuisioner_pertanyaan.class).
+                        putExtra("position",position));
 
-                final CharSequence[] dialogitem = {"Edit", "Delete"};
-                dialog = new AlertDialog.Builder(getActivity());
-                dialog.setCancelable(true);
-                dialog.setItems(dialogitem, new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        // TODO Auto-generated method stub
-                        switch (which) {
-                            case 0:
-                                startActivity(new Intent(getActivity(), Kuisioner.class).
-                                        putExtra("position",position));
-
-                                break;
-                            case 1:
-                                //delete(idx);
-                                break;
-                        }
-                    }
-                }).show();
-                return false;
+//                final CharSequence[] dialogitem = {"Edit", "Delete"};
+//                dialog = new AlertDialog.Builder(getActivity());
+//                dialog.setCancelable(true);
+//                dialog.setItems(dialogitem, new DialogInterface.OnClickListener() {
+//
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//
+//                        // TODO Auto-generated method stub
+//                        switch (which) {
+//                            case 0:
+//                                startActivity(new Intent(getActivity(), Kuisioner.class).
+//                                        putExtra("position",position));
+//
+//                                break;
+//                            case 1:
+//                                //delete(idx);
+//                                break;
+//                        }
+//                    }
+//                }).show();
+               // return false;
             }
         });
 
@@ -231,9 +238,11 @@ public class EvaluasiDosenFragment extends Fragment implements SwipeRefreshLayou
 
                         item.setIdDosen(ob.getString(TAG_ID));
                         item.setNamaDosen(ob.getString(TAG_NAMADOSEN));
-                        //item.setNamaMatakuliah(ob.getString(TAG_NAMAMK));
-                        item.setNidn(ob.getString(TAG_NIDN));
-                        item.setIdMatakuliah(ob.getString(TAG_IDMATAKULIAH));
+                        item.setNamaMatakuliah(ob.getString("namaMk"));
+                        //item.setFotoDosen(ob.getString("fotoDosen"));
+
+//                        item.setNidn(ob.getString(TAG_NIDN));
+//                        item.setIdMatakuliah(ob.getString(TAG_IDMATAKULIAH));
 
                         // menambah item ke array
                         itemList.add(item);

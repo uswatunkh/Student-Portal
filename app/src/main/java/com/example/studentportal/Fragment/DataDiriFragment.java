@@ -107,14 +107,15 @@ public class DataDiriFragment extends Fragment {
 
         sessionManager = new SessionManager(getActivity());
         sessionManager.checkLogin();
+        HashMap<String, String> user = sessionManager.getUserDetail();
+        getId = user.get(sessionManager.ID);  //updateprofil
         ubah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openFragment(DataDiriUbahFragment.newInstance("oke", "oke"));
             }
         });
-        HashMap<String, String> user = sessionManager.getUserDetail();
-        getId = user.get(sessionManager.ID);  //updateprofil
+
 
 
         return root;

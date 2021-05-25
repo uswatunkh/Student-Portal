@@ -12,6 +12,7 @@ import com.example.studentportal.Fragment.BiodataFragment;
 import com.example.studentportal.Fragment.HomeFragment;
 import com.example.studentportal.Fragment.SettingPasswordFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.HashMap;
 
@@ -28,6 +29,7 @@ public class FragmentUtama extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.fragment_utama);
         bottomNavigationView=findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
@@ -54,6 +56,7 @@ public class FragmentUtama extends AppCompatActivity {
                     switch (item.getItemId()) {
                         case R.id.home:
                             openFragment(HomeFragment.newInstance("oke", "oke"));
+
                             return true;
                         case R.id.notif:
                             openFragment(PengumumanFragment.newInstance("", ""));

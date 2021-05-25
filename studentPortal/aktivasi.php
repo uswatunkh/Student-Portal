@@ -19,7 +19,7 @@
 	}else{
 		if ($passwordUser == $conformPass){
 			$passwordUser = password_hash($passwordUser, PASSWORD_DEFAULT);
-			$sql = "INSERT INTO mahasiswa (npm, tanggalLahir, passwordUser) VALUES ('$npm', '$tanggalLahir', '$passwordUser')";
+			$sql = "INSERT INTO mahasiswa (npm,idProdi, tanggalLahir, passwordUser) VALUES ('$npm',1 ,'$tanggalLahir', '$passwordUser')";
 			$sqll = "INSERT INTO orangtua (npm) VALUES ('$npm')";
 			if ( mysqli_query($connect, $sql) && mysqli_query($connect, $sqll)) {
 				$result["success"] = "1";

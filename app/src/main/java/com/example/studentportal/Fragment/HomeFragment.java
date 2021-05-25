@@ -18,6 +18,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,9 +30,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.studentportal.DaftarUlang;
+import com.example.studentportal.Fitur.BahasaFragment;
 import com.example.studentportal.Fitur.DaftarUlangFragment;
 import com.example.studentportal.Fitur.EvaluasiDosenFragment;
 import com.example.studentportal.Fitur.HasilStudiAwalFragment;
+import com.example.studentportal.Fitur.KalenderAkademikFragment;
 import com.example.studentportal.Fitur.KeterampilanFragment;
 import com.example.studentportal.Fitur.MagangFragment;
 import com.example.studentportal.Fitur.OrganisasiFragment;
@@ -41,6 +44,7 @@ import com.example.studentportal.HomeActivity;
 import com.example.studentportal.R;
 import com.example.studentportal.Server;
 import com.example.studentportal.SessionManager;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
@@ -72,9 +76,10 @@ public class HomeFragment extends Fragment {
 
     private TextView name, email,greetText;
     private ImageView btn_logout;
-    ImageView greetImg,data_diri, keterampilan,pengumuman, daftarulang,hasilStudi,presensi,jadwalKuliah,evdos,magang
-            ,prestasi,organisasi;
-    TextView status;
+    ImageView greetImg;
+    RelativeLayout data_diri, keterampilan,pengumuman, daftarulang,hasilStudi,presensi,jadwalKuliah,evdos,magang
+            ,prestasi,organisasi,bahasa,kalenderAkademik;
+    TextView status,npmHome,angkatanHome,prodiHome,kelasHome;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -120,7 +125,9 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_home, container, false);
+        FirebaseMessaging.getInstance().subscribeToTopic("pengumuman");
         greetImg = root.findViewById(R.id.greeting_img);
         data_diri=root.findViewById(R.id.data_diri);
         greetText = root.findViewById(R.id.greeting_text);
@@ -136,8 +143,14 @@ public class HomeFragment extends Fragment {
         presensi = root.findViewById(R.id.presensi);
         prestasi = root.findViewById(R.id.prestasi);
         organisasi = root.findViewById(R.id.organisasi);
+        bahasa = root.findViewById(R.id.bahasa);
         profile_image = root.findViewById(R.id.profile_imageHome);
         status = root.findViewById(R.id.status);
+        npmHome = root.findViewById(R.id.npmHome);
+        angkatanHome = root.findViewById(R.id.angkatanHome);
+        prodiHome = root.findViewById(R.id.prodiHome);
+        kelasHome = root.findViewById(R.id.kelasHome);
+        kalenderAkademik = root.findViewById(R.id.kalenderAkademik);
 
 
         sessionManager = new SessionManager(getActivity());
@@ -214,6 +227,18 @@ public class HomeFragment extends Fragment {
                 openFragment(OrganisasiFragment.newInstance("", ""));
             }
         });
+        bahasa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openFragment(BahasaFragment.newInstance("", ""));
+            }
+        });
+        kalenderAkademik.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openFragment(KalenderAkademikFragment.newInstance("", ""));
+            }
+        });
 
 
 
@@ -221,6 +246,7 @@ public class HomeFragment extends Fragment {
     }
     public void openFragment(Fragment fragment) {
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+
         transaction.replace(R.id.container, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
@@ -276,7 +302,7 @@ public class HomeFragment extends Fragment {
             greetText.setTextColor(Color.parseColor("#000000"));
             greetImg.setBackgroundResource(R.drawable.soreoke);
         }else if(timeOfDay>= 18 && timeOfDay<24){
-            greetText.setText("Selamat Malam \n ");
+            greetText.setText("Selamat Malam \n");
             greetText.setTextColor(R.color.white);
             greetImg.setImageResource(R.drawable.malamoke);
 
@@ -305,6 +331,17 @@ public class HomeFragment extends Fragment {
                                 for (int i=0; i< jsonArray.length(); i++){
                                     JSONObject object = jsonArray.getJSONObject(i);
 
+                                    //npm,angkatan,prodi,kelas
+                                    String strnpmHome = object.getString("npm").trim();
+                                    String strangkatanHome = object.getString("tanggalMulaiPeriode").trim();
+                                    String strprodiHome = object.getString("namaProdi").trim();
+                                    String strkelasHome = object.getString("kelas").trim();
+                                    npmHome.setText(strnpmHome);
+                                    angkatanHome.setText(strangkatanHome);
+                                    prodiHome.setText(strprodiHome);
+                                    kelasHome.setText(strkelasHome);
+
+                                    //Photo n Status
                                     String strPhoto = object.getString("imageProfil").trim();
                                     String strStatus = object.getString("statusDiri").trim();
                                     status.setText(strStatus);
@@ -319,6 +356,24 @@ public class HomeFragment extends Fragment {
                                     }else if (strStatus.equals("Tidak Aktif")){
                                         status.setBackgroundResource(R.drawable.tidakaktif);
                                         status.setTextColor(Color.parseColor("#FFFFFF"));
+                                        hasilStudi.setVisibility(View.GONE);
+                                        keterampilan.setVisibility(View.GONE);
+                                        magang.setVisibility(View.GONE);
+                                        jadwalKuliah.setVisibility(View.GONE);
+                                        presensi.setVisibility(View.GONE);
+                                        kalenderAkademik.setVisibility(View.GONE);
+                                        evdos.setVisibility(View.GONE);
+                                        daftarulang.setVisibility(View.GONE);
+                                        prestasi.setVisibility(View.GONE);
+                                        organisasi.setVisibility(View.GONE);
+                                        bahasa.setVisibility(View.GONE);
+
+                                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                                        builder.setMessage("Akun Sudah Tidak Aktif ")
+                                                .setIcon(R.drawable.error)
+                                                .setNegativeButton("Ok",null)
+                                                .create()
+                                                .show();
 
                                     }
 

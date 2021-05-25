@@ -3,13 +3,13 @@
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     $npm 	= $_POST['npm'];
-	$namaOrganisasi 	= $_POST['namaOrganisasi'];
-	$tempat = $_POST['tempat'];
-	$tahunMasuk = $_POST['tahunMasuk'];
-	$tahunKeluar = $_POST['tahunKeluar'];
-	$jabatan = $_POST['jabatan'];
+	$periodeWisuda 	= "2019/2020";
+	$tahunWisuda = "2022";
+	$namaBahasa = $_POST['namaBahasa'];
+	$skor = $_POST['skor'];
+	$tanggalTes = $_POST['tanggalTes'];
 	$verifikasi = "Belum Diverifikasi";
-	$scanBukti = "scanBukti_Bahasa/$npm.$namaOrganisasi.pdf";
+	$scanBukti = "scanBukti_Bahasa/$npm.$namaBahasa.pdf";
 	$encodedPDF = $_POST['PDF'];
 	
 	//$pdfLocation = "documents/$pdfTitle.pdf";
@@ -18,8 +18,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     require_once 'koneksi.php';
 		
-		$sql = "INSERT INTO organisasi (idOrganisasi,npm,namaOrganisasi,tempat,tahunMasuk,tahunKeluar,jabatan,verifikasi,scanBukti) 
-		VALUES(0,'".$npm."','".$namaOrganisasi."','".$tempat."','".$tahunMasuk."','".$tahunKeluar."','".$jabatan."','".$verifikasi."','".$scanBukti."') ";
+		$sql = "INSERT INTO bahasainternational (idBahasa,npm,periodeWisuda,tahunWisuda,namaBahasa,skor,tanggalTes,verifikasi,scanBukti) 
+		VALUES(0,'".$npm."','".$periodeWisuda."','".$tahunWisuda."','".$namaBahasa."','".$skor."','".$tanggalTes."','".$verifikasi."','".$scanBukti."') ";
 		
 			
 		if(mysqli_query($connect, $sql)) {

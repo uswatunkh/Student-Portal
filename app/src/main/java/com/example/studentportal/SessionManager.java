@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
+import com.google.firebase.messaging.FirebaseMessaging;
+
 import java.util.HashMap;
 
 public class SessionManager {
@@ -42,6 +44,7 @@ public class SessionManager {
             Intent i = new Intent(context, Splash.class); //bisa splash
             context.startActivity(i);
             ((FragmentUtama) context).finish();
+
         }
     }
 

@@ -1,25 +1,39 @@
 package com.example.studentportal;
 
 public class PengumumanItem {
-    String  isiPengumuman, tanggalPengumuman;
+    String  title,body, tanggalPengumuman;
 
 
 
 
-    public PengumumanItem( String isiPengumuman, String tanggalPengumuman) {
+    public PengumumanItem( String title,String body, String tanggalPengumuman) {
 
-        this.isiPengumuman = isiPengumuman;
+        this.title = title;
+        this.body = body;
         this.tanggalPengumuman = tanggalPengumuman;
     }
 
-
-    public String getIsi() {
-        return isiPengumuman;
+    public String getTitle() {
+        return title;
     }
 
-    public String getTgl() {
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
+    }
+
+    public String getTanggalPengumuman() {
         return tanggalPengumuman;
     }
 
-
+    public void setTanggalPengumuman(String tanggalPengumuman) {
+        this.tanggalPengumuman = tanggalPengumuman;
+    }
 }
