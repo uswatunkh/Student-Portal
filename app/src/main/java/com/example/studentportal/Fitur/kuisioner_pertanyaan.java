@@ -76,6 +76,10 @@ public class kuisioner_pertanyaan extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 SaveJawaban();
+                //kuisioner_pertanyaan.this.finish();
+                //Toast.makeText(getApplicationContext(), "Sudah Terisi", Toast.LENGTH_SHORT).show();
+
+
             }
         });
 

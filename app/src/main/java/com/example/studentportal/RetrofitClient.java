@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
 
-    private static final String BASE_URL="http://192.168.1.44/studentPortal/DownloadPdf/";
+    private static final String BASE_URL="http://192.168.1.42/studentPortal/DownloadPdf/";
     private static RetrofitClient myClient;
     private Retrofit retrofit;
 

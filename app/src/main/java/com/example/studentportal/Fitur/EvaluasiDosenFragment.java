@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toolbar;
 
@@ -23,6 +24,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.studentportal.Fragment.HomeFragment;
 import com.example.studentportal.R;
 import com.example.studentportal.Server;
 import com.example.studentportal.app.AppController;
@@ -46,6 +48,7 @@ import java.util.List;
 public class EvaluasiDosenFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
 
     Toolbar toolbar;
+    ImageView backKeterampilan;
     FloatingActionButton fab;
     ListView list;
     SwipeRefreshLayout swipe;
@@ -134,6 +137,13 @@ public class EvaluasiDosenFragment extends Fragment implements SwipeRefreshLayou
         fab     = (FloatingActionButton) root.findViewById(R.id.fab_add);
         swipe   = (SwipeRefreshLayout) root.findViewById(R.id.swipe_refresh_layout);
         list    = (ListView) root.findViewById(R.id.list);
+        backKeterampilan= (ImageView) root.findViewById(R.id.backKeterampilan);
+        backKeterampilan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openFragment(HomeFragment.newInstance("", ""));
+            }
+        });
 
         // untuk mengisi data dari JSON ke dalam adapter
         adapter = new AdapterEvdos(getActivity(), itemList);
@@ -167,8 +177,9 @@ public class EvaluasiDosenFragment extends Fragment implements SwipeRefreshLayou
                 final String idx = itemList.get(position).getIdMatakuliah();
 //                startActivity(new Intent(getActivity(), Kuisioner.class).
 //                        putExtra("position",position));
-                startActivity(new Intent(getActivity(), kuisioner_pertanyaan.class).
+                startActivity(new Intent(getActivity(), Kuisioner.class).
                         putExtra("position",position));
+
 
 //                final CharSequence[] dialogitem = {"Edit", "Delete"};
 //                dialog = new AlertDialog.Builder(getActivity());

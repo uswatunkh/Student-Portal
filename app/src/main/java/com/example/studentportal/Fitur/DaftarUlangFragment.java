@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,10 +26,12 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.studentportal.FragementHari.Hari_list;
+import com.example.studentportal.Fragment.HomeFragment;
 import com.example.studentportal.R;
 import com.example.studentportal.Server;
 import com.example.studentportal.SessionManager;
 import com.example.studentportal.data_diri;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -53,7 +57,8 @@ public class DaftarUlangFragment extends Fragment {
     List<DaftarUlang_list> mData;
     SessionManager sessionManager;
     String getId;  //updateprofil
-    CardView refresh;
+    ImageView refresh;
+    ImageView backKeterampilan;
     private static String URL_READ = Server.URL + "readDaftarUlang.php";
 
     // TODO: Rename parameter arguments, choose names that match
@@ -108,6 +113,14 @@ public class DaftarUlangFragment extends Fragment {
         mData=new ArrayList<>();
         DaftarUlang_TableViewAdapter=new DaftarUlang_TableViewAdapter(getActivity(), mData);
 
+        backKeterampilan= (ImageView) root.findViewById(R.id.backKeterampilan);
+        backKeterampilan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openFragment(HomeFragment.newInstance("", ""));
+            }
+        });
+
         sessionManager = new SessionManager(getActivity());
         HashMap<String, String> user = sessionManager.getUserDetail();
         getId = user.get(sessionManager.ID);  //updateprofil
@@ -119,6 +132,13 @@ public class DaftarUlangFragment extends Fragment {
             }
         });
         return root;
+    }
+
+    public void openFragment(Fragment fragment) {
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
     private void getUserDetail(){
         mData.clear();

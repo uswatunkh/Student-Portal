@@ -8,23 +8,23 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
 
  //   $sql = "SELECT * FROM mahasiswa, periode WHERE mahasiswa.npm='$npm' ";
 	$sql = "SELECT * FROM mahasiswa WHERE npm='$npm' ";
-	$sqlPeriode = "SELECT YEAR(periode.tanggalMulaiPeriode) FROM daftarulg INNER JOIN periode ON   daftarulg.npm='$npm' AND daftarulg.semester='1'  ";
+	// $sqlPeriode = "SELECT YEAR(periode.tanggalMulaiPeriode) FROM daftarulg INNER JOIN periode ON   daftarulg.npm='$npm' AND daftarulg.semester='1'  ";
 	$sqll = "SELECT prodi.namaProdi, prodi.kelas FROM mahasiswa INNER JOIN prodi ON mahasiswa.idProdi=prodi.idProdi 
 	AND mahasiswa.npm='$npm' ";
 
     $response = mysqli_query($connect, $sql);
-	$responsePeriode = mysqli_query($connect, $sqlPeriode);
+	// $responsePeriode = mysqli_query($connect, $sqlPeriode);
 	$responseProdi = mysqli_query($connect, $sqll);
 
     $result = array();
     $result['read'] = array();
 
-    if( mysqli_num_rows($response) === 1 && mysqli_num_rows($responseProdi) === 1 && mysqli_num_rows($responsePeriode) === 1) {
+    if( mysqli_num_rows($response) === 1 && mysqli_num_rows($responseProdi) === 1 ) {
         
-        if (($row = (mysqli_fetch_assoc($response))) && ($rows = (mysqli_fetch_assoc($responseProdi)))&& ($rowss = (mysqli_fetch_assoc($responsePeriode)))) {
+        if (($row = (mysqli_fetch_assoc($response))) && ($rows = (mysqli_fetch_assoc($responseProdi))) ) {
  
              $h['npm']        = $row['npm'] ;
-			 $h['tanggalMulaiPeriode']        = $rowss['YEAR(periode.tanggalMulaiPeriode)'] ;
+			 // $h['tanggalMulaiPeriode']        = $rowss['YEAR(periode.tanggalMulaiPeriode)'] ;
 			 $h['namaProdi']        = $rows['namaProdi'] ;
 			 $h['kelas']        = $rows['kelas'] ;
 			 $h['statusDiri']        = $row['statusDiri'] ;

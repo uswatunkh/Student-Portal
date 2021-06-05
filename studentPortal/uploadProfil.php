@@ -6,7 +6,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $imageProfil = $_POST['imageProfil'];
 
     $path = "profile_image/$npm.jpeg";
-    $finalPath = "http://192.168.1.44/studentPortal/".$path;
+    $finalPath = "http://192.168.1.42/studentPortal/".$path;
 
     require_once 'connect.php';
 

@@ -10,7 +10,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$tanggalmulaiMagang = $_POST['tanggalmulaiMagang'];
 	$tanggalselesaiMagang = $_POST['tanggalselesaiMagang'];
 	$ringkasan = $_POST['ringkasan'];
-	$scanBukti = "scanBukti_Magang/$npm.$judul.pdf";
+	$scanBukti = "scanBukti_Magang/$npm.$judul.png";
 	$encodedPDF = $_POST['PDF'];
 	$uploadLaporan = "laporan_Magang/$npm.$judul.pdf";
 	$encodedPDFLaporan = $_POST['PDFLaporan'];

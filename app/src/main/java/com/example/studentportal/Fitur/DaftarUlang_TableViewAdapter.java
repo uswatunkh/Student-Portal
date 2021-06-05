@@ -57,7 +57,6 @@ public class DaftarUlang_TableViewAdapter extends RecyclerView.Adapter {
             rowViewHolder.txtUkt.setBackgroundResource(R.drawable.table_bg);
             rowViewHolder.txtStatus.setBackgroundResource(R.drawable.table_bg);
             rowViewHolder.txtCetakKrs.setBackgroundResource(R.drawable.table_bg);
-            rowViewHolder.btnDownload.setBackgroundResource(R.drawable.table_bg);
 
             rowViewHolder.txtPeriode.setText("Periode Akademik");
             rowViewHolder.txtPeriode.setTextColor(Color.parseColor("#FFFFFF"));
@@ -77,12 +76,12 @@ public class DaftarUlang_TableViewAdapter extends RecyclerView.Adapter {
             rowViewHolder.txtUkt.setBackgroundResource(R.drawable.cardview);
             rowViewHolder.txtStatus.setBackgroundResource(R.drawable.cardview);
             rowViewHolder.txtCetakKrs.setBackgroundResource(R.drawable.cardview);
-            rowViewHolder.btnDownload.setBackgroundResource(R.drawable.download_pdf);
+
 
             rowViewHolder.txtPeriode.setText(modal.getPeriodeAkademik() + "");
             rowViewHolder.txtUkt.setText(modal.getUkt());
             rowViewHolder.txtStatus.setText(modal.getStatus() + "");
-            rowViewHolder.txtCetakKrs.setText(modal.getCetakKrs() + "");
+            rowViewHolder.txtCetakKrs.setBackgroundResource(R.drawable.download_pdf);
         }
 
     }
@@ -105,8 +104,8 @@ public class DaftarUlang_TableViewAdapter extends RecyclerView.Adapter {
             txtUkt = itemView.findViewById(R.id.txtUkt);
             txtStatus = itemView.findViewById(R.id.txtStatus);
             txtCetakKrs = itemView.findViewById(R.id.txtCetakKrs);
-            btnDownload=itemView.findViewById(R.id.btnDownload);
-            btnDownload.setOnClickListener(new View.OnClickListener() {
+//            btnDownload=itemView.findViewById(R.id.btnDownload);
+            txtCetakKrs.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                         Intent intent = new Intent(mContext,DaftarUlang.class);

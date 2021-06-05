@@ -6,12 +6,15 @@ import android.os.Bundle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -42,6 +45,7 @@ public class SettingPasswordFragment extends Fragment {
     private static final String TAG= SettingPasswordFragment.class.getSimpleName() ;  //getting the info
 
     private EditText npm,namaLengkap,passLama,pass,confirm_pass;
+    ImageView showPassword, confirmshowpass;
     Button ubah;
     SessionManager sessionManager;
     String getId;  //updateprofil
@@ -94,6 +98,8 @@ public class SettingPasswordFragment extends Fragment {
         // Inflate the layout for this fragment
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_setting_password, container, false);
         ubah = root.findViewById(R.id.buttonUlangPassword);
+        showPassword=root.findViewById(R.id.show_pass_btn);
+        confirmshowpass=root.findViewById(R.id.confirm_pass_btn);
         npm=root.findViewById(R.id.npm);
         namaLengkap=root.findViewById(R.id.namaLengkap);
        // passLama=root.findViewById(R.id.passwordLama);
@@ -121,8 +127,63 @@ public class SettingPasswordFragment extends Fragment {
         });
         HashMap<String, String> user = sessionManager.getUserDetail();
         getId = user.get(sessionManager.ID);  //updateprofil
+
+        showPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ShowHidePass(v);
+            }
+        });
+        confirmshowpass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ConfirmShowHidePass(v);
+            }
+        });
         return root;
 
+    }
+
+    private void kosong() {
+        pass.setText(null);
+        confirm_pass.setText(null);
+    }
+
+    public void ShowHidePass (View view){
+        if(view.getId()==R.id.show_pass_btn){
+
+            if(pass.getTransformationMethod().equals(PasswordTransformationMethod.getInstance())){
+                ((ImageView)(view)).setImageResource(R.drawable.hide_password);
+
+                //Show Password
+                pass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+            }
+            else{
+                ((ImageView)(view)).setImageResource(R.drawable.show_password);
+
+                //Hide Password
+                pass.setTransformationMethod(PasswordTransformationMethod.getInstance());
+
+            }
+        }
+    }
+    public void ConfirmShowHidePass (View view){
+        if(view.getId()==R.id.confirm_pass_btn){
+
+            if(confirm_pass.getTransformationMethod().equals(PasswordTransformationMethod.getInstance())){
+                ((ImageView)(view)).setImageResource(R.drawable.hide_password);
+
+                //Show Password
+                confirm_pass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+            }
+            else{
+                ((ImageView)(view)).setImageResource(R.drawable.show_password);
+
+                //Hide Password
+                confirm_pass.setTransformationMethod(PasswordTransformationMethod.getInstance());
+
+            }
+        }
     }
     private void getUserDetail(){
         final ProgressDialog progressDialog = new ProgressDialog(getActivity());
@@ -211,6 +272,7 @@ public class SettingPasswordFragment extends Fragment {
                                         .setNegativeButton("Ok",null)
                                         .create()
                                         .show();
+                                kosong();
 
 
                             }else{

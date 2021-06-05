@@ -3,13 +3,13 @@
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     $npm 	= $_POST['npm'];
-	$periodeWisuda 	= "2019/2020";
-	$tahunWisuda = "2022";
+	$periodeWisuda 	= $_POST['periodeWisuda'];
+	$tahunWisuda = $_POST['tahunWisuda'];
 	$namaBahasa = $_POST['namaBahasa'];
 	$skor = $_POST['skor'];
 	$tanggalTes = $_POST['tanggalTes'];
 	$verifikasi = "Belum Diverifikasi";
-	$scanBukti = "scanBukti_Bahasa/$npm.$namaBahasa.pdf";
+	$scanBukti = "scanBukti_Bahasa/$npm.$namaBahasa.png";
 	$encodedPDF = $_POST['PDF'];
 	
 	//$pdfLocation = "documents/$pdfTitle.pdf";

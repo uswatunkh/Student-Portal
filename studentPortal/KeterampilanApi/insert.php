@@ -7,7 +7,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$jenis = $_POST['jenis'];
 	$tingkat = $_POST['tingkat'];
 	$verifikasi = "Belum Diverifikasi";
-	$scanBukti = "documents/$npm.$namaKeterampilan.pdf";
+	
+	$scanBukti = "documents/$npm.$namaKeterampilan.png"  ;
 	$encodedPDF = $_POST['PDF'];
 	
 	//$pdfLocation = "documents/$pdfTitle.pdf";

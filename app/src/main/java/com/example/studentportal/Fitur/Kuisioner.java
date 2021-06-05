@@ -1,6 +1,7 @@
 package com.example.studentportal.Fitur;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -47,9 +48,9 @@ public class Kuisioner extends AppCompatActivity {
     AdapterTable_Kuisioner.RowViewHolder adap;
     private JsonArrayRequest request;
     private RequestQueue requestQueue;
-    List<DataKuisioner> mData;
-    List<DataKuisioner> mData2;
-    List<DataKuisioner> mData3;
+    ArrayList<DataKuisioner> mData;
+    ArrayList<DataKuisioner> mData2;
+    ArrayList<DataKuisioner> mData3;
     SessionManager sessionManager;
     String getId,getIdDosen;  //updateprofil
     String jk;
@@ -60,6 +61,7 @@ public class Kuisioner extends AppCompatActivity {
     private static String URL_READ2     = Server.URLEvaluasiDosen + "selectEvdos2.php";
     private static String URL_READ3     = Server.URLEvaluasiDosen + "selectEvdos3.php";
     private static String URL_EDIT = Server.URLEvaluasiDosen + "pengisianEvdos.php";
+    private RecyclerView.LayoutManager layoutManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,17 +80,51 @@ public class Kuisioner extends AppCompatActivity {
         NewsRecyclerview.setHasFixedSize(true);
         NewsRecyclerview.setLayoutManager(new LinearLayoutManager(this));
         mData=new ArrayList<>();
+        adapter = new AdapterTable_Kuisioner(this,mData);
+        // set adapter to recyclerview
+//        recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+        NewsRecyclerview.setItemAnimator(new DefaultItemAnimator());
         adapterTable_kuisioner=new AdapterTable_Kuisioner(this, mData);
-        NewsRecyclerview2=(RecyclerView)findViewById(R.id.news_rv2);
-        NewsRecyclerview2.setHasFixedSize(true);
-        NewsRecyclerview2.setLayoutManager(new LinearLayoutManager(this));
-        mData2=new ArrayList<>();
-        adapterTable_kuisioner2=new AdapterTable_Kuisioner(this, mData2);
-        NewsRecyclerview3=(RecyclerView)findViewById(R.id.news_rv3);
-        NewsRecyclerview3.setHasFixedSize(true);
-        NewsRecyclerview3.setLayoutManager(new LinearLayoutManager(this));
-        mData3=new ArrayList<>();
-        adapterTable_kuisioner3=new AdapterTable_Kuisioner(this, mData3);
+
+//        NewsRecyclerview.setHasFixedSize(true);
+//        layoutManager = new LinearLayoutManager(this);
+//        NewsRecyclerview.setLayoutManager(layoutManager);
+//        NewsRecyclerview.setItemAnimator(new DefaultItemAnimator());
+//        mData = new ArrayList<>();
+//        adapter = new AdapterTable_Kuisioner(this,mData);
+//        adapter.notifyDataSetChanged();
+
+
+
+
+
+
+//        NewsRecyclerview2=(RecyclerView)findViewById(R.id.news_rv2);
+//        NewsRecyclerview2.setHasFixedSize(true);
+//        NewsRecyclerview2.setLayoutManager(new LinearLayoutManager(this));
+//        mData2=new ArrayList<>();
+//        adapter = new AdapterTable_Kuisioner(this,mData2);
+//        // set adapter to recyclerview
+////        recyclerView.setAdapter(adapter);
+//        adapter.notifyDataSetChanged();
+//        NewsRecyclerview2.setItemAnimator(new DefaultItemAnimator());
+//        adapterTable_kuisioner2=new AdapterTable_Kuisioner(this, mData2);
+//        NewsRecyclerview2.setHasFixedSize(true);
+//        NewsRecyclerview2.setLayoutManager(new LinearLayoutManager(this));
+//        NewsRecyclerview2.setItemAnimator(new DefaultItemAnimator());
+//        adapter = new AdapterTable_Kuisioner(this,mData2);
+//        adapter.notifyDataSetChanged();
+//        adapterTable_kuisioner=new AdapterTable_Kuisioner(this, mData2);
+//        mData2=new ArrayList<>();
+
+//        NewsRecyclerview3=(RecyclerView)findViewById(R.id.news_rv3);
+//        NewsRecyclerview3.setHasFixedSize(true);
+//        NewsRecyclerview3.setLayoutManager(new LinearLayoutManager(this));
+//        mData3=new ArrayList<>();
+//
+//        //apaini
+//        adapterTable_kuisioner3=new AdapterTable_Kuisioner(this, (ArrayList<DataKuisioner>) mData3);
 
 
         sessionManager = new SessionManager(this);
@@ -101,13 +137,18 @@ public class Kuisioner extends AppCompatActivity {
 
 
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               // SaveEditDetail();
-                ((AdapterTable_Kuisioner)adapter).SaveEditDetail();
-            }
-        });
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//               // SaveEditDetail();
+//                AdapterTable_Kuisioner.RowViewHolder holder = (AdapterTable_Kuisioner.RowViewHolder)NewsRecyclerview.findViewHolderForLayoutPosition(position);
+//                holder.SaveEditDetail();
+//                if(isCurrentListViewItemVisible(position)){
+//                    // you can access your views here
+//
+//                }
+//            }
+//        });
 
 
         LayoutInflater inflater = LayoutInflater.from(this);
@@ -154,64 +195,6 @@ public class Kuisioner extends AppCompatActivity {
     }
 
 
-    public void SaveEditDetail() {
-        final String idEvdos = txtIdEvdos.getText().toString().trim();
-        final String jawaban = this.jawaban.getText().toString().trim();
-
-        final String id = getId;
-
-        final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Saving...");
-        progressDialog.show();
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_EDIT,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        progressDialog.dismiss();
-
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            String succcess =jsonObject.getString("success");
-
-                            if (succcess.equals("1")){
-                                Toast.makeText(Kuisioner.this, "Success!", Toast.LENGTH_SHORT).show();
-                                sessionManager.createSession(id);
-                            }
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            progressDialog.dismiss();
-                            Toast.makeText(Kuisioner.this, "Error"+e.toString(), Toast.LENGTH_SHORT).show();
-
-                        }
-
-
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        progressDialog.dismiss();
-                        Toast.makeText(Kuisioner.this, "Error"+error.toString(), Toast.LENGTH_SHORT).show();
-                    }
-                })
-        {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("npm", id);
-                params.put("idEvdos", idEvdos);
-                params.put("jawaban", jawaban);
-
-                return params;
-            }
-        };
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
-
-    }
-
 
 
     private void getUserDetail(){
@@ -234,8 +217,15 @@ public class Kuisioner extends AppCompatActivity {
 
                             for (int i=0; i< jsonArray.length(); i++){
                                 JSONObject ob = jsonArray.getJSONObject(i);
-                                DataKuisioner listData=new DataKuisioner(ob.getString("idEvdos"),ob.getString("pertanyaan"));
-                                mData.add(listData);
+//                                DataKuisioner listData=new DataKuisioner(ob.getString("idEvdos"),ob.getString("pertanyaan"));
+//                                mData.add(listData);
+
+                                DataKuisioner item = new DataKuisioner();
+
+                                item.setIdNomor(i);
+                                item.setIdEvdos(ob.getString("idEvdos"));
+                                item.setPertanyaan(ob.getString("pertanyaan"));
+                                mData.add(item);
 
 
 
@@ -273,122 +263,196 @@ public class Kuisioner extends AppCompatActivity {
 
 
 
-    private void getUserDetail2(){
-        mData2.clear();
-        final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Loading....");
-        progressDialog.show();
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_READ2,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        progressDialog.dismiss();
-                        Log.i(TAG, response.toString());
-                        try {
-                            JSONObject jsonObject =new JSONObject(response);
-                            JSONArray jsonArray =jsonObject.getJSONArray("data");
-
-
-                            for (int i=0; i< jsonArray.length(); i++){
-                                JSONObject ob = jsonArray.getJSONObject(i);
-                                DataKuisioner listData=new DataKuisioner(ob.getString("idEvdos"),ob.getString("pertanyaan"));
-                                mData2.add(listData);
-
-
-
-                            }
-                            NewsRecyclerview2.setAdapter(adapterTable_kuisioner2);
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            progressDialog.dismiss();
-                            Toast.makeText(Kuisioner.this, "Error Reading Detail"+e.toString(), Toast.LENGTH_SHORT).show();
-
-                        }
-
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        progressDialog.dismiss();
-                        Toast.makeText(Kuisioner.this, "Error Reading Detail"+error.toString(), Toast.LENGTH_SHORT).show();
-
-                    }
-                })
-        {
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("idDosen", getIdDosen);
-                return params;
-            }
-        };
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
-    }
-
-    private void getUserDetail3(){
-        mData3.clear();
-        final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Loading....");
-        progressDialog.show();
-
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_READ3,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        progressDialog.dismiss();
-                        Log.i(TAG, response.toString());
-                        try {
-                            JSONObject jsonObject =new JSONObject(response);
-                            JSONArray jsonArray =jsonObject.getJSONArray("data");
-
-
-                            for (int i=0; i< jsonArray.length(); i++){
-                                JSONObject ob = jsonArray.getJSONObject(i);
-                                DataKuisioner listData=new DataKuisioner(ob.getString("idEvdos"),ob.getString("pertanyaan"));
-                                mData3.add(listData);
-
-
-
-                            }
-                            NewsRecyclerview3.setAdapter(adapterTable_kuisioner3);
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            progressDialog.dismiss();
-                            Toast.makeText(Kuisioner.this, "Error Reading Detail"+e.toString(), Toast.LENGTH_SHORT).show();
-
-                        }
-
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        progressDialog.dismiss();
-                        Toast.makeText(Kuisioner.this, "Error Reading Detail"+error.toString(), Toast.LENGTH_SHORT).show();
-
-                    }
-                })
-        {
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("idDosen", getIdDosen);
-                return params;
-            }
-        };
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
-    }
+//    private void getUserDetail2(){
+//        mData2.clear();
+//        final ProgressDialog progressDialog = new ProgressDialog(this);
+//        progressDialog.setMessage("Loading....");
+//        progressDialog.show();
+//
+//        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_READ2,
+//                new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//                        progressDialog.dismiss();
+//                        Log.i(TAG, response.toString());
+//                        try {
+//                            JSONObject jsonObject =new JSONObject(response);
+//                            JSONArray jsonArray =jsonObject.getJSONArray("data");
+//
+//
+//                            for (int i= jsonArray.length(); i< jsonArray.length(); i++){
+//                                JSONObject ob = jsonArray.getJSONObject(i);
+////                                DataKuisioner listData=new DataKuisioner(ob.getInt(String.valueOf(i)),ob.getString("idEvdos"),ob.getString("pertanyaan"));
+////                                mData2.add(listData);
+//
+//                                DataKuisioner item = new DataKuisioner();
+//
+//                                item.setIdNomor(i);
+//                                item.setIdEvdos(ob.getString("idEvdos"));
+//                                item.setPertanyaan(ob.getString("pertanyaan"));
+//                                mData2.add(item);
+//
+//
+//
+//                            }
+//                            NewsRecyclerview2.setAdapter(adapterTable_kuisioner2);
+//
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                            progressDialog.dismiss();
+//                            Toast.makeText(Kuisioner.this, "Error Reading Detail"+e.toString(), Toast.LENGTH_SHORT).show();
+//
+//                        }
+//
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        progressDialog.dismiss();
+//                        Toast.makeText(Kuisioner.this, "Error Reading Detail"+error.toString(), Toast.LENGTH_SHORT).show();
+//
+//                    }
+//                })
+//        {
+//            protected Map<String, String> getParams() throws AuthFailureError {
+//                Map<String, String> params = new HashMap<>();
+//                params.put("idDosen", getIdDosen);
+//                return params;
+//            }
+//        };
+//        RequestQueue requestQueue = Volley.newRequestQueue(this);
+//        requestQueue.add(stringRequest);
+//    }
+//
+//    private void getUserDetail3(){
+//        mData3.clear();
+//        final ProgressDialog progressDialog = new ProgressDialog(this);
+//        progressDialog.setMessage("Loading....");
+//        progressDialog.show();
+//
+//
+//        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_READ3,
+//                new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//                        progressDialog.dismiss();
+//                        Log.i(TAG, response.toString());
+//                        try {
+//                            JSONObject jsonObject =new JSONObject(response);
+//                            JSONArray jsonArray =jsonObject.getJSONArray("data");
+//
+//
+//                            for (int i=0; i< jsonArray.length(); i++){
+//                                JSONObject ob = jsonArray.getJSONObject(i);
+////                                DataKuisioner listData=new DataKuisioner(ob.getInt(String.valueOf(i)),ob.getString("idEvdos"),ob.getString("pertanyaan"));
+////                                mData3.add(listData);
+//                                DataKuisioner item = new DataKuisioner();
+//
+//                                item.setIdNomor(i);
+//                                item.setIdEvdos(ob.getString("idEvdos"));
+//                                item.setPertanyaan(ob.getString("pertanyaan"));
+//                                mData3.add(item);
+//
+//
+//
+//                            }
+//                            NewsRecyclerview3.setAdapter(adapterTable_kuisioner3);
+//
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                            progressDialog.dismiss();
+//                            Toast.makeText(Kuisioner.this, "Error Reading Detail"+e.toString(), Toast.LENGTH_SHORT).show();
+//
+//                        }
+//
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        progressDialog.dismiss();
+//                        Toast.makeText(Kuisioner.this, "Error Reading Detail"+error.toString(), Toast.LENGTH_SHORT).show();
+//
+//                    }
+//                })
+//        {
+//            protected Map<String, String> getParams() throws AuthFailureError {
+//                Map<String, String> params = new HashMap<>();
+//                params.put("idDosen", getIdDosen);
+//                return params;
+//            }
+//        };
+//        RequestQueue requestQueue = Volley.newRequestQueue(this);
+//        requestQueue.add(stringRequest);
+//    }
 
     @Override
     protected void onResume() {
         super.onResume();
         getUserDetail();
-        getUserDetail2();
-        getUserDetail3();
+//        getUserDetail2();
+//        getUserDetail3();
     }
+
+//    public void SaveEditDetail() {
+//        final String idEvdos = txtIdEvdos.getText().toString().trim();
+//        final String jawaban = this.jawaban.getText().toString().trim();
+//
+//        final String id = getId;
+//
+//        final ProgressDialog progressDialog = new ProgressDialog(this);
+//        progressDialog.setMessage("Saving...");
+//        progressDialog.show();
+//
+//        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_EDIT,
+//                new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//                        progressDialog.dismiss();
+//
+//                        try {
+//                            JSONObject jsonObject = new JSONObject(response);
+//                            String succcess =jsonObject.getString("success");
+//
+//                            if (succcess.equals("1")){
+//                                Toast.makeText(Kuisioner.this, "Success!", Toast.LENGTH_SHORT).show();
+//                                sessionManager.createSession(id);
+//                            }
+//
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                            progressDialog.dismiss();
+//                            Toast.makeText(Kuisioner.this, "Error"+e.toString(), Toast.LENGTH_SHORT).show();
+//
+//                        }
+//
+//
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        progressDialog.dismiss();
+//                        Toast.makeText(Kuisioner.this, "Error"+error.toString(), Toast.LENGTH_SHORT).show();
+//                    }
+//                })
+//        {
+//            @Override
+//            protected Map<String, String> getParams() throws AuthFailureError {
+//                Map<String, String> params = new HashMap<>();
+//                params.put("npm", id);
+//                params.put("idEvdos", idEvdos);
+//                params.put("jawaban", jawaban);
+//
+//                return params;
+//            }
+//        };
+//        RequestQueue requestQueue = Volley.newRequestQueue(this);
+//        requestQueue.add(stringRequest);
+//
+//    }
+
+
+
 }

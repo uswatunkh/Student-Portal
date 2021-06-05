@@ -376,7 +376,6 @@
                         <EditText
                             android:id="@+id/tahunAngkatan"
                             android:layout_width="262dp"
-                            android:focusable="false"
                             android:layout_height="45dp"
                             android:background="@drawable/edit_text_bg"
                             android:hint="Tahun Angkatan"

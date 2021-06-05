@@ -1,17 +1,24 @@
 package com.example.studentportal.Fitur;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.provider.MediaStore;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,6 +29,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -33,16 +41,25 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.studentportal.Fragment.HomeFragment;
 import com.example.studentportal.R;
 import com.example.studentportal.Server;
 import com.example.studentportal.SessionManager;
 import com.example.studentportal.app.AppController;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.textfield.TextInputLayout;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionDeniedResponse;
+import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.single.PermissionListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -61,6 +78,9 @@ import static android.app.Activity.RESULT_OK;
 public class MagangFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
     Toolbar toolbar;
+    EditText idMagang_view,judul_view,tempat_view,provinsi_view,kota_view,tanggalMulai_view,tanggalSelesai_view,ringkasan_view,scanBukti_view,uploadLaporan_view, verifikasi_magang;
+    ImageView backKeterampilan;
+    TextInputLayout inputVerifikasi;
     FloatingActionButton fab;
     ListView list;
     SwipeRefreshLayout swipe;
@@ -70,7 +90,7 @@ public class MagangFragment extends Fragment implements SwipeRefreshLayout.OnRef
     AlertDialog.Builder dialog;
     LayoutInflater inflater;
     View dialogView;
-    EditText txt_idMagang, txt_judul,txt_tempat,txt_provinsi,txt_kota,txt_TanggalMulai, txt_tanggalSelesai,txt_ringkasan;
+    EditText txt_idMagang, txt_judul,txt_tempat,txt_provinsi,txt_kota,txt_TanggalMulai, txt_tanggalSelesai,txt_ringkasan,edit_cari;
     Spinner txt_jenis;
     String jenis;
     Button upload;
@@ -80,9 +100,11 @@ public class MagangFragment extends Fragment implements SwipeRefreshLayout.OnRef
     String getId;  //updateprofil
     Bitmap bitmap;
     String idx;
+    String encodedimage;
     private static final String TAG = MagangFragment.class.getSimpleName();
 
     private static String url_select     = Server.URLKeterampilan + "selectMagang.php";
+    private static String url_edit       = Server.URLKeterampilan + "editMagang.php";
     private static String url_insert     = Server.URLKeterampilan + "insertMagang.php";
     private static String url_delete     = Server.URLKeterampilan + "deleteMagang.php";
 
@@ -163,6 +185,32 @@ public class MagangFragment extends Fragment implements SwipeRefreshLayout.OnRef
         swipe   = (SwipeRefreshLayout) root.findViewById(R.id.swipe_refresh_layout);
         list    = (ListView) root.findViewById(R.id.list);
 
+        backKeterampilan= (ImageView) root.findViewById(R.id.backKeterampilan);
+        backKeterampilan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openFragment(HomeFragment.newInstance("", ""));
+            }
+        });
+
+        edit_cari=(EditText) root.findViewById(R.id.edit_cari);
+        edit_cari.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString());
+            }
+        });
+
         // untuk mengisi data dari JSON ke dalam adapter
         adapter = new AdapterMagang(getActivity(), itemList);
         list.setAdapter(adapter);
@@ -207,7 +255,7 @@ public class MagangFragment extends Fragment implements SwipeRefreshLayout.OnRef
                 // TODO Auto-generated method stub
                 idx = itemList.get(position).getIdMagang();
 
-                final CharSequence[] dialogitem = {"Delete"};
+                final CharSequence[] dialogitem = {"View","Delete"};
                 dialog = new AlertDialog.Builder(getActivity());
                 dialog.setCancelable(true);
                 dialog.setItems(dialogitem, new DialogInterface.OnClickListener() {
@@ -216,11 +264,11 @@ public class MagangFragment extends Fragment implements SwipeRefreshLayout.OnRef
                     public void onClick(DialogInterface dialog, int which) {
                         // TODO Auto-generated method stub
                         switch (which) {
-//                            case 0:
-////                                edit(idx);
-//
-//                                break;
                             case 0:
+                                edit(idx);
+
+                                break;
+                            case 1:
                                 AlertDialog myQuittingDialogBox = new AlertDialog.Builder(getActivity())
                                         // set message, title, and icon
                                         .setTitle("Hapus")
@@ -256,6 +304,24 @@ public class MagangFragment extends Fragment implements SwipeRefreshLayout.OnRef
         return root;
     }
 
+    private void filter(String text) {
+        ArrayList<DataMagang> filteredList = new ArrayList<>();
+
+        for (DataMagang item : itemList) {
+            if (item.getJudul().toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(item);
+            }
+        }
+
+        adapter.filterList(filteredList);
+    }
+
+    public void openFragment(Fragment fragment) {
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
 
     @Override
     public void onRefresh() {
@@ -284,7 +350,7 @@ public class MagangFragment extends Fragment implements SwipeRefreshLayout.OnRef
         dialogView = inflater.inflate(R.layout.magangform_magang, null);
         dialog.setView(dialogView);
         dialog.setCancelable(true);
-        dialog.setIcon(R.mipmap.ic_launcher);
+        dialog.setIcon(R.drawable.magang);
         dialog.setTitle("Form Magang");
         txt_idMagang      = (EditText) dialogView.findViewById(R.id.txt_idMagang);
         txt_judul    = (EditText) dialogView.findViewById(R.id.txt_judul);
@@ -344,7 +410,7 @@ public class MagangFragment extends Fragment implements SwipeRefreshLayout.OnRef
         btnSelect2 = dialogView.findViewById(R.id.btnSelect2);
         //btnUpload = dialogView.findViewById(R.id.btnUpload);
 
-        btnSelect.setOnClickListener(new View.OnClickListener() {
+        btnSelect2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -356,16 +422,68 @@ public class MagangFragment extends Fragment implements SwipeRefreshLayout.OnRef
 
             }
         });
-        btnSelect2.setOnClickListener(new View.OnClickListener() {
+//        btnSelect2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                Intent choose = new Intent(Intent.ACTION_GET_CONTENT);
+//                choose.setType("application/pdf");
+//                choose = Intent.createChooser(choose, "Choose a file");
+//                startActivityForResult(choose, REQ_PDF2);
+//
+//
+//            }
+//        });
+
+
+
+        btnSelect.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public void onClick(View v) {
+            public boolean onLongClick(View v) {
+                final CharSequence[] dialogitem = {"Kamera","Galeri"};
+                dialog = new AlertDialog.Builder(getActivity());
+                dialog.setCancelable(true);
+                dialog.setItems(dialogitem, new DialogInterface.OnClickListener() {
 
-                Intent choose = new Intent(Intent.ACTION_GET_CONTENT);
-                choose.setType("application/pdf");
-                choose = Intent.createChooser(choose, "Choose a file");
-                startActivityForResult(choose, REQ_PDF2);
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // TODO Auto-generated method stub
+                        switch (which) {
+
+                            case 0:
+                                Dexter.withContext(getActivity().getApplicationContext())
+                                        .withPermission(Manifest.permission.CAMERA)
+                                        .withListener(new PermissionListener() {
+                                            @Override
+                                            public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
+                                                Intent intent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                                                startActivityForResult( intent,111);
+                                            }
+
+                                            @Override
+                                            public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
+
+                                            }
+
+                                            @Override
+                                            public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
+                                                permissionToken.continuePermissionRequest();
+                                            }
+                                        }).check();
+                                break;
+                            case 1:
+                                Intent pickPhoto = new Intent(Intent.ACTION_PICK,
+                                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                                startActivityForResult(pickPhoto , 1);//one can be replaced with any action code
 
 
+                                break;
+                        }
+                    }
+                }).show();
+//
+
+                return false;
             }
         });
 
@@ -428,6 +546,61 @@ public class MagangFragment extends Fragment implements SwipeRefreshLayout.OnRef
         dialog.show();
 
     }
+
+    private void DialogForm3(String idMagang_view,String judul_view,String tempat_view,String provinsi_view,String kota_view,String tanggalMulai_view,String tanggalSelesai_view,String ringkasan_view,String scanBukti_view,String uploadLaporan_view,String verifikasi_view, String button) {
+        dialog = new AlertDialog.Builder(getActivity());
+        inflater = getLayoutInflater();
+        dialogView = inflater.inflate(R.layout.magang_view, null);
+        dialog.setView(dialogView);
+        dialog.setCancelable(true);
+        dialog.setIcon(R.drawable.magang);
+        dialog.setTitle("Form Magang");
+
+        EditText idMagang = (EditText) dialogView.findViewById(R.id.idMagang);
+        EditText judul = (EditText) dialogView.findViewById(R.id.judul);
+        EditText tempat = (EditText) dialogView.findViewById(R.id.tempat);
+        EditText provinsi = (EditText) dialogView.findViewById(R.id.provinsi);
+        EditText kota = (EditText) dialogView.findViewById(R.id.kota);
+        EditText tanggalMulai = (EditText) dialogView.findViewById(R.id.tanggalmulaiMagang);
+        EditText tanggalSelesai = (EditText) dialogView.findViewById(R.id.tanggalselesaiMagang);
+        EditText ringkasan = (EditText) dialogView.findViewById(R.id.ringkasan);
+        EditText scanBukti = (EditText) dialogView.findViewById(R.id.scanBukti);
+        EditText uploadLaporan = (EditText) dialogView.findViewById(R.id.uploadLaporan);
+         verifikasi_magang = (EditText) dialogView.findViewById(R.id.verifikasi);
+        inputVerifikasi = (TextInputLayout) dialogView.findViewById(R.id.inputVerifikasi);
+
+        if (!idMagang_view.isEmpty()){
+            idMagang.setText(idMagang_view);
+            judul.setText(judul_view);
+            tempat.setText(tempat_view);
+            provinsi.setText(provinsi_view);
+            kota.setText(kota_view);
+            tanggalMulai.setText(tanggalMulai_view);
+            tanggalSelesai.setText(tanggalSelesai_view);
+            ringkasan.setText(ringkasan_view);
+            scanBukti.setText(scanBukti_view);
+            uploadLaporan.setText(uploadLaporan_view);
+            verifikasi_magang.setText(verifikasi_view);
+
+        } else {
+            kosong();
+
+        }
+
+        dialog.setNegativeButton("BATAL", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                //kosong();
+            }
+        });
+
+        dialog.show();
+
+    }
+
+
 
 
 
@@ -499,21 +672,15 @@ public class MagangFragment extends Fragment implements SwipeRefreshLayout.OnRef
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-        if(requestCode == REQ_PDF && resultCode == RESULT_OK && data != null){
+        if(requestCode == 1 && resultCode == RESULT_OK && data != null){
 
             Uri path = data.getData();
-
-
             try {
-                InputStream inputStream = getActivity().getContentResolver().openInputStream(path);
-                byte[] pdfInBytes = new byte[inputStream.available()];
-                inputStream.read(pdfInBytes);
-                encodedPDF = Base64.encodeToString(pdfInBytes, Base64.DEFAULT);
-                    textView.setText("Document Selected");
-                    btnSelect.setText("Change Document");
+                bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), path);
+                encodebitmap(bitmap);
 
-
+                textView.setText("Document Selected");
+                btnSelect.setText("Change Document");
 
                 Toast.makeText(getActivity(), "Document Selected", Toast.LENGTH_SHORT).show();
 
@@ -522,20 +689,29 @@ public class MagangFragment extends Fragment implements SwipeRefreshLayout.OnRef
                 e.printStackTrace();
 
             }
-
         }
-        else if(requestCode == REQ_PDF2 && resultCode == RESULT_OK && data != null){
+
+        else if(requestCode==111 && resultCode==RESULT_OK)
+        {
+            bitmap=(Bitmap)data.getExtras().get("data");
+            //img.setImageBitmap(bitmap);
+            encodebitmap(bitmap);
+            textView.setText("Document Selected");
+            btnSelect.setText("Change Document");
+        }
+        if(requestCode == REQ_PDF && resultCode == RESULT_OK && data != null){
 
             Uri path2 = data.getData();
 
 
             try {
                 InputStream inputStream = getActivity().getContentResolver().openInputStream(path2);
-                byte[] pdfInBytes2 = new byte[inputStream.available()];
-                inputStream.read(pdfInBytes2);
-                encodedPDF2 = Base64.encodeToString(pdfInBytes2, Base64.DEFAULT);
+                byte[] pdfInBytes = new byte[inputStream.available()];
+                inputStream.read(pdfInBytes);
+                encodedPDF = Base64.encodeToString(pdfInBytes, Base64.DEFAULT);
                     textView2.setText("Document Selected");
                     btnSelect2.setText("Change Document");
+
 
 
                 Toast.makeText(getActivity(), "Document Selected", Toast.LENGTH_SHORT).show();
@@ -547,6 +723,38 @@ public class MagangFragment extends Fragment implements SwipeRefreshLayout.OnRef
             }
 
         }
+//        else if(requestCode == REQ_PDF2 && resultCode == RESULT_OK && data != null){
+//
+//            Uri path2 = data.getData();
+//
+//
+//            try {
+//                InputStream inputStream = getActivity().getContentResolver().openInputStream(path2);
+//                byte[] pdfInBytes2 = new byte[inputStream.available()];
+//                inputStream.read(pdfInBytes2);
+//                encodedPDF2 = Base64.encodeToString(pdfInBytes2, Base64.DEFAULT);
+//                    textView2.setText("Document Selected");
+//                    btnSelect2.setText("Change Document");
+//
+//
+//                Toast.makeText(getActivity(), "Document Selected", Toast.LENGTH_SHORT).show();
+//
+//
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//
+//            }
+//
+//        }
+    }
+
+    private void encodebitmap(Bitmap bitmap)
+    {
+        ByteArrayOutputStream byteArrayOutputStream=new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
+
+        byte[] byteofimages=byteArrayOutputStream.toByteArray();
+        encodedimage=android.util.Base64.encodeToString(byteofimages, Base64.DEFAULT);
     }
 
 
@@ -555,24 +763,18 @@ public class MagangFragment extends Fragment implements SwipeRefreshLayout.OnRef
     private void simpan_update() {
         String url ;
         // jika id kosong maka simpan, jika id ada nilainya maka update
-        if (id.isEmpty()){
-            url = url_insert;
 
-
-        } else {
-            url = url_select;
-
-
-
-        }
+        final ProgressDialog progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setMessage("Loading....");
+        progressDialog.show();
 
 
 
-        StringRequest strReq = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+        StringRequest strReq = new StringRequest(Request.Method.POST, url_insert, new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {
-                Log.d(TAG, "Response: " + response.toString());
+                progressDialog.dismiss();
 
                 try {
                     JSONObject jObj = new JSONObject(response);
@@ -610,7 +812,7 @@ public class MagangFragment extends Fragment implements SwipeRefreshLayout.OnRef
                 // Posting parameters ke post url
                 Map<String, String> params = new HashMap<String, String>();
                 // jika id kosong maka simpan, jika id ada nilainya maka update
-                if (id.isEmpty()){
+//                if (id.isEmpty()){
                     params.put("npm", getId);
                     params.put("judul", judul);
                     params.put("tempat", tempat);
@@ -619,9 +821,9 @@ public class MagangFragment extends Fragment implements SwipeRefreshLayout.OnRef
                     params.put("tanggalmulaiMagang", tanggalMulai);
                     params.put("tanggalselesaiMagang", tanggalSelesai);
                     params.put("ringkasan", ringkasan);
-                    params.put("PDF", encodedPDF);
-                    params.put("PDFLaporan", encodedPDF2);
-                }
+                    params.put("PDF", encodedimage);
+                    params.put("PDFLaporan", encodedPDF);
+//                }
 //                else {
 //                    params.put("idKeterampilan", id);
 //                    params.put("namaKeterampilan", nama);
@@ -680,7 +882,7 @@ public class MagangFragment extends Fragment implements SwipeRefreshLayout.OnRef
         }) {
 
             @Override
-            protected Map<String, String> getParams() {
+            protected Map<String, String> getParams() throws AuthFailureError{
                 // Posting parameters ke post url
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("idMagang", idx);
@@ -694,6 +896,76 @@ public class MagangFragment extends Fragment implements SwipeRefreshLayout.OnRef
     }
 
 
+    private void edit(final String idx){
+        StringRequest strReq = new StringRequest(Request.Method.POST, url_edit, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+                Log.d(TAG, "Response: " + response.toString());
+                try {
+                    JSONObject jsonObject =new JSONObject(response);
+                    String success = jsonObject.getString("success");
+                    JSONArray jsonArray =jsonObject.getJSONArray("read");
+
+                    if(success.equals("1")){
+                        for (int i=0; i< jsonArray.length(); i++){
+                            JSONObject object = jsonArray.getJSONObject(i);
+
+                            String idx      = object.getString("idMagang");
+                            String judulx    = object.getString("judul");
+                            String tempatx  = object.getString("tempat");
+                            String provinsix  = object.getString("provinsi");
+                            String kotax  = object.getString("kota");
+                            String tanggalmulaiMagangx  = object.getString("tanggalmulaiMagang");
+                            String tanggalselesaiMagangx     = object.getString("tanggalselesaiMagang");
+                            String ringkasanx    = object.getString("ringkasan");
+                            String scanBuktix  = object.getString("scanBukti");
+                            String uploadLaporanx  = object.getString("uploadLaporan");
+                            String verifikasix  = object.getString("verifikasi");
+
+                            DialogForm3(idx, judulx, tempatx,provinsix,kotax,tanggalmulaiMagangx,tanggalselesaiMagangx,ringkasanx,scanBuktix,uploadLaporanx,verifikasix, "");
+                            //txt_jenis.setVisibility(View.GONE);
+                            if(verifikasix.equals("Sudah Diverifikasi")){
+                                verifikasi_magang.setTextColor(Color.parseColor("#FFFFFF"));
+                                inputVerifikasi.setBoxBackgroundColor(Color.parseColor("#7ae472"));
+                            }else if(verifikasix.equals("Belum Diverifikasi")){
+                                inputVerifikasi.setBoxBackgroundColor(Color.parseColor("#F08080"));
+                                verifikasi_magang.setTextColor(Color.parseColor("#FFFFFF"));
+                            }
+
+                            adapter.notifyDataSetChanged();
+
+                        }
+                    }
+                }
+                catch (JSONException e) {
+                    // JSON error
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e(TAG, "Error: " + error.getMessage());
+                Toast.makeText(getActivity(), error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() {
+                // Posting parameters ke post url
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("idMagang", idx);
+
+                return params;
+            }
+
+        };
+
+        AppController.getInstance().addToRequestQueue(strReq, tag_json_obj);
+    }
 
 
 }

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,7 +46,7 @@ public class Presensi extends AppCompatActivity {
     List<Presensi_list> mData;
     SessionManager sessionManager;
     String getId, getSmst;  //updateprofil
-    CardView refresh;
+    ImageView refresh;
     private static String URL_READ     = Server.URL+ "readPresensi.php";
 
     @Override

@@ -1,12 +1,19 @@
 package com.example.studentportal.Fitur;
 
 import android.Manifest;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Environment;
 import android.util.Base64;
@@ -16,9 +23,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.studentportal.BuildConfig;
 import com.example.studentportal.DocumentPOJO;
+import com.example.studentportal.Fragment.HomeFragment;
 import com.example.studentportal.R;
 import com.example.studentportal.RetrofitClient;
 
@@ -30,12 +40,15 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.example.studentportal.app.AppController.TAG;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link KalenderAkademikFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class KalenderAkademikFragment extends Fragment {
+    ImageView backKeterampilan;
     private EditText edtSn;
     private Button btnDownload, btnSave;
 
@@ -90,6 +103,13 @@ public class KalenderAkademikFragment extends Fragment {
         edtSn = root.findViewById(R.id.edtSN);
         btnDownload = root.findViewById(R.id.btnDownload);
         btnSave = root.findViewById(R.id.btnSaveFile);
+        backKeterampilan= (ImageView) root.findViewById(R.id.backKeterampilan);
+        backKeterampilan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openFragment(HomeFragment.newInstance("", ""));
+            }
+        });
 
         btnSave.setVisibility(View.GONE);
 
@@ -117,10 +137,17 @@ public class KalenderAkademikFragment extends Fragment {
         return root;
     }
 
+    public void openFragment(Fragment fragment) {
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
     private void save() throws IOException {
 
         String root = Environment.getExternalStorageDirectory().toString();
-        File myDir = new File(root + "/TestDocument");
+        File myDir = new File(root + "/Download");
 
         if( !myDir.exists()){
             myDir.mkdir();
@@ -136,6 +163,11 @@ public class KalenderAkademikFragment extends Fragment {
             fos.close();
 
             Toast.makeText(getActivity(), "Saved", Toast.LENGTH_SHORT).show();
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setMessage("File Berhasil di Download")
+                    .setNegativeButton("Retry",null)
+                    .create()
+                    .show();
 
 
         }catch (Exception e){e.printStackTrace();}
@@ -161,6 +193,9 @@ public class KalenderAkademikFragment extends Fragment {
             return true;
         }
     }
+
+
+
 
     private void downloadDocument() {
 

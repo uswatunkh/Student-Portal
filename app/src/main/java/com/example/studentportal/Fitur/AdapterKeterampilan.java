@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.studentportal.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterKeterampilan extends BaseAdapter {
@@ -21,6 +22,10 @@ public class AdapterKeterampilan extends BaseAdapter {
     public AdapterKeterampilan(Activity activity, List<DataKeterampilan> items) {
         this.activity = activity;
         this.items = items;
+    }
+    public void filterList(ArrayList<DataKeterampilan> filteredList) {
+        items = filteredList;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -50,19 +55,19 @@ public class AdapterKeterampilan extends BaseAdapter {
 
         TextView idKeterampilan = (TextView) convertView.findViewById(R.id.idKeterampilan);
         TextView namaKeterampilan = (TextView) convertView.findViewById(R.id.namaKeterampilan);
-        TextView jenis = (TextView) convertView.findViewById(R.id.jenis);
-        TextView tingkat = (TextView) convertView.findViewById(R.id.tingkat);
-        TextView verifikasi = (TextView) convertView.findViewById(R.id.vertifikasi);
-        TextView scanBukti = (TextView) convertView.findViewById(R.id.scanBukti);
+//        TextView jenis = (TextView) convertView.findViewById(R.id.jenis);
+//        TextView tingkat = (TextView) convertView.findViewById(R.id.tingkat);
+//        TextView verifikasi = (TextView) convertView.findViewById(R.id.vertifikasi);
+//        TextView scanBukti = (TextView) convertView.findViewById(R.id.scanBukti);
 
         DataKeterampilan data = items.get(position);
 
         idKeterampilan.setText(data.getIdKeterampilan());
         namaKeterampilan.setText(data.getNamaKeterampilan());
-        jenis.setText(data.getJenis());
-        tingkat.setText(data.getTingkat());
-        verifikasi.setText(data.getVerifikasi());
-        scanBukti.setText(data.getScanBukti());
+//        jenis.setText(data.getJenis());
+//        tingkat.setText(data.getTingkat());
+//        verifikasi.setText(data.getVerifikasi());
+//        scanBukti.setText(data.getScanBukti());
 
 
 

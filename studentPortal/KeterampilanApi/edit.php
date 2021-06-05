@@ -40,8 +40,8 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
      $result["success"] = "0";
      $result["message"] = "Error!";
      echo json_encode($result);
- 
-     mysqli_close($conn);
+        
+    mysqli_close($conn);
  }
  
  ?>

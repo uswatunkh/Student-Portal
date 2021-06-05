@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fitur.KalenderAkademikFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -11,9 +12,36 @@
         android:layout_height="match_parent"
         tools:context=".KalenderAkademikFragment">
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#141932"
+            app:popupTheme="@style/AppTheme.PopupOverlay" >
+            <ImageView
+                android:id="@+id/backKeterampilan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/back"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+
+                android:layout_marginLeft="22dp"
+                android:text="Kalender Akademik"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                />
+
+
+
+        </androidx.appcompat.widget.Toolbar>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar"
             android:orientation="vertical">
 
             <EditText
@@ -22,6 +50,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="33dp"
                 android:ems="10"
+                android:visibility="gone"
                 android:gravity="center"
                 android:hint="Enter SN"
                 android:inputType="textPersonName" />
@@ -40,6 +69,7 @@
                 android:layout_margin="33dp"
                 android:text="Save File"
                 tools:visibility="visible" />
+
         </LinearLayout>
     </RelativeLayout>
 

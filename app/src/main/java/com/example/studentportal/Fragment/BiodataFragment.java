@@ -1,6 +1,9 @@
 package com.example.studentportal.Fragment;
 
+import android.Manifest;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -17,6 +20,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -32,9 +36,16 @@ import com.example.studentportal.HomeActivity;
 import com.example.studentportal.R;
 import com.example.studentportal.Server;
 import com.example.studentportal.SessionManager;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionDeniedResponse;
+import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.single.PermissionListener;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -65,6 +76,8 @@ public class BiodataFragment extends Fragment {
     private Menu action;
     private Bitmap bitmap;
     CircleImageView profile_image;
+    AlertDialog.Builder dialog;
+    String encodedimage;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -111,6 +124,7 @@ public class BiodataFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_biodata, container, false);
+        getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         ubah_data_diri = root.findViewById(R.id.ubah_data_diri);
         ubah_data_ortu = root.findViewById(R.id.ubah_data_ortu);
         scanKtp = root.findViewById(R.id.scanKtp);
@@ -122,10 +136,64 @@ public class BiodataFragment extends Fragment {
 
         HashMap<String, String> user = sessionManager.getUserDetail();
         getId = user.get(sessionManager.ID);  //updateprofil
-        btn_photo_upload.setOnClickListener(new View.OnClickListener() {
+//        btn_photo_upload.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                chooseFile();
+//            }
+//        });
+
+        btn_photo_upload.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public void onClick(View v) {
-                chooseFile();
+            public boolean onLongClick(View v) {
+                final CharSequence[] dialogitem = {"Kamera","Galeri"};
+                dialog = new AlertDialog.Builder(getActivity());
+                dialog.setCancelable(true);
+                dialog.setItems(dialogitem, new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // TODO Auto-generated method stub
+                        switch (which) {
+                            case 0:
+
+//                                Intent takePicture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//                                startActivityForResult(takePicture, 1);
+
+                                Dexter.withContext(getActivity().getApplicationContext())
+                                        .withPermission(Manifest.permission.CAMERA)
+                                        .withListener(new PermissionListener() {
+                                            @Override
+                                            public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
+                                                Intent intent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                                                startActivityForResult( intent,111);
+                                            }
+
+                                            @Override
+                                            public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
+
+                                            }
+
+                                            @Override
+                                            public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
+                                                permissionToken.continuePermissionRequest();
+                                            }
+                                        }).check();
+
+                                break;
+                            case 1:
+                                Intent pickPhoto = new Intent(Intent.ACTION_PICK,
+                                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                                startActivityForResult(pickPhoto , 1);//one can be replaced with any action code
+
+                                break;
+                        }
+                    }
+                }).show();
+//
+
+                return false;
             }
         });
 
@@ -233,18 +301,78 @@ public class BiodataFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() !=null ){
-            Uri filePath = data.getData();
+//        if(requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() !=null ){
+//            Uri filePath = data.getData();
+//            try {
+//                bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), filePath);
+//                profile_image.setImageBitmap(bitmap);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//            UploadPicture(getId, getStringImage(bitmap));
+//
+//        }
+        if(requestCode==111 && resultCode==RESULT_OK)
+        {
+            bitmap=(Bitmap)data.getExtras().get("data");
+            profile_image.setImageBitmap(bitmap);
+//            encodebitmap(bitmap);
+            UploadPicture(getId, getStringImage(bitmap));
+        }
+        else if(requestCode==1 && resultCode==RESULT_OK)
+        {
+            Uri selectedImage = data.getData();
             try {
-                bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), filePath);
+                bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), selectedImage);
                 profile_image.setImageBitmap(bitmap);
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
             UploadPicture(getId, getStringImage(bitmap));
-
         }
+//        switch(requestCode ) {
+//            case 0:
+//                if(resultCode == RESULT_OK){
+//
+//                    Uri selectedImage = data.getData();
+//                    try {
+//                        bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), selectedImage);
+//                        profile_image.setImageBitmap(bitmap);
+//
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//                    UploadPicture(getId, getStringImage(bitmap));
+//        }
 
+
+//                if(resultCode==RESULT_OK)
+//                {
+//                    bitmap=(Bitmap)data.getExtras().get("data");
+//                    profile_image.setImageBitmap(bitmap);
+//                    encodebitmap(bitmap);
+//                }
+
+
+
+//                break;
+//            case 1:
+//                if(resultCode == RESULT_OK){
+//
+//                    Uri selectedImage = data.getData();
+//                    try {
+//                        bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), selectedImage);
+//                        profile_image.setImageBitmap(bitmap);
+//
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//                    UploadPicture(getId, getStringImage(bitmap));
+//
+//                }
+//                break;
+//        }
     }
 
 
@@ -266,6 +394,7 @@ public class BiodataFragment extends Fragment {
                             String success = jsonObject.getString("success");
                             if (success.equals("1")){
                                 Toast.makeText(getActivity(), "Success!", Toast.LENGTH_SHORT).show();
+                                getUserDetail();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -302,6 +431,14 @@ public class BiodataFragment extends Fragment {
         String encodedImage = Base64.encodeToString(imageByteArray, Base64.DEFAULT);
 
         return encodedImage;
+    }
+    private void encodebitmap(Bitmap bitmap)
+    {
+        ByteArrayOutputStream byteArrayOutputStream=new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
+
+        byte[] byteofimages=byteArrayOutputStream.toByteArray();
+        encodedimage=android.util.Base64.encodeToString(byteofimages, Base64.DEFAULT);
     }
 
 

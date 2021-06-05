@@ -33,7 +33,7 @@ $email = $_POST['email'];
 
 	$mail->Subject = 'Forgot Password Student Portal';
 	$mail->Body    = "Click Here the Link Below: 
-	http://192.168.10.42/studentPortal/resetPasswordForm.php?key=$email";
+	http://192.168.1.42/studentPortal/resetPasswordForm.php?key=$email";
 
 	if(!$mail->send()) {
 	    echo 'Message could not be sent.';

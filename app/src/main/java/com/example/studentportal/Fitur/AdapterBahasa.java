@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.studentportal.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterBahasa extends BaseAdapter {
@@ -22,6 +23,11 @@ public class AdapterBahasa extends BaseAdapter {
         this.activity = activity;
         this.items = items;
     }
+    public void filterList(ArrayList<DataBahasa> filteredList) {
+        items = filteredList;
+        notifyDataSetChanged();
+    }
+
 
     @Override
     public int getCount() {
@@ -49,30 +55,30 @@ public class AdapterBahasa extends BaseAdapter {
             convertView = inflater.inflate(R.layout.bahasalist_bahasa, null);
 
         TextView idBahasa= (TextView) convertView.findViewById(R.id.idBahasa);
-        TextView periodeWisuda = (TextView) convertView.findViewById(R.id.periodeWisuda);
-        TextView tahunWisuda = (TextView) convertView.findViewById(R.id.tahunWisuda);
+//        TextView periodeWisuda = (TextView) convertView.findViewById(R.id.periodeWisuda);
+//        TextView tahunWisuda = (TextView) convertView.findViewById(R.id.tahunWisuda);
         TextView namaBahasa = (TextView) convertView.findViewById(R.id.namaBahasa);
-        TextView skor = (TextView) convertView.findViewById(R.id.skor);
-        TextView tanggalTes = (TextView) convertView.findViewById(R.id.tanggalTes);
-        TextView scanBukti = (TextView) convertView.findViewById(R.id.scanBukti);
-        TextView verifikasi = (TextView) convertView.findViewById(R.id.verifikasi);
+//        TextView skor = (TextView) convertView.findViewById(R.id.skor);
+//        TextView tanggalTes = (TextView) convertView.findViewById(R.id.tanggalTes);
+//        TextView scanBukti = (TextView) convertView.findViewById(R.id.scanBukti);
+//        TextView verifikasi = (TextView) convertView.findViewById(R.id.verifikasi);
 
 
         DataBahasa data = items.get(position);
 
         idBahasa.setText(data.getIdBahasa());
-        periodeWisuda.setText(data.getPeriodeBahasa());
-        tahunWisuda.setText(data.getTahunWisuda());
+//        periodeWisuda.setText(data.getPeriodeBahasa());
+//        tahunWisuda.setText(data.getTahunWisuda());
         namaBahasa.setText(data.getNamaBahasa());
-        skor.setText(data.getSkor());
-        tanggalTes.setText(data.getTanggalTes());
-        scanBukti.setText(data.getScanBukti());
-        verifikasi.setText(data.getVerifikasi());
-
-
-        if(verifikasi.equals("Sudah Diverifikasi")){
-            verifikasi.setTextColor(Color.parseColor("#000000"));
-        }
+//        skor.setText(data.getSkor());
+//        tanggalTes.setText(data.getTanggalTes());
+//        scanBukti.setText(data.getScanBukti());
+//        verifikasi.setText(data.getVerifikasi());
+//
+//
+//        if(verifikasi.equals("Sudah Diverifikasi")){
+//            verifikasi.setTextColor(Color.parseColor("#000000"));
+//        }
 
         return convertView;
     }

@@ -5,12 +5,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -27,6 +30,7 @@ import com.example.studentportal.Fitur.DataKuisioner;
 import com.example.studentportal.Fitur.HasilStudiAwalFragment;
 import com.example.studentportal.Fitur.Kuisioner;
 import com.example.studentportal.FragementHari.Hari_list;
+import com.example.studentportal.Fragment.HomeFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -49,7 +53,8 @@ public class HasilStudi  extends AppCompatActivity {
     List<HasilStudi_list> mData;
     SessionManager sessionManager;
     String getId, getSmst;  //updateprofil
-    CardView refresh;
+    ImageView refresh;
+    ImageView back;
     private static String URL_READ     = Server.URL+ "readHasilStudi.php";
 
         @Override
@@ -59,6 +64,7 @@ public class HasilStudi  extends AppCompatActivity {
             txtSemester = findViewById(R.id.semester);
             txtIp = findViewById(R.id.ip);
             txtIpk = findViewById(R.id.ipk);
+//            back=findViewById(R.id.backKeterampilan);
 
 
             sessionManager = new SessionManager(this);
@@ -83,7 +89,19 @@ public class HasilStudi  extends AppCompatActivity {
                     getUserDetail();
                 }
             });
+//            back.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    openFragment(HasilStudiAwalFragment.newInstance("", ""));
+//                }
+//            });
         }
+    public void openFragment(Fragment fragment) {
+        FragmentTransaction transaction = this.getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
 
     private void getUserDetail(){
         mData.clear();

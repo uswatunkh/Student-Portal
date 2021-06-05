@@ -29,7 +29,7 @@ public class FragmentUtama extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        FirebaseMessaging.getInstance().subscribeToTopic("pengumuman");
         setContentView(R.layout.fragment_utama);
         bottomNavigationView=findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener);

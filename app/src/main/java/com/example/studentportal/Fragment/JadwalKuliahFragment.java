@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.example.studentportal.FragementHari.JumatFragment;
 import com.example.studentportal.FragementHari.KamisFragment;
@@ -36,6 +37,7 @@ import java.util.HashMap;
  * create an instance of this fragment.
  */
 public class JadwalKuliahFragment extends Fragment {
+    ImageView backKeterampilan;
     private final int ID_HOME = 1;
     private final int ID_MESSAGE = 2;
     private final int ID_NOTIFICATION = 3;
@@ -97,14 +99,28 @@ public class JadwalKuliahFragment extends Fragment {
         sessionManager.checkLogin();
         HashMap<String, String> user = sessionManager.getUserDetail();
         getId = user.get(sessionManager.ID);  //updateprofil
+        backKeterampilan= (ImageView) root.findViewById(R.id.backKeterampilan);
+        backKeterampilan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openFragment2(HomeFragment.newInstance("", ""));
+            }
+        });
 
 
         return root;
     }
 
+    public void openFragment2(Fragment fragment) {
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
     public void openFragment(Fragment fragment) {
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.containerhari, fragment);
+        transaction.replace(R.id  .containerhari, fragment);
         //transaction.addToBackStack(null);
         transaction.commit();
         transaction.disallowAddToBackStack();     //agar gabisa diback atau fungsi finish()

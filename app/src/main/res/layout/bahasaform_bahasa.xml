@@ -75,6 +75,7 @@
         <EditText
             android:id="@+id/txt_tanggalTes"
             android:layout_marginTop="0dp"
+            android:focusable="false"
             android:layout_marginBottom="10dp"
             android:hint="Tanggal Tes"
             android:singleLine="true"

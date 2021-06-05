@@ -1,5 +1,6 @@
 package com.example.studentportal.Fitur;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -11,6 +12,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Path;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -20,6 +22,8 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.provider.MediaStore;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -50,6 +54,12 @@ import com.example.studentportal.SessionManager;
 import com.example.studentportal.app.AppController;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputLayout;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionDeniedResponse;
+import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.single.PermissionListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -72,7 +82,12 @@ import static android.app.Activity.RESULT_OK;
  * create an instance of this fragment.
  */
 public class  KeterampilanFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
-    EditText idKeterampilan,namaKeterampilan,jenisKet,tingkatKet,verifikasiKet,scanBuktiKet;
+
+    ImageView btncamera;
+    Button btnupload;
+    String encodedimage;
+
+    EditText idKeterampilan,namaKeterampilan,jenisKet,tingkatKet,verifikasiKet,scanBuktiKet,edit_cari;
     TextInputLayout inputVerifikasi;
     Toolbar toolbar;
     ImageView backKeterampilan;
@@ -120,7 +135,9 @@ public class  KeterampilanFragment extends Fragment implements SwipeRefreshLayou
     //private static String URL_UPLOAD = "http://192.168.1.43/AndroidTutorials/upload_document.php";
 
     private  int REQ_PDF = 21;
-    private  String encodedPDF;
+    private  int REQ_PDF2 = 1;
+    private  String encodedPDF = "";
+    String ext;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -174,7 +191,24 @@ public class  KeterampilanFragment extends Fragment implements SwipeRefreshLayou
         fab     = (FloatingActionButton) root.findViewById(R.id.fab_add);
         swipe   = (SwipeRefreshLayout) root.findViewById(R.id.swipe_refresh_layout);
         list    = (ListView) root.findViewById(R.id.list);
-        backKeterampilan= (ImageView) root.findViewById(R.id.backKeterampilan);
+
+        edit_cari=(EditText) root.findViewById(R.id.edit_cari);
+        edit_cari.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString());
+            }
+        });
 
         // untuk mengisi data dari JSON ke dalam adapter
         adapter = new AdapterKeterampilan(getActivity(), itemList);
@@ -209,6 +243,8 @@ public class  KeterampilanFragment extends Fragment implements SwipeRefreshLayou
                 txt_scan.setVisibility(View.GONE);
             }
         });
+
+        backKeterampilan= (ImageView) root.findViewById(R.id.backKeterampilan);
         backKeterampilan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -272,6 +308,18 @@ public class  KeterampilanFragment extends Fragment implements SwipeRefreshLayou
         });
 
         return root;
+    }
+
+    private void filter(String text) {
+        ArrayList<DataKeterampilan> filteredList = new ArrayList<>();
+
+        for (DataKeterampilan item : itemList) {
+            if (item.getNamaKeterampilan().toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(item);
+            }
+        }
+
+        adapter.filterList(filteredList);
     }
 
     public void openFragment(Fragment fragment) {
@@ -342,16 +390,52 @@ public class  KeterampilanFragment extends Fragment implements SwipeRefreshLayou
         btnSelect = dialogView.findViewById(R.id.btnSelect);
         //btnUpload = dialogView.findViewById(R.id.btnUpload);
 
-        btnSelect.setOnClickListener(new View.OnClickListener() {
+        btnSelect.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public void onClick(View v) {
+            public boolean onLongClick(View v) {
+                final CharSequence[] dialogitem = {"Galeri","Kamera"};
+                dialog = new AlertDialog.Builder(getActivity());
+                dialog.setCancelable(true);
+                dialog.setItems(dialogitem, new DialogInterface.OnClickListener() {
 
-                Intent chooseFile = new Intent(Intent.ACTION_GET_CONTENT);
-                chooseFile.setType("application/pdf");
-                chooseFile = Intent.createChooser(chooseFile, "Choose a file");
-                startActivityForResult(chooseFile, REQ_PDF);
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // TODO Auto-generated method stub
+                        switch (which) {
 
+                            case 0:
+                                Intent pickPhoto = new Intent(Intent.ACTION_PICK,
+                                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                                startActivityForResult(pickPhoto , 1);//one can be replaced with any action code
+                                break;
+                            case 1:
+                                Dexter.withContext(getActivity().getApplicationContext())
+                                        .withPermission(Manifest.permission.CAMERA)
+                                        .withListener(new PermissionListener() {
+                                            @Override
+                                            public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
+                                                Intent intent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                                                startActivityForResult( intent,111);
+                                            }
 
+                                            @Override
+                                            public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
+
+                                            }
+
+                                            @Override
+                                            public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
+                                                permissionToken.continuePermissionRequest();
+                                            }
+                                        }).check();
+
+                                break;
+                        }
+                    }
+                }).show();
+//
+
+                return false;
             }
         });
 
@@ -399,12 +483,11 @@ public class  KeterampilanFragment extends Fragment implements SwipeRefreshLayou
                 jenisHide=jenis_hide.getText().toString();
                 tingkat= txt_tingkat.getText().toString();
                 //scanBukti  = txt_scanBukti.getText().toString();
-                if (nama.isEmpty() ||  jenisHide.isEmpty() ||  tingkat.isEmpty() || encodedPDF.isEmpty() ){
+                if (nama.isEmpty() ||  jenisHide.isEmpty() ||  tingkat.isEmpty()){
                     //Toast.makeText(getActivity(), "Data Tidak Boleh Kosong", Toast.LENGTH_SHORT).show();
                     Toast.makeText(getContext(), "Data Tidak Boleh Kosong",Toast.LENGTH_SHORT).show();
                 }else{
                     simpan_update();
-                    callVolley();
                     dialog.dismiss();
                 }
 
@@ -427,6 +510,7 @@ public class  KeterampilanFragment extends Fragment implements SwipeRefreshLayou
         dialog.show();
 
     }
+
 
     // untuk menampilkan dialog from biodata
     private void DialogForm3(String idx, String namax, String jenisx,String tingkatx,String scanBuktix,String verifikasix, String button) {
@@ -524,10 +608,10 @@ public class  KeterampilanFragment extends Fragment implements SwipeRefreshLayou
 
                         item.setIdKeterampilan(ob.getString(TAG_ID));
                         item.setNamaKeterampilan(ob.getString(TAG_NAMA));
-                        item.setJenis(ob.getString(TAG_JENIS));
-                        item.setTingkat(ob.getString(TAG_TINGKAT));
-                        item.setVerifikasi(ob.getString(TAG_Verifikasi));
-                        item.setScanBukti(ob.getString(TAG_SCANBUKTI));
+//                        item.setJenis(ob.getString(TAG_JENIS));
+//                        item.setTingkat(ob.getString(TAG_TINGKAT));
+//                        item.setVerifikasi(ob.getString(TAG_Verifikasi));
+//                        item.setScanBukti(ob.getString(TAG_SCANBUKTI));
 
 
                         // menambah item ke array
@@ -566,16 +650,26 @@ public class  KeterampilanFragment extends Fragment implements SwipeRefreshLayou
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+
         if(requestCode == REQ_PDF && resultCode == RESULT_OK && data != null){
 
             Uri path = data.getData();
-
-
             try {
                 InputStream inputStream = getActivity().getContentResolver().openInputStream(path);
                 byte[] pdfInBytes = new byte[inputStream.available()];
                 inputStream.read(pdfInBytes);
-                encodedPDF = Base64.encodeToString(pdfInBytes, Base64.DEFAULT);
+
+
+                String lok = path.getLastPathSegment();
+                ext = lok.substring(lok.lastIndexOf(".")+1);
+
+                if(ext.equals("png") || ext.equals("jpg") || ext.equals("jpeg")){
+                    bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), path);
+                    encodebitmap(bitmap);
+                }else {
+                    encodedPDF = Base64.encodeToString(pdfInBytes, Base64.DEFAULT);
+                }
+
 
                 textView.setText("Document Selected");
                 btnSelect.setText("Change Document");
@@ -587,26 +681,43 @@ public class  KeterampilanFragment extends Fragment implements SwipeRefreshLayou
                 e.printStackTrace();
 
             }
-            //  simpan_update(encodedPDF);
-//            btnUpload.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    id      = txt_id.getText().toString();
-//                    nama    = txt_nama.getText().toString();
-//                    //jenis  = txt_jenis.getSelectedItem().toString();
-//                    jenisHide=jenis_hide.getText().toString();
-//                    tingkat= txt_tingkat.getText().toString();
-//                    simpan_update();
-//
-//
-//                    callVolley();
-//
-//                }
-//            });
-
-
-
         }
+        else if(requestCode == 1 && resultCode == RESULT_OK && data != null){
+
+            Uri path = data.getData();
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), path);
+                encodebitmap(bitmap);
+
+                textView.setText("Document Selected");
+                btnSelect.setText("Change Document");
+
+                Toast.makeText(getActivity(), "Document Selected", Toast.LENGTH_SHORT).show();
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+
+            }
+        }
+
+        else if(requestCode==111 && resultCode==RESULT_OK)
+        {
+            bitmap=(Bitmap)data.getExtras().get("data");
+            //img.setImageBitmap(bitmap);
+            encodebitmap(bitmap);
+            textView.setText("Document Selected");
+            btnSelect.setText("Change Document");
+        }
+    }
+
+    private void encodebitmap(Bitmap bitmap)
+    {
+        ByteArrayOutputStream byteArrayOutputStream=new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
+
+        byte[] byteofimages=byteArrayOutputStream.toByteArray();
+        encodedimage=android.util.Base64.encodeToString(byteofimages, Base64.DEFAULT);
     }
 
 
@@ -615,24 +726,17 @@ public class  KeterampilanFragment extends Fragment implements SwipeRefreshLayou
     private void simpan_update() {
         String url;
         // jika id kosong maka simpan, jika id ada nilainya maka update
-        if (id.isEmpty()){
-            url = url_insert;
+        final ProgressDialog progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setMessage("Loading....");
+        progressDialog.show();
 
-
-        } else {
-            url = url_update;
-
-
-
-        }
-
-
-
-        StringRequest strReq = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+        StringRequest strReq = new StringRequest(Request.Method.POST, url_insert, new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {
-                Log.d(TAG, "Response: " + response.toString());
+                progressDialog.dismiss();
+//                Log.d(TAG, "Response: " + response.toString());
+
 
                 try {
                     JSONObject jObj = new JSONObject(response);
@@ -643,9 +747,10 @@ public class  KeterampilanFragment extends Fragment implements SwipeRefreshLayou
                         //Log.d("Add/update", jObj.toString());
 
                         Toast.makeText(getActivity(), "Tambah Berhasil", Toast.LENGTH_SHORT).show();
-                        adapter.notifyDataSetChanged();
                         callVolley();
                         kosong();
+                        adapter.notifyDataSetChanged();
+
 
                     } else {
                         Toast.makeText(getActivity(), jObj.getString("Gagal"), Toast.LENGTH_LONG).show();
@@ -666,25 +771,36 @@ public class  KeterampilanFragment extends Fragment implements SwipeRefreshLayou
         }) {
 
             @Override
-            protected Map<String, String> getParams() {
+            protected Map<String, String> getParams() throws AuthFailureError{
                 // Posting parameters ke post url
                 Map<String, String> params = new HashMap<String, String>();
                 // jika id kosong maka simpan, jika id ada nilainya maka update
-                if (id.isEmpty()){
+
                     params.put("npm", getId);
                     params.put("namaKeterampilan", nama);
                     params.put("jenis", jenisHide);
                     params.put("tingkat", tingkat);
                     //params.put("scanBukti", scanBukti);
-                    params.put("PDF", encodedPDF);
-                } else {
-                    params.put("idKeterampilan", id);
-                    params.put("namaKeterampilan", nama);
-                    params.put("jenis", jenisHide);
-                    params.put("tingkat", tingkat);
-                   // params.put("scanBukti", scanBukti);
-                    //params.put("PDF", idPDF);
-                }
+//                    if (REQ_PDF==0) {
+//                        params.put("PDF", encodedimage);
+//                    }else if (REQ_PDF!=0){
+//                        params.put("PDF", encodedPDF);
+//                    }
+//                    if(encodedPDF.isEmpty()) {
+//
+//                    }
+
+//                if(bitmap==null){
+//                        params.put("PDF", encodedPDF);
+//                        params.put("namaKeterampilan", nama + ".pdf");
+//                        encodedPDF = "";
+//                        encodedimage = "";
+//                    } else{
+                        params.put("PDF", encodedimage);
+//                        params.put("namaKeterampilan", nama + ".jpg");
+//                        encodedPDF = "";
+//                        encodedimage = "";
+//                    }
 
                 return params;
             }
@@ -721,10 +837,10 @@ public class  KeterampilanFragment extends Fragment implements SwipeRefreshLayou
                             //txt_jenis.setVisibility(View.GONE);
                             if(verifikasix.equals("Sudah Diverifikasi")){
                                 verifikasiKet.setTextColor(Color.parseColor("#FFFFFF"));
-                                inputVerifikasi.setBackgroundColor(R.drawable.informasi);
+                                inputVerifikasi.setBoxBackgroundColor(Color.parseColor("#7ae472"));
                             }else if(verifikasix.equals("Belum Diverifikasi")){
-                                inputVerifikasi.setBackgroundColor(R.drawable.peringatan);
-                                verifikasiKet.setTextColor(Color.parseColor("#FFFFFF  "));
+                                inputVerifikasi.setBoxBackgroundColor(Color.parseColor("#F08080"));
+                                verifikasiKet.setTextColor(Color.parseColor("#FFFFFF"));
                             }
 
                             adapter.notifyDataSetChanged();

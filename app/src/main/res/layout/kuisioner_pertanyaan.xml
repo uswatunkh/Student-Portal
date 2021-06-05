@@ -155,7 +155,7 @@
                             android:fontFamily="@font/ubunturegular"
                             android:gravity="center_vertical"
                             android:paddingLeft="10dp"
-                            android:text="Sikap Dosen saat Proses Perkuliahan"
+                            android:text="Dosen Sebagai Perencana Perkuliahan"
                             android:textColor="@android:color/black"
                             android:textStyle="bold" />
 
@@ -181,7 +181,7 @@
                                 android:layout_marginLeft="10dp"
                                 android:fontFamily="@font/ubunturegular"
                                 android:gravity="center_vertical"
-                                android:text="Dosen menyampaikan salam setiap memulai perkuliahan"
+                                android:text="Mengawali dan mengahiri perkuliahan dengan mengucapkan salam"
                                 android:textColor="@android:color/black" />
 
                             <RadioGroup
@@ -250,7 +250,7 @@
                                 android:layout_marginLeft="10dp"
                                 android:fontFamily="@font/ubunturegular"
                                 android:gravity="center_vertical"
-                                android:text="Dosen memakai pakaian yang rapi dan bersih"
+                                android:text="Menyampaikan kontrak perkuliahan kepada mahasiswa"
                                 android:textColor="@android:color/black" />
 
                             <RadioGroup
@@ -274,7 +274,7 @@
                                     android:layout_gravity="center"
                                     android:layout_marginLeft="10dp"
                                     android:fontFamily="@font/ubunturegular"
-                                    android:text="Pernah"
+                                    android:text="Pernah, tetapi kurang jelas"
                                     android:textSize="12dp" />
 
                                 <RadioButton
@@ -283,7 +283,7 @@
                                     android:layout_gravity="center"
                                     android:layout_marginLeft="10dp"
                                     android:fontFamily="@font/ubunturegular"
-                                    android:text="Sering"
+                                    android:text="Pernah, tetapi cukup jelas"
                                     android:textSize="12dp" />
 
                                 <RadioButton
@@ -292,7 +292,7 @@
                                     android:layout_gravity="center"
                                     android:layout_marginLeft="10dp"
                                     android:fontFamily="@font/ubunturegular"
-                                    android:text="Selalu"
+                                    android:text="Iya sangat jelas"
                                     android:textSize="12dp" />
                             </RadioGroup>
                         </TableRow>
@@ -319,7 +319,7 @@
                                 android:layout_marginLeft="10dp"
                                 android:fontFamily="@font/ubunturegular"
                                 android:gravity="center_vertical"
-                                android:text="Dosen memberikan kesempatan mahasiswa untuk bertanya"
+                                android:text="Menyampaikan informasi tata tertib perkuliahan dan ketentuan perkuiahan"
                                 android:textColor="@android:color/black" />
 
                             <RadioGroup
@@ -343,7 +343,7 @@
                                     android:layout_gravity="center"
                                     android:layout_marginLeft="10dp"
                                     android:fontFamily="@font/ubunturegular"
-                                    android:text="Pernah"
+                                    android:text="Pernah, tetapi kurang jelas"
                                     android:textSize="12dp" />
 
                                 <RadioButton
@@ -352,7 +352,7 @@
                                     android:layout_gravity="center"
                                     android:layout_marginLeft="10dp"
                                     android:fontFamily="@font/ubunturegular"
-                                    android:text="Sering"
+                                    android:text="Pernah, tetapi cukup jelas"
                                     android:textSize="12dp" />
 
                                 <RadioButton
@@ -361,7 +361,7 @@
                                     android:layout_gravity="center"
                                     android:layout_marginLeft="10dp"
                                     android:fontFamily="@font/ubunturegular"
-                                    android:text="Selalu"
+                                    android:text="Iya sangat jelas"
                                     android:textSize="12dp" />
                             </RadioGroup>
                         </TableRow>
@@ -388,7 +388,7 @@
                                 android:layout_marginLeft="10dp"
                                 android:fontFamily="@font/ubunturegular"
                                 android:gravity="center_vertical"
-                                android:text="Dosen menjawab pertanyaan mahasiswa dengan baik"
+                                android:text="Sosialisasi pengelolaan : materi perkuliahan, tugas dan penilaian"
                                 android:textColor="@android:color/black" />
 
                             <RadioGroup
@@ -412,7 +412,76 @@
                                     android:layout_gravity="center"
                                     android:layout_marginLeft="10dp"
                                     android:fontFamily="@font/ubunturegular"
-                                    android:text="Pernah"
+                                    android:text="Pernah, tetapi kurang jelas"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Pernah, tetapi cukup jelas"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Iya sangat jelas"
+                                    android:textSize="12dp" />
+                            </RadioGroup>
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:text="5"
+                                android:textColor="@android:color/black" />
+
+                            <TextView
+                                android:layout_width="160dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:gravity="center_vertical"
+                                android:text="Melakukan presensi di kelas (online/offline)"
+                                android:textColor="@android:color/black" />
+
+                            <RadioGroup
+                                android:id="@+id/R1_5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Tidak Pernah"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Jarang"
                                     android:textSize="12dp" />
 
                                 <RadioButton
@@ -442,7 +511,7 @@
                             android:fontFamily="@font/ubunturegular"
                             android:gravity="center_vertical"
                             android:paddingLeft="10dp"
-                            android:text="Kelengkapan dan Penguasaan Materi Dosen"
+                            android:text="Dosen Sebagai Pelaksana Perkuliahan"
                             android:textColor="@android:color/black"
                             android:textStyle="bold" />
 
@@ -453,13 +522,13 @@
                             android:layout_marginBottom="3dp">
 
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="10dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginStart="10dp"
                                 android:layout_marginEnd="10dp"
                                 android:fontFamily="@font/ubunturegular"
-                                android:text="1"
+                                android:text="6"
                                 android:textColor="@android:color/black" />
 
                             <TextView
@@ -468,7 +537,7 @@
                                 android:layout_marginLeft="10dp"
                                 android:fontFamily="@font/ubunturegular"
                                 android:gravity="center_vertical"
-                                android:text="Dosen melengkapi materi dengan modul dan bahan ajar lainya"
+                                android:text="Melengkapi diri dengan buku/modul ajar, buku rujukan, job sheet dll"
                                 android:textColor="@android:color/black" />
 
                             <RadioGroup
@@ -483,7 +552,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:fontFamily="@font/ubunturegular"
-                                    android:text="Tidak Pernah"
+                                    android:text="Tidak Ada"
                                     android:textSize="12dp" />
 
                                 <RadioButton
@@ -492,7 +561,7 @@
                                     android:layout_gravity="center"
                                     android:layout_marginLeft="10dp"
                                     android:fontFamily="@font/ubunturegular"
-                                    android:text="Pernah"
+                                    android:text="Ada, tetapi tidak lengkap"
                                     android:textSize="12dp" />
 
                                 <RadioButton
@@ -501,7 +570,7 @@
                                     android:layout_gravity="center"
                                     android:layout_marginLeft="10dp"
                                     android:fontFamily="@font/ubunturegular"
-                                    android:text="Sering"
+                                    android:text="Ada, tetapi cukup lengkap"
                                     android:textSize="12dp" />
 
                                 <RadioButton
@@ -510,11 +579,10 @@
                                     android:layout_gravity="center"
                                     android:layout_marginLeft="10dp"
                                     android:fontFamily="@font/ubunturegular"
-                                    android:text="Selalu"
+                                    android:text="Ada Lengkap"
                                     android:textSize="12dp" />
                             </RadioGroup>
                         </TableRow>
-
                         <TableRow
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -528,7 +596,7 @@
                                 android:layout_marginStart="10dp"
                                 android:layout_marginEnd="10dp"
                                 android:fontFamily="@font/ubunturegular"
-                                android:text="2"
+                                android:text="7"
                                 android:textColor="@android:color/black" />
 
                             <TextView
@@ -537,7 +605,7 @@
                                 android:layout_marginLeft="10dp"
                                 android:fontFamily="@font/ubunturegular"
                                 android:gravity="center_vertical"
-                                android:text="Dosen menyampaikan kontrak kuliah pada awal pertemuan"
+                                android:text="Menyampaikan tujuan dan capaian materi perkuliahan"
                                 android:textColor="@android:color/black" />
 
                             <RadioGroup
@@ -552,7 +620,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:fontFamily="@font/ubunturegular"
-                                    android:text="Tidak Pernah"
+                                    android:text="Tidak Jelas"
                                     android:textSize="12dp" />
 
                                 <RadioButton
@@ -561,7 +629,7 @@
                                     android:layout_gravity="center"
                                     android:layout_marginLeft="10dp"
                                     android:fontFamily="@font/ubunturegular"
-                                    android:text="Pernah"
+                                    android:text="Kurang Jelas"
                                     android:textSize="12dp" />
 
                                 <RadioButton
@@ -570,7 +638,7 @@
                                     android:layout_gravity="center"
                                     android:layout_marginLeft="10dp"
                                     android:fontFamily="@font/ubunturegular"
-                                    android:text="Sering"
+                                    android:text="Cukup Jelas"
                                     android:textSize="12dp" />
 
                                 <RadioButton
@@ -579,11 +647,10 @@
                                     android:layout_gravity="center"
                                     android:layout_marginLeft="10dp"
                                     android:fontFamily="@font/ubunturegular"
-                                    android:text="Selalu"
+                                    android:text="Sangat Jelas"
                                     android:textSize="12dp" />
                             </RadioGroup>
                         </TableRow>
-
                         <TableRow
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -597,7 +664,7 @@
                                 android:layout_marginStart="10dp"
                                 android:layout_marginEnd="10dp"
                                 android:fontFamily="@font/ubunturegular"
-                                android:text="3"
+                                android:text="8"
                                 android:textColor="@android:color/black" />
 
                             <TextView
@@ -606,7 +673,7 @@
                                 android:layout_marginLeft="10dp"
                                 android:fontFamily="@font/ubunturegular"
                                 android:gravity="center_vertical"
-                                android:text="Dosen menguasai dan menyampaikan materi dengan baik"
+                                android:text="Penyesuaian jadwal perkuliahan"
                                 android:textColor="@android:color/black" />
 
                             <RadioGroup
@@ -622,7 +689,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:fontFamily="@font/ubunturegular"
-                                    android:text="Tidak Pernah"
+                                    android:text="Tidak Sesuai"
                                     android:textSize="12dp" />
 
                                 <RadioButton
@@ -632,7 +699,7 @@
                                     android:layout_gravity="center"
                                     android:layout_marginLeft="10dp"
                                     android:fontFamily="@font/ubunturegular"
-                                    android:text="Pernah"
+                                    android:text="Kurang Sesuai"
                                     android:textSize="12dp" />
 
                                 <RadioButton
@@ -642,7 +709,7 @@
                                     android:layout_gravity="center"
                                     android:layout_marginLeft="10dp"
                                     android:fontFamily="@font/ubunturegular"
-                                    android:text="Sering"
+                                    android:text="Cukup Sesuai"
                                     android:textSize="12dp" />
 
                                 <RadioButton
@@ -652,11 +719,10 @@
                                     android:layout_gravity="center"
                                     android:layout_marginLeft="10dp"
                                     android:fontFamily="@font/ubunturegular"
-                                    android:text="Selalu"
+                                    android:text="Sangat Sesuai"
                                     android:textSize="12dp" />
                             </RadioGroup>
                         </TableRow>
-
                         <TableRow
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -670,7 +736,7 @@
                                 android:layout_marginStart="10dp"
                                 android:layout_marginEnd="10dp"
                                 android:fontFamily="@font/ubunturegular"
-                                android:text="4"
+                                android:text="9"
                                 android:textColor="@android:color/black" />
 
                             <TextView
@@ -679,11 +745,219 @@
                                 android:layout_marginLeft="10dp"
                                 android:fontFamily="@font/ubunturegular"
                                 android:gravity="center_vertical"
-                                android:text="Dosen menyampaikan kesimpulan materi diakhir perkuliahan"
+                                android:text="Ketepatan perencanaan waktu perkuliahan"
                                 android:textColor="@android:color/black" />
 
                             <RadioGroup
                                 android:id="@+id/R2_4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Tidak Tepat Waktu"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Kurang Tepat Waktu"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Cukup Tepat Waktu"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Sangat Tepat Waktu"
+                                    android:textSize="12dp" />
+                            </RadioGroup>
+                        </TableRow>
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:text="10"
+                                android:textColor="@android:color/black" />
+
+                            <TextView
+                                android:layout_width="160dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:gravity="center_vertical"
+                                android:text="Tertib dalam mengisi berita acara perkuliahan (daftar hadir, jurnal perkuliahan dll)"
+                                android:textColor="@android:color/black"
+                                android:layout_marginStart="10dp" />
+
+                            <RadioGroup
+                                android:id="@+id/R2_5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Tidak Tertib"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Kurang Tertib"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Cukup Tertib"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Sangat Tertib"
+                                    android:textSize="12dp" />
+                            </RadioGroup>
+                        </TableRow>
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:text="11"
+                                android:textColor="@android:color/black" />
+
+                            <TextView
+                                android:layout_width="160dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:gravity="center_vertical"
+                                android:text="Penyampaian Materi Perkuliahan dengan berbagai media ajar"
+                                android:textColor="@android:color/black" />
+
+                            <RadioGroup
+                                android:id="@+id/R2_6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Tidak Jelas"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Kurang Jelas"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Cukup Jelas"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Sangat Jelas"
+                                    android:textSize="12dp" />
+                            </RadioGroup>
+                        </TableRow>
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:text="12"
+                                android:textColor="@android:color/black" />
+
+                            <TextView
+                                android:layout_width="160dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:gravity="center_vertical"
+                                android:text="Menggunakan media pembelajaran penunjang perkuliahan"
+                                android:textColor="@android:color/black" />
+
+                            <RadioGroup
+                                android:id="@+id/R2_7"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -726,6 +1000,1527 @@
                                     android:textSize="12dp" />
                             </RadioGroup>
                         </TableRow>
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:text="13"
+                                android:textColor="@android:color/black" />
+
+                            <TextView
+                                android:layout_width="160dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:gravity="center_vertical"
+                                android:text="Penggunaan metoda pembelajaran bersesuaian dengan tujuan pembelajaran"
+                                android:textColor="@android:color/black" />
+
+                            <RadioGroup
+                                android:id="@+id/R2_8"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Tidak Pernah"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Pernah"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Sering"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Selalu"
+                                    android:textSize="12dp" />
+                            </RadioGroup>
+                        </TableRow>
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:text="14"
+                                android:textColor="@android:color/black" />
+
+                            <TextView
+                                android:layout_width="160dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:gravity="center_vertical"
+                                android:text="Penyampaian materi pembelajaran secara jelas"
+                                android:textColor="@android:color/black" />
+
+                            <RadioGroup
+                                android:id="@+id/R2_9"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Tidak Jelas"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Kurang Jelas"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Cukup Jelas"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Sangat Jelas"
+                                    android:textSize="12dp" />
+                            </RadioGroup>
+                        </TableRow>
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:text="15"
+                                android:textColor="@android:color/black" />
+
+                            <TextView
+                                android:layout_width="160dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:gravity="center_vertical"
+                                android:text="Penyampaian materi perkuliahan secara terstruktur"
+                                android:textColor="@android:color/black" />
+
+                            <RadioGroup
+                                android:id="@+id/R2_10"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Tidak Terstruktur"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Kurang Terstruktur"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Cukup Terstruktur"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Sangat Terstruktur"
+                                    android:textSize="12dp" />
+                            </RadioGroup>
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:text="16"
+                                android:textColor="@android:color/black" />
+
+                            <TextView
+                                android:layout_width="160dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:gravity="center_vertical"
+                                android:text="Melakukan pembelajaran berpusat pada mahasiswa (Student Center Learning)"
+                                android:textColor="@android:color/black" />
+
+                            <RadioGroup
+                                android:id="@+id/R2_11"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Tidak Pernah"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Pernah"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Sering"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Selalu"
+                                    android:textSize="12dp" />
+                            </RadioGroup>
+                        </TableRow>
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:text="17"
+                                android:textColor="@android:color/black" />
+
+                            <TextView
+                                android:layout_width="160dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:gravity="center_vertical"
+                                android:text="Pengendalian emosi diri pada pelaksanaan pembelajaran secara proporsional"
+                                android:textColor="@android:color/black" />
+
+                            <RadioGroup
+                                android:id="@+id/R2_12"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Tidak Mampu"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Kurang Mampu"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Cukup Mampu"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Sangat Mampu"
+                                    android:textSize="12dp" />
+                            </RadioGroup>
+                        </TableRow>
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:text="18"
+                                android:textColor="@android:color/black" />
+
+                            <TextView
+                                android:layout_width="160dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:gravity="center_vertical"
+                                android:text="Mendorong mahasiswa untuk mengoptimalkan penggunaan teknologi informasi dan komunikasi"
+                                android:textColor="@android:color/black" />
+
+                            <RadioGroup
+                                android:id="@+id/R2_13"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Tidak Pernah"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Pernah"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Sering"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Selalu"
+                                    android:textSize="12dp" />
+                            </RadioGroup>
+                        </TableRow>
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:text="19"
+                                android:textColor="@android:color/black" />
+
+                            <TextView
+                                android:layout_width="160dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:gravity="center_vertical"
+                                android:text="Bersikap tegas melaksanakan peraturan perkuliahan"
+                                android:textColor="@android:color/black" />
+
+                            <RadioGroup
+                                android:id="@+id/R2_14"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Tidak Tegas"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Kurang Tegas"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Cukup Tegas"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Sangat Tegas"
+                                    android:textSize="12dp" />
+                            </RadioGroup>
+                        </TableRow>
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:text="20"
+                                android:textColor="@android:color/black" />
+
+                            <TextView
+                                android:layout_width="160dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:gravity="center_vertical"
+                                android:text="Menciptakan suasana kelas yang kondusif"
+                                android:textColor="@android:color/black" />
+
+                            <RadioGroup
+                                android:id="@+id/R2_15"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Tidak Mampu"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Kurang Mampu"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Cukup Mampu"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Sangat Mampu"
+                                    android:textSize="12dp" />
+                            </RadioGroup>
+                        </TableRow>
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:text="21"
+                                android:textColor="@android:color/black" />
+
+                            <TextView
+                                android:layout_width="160dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:gravity="center_vertical"
+                                android:text="Memotivasi mahasiswa agar aktif dalam proses pembelajaran"
+                                android:textColor="@android:color/black" />
+
+                            <RadioGroup
+                                android:id="@+id/R2_16"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Tidak Mampu"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Kurang Mampu"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Cukup Mampu"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Sangat Mampu"
+                                    android:textSize="12dp" />
+                            </RadioGroup>
+                        </TableRow>
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:text="22"
+                                android:textColor="@android:color/black" />
+
+                            <TextView
+                                android:layout_width="160dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:gravity="center_vertical"
+                                android:text="Memberikan kesempatan mahasiswa untuk bertanya"
+                                android:textColor="@android:color/black" />
+
+                            <RadioGroup
+                                android:id="@+id/R2_17"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Tidak Pernah"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Pernah"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Sering"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Selalu"
+                                    android:textSize="12dp" />
+                            </RadioGroup>
+                        </TableRow>
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:text="23"
+                                android:textColor="@android:color/black" />
+
+                            <TextView
+                                android:layout_width="160dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:gravity="center_vertical"
+                                android:text="Menanggapi dan menjawab pertanyaan secara proporsional"
+                                android:textColor="@android:color/black" />
+
+                            <RadioGroup
+                                android:id="@+id/R2_18"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Tidak Pernah"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Pernah"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Sering"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Selalu"
+                                    android:textSize="12dp" />
+                            </RadioGroup>
+                        </TableRow>
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:text="24"
+                                android:textColor="@android:color/black" />
+
+                            <TextView
+                                android:layout_width="160dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:gravity="center_vertical"
+                                android:text="Menerima saran, kritik dan usulan dalam pelaksanaan pembelajaran"
+                                android:textColor="@android:color/black" />
+
+                            <RadioGroup
+                                android:id="@+id/R2_19"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Tidak Pernah"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Pernah"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Sering"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Selalu"
+                                    android:textSize="12dp" />
+                            </RadioGroup>
+                        </TableRow>
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:text="25"
+                                android:textColor="@android:color/black" />
+
+                            <TextView
+                                android:layout_width="160dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:gravity="center_vertical"
+                                android:text="Menerima secara proposional pendapat dan tanggapan mahasiswa terkait materi perkuliahan"
+                                android:textColor="@android:color/black" />
+
+                            <RadioGroup
+                                android:id="@+id/R2_20"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Tidak Menerima"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Kurang Menerima"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Cukup Menerima"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Sangat Menerima"
+                                    android:textSize="12dp" />
+                            </RadioGroup>
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:text="26"
+                                android:textColor="@android:color/black" />
+
+                            <TextView
+                                android:layout_width="160dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:gravity="center_vertical"
+                                android:text="Memberi simpulan berdasarkan dinamika perkuliahan di akhir pembelajaran."
+                                android:textColor="@android:color/black" />
+
+                            <RadioGroup
+                                android:id="@+id/R2_21"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Tidak Pernah"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Pernah"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Sering"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Selalu"
+                                    android:textSize="12dp" />
+                            </RadioGroup>
+                        </TableRow>
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:text="27"
+                                android:textColor="@android:color/black" />
+
+                            <TextView
+                                android:layout_width="160dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:gravity="center_vertical"
+                                android:text="Memberi informasi garis besar materi pertemuan berikutnya untuk mempermudah kesiapan belajar mahasiswa"
+                                android:textColor="@android:color/black" />
+
+                            <RadioGroup
+                                android:id="@+id/R2_22"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Tidak Pernah"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Pernah"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Sering"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Selalu"
+                                    android:textSize="12dp" />
+                            </RadioGroup>
+                        </TableRow>
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:text="28"
+                                android:textColor="@android:color/black" />
+
+                            <TextView
+                                android:layout_width="160dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:gravity="center_vertical"
+                                android:text="Memberikan contoh penerapan atau ilustrasi nyata yang terkait dengan materi perkuliahan"
+                                android:textColor="@android:color/black" />
+
+                            <RadioGroup
+                                android:id="@+id/R2_23"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Tidak Pernah"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Pernah"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Sering"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Selalu"
+                                    android:textSize="12dp" />
+                            </RadioGroup>
+                        </TableRow>
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:text="29"
+                                android:textColor="@android:color/black" />
+
+                            <TextView
+                                android:layout_width="160dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:gravity="center_vertical"
+                                android:text="Memberikan pertemuan tambahan jika jumlah pertemuan belum mencapai 16 kali pertemuan"
+                                android:textColor="@android:color/black" />
+
+                            <RadioGroup
+                                android:id="@+id/R2_24"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Tidak Pernah"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Pernah"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Sering"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Selalu"
+                                    android:textSize="12dp" />
+                            </RadioGroup>
+                        </TableRow>
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:text="30"
+                                android:textColor="@android:color/black" />
+
+                            <TextView
+                                android:layout_width="160dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:gravity="center_vertical"
+                                android:text="Memberikan informasi ketidakhadiran kepada mahasiswa sebelum jam perkuliahan dimulai"
+                                android:textColor="@android:color/black" />
+
+                            <RadioGroup
+                                android:id="@+id/R2_25"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Tidak Pernah"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Pernah"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Sering"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Selalu"
+                                    android:textSize="12dp" />
+                            </RadioGroup>
+                        </TableRow>
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:text="31"
+                                android:textColor="@android:color/black" />
+
+                            <TextView
+                                android:layout_width="160dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:gravity="center_vertical"
+                                android:text="Berpenampilan rapi, bersih dan serasi dalam berpakaian"
+                                android:textColor="@android:color/black" />
+
+                            <RadioGroup
+                                android:id="@+id/R2_26"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Tidak Pernah"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Pernah"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Sering"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Selalu"
+                                    android:textSize="12dp" />
+                            </RadioGroup>
+                        </TableRow>
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:text="32"
+                                android:textColor="@android:color/black" />
+
+                            <TextView
+                                android:layout_width="160dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:gravity="center_vertical"
+                                android:text="Memberikan konsultasi atas kesulitan mahasiswa untuk bermacam hal"
+                                android:textColor="@android:color/black" />
+
+                            <RadioGroup
+                                android:id="@+id/R2_27"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Tidak Pernah"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Pernah"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Sering"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Selalu"
+                                    android:textSize="12dp" />
+                            </RadioGroup>
+                        </TableRow>
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:text="33"
+                                android:textColor="@android:color/black" />
+
+                            <TextView
+                                android:layout_width="160dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:gravity="center_vertical"
+                                android:text="Bersikap arif, bijaksana dan adil dalam mengambil keputusan"
+                                android:textColor="@android:color/black" />
+
+                            <RadioGroup
+                                android:id="@+id/R2_28"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Tidak Pernah"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Pernah"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Sering"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Selalu"
+                                    android:textSize="12dp" />
+                            </RadioGroup>
+                        </TableRow>
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:text="34"
+                                android:textColor="@android:color/black" />
+
+                            <TextView
+                                android:layout_width="160dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:gravity="center_vertical"
+                                android:text="Bersikap arif, bijaksana dan adil dalam mengambil keputusan"
+                                android:textColor="@android:color/black" />
+
+                            <RadioGroup
+                                android:id="@+id/R2_29"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Tidak Puas"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Kurang Puas"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Cukup Puas"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Sangat Puas"
+                                    android:textSize="12dp" />
+                            </RadioGroup>
+                        </TableRow>
+
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -734,7 +2529,7 @@
                             android:fontFamily="@font/ubunturegular"
                             android:gravity="center_vertical"
                             android:paddingLeft="10dp"
-                            android:text="Sikap Dosen saat Memberikan Tugas dan Portofolio"
+                            android:text="Dosen Sebagai Evaluator Perkuliahan"
                             android:textColor="@android:color/black"
                             android:textStyle="bold" />
 
@@ -751,7 +2546,7 @@
                                 android:layout_marginStart="10dp"
                                 android:layout_marginEnd="10dp"
                                 android:fontFamily="@font/ubunturegular"
-                                android:text="1"
+                                android:text="35"
                                 android:textColor="@android:color/black" />
 
                             <TextView
@@ -760,7 +2555,7 @@
                                 android:layout_marginLeft="10dp"
                                 android:fontFamily="@font/ubunturegular"
                                 android:gravity="center_vertical"
-                                android:text="Dosen memberikan tugas sesuai dengan materi yang disampaikan"
+                                android:text="Menggunakan instrumen penilaian yang bervariasi untuk menilai hasil belajar mahasiswa"
                                 android:textColor="@android:color/black" />
 
                             <RadioGroup
@@ -821,7 +2616,7 @@
                                 android:layout_marginStart="10dp"
                                 android:layout_marginEnd="10dp"
                                 android:fontFamily="@font/ubunturegular"
-                                android:text="2"
+                                android:text="36"
                                 android:textColor="@android:color/black" />
 
                             <TextView
@@ -830,7 +2625,7 @@
                                 android:layout_marginLeft="10dp"
                                 android:fontFamily="@font/ubunturegular"
                                 android:gravity="center_vertical"
-                                android:text="Dosen memberikan kesempatan bertanya tentang tugas yang diberikan"
+                                android:text="Memberikan tugas terstruktur , tugas mandiri pada mahasiswa sesuai dengan bobot SKS dan tujuan perkuliahan"
                                 android:textColor="@android:color/black" />
 
                             <RadioGroup
@@ -891,7 +2686,7 @@
                                 android:layout_marginStart="10dp"
                                 android:layout_marginEnd="10dp"
                                 android:fontFamily="@font/ubunturegular"
-                                android:text="3"
+                                android:text="37"
                                 android:textColor="@android:color/black" />
 
                             <TextView
@@ -900,7 +2695,7 @@
                                 android:layout_marginLeft="10dp"
                                 android:fontFamily="@font/ubunturegular"
                                 android:gravity="center_vertical"
-                                android:text="Dosen menilai dan mengembalikan tugas yang telah diterima"
+                                android:text="Menginformasikan kisi-kisi soal ujian dan rincian tugas yang diberikan"
                                 android:textColor="@android:color/black" />
 
                             <RadioGroup
@@ -961,7 +2756,7 @@
                                 android:layout_marginStart="10dp"
                                 android:layout_marginEnd="10dp"
                                 android:fontFamily="@font/ubunturegular"
-                                android:text="4"
+                                android:text="38"
                                 android:textColor="@android:color/black" />
 
                             <TextView
@@ -970,11 +2765,80 @@
                                 android:layout_marginLeft="10dp"
                                 android:fontFamily="@font/ubunturegular"
                                 android:gravity="center_vertical"
-                                android:text="Dosen memberikan review dari tugas yang dikumpulkan mahasiswa"
+                                android:text="Dosen melaksaksanakan UTS dan UAS sesuai dengan waktu yang telah ditetapkan/kalender akademik"
                                 android:textColor="@android:color/black" />
 
                             <RadioGroup
                                 android:id="@+id/R3_4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Tidak Sesuai"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Kurang Sesuai"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Cukup Sesuai"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Sangat Sesuai"
+                                    android:textSize="12dp" />
+                            </RadioGroup>
+                        </TableRow>
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:text="39"
+                                android:textColor="@android:color/black" />
+
+                            <TextView
+                                android:layout_width="160dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:gravity="center_vertical"
+                                android:text="Transparan dan Obyektif dalam memberikan nilai kepada mahasiswa"
+                                android:textColor="@android:color/black" />
+
+                            <RadioGroup
+                                android:id="@+id/R3_5"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -1017,6 +2881,498 @@
                                     android:textSize="12dp" />
                             </RadioGroup>
                         </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:text="40"
+                                android:textColor="@android:color/black" />
+
+                            <TextView
+                                android:layout_width="160dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:gravity="center_vertical"
+                                android:text="Memeriksa tugas dan memberikan umpan balik yang konstruktif"
+                                android:textColor="@android:color/black" />
+
+                            <RadioGroup
+                                android:id="@+id/R3_6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Tidak Pernah"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Pernah"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Sering"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Selalu"
+                                    android:textSize="12dp" />
+                            </RadioGroup>
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:text="41"
+                                android:textColor="@android:color/black" />
+
+                            <TextView
+                                android:layout_width="160dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:gravity="center_vertical"
+                                android:text="Memberikan ujian susulan bagi mahasiswa yang terkendala pada saat ujian."
+                                android:textColor="@android:color/black" />
+
+                            <RadioGroup
+                                android:id="@+id/R3_7"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Tidak Pernah"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Pernah"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Sering"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Selalu"
+                                    android:textSize="12dp" />
+                            </RadioGroup>
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:text="42"
+                                android:textColor="@android:color/black" />
+
+                            <TextView
+                                android:layout_width="160dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:gravity="center_vertical"
+                                android:text="Meninjau ulang jika terdapat ketidaksesuaian nilai dan mengganti secara suportif."
+                                android:textColor="@android:color/black" />
+
+                            <RadioGroup
+                                android:id="@+id/R3_8"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Tidak Pernah"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Pernah"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Sering"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Selalu"
+                                    android:textSize="12dp" />
+                            </RadioGroup>
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:text="43"
+                                android:textColor="@android:color/black" />
+
+                            <TextView
+                                android:layout_width="160dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:gravity="center_vertical"
+                                android:text="Kesesuaian antara materi yang diujikan dengan tujuan pembelajaran dan materi kuliah yang disampaikan"
+                                android:textColor="@android:color/black" />
+
+                            <RadioGroup
+                                android:id="@+id/R3_9"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Tidak Sesuai"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Kurang Sesuai"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Cukup Sesuai"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Sangat Sesuai"
+                                    android:textSize="12dp" />
+                            </RadioGroup>
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:text="44"
+                                android:textColor="@android:color/black" />
+
+                            <TextView
+                                android:layout_width="160dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:gravity="center_vertical"
+                                android:text="Dosen memberikan proporsi penilaian terhadap sikap mahasiswa"
+                                android:textColor="@android:color/black" />
+
+                            <RadioGroup
+                                android:id="@+id/R3_10"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Tidak Pernah"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Pernah"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Sering"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Selalu"
+                                    android:textSize="12dp" />
+                            </RadioGroup>
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:text="45"
+                                android:textColor="@android:color/black" />
+
+                            <TextView
+                                android:layout_width="160dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:gravity="center_vertical"
+                                android:text="Dosen melakukan penilaian terhadap keterampilan mahasiswa"
+                                android:textColor="@android:color/black" />
+
+                            <RadioGroup
+                                android:id="@+id/R3_11"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Tidak Pernah"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Pernah"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Sering"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Selalu"
+                                    android:textSize="12dp" />
+                            </RadioGroup>
+                        </TableRow>
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:text="46"
+                                android:textColor="@android:color/black" />
+
+                            <TextView
+                                android:layout_width="160dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:fontFamily="@font/ubunturegular"
+                                android:gravity="center_vertical"
+                                android:text="Secara umum, bagaimana kepuasan Anda terhadap proses evaluasi yang diberikan dosen ?"
+                                android:textColor="@android:color/black" />
+
+                            <RadioGroup
+                                android:id="@+id/R3_12"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Tidak Puas"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Kurang Puas"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Cukup Puas"
+                                    android:textSize="12dp" />
+
+                                <RadioButton
+                                    android:layout_width="105dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="@font/ubunturegular"
+                                    android:text="Sangat Puas"
+                                    android:textSize="12dp" />
+                            </RadioGroup>
+                        </TableRow>
+
+
+<!--                        isian kuisioner-->
 
                         <TextView
                             android:layout_width="wrap_content"

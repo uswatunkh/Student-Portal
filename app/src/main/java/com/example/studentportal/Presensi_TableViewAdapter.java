@@ -44,14 +44,14 @@ public class Presensi_TableViewAdapter extends RecyclerView.Adapter {
 
         if (rowPos == 0) {
 
-            rowViewHolder.txtNomor.setBackgroundResource(R.drawable.table_bg);
+//            rowViewHolder.txtNomor.setBackgroundResource(R.drawable.table_bg);
             rowViewHolder.txtMingguKe.setBackgroundResource(R.drawable.table_bg);
             rowViewHolder.txtTanggalPresensi.setBackgroundResource(R.drawable.table_bg);
             rowViewHolder.txtNamaMK.setBackgroundResource(R.drawable.table_bg);
             rowViewHolder.txtKet.setBackgroundResource(R.drawable.table_bg);
 
-            rowViewHolder.txtNomor.setText("No");
-            rowViewHolder.txtNomor.setTextColor(Color.parseColor("#FFFFFF"));
+//            rowViewHolder.txtNomor.setText("No");
+//            rowViewHolder.txtNomor.setTextColor(Color.parseColor("#FFFFFF"));
             rowViewHolder.txtMingguKe.setText("Minggu Ke");
             rowViewHolder.txtMingguKe.setTextColor(Color.parseColor("#FFFFFF"));
             rowViewHolder.txtTanggalPresensi.setText("Tanggal Presensi");
@@ -63,7 +63,7 @@ public class Presensi_TableViewAdapter extends RecyclerView.Adapter {
         } else {
             Presensi_list modal = (Presensi_list) mData.get(rowPos - 1);
 
-            rowViewHolder.txtNomor.setBackgroundResource(R.drawable.cardview);
+//            rowViewHolder.txtNomor.setBackgroundResource(R.drawable.cardview);
             rowViewHolder.txtMingguKe.setBackgroundResource(R.drawable.cardview);
             rowViewHolder.txtTanggalPresensi.setBackgroundResource(R.drawable.cardview);
             rowViewHolder.txtNamaMK.setBackgroundResource(R.drawable.cardview);
@@ -92,7 +92,7 @@ public class Presensi_TableViewAdapter extends RecyclerView.Adapter {
 
         RowViewHolder(View itemView) {
             super(itemView);
-            txtNomor = itemView.findViewById(R.id.txtNomor);
+//            txtNomor = itemView.findViewById(R.id.txtNomor);
             txtMingguKe = itemView.findViewById(R.id.txtMingguKe);
             txtTanggalPresensi = itemView.findViewById(R.id.txtTanggalPresensi);
             txtNamaMK = itemView.findViewById(R.id.txtNamaMK);

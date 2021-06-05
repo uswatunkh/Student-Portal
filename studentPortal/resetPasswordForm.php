@@ -46,7 +46,7 @@ $query= mysqli_query($connect, $sql);
 
 ?>
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
 	<title>Forgot Password</title>
@@ -60,4 +60,40 @@ $query= mysqli_query($connect, $sql);
 	</form>
 
 </body>
+</html> -->
+
+
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - youtube.com/codingnepal -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Forgot Password Student Portal</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="center">
+    	<center><h2>Welcome</h2></center>
+    	<center><h3><?php echo "". $email?></h3></center>
+      <!-- <h1>Login</h1> -->
+      <form action="" method="POST">
+        <div class="txt_field">
+          <input type="text" name="password" required>
+          <span></span>
+          <label>Enter New Password</label>
+        </div>
+        <div class="txt_field">
+          <input type="text" name="cpassword" required>
+          <span></span>
+          <label>Enter Confirm Password</label>
+        </div>
+        
+        <input type="submit" name="submit">
+        <div class="signup_link">
+          Not a member? <a href="#">Signup</a>
+        </div>
+      </form>
+    </div>
+
+  </body>
 </html>

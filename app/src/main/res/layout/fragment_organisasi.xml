@@ -24,17 +24,44 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="#ff0099cc"
+                android:background="#141932"
                 app:popupTheme="@style/AppTheme.PopupOverlay" >
+                <ImageView
+                    android:id="@+id/backKeterampilan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/back"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="25dp"
-                    android:fontFamily="@font/mench"
-                    android:layout_marginLeft="120dp"
+                    android:textSize="18dp"
+
+                    android:layout_marginLeft="22dp"
                     android:text="Organisasi"
+                    android:textStyle="bold"
                     android:textColor="@android:color/white"
                     />
+                <EditText
+                    android:id="@+id/edit_cari"
+                    android:layout_width="126dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="17dp"
+                    android:textSize="13dp"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="0dp"
+                    android:paddingBottom="0dp"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/edit_text_bg" />
+                <ImageView
+                    android:id="@+id/btn_cari"
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="17dp"
+                    android:layout_centerVertical="true"
+                    android:padding="@dimen/cardview_compat_inset_shadow"
+                    android:src="@drawable/cari" />
 
 
             </androidx.appcompat.widget.Toolbar>

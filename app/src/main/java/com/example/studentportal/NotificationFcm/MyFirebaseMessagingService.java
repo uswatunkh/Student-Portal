@@ -73,7 +73,7 @@ import org.json.JSONObject;
              intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
              intent.putExtra("extra",extra);
          }else if(click_action.equals("SOMEACTIVITY")){
-             intent = new Intent(this, SomeActivity.class);
+             intent = new Intent(this, FragmentUtama.class);
              intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
          }
          else if(click_action.equals("MAINACTIVITY")){

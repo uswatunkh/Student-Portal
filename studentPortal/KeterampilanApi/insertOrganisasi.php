@@ -9,7 +9,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$tahunKeluar = $_POST['tahunKeluar'];
 	$jabatan = $_POST['jabatan'];
 	$verifikasi = "Belum Diverifikasi";
-	$scanBukti = "scanBukti_Organisasi/$npm.$namaOrganisasi.pdf";
+	$scanBukti = "scanBukti_Organisasi/$npm.$namaOrganisasi.png";
 	$encodedPDF = $_POST['PDF'];
 	
 	//$pdfLocation = "documents/$pdfTitle.pdf";

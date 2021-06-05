@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.studentportal.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterPrestasi extends BaseAdapter {
@@ -21,6 +22,11 @@ public class AdapterPrestasi extends BaseAdapter {
     public AdapterPrestasi(Activity activity, List<DataPrestasi> items) {
         this.activity = activity;
         this.items = items;
+    }
+
+    public void filterList(ArrayList<DataPrestasi> filteredList) {
+        items = filteredList;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -50,27 +56,25 @@ public class AdapterPrestasi extends BaseAdapter {
 
         TextView idPrestasi = (TextView) convertView.findViewById(R.id.idPrestasi);
         TextView namaLomba = (TextView) convertView.findViewById(R.id.namaLomba);
-        TextView tahun = (TextView) convertView.findViewById(R.id.tahun);
-        TextView juara = (TextView) convertView.findViewById(R.id.juara);
-        TextView tingkat = (TextView) convertView.findViewById(R.id.tingkatPrestasi);
-        TextView jenis = (TextView) convertView.findViewById(R.id.jenisPrestasi);
-        TextView verifikasi = (TextView) convertView.findViewById(R.id.vertifikasi);
-        TextView scanBukti = (TextView) convertView.findViewById(R.id.scanBukti);
+//        TextView tahun = (TextView) convertView.findViewById(R.id.tahun);
+//        TextView juara = (TextView) convertView.findViewById(R.id.juara);
+//        TextView tingkat = (TextView) convertView.findViewById(R.id.tingkatPrestasi);
+//        TextView jenis = (TextView) convertView.findViewById(R.id.jenisPrestasi);
+//        TextView verifikasi = (TextView) convertView.findViewById(R.id.vertifikasi);
+//        TextView scanBukti = (TextView) convertView.findViewById(R.id.scanBukti);
 
         DataPrestasi data = items.get(position);
 
         idPrestasi.setText(data.getIdPrestasi());
         namaLomba.setText(data.getNamaLomba());
-        tahun.setText(data.getTahun());
-        juara.setText(data.getJuara());
-        tingkat.setText(data.getTingkat());
-        jenis.setText(data.getJenis());
-        verifikasi.setText(data.getVerifikasi());
-        scanBukti.setText(data.getScanBukti());
+//        tahun.setText(data.getTahun());
+//        juara.setText(data.getJuara());
+//        tingkat.setText(data.getTingkat());
+//        jenis.setText(data.getJenis());
+//        verifikasi.setText(data.getVerifikasi());
+//        scanBukti.setText(data.getScanBukti());
 
-        if(verifikasi.equals("Sudah Diverifikasi")){
-            verifikasi.setTextColor(Color.parseColor("#000000"));
-        }
+
 
         return convertView;
     }

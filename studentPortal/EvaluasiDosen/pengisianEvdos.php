@@ -1,34 +1,27 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
-if($_SERVER['REQUEST_METHOD'] == 'POST'){
+include 'connect.php';
 
-	$npm = $_POST['npm'];
-	$idEvdos = $_POST['idEvdos'];
-	$jawaban = $_POST['jawaban'];
-	
-    require_once 'connect.php';
+$npm =$_POST['npm'];
+//$npm = json_decode($npm,TRUE);
 
-    $sql = "INSERT INTO `pengisiankuisioner`( `npm`, `idEvdos`, `jawaban`) VALUES ('$npm','$idEvdos','$jawaban') ";
+$idEvdos = $_POST['idEvdos'];
+$idEvdos = json_decode($idEvdos,TRUE);
 
-    if(mysqli_query($connect, $sql)) {
+$jawaban = $_POST['jawaban'];
+$jawaban = json_decode($jawaban,TRUE);
 
-          $result["success"] = "1";
-          $result["message"] = "success";
 
-          echo json_encode($result);
-          mysqli_close($connect);
-      }
-  }
 
-else{
+for($i = 0; $i < count($idEvdos); $i++){
 
-   $result["success"] = "0";
-   $result["message"] = "error!";
-   echo json_encode($result);
+      $sql = "INSERT INTO pengisiankuisioner (npm,idEvdos, jawaban) VALUES ('$npm','$idEvdos[$i]','$jawaban[$i]')";
 
-   mysqli_close($connect);
+        mysqli_query($connect, $sql);
 }
 
+echo "DONE"
+
 ?>
-
-

@@ -1,19 +1,28 @@
 package com.example.studentportal.Fitur;
 
 public class DataEvdos {
-
+    int idNomor;
     private String idDosen, namaDosen,fotoDosen, namaMatakuliah, nidn, idMatakuliah;
 
     public DataEvdos() {
     }
 
-    public DataEvdos(String idDosen, String namaDosen,String fotoDosen, String namaMatakuliah, String nidn, String idMatakuliah) {
+    public DataEvdos(int idNomor,String idDosen, String namaDosen,String fotoDosen, String namaMatakuliah, String nidn, String idMatakuliah) {
+        this.idNomor= idNomor;
         this.idDosen = idDosen;
         this.namaDosen = namaDosen;
         this.fotoDosen = fotoDosen;
         this.namaMatakuliah = namaMatakuliah;
         this.nidn = nidn;
         this.idMatakuliah = idMatakuliah;
+    }
+
+    public int getIdNomor() {
+        return idNomor;
+    }
+
+    public void setIdNomor(int idNomor) {
+        this.idNomor = idNomor;
     }
 
     public String getIdDosen() {

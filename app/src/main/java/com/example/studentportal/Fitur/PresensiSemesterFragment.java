@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
@@ -15,13 +16,16 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toolbar;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.studentportal.Fragment.HomeFragment;
 import com.example.studentportal.HasilStudi;
 import com.example.studentportal.Presensi;
 import com.example.studentportal.R;
@@ -37,6 +41,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -46,6 +51,7 @@ import java.util.List;
 public class PresensiSemesterFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
 
     Toolbar toolbar;
+    ImageView backKeterampilan;
     FloatingActionButton fab;
     ListView list;
     SwipeRefreshLayout swipe;
@@ -127,6 +133,13 @@ public class PresensiSemesterFragment extends Fragment implements SwipeRefreshLa
         fab     = (FloatingActionButton) root.findViewById(R.id.fab_add);
         swipe   = (SwipeRefreshLayout) root.findViewById(R.id.swipe_refresh_layout);
         list    = (ListView) root.findViewById(R.id.list);
+        backKeterampilan= (ImageView) root.findViewById(R.id.backKeterampilan);
+        backKeterampilan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openFragment(HomeFragment.newInstance("", ""));
+            }
+        });
 
         sessionManager = new SessionManager(getActivity());
         sessionManager.checkLogin();
@@ -189,6 +202,12 @@ public class PresensiSemesterFragment extends Fragment implements SwipeRefreshLa
         return root;
     }
 
+    public void openFragment(Fragment fragment) {
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
 
 
     @Override
@@ -207,7 +226,7 @@ public class PresensiSemesterFragment extends Fragment implements SwipeRefreshLa
         swipe.setRefreshing(true);
 
         // membuat request JSON
-        StringRequest jArr = new StringRequest(Request.Method.GET,URL_READ, new Response.Listener<String>() {
+        StringRequest jArr = new StringRequest(Request.Method.POST,URL_READ, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -242,13 +261,13 @@ public class PresensiSemesterFragment extends Fragment implements SwipeRefreshLa
 
             }
         })
-//        {
-//            protected Map<String, String> getParams() throws AuthFailureError {
-//                Map<String, String> params = new HashMap<>();
-//                params.put("npm", getId);
-//                return params;
-//            }
-//        }
+        {
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("npm", getId);
+                return params;
+            }
+        }
 
                 ;
         AppController.getInstance().addToRequestQueue(jArr);

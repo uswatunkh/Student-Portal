@@ -7,60 +7,93 @@
     android:background="@drawable/vie_bg"
     tools:context=".HasilStudi">
 
-    <RelativeLayout
-        android:layout_marginTop="0dp"
-        android:id="@+id/llViewTitle"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:background="#ff0099cc">
-        <androidx.cardview.widget.CardView
-            android:id="@+id/refresh"
-            android:layout_width="33dp"
-            android:layout_height="33dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="300dp"
-            android:layout_weight="50"
-            android:clickable="true"
-            app:cardCornerRadius="15dp"
-            app:cardElevation="15dp">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/orange"
-                >
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/buton_refresh"
-            android:background="@drawable/bg_refresh"
-            /></LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-
+        android:layout_height="?attr/actionBarSize"
+        android:background="#141932"
+        app:popupTheme="@style/AppTheme.PopupOverlay" >
+<!--        <ImageView-->
+<!--            android:id="@+id/backKeterampilan"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/back"/>-->
         <TextView
-            android:layout_marginLeft="60pt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:textColor="@android:color/white"
-            android:textStyle="bold"
-            android:fontFamily="@font/mench"
-            android:gravity="center"
-            android:text="Hasil Studi"
-            android:textSize="25sp" />
+            android:textSize="18dp"
 
-    </RelativeLayout>
+            android:layout_marginLeft="22dp"
+            android:text="Hasil Studi"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            />
+
+        <ImageView
+            android:id="@+id/refresh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+            android:layout_marginLeft="170dp"
+                    android:src="@drawable/buton_refresh"
+                    android:background="@drawable/bg_refresh"/>
+
+
+    </androidx.appcompat.widget.Toolbar>
+
+<!--    <RelativeLayout-->
+<!--        android:layout_marginTop="0dp"-->
+<!--        android:id="@+id/llViewTitle"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:background="#ff0099cc">-->
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:id="@+id/refresh"-->
+<!--            android:layout_width="33dp"-->
+<!--            android:layout_height="33dp"-->
+<!--            android:layout_marginTop="15dp"-->
+<!--            android:layout_marginLeft="300dp"-->
+<!--            android:layout_weight="50"-->
+<!--            android:clickable="true"-->
+<!--            app:cardCornerRadius="15dp"-->
+<!--            app:cardElevation="15dp">-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:background="@color/orange"-->
+<!--                >-->
+<!--        <ImageView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:src="@drawable/buton_refresh"-->
+<!--            android:background="@drawable/bg_refresh"-->
+<!--            /></LinearLayout>-->
+<!--        </androidx.cardview.widget.CardView>-->
+
+
+<!--        <TextView-->
+<!--            android:layout_marginLeft="60pt"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:layout_marginBottom="16dp"-->
+<!--            android:textColor="@android:color/white"-->
+<!--            android:textStyle="bold"-->
+<!--            android:fontFamily="@font/mench"-->
+<!--            android:gravity="center"-->
+<!--            android:text="Hasil Studi"-->
+<!--            android:textSize="25sp" />-->
+
+<!--    </RelativeLayout>-->
 
     <HorizontalScrollView
         android:id="@+id/horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/llViewTitle"
+        android:layout_below="@+id/ipip"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="0dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp">
 
@@ -80,10 +113,11 @@
     </HorizontalScrollView>
 
     <RelativeLayout
+        android:id="@+id/ipip"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
-        android:layout_below="@+id/llViewTitle"
+        android:layout_below="@+id/toolbar"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="0dp">
 
@@ -96,7 +130,7 @@
             android:gravity="center"
             android:text="IP Semester"
             android:textColor="@android:color/black"
-            android:textSize="18sp"
+            android:textSize="15sp"
             android:textStyle="bold" />
 
         <TextView
@@ -109,7 +143,7 @@
             android:gravity="center"
             android:text="1"
             android:textColor="@android:color/black"
-            android:textSize="18sp"
+            android:textSize="15sp"
             android:textStyle="bold" />
         <TextView
             android:layout_width="wrap_content"
@@ -120,7 +154,7 @@
             android:gravity="center"
             android:text=":"
             android:textColor="@android:color/black"
-            android:textSize="18sp"
+            android:textSize="15sp"
             android:textStyle="bold" />
         <TextView
             android:id="@+id/ip"
@@ -132,7 +166,7 @@
             android:gravity="center"
             android:text="  "
             android:textColor="@android:color/black"
-            android:textSize="18sp"
+            android:textSize="15sp"
             android:textStyle="bold" />
         <TextView
             android:layout_width="wrap_content"
@@ -143,7 +177,7 @@
             android:gravity="center"
             android:text="IPK :"
             android:textColor="@android:color/black"
-            android:textSize="18sp"
+            android:textSize="15sp"
             android:textStyle="bold" />
         <TextView
             android:id="@+id/ipk"
@@ -155,7 +189,7 @@
             android:gravity="center"
             android:text=""
             android:textColor="@android:color/black"
-            android:textSize="18sp"
+            android:textSize="15sp"
             android:textStyle="bold" />
 
 

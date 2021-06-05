@@ -147,7 +147,7 @@ public class HomeFragment extends Fragment {
         profile_image = root.findViewById(R.id.profile_imageHome);
         status = root.findViewById(R.id.status);
         npmHome = root.findViewById(R.id.npmHome);
-        angkatanHome = root.findViewById(R.id.angkatanHome);
+//        angkatanHome = root.findViewById(R.id.angkatanHome);
         prodiHome = root.findViewById(R.id.prodiHome);
         kelasHome = root.findViewById(R.id.kelasHome);
         kalenderAkademik = root.findViewById(R.id.kalenderAkademik);
@@ -291,20 +291,20 @@ public class HomeFragment extends Fragment {
         if(timeOfDay>= 0 && timeOfDay<12){
             greetText.setText("Selamat Pagi ");
             greetText.setTextColor(Color.parseColor("#000000"));
-            greetImg.setImageResource(R.drawable.pagioke);
+            greetImg.setImageResource(R.drawable.poltek);
 //            greetText.setTextColor(R.color.colorText);
         } else if(timeOfDay>= 12 && timeOfDay<15){
             greetText.setText("Selamat Siang \n ");
             greetText.setTextColor(Color.parseColor("#000000"));
-            greetImg.setBackgroundResource(R.drawable.siang);
+            greetImg.setBackgroundResource(R.drawable.poltek);
         }else if(timeOfDay>= 15 && timeOfDay<18){
             greetText.setText("Selamat Sore \n ");
             greetText.setTextColor(Color.parseColor("#000000"));
-            greetImg.setBackgroundResource(R.drawable.soreoke);
+            greetImg.setBackgroundResource(R.drawable.poltek);
         }else if(timeOfDay>= 18 && timeOfDay<24){
             greetText.setText("Selamat Malam \n");
             greetText.setTextColor(R.color.white);
-            greetImg.setImageResource(R.drawable.malamoke);
+            greetImg.setImageResource(R.drawable.poltek);
 
 
 
@@ -333,11 +333,11 @@ public class HomeFragment extends Fragment {
 
                                     //npm,angkatan,prodi,kelas
                                     String strnpmHome = object.getString("npm").trim();
-                                    String strangkatanHome = object.getString("tanggalMulaiPeriode").trim();
+//                                    String strangkatanHome = object.getString("tanggalMulaiPeriode").trim();
                                     String strprodiHome = object.getString("namaProdi").trim();
                                     String strkelasHome = object.getString("kelas").trim();
                                     npmHome.setText(strnpmHome);
-                                    angkatanHome.setText(strangkatanHome);
+//                                    angkatanHome.setText(strangkatanHome);
                                     prodiHome.setText(strprodiHome);
                                     kelasHome.setText(strkelasHome);
 

@@ -8,13 +8,16 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
+
+    <uses-permission android:name="android.permission.CAMERA"/>
+
     <application
         android:name=".app.AppController"
         android:allowBackup="true"
         android:icon="@drawable/student_blue"
         android:label="@string/app_name"
         android:largeHeap="true"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/student_blue"
         android:supportsRtl="true"
         android:theme="@style/AppThemeLogin"
         android:usesCleartextTraffic="true">
@@ -36,6 +39,8 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="SOMEACTIVITY"></action>
+                <category android:name="android.intent.category.DEFAULT"></category>
             </intent-filter>
         </activity>
         <activity android:name=".NotificationFcm.SomeActivity">
