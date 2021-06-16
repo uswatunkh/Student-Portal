@@ -15,25 +15,26 @@
     <TextView
         android:id="@+id/txtnomor"
         android:layout_width="30dp"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:layout_gravity="top"
-        android:textSize="15sp" />
+        android:layout_height="wrap_content"
+        android:textSize="17sp"
+        android:textColor="@android:color/black"
+        android:text="1"/>
     <TextView
         android:id="@+id/txtPertanyaan"
         android:layout_width="300dp"
         android:text="okeee"
-        android:layout_height="match_parent"
-        android:textSize="15sp" />
+        android:textColor="@android:color/black"
+        android:layout_height="wrap_content"
+        android:textSize="17sp" />
     <EditText
         android:id="@+id/jawaban"
-        android:layout_width="wrap_content"
-        android:text="yuhuuu"
-
-        android:layout_height="match_parent"
+        android:layout_width="70dp"
+        android:textColor="@color/card_bg_color"
+        android:layout_height="wrap_content"
+        android:focusable="false"
         android:gravity="center"
         android:layout_gravity="top"
-        android:textSize="15sp" />
+        android:textSize="1sp" />
 
     <RadioGroup
         android:id="@+id/Rad_group"
@@ -44,13 +45,13 @@
 
         <RadioButton
             android:id="@+id/tidakPernah"
-            android:layout_width="105dp"
+            android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="@font/ubunturegular"
-            android:text="Tidak Pernah"
+            android:text="A"
             android:checked="true"
-            android:textSize="12dp" />
+            android:textSize="17dp" />
 
         <RadioButton
             android:id="@+id/pernah"
@@ -60,8 +61,8 @@
             android:layout_marginLeft="10dp"
             android:checked="true"
             android:fontFamily="@font/ubunturegular"
-            android:text="Pernah"
-            android:textSize="12dp" />
+            android:text="B"
+            android:textSize="17dp" />
 
         <RadioButton
             android:id="@+id/sering"
@@ -71,8 +72,8 @@
             android:layout_marginLeft="10dp"
             android:checked="true"
             android:fontFamily="@font/ubunturegular"
-            android:text="Sering"
-            android:textSize="12dp" />
+            android:text="C"
+            android:textSize="17dp" />
 
         <RadioButton
             android:id="@+id/selalu"
@@ -82,8 +83,9 @@
             android:checked="true"
             android:layout_marginLeft="10dp"
             android:fontFamily="@font/ubunturegular"
-            android:text="Selalu"
-            android:textSize="12dp" />
+            android:text="D
+"
+            android:textSize="17dp" />
     </RadioGroup>
 
 

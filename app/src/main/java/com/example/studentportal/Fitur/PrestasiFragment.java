@@ -408,10 +408,62 @@ public class PrestasiFragment extends Fragment implements SwipeRefreshLayout.OnR
 //            }
 //        });
 
+//        btnSelect.setOnLongClickListener(new View.OnLongClickListener() {
+//            @Override
+//            public boolean onLongClick(View v) {
+//                final CharSequence[] dialogitem = {"Kamera","Galeri"};
+//                dialog = new AlertDialog.Builder(getActivity());
+//                dialog.setCancelable(true);
+//                dialog.setItems(dialogitem, new DialogInterface.OnClickListener() {
+//
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        // TODO Auto-generated method stub
+//                        switch (which) {
+//
+//                            case 0:
+//                                Dexter.withContext(getActivity().getApplicationContext())
+//                                        .withPermission(Manifest.permission.CAMERA)
+//                                        .withListener(new PermissionListener() {
+//                                            @Override
+//                                            public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
+//                                                Intent intent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//                                                startActivityForResult( intent,111);
+//                                            }
+//
+//                                            @Override
+//                                            public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
+//
+//                                            }
+//
+//                                            @Override
+//                                            public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
+//                                                permissionToken.continuePermissionRequest();
+//                                            }
+//                                        }).check();
+//
+//                                break;
+//                            case 1:
+//                                Intent pickPhoto = new Intent(Intent.ACTION_PICK,
+//                                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//                                startActivityForResult(pickPhoto , 1);//one can be replaced with any action code
+//
+//
+//                                break;
+//                        }
+//                    }
+//                }).show();
+////
+//
+//                return false;
+//            }
+//        });
+
+
         btnSelect.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                final CharSequence[] dialogitem = {"Kamera","Galeri"};
+                final CharSequence[] dialogitem = {"Kamera","Galeri","PDF"};
                 dialog = new AlertDialog.Builder(getActivity());
                 dialog.setCancelable(true);
                 dialog.setItems(dialogitem, new DialogInterface.OnClickListener() {
@@ -443,12 +495,64 @@ public class PrestasiFragment extends Fragment implements SwipeRefreshLayout.OnR
                                         }).check();
 
                                 break;
+
                             case 1:
-                                Intent pickPhoto = new Intent(Intent.ACTION_PICK,
-                                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                                startActivityForResult(pickPhoto , 1);//one can be replaced with any action code
 
+//                                Intent intent=new Intent(Intent.ACTION_PICK);
+//                                      intent.setType("images/*");
+//                                      startActivityForResult(Intent.createChooser(intent,"Browse Image"),1);
 
+                                Dexter.withContext(getActivity().getApplicationContext())
+                                        .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+                                        .withListener(new PermissionListener() {
+                                            @Override
+                                            public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
+//                                                Intent intent=new Intent(Intent.ACTION_PICK);
+//                                                intent.setType("images/*");
+//                                                startActivityForResult(Intent.createChooser(intent,"Browse Image"),1);
+                                                Intent pickPhoto = new Intent(Intent.ACTION_PICK,
+                                                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                                                startActivityForResult(pickPhoto , 1);//one can be replaced with any action code
+                                            }
+
+                                            @Override
+                                            public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
+
+                                            }
+
+                                            @Override
+                                            public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
+                                                permissionToken.continuePermissionRequest();
+                                            }
+                                        }).check();
+                                break;
+
+                            case 2:
+                                Dexter.withContext(getActivity().getApplicationContext())
+                                        .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+                                        .withListener(new PermissionListener() {
+                                            @Override
+                                            public void onPermissionGranted(PermissionGrantedResponse response)
+                                            {
+//                                      Intent intent=new Intent(Intent.ACTION_PICK);
+//                                      intent.setType("application/pdf");
+//                                      startActivityForResult(Intent.createChooser(intent,"Browse Image"),1);
+                                                Intent chooseFile = new Intent(Intent.ACTION_GET_CONTENT);
+                                                chooseFile.setType("application/pdf");
+                                                chooseFile = Intent.createChooser(chooseFile, "Choose a file");
+                                                startActivityForResult(chooseFile, REQ_PDF);
+                                            }
+
+                                            @Override
+                                            public void onPermissionDenied(PermissionDeniedResponse response) {
+
+                                            }
+
+                                            @Override
+                                            public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {
+                                                token.continuePermissionRequest();
+                                            }
+                                        }).check();
                                 break;
                         }
                     }
@@ -488,7 +592,7 @@ public class PrestasiFragment extends Fragment implements SwipeRefreshLayout.OnR
                 jenisHide=jenis_hide.getText().toString();
                 tingkatHide= tingkat_Hide.getText().toString();
                 //scanBukti  = txt_scanBukti.getText().toString();
-                if (namaLomba.isEmpty() ||tahunPrestasi.isEmpty() ||juaraPrestasi.isEmpty() ||  jenisHide.isEmpty() ||  tingkatHide.isEmpty() || encodedimage.isEmpty() ){
+                if (namaLomba.isEmpty() ||tahunPrestasi.isEmpty() ||juaraPrestasi.isEmpty() ||  jenisHide.isEmpty() ||  tingkatHide.isEmpty()  ){
                     //Toast.makeText(getActivity(), "Data Tidak Boleh Kosong", Toast.LENGTH_SHORT).show();
                     Toast.makeText(getContext(), "Data Tidak Boleh Kosong",Toast.LENGTH_SHORT).show();
                 }else{
@@ -634,7 +738,29 @@ public class PrestasiFragment extends Fragment implements SwipeRefreshLayout.OnR
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == 1 && resultCode == RESULT_OK && data != null){
+        if(requestCode == REQ_PDF && resultCode == RESULT_OK ){
+
+            Uri path = data.getData();
+            try {
+                InputStream inputStream = getActivity().getContentResolver().openInputStream(path);
+                byte[] pdfInBytes = new byte[inputStream.available()];
+                inputStream.read(pdfInBytes);
+                    encodedPDF = Base64.encodeToString(pdfInBytes, Base64.DEFAULT);
+
+
+
+                textView.setText("Document Selected");
+                btnSelect.setText("Change Document");
+
+                Toast.makeText(getActivity(), "Document Selected", Toast.LENGTH_SHORT).show();
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+
+            }
+        }
+        else if(requestCode == 1 && resultCode == RESULT_OK ){
 
             Uri path = data.getData();
             try {
@@ -661,6 +787,34 @@ public class PrestasiFragment extends Fragment implements SwipeRefreshLayout.OnR
             textView.setText("Document Selected");
             btnSelect.setText("Change Document");
         }
+
+//        if(requestCode == 1 && resultCode == RESULT_OK && data != null){
+//
+//            Uri path = data.getData();
+//            try {
+//                bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), path);
+//                encodebitmap(bitmap);
+//
+//                textView.setText("Document Selected");
+//                btnSelect.setText("Change Document");
+//
+//                Toast.makeText(getActivity(), "Document Selected", Toast.LENGTH_SHORT).show();
+//
+//
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//
+//            }
+//        }
+//
+//        else if(requestCode==111 && resultCode==RESULT_OK)
+//        {
+//            bitmap=(Bitmap)data.getExtras().get("data");
+//            //img.setImageBitmap(bitmap);
+//            encodebitmap(bitmap);
+//            textView.setText("Document Selected");
+//            btnSelect.setText("Change Document");
+//        }
 
 //        if(requestCode == REQ_PDF && resultCode == RESULT_OK && data != null){
 //
@@ -775,16 +929,19 @@ public class PrestasiFragment extends Fragment implements SwipeRefreshLayout.OnR
                     params.put("tingkat", tingkatHide);
                     params.put("jenis", jenisHide);
                     //params.put("scanBukti", scanBukti);
+                    //params.put("PDF", encodedimage);
+                if(bitmap==null){
+                    params.put("PDF", encodedPDF);
+                    params.put("file", namaLomba + ".pdf");
+                    encodedPDF = "";
+                    encodedimage = "";
+                } else{
                     params.put("PDF", encodedimage);
-//                }
-//                else {
-//                    params.put("idKeterampilan", id);
-//                    params.put("namaKeterampilan", nama);
-//                    params.put("jenis", jenisHide);
-//                    params.put("tingkat", tingkat);
-                    // params.put("scanBukti", scanBukti);
-                    //params.put("PDF", idPDF);
-    //            }
+                    params.put("file", namaLomba + ".jpg");
+                    encodedPDF = "";
+                    encodedimage = "";
+                    bitmap = null;
+                }
 
                 return params;
             }

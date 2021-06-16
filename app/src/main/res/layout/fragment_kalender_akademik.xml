@@ -42,6 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/toolbar"
+            android:layout_marginTop="100dp"
             android:orientation="vertical">
 
             <EditText
@@ -58,16 +59,24 @@
             <Button
                 android:id="@+id/btnDownload"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
+                android:textSize="16dp"
+                android:fontFamily="@font/mench"
                 android:layout_margin="33dp"
-                android:text="Download File" />
+                android:background="@drawable/button_bg"
+                android:text="Download Kalender Akademik "
+                android:textColor="@android:color/white"/>
 
             <Button
                 android:id="@+id/btnSaveFile"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:fontFamily="@font/mench"
+                android:layout_height="60dp"
+                android:textSize="17dp"
                 android:layout_margin="33dp"
                 android:text="Save File"
+                android:background="@drawable/button_bg"
+                android:textColor="@android:color/white"
                 tools:visibility="visible" />
 
         </LinearLayout>

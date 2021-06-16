@@ -7,7 +7,7 @@
 	$encodedPDF = $_POST['PDF'];
 
 
-	$pdfTitle = "myFile";
+	$pdfTitle = "Kalender_Akademik_PNM";
 	$pdfLocation = "documents/$pdfTitle.pdf";
 
 	$sqlQuery = "INSERT INTO `documents`(`title`, `location`) VALUES ('$pdfTitle', '$pdfLocation')";

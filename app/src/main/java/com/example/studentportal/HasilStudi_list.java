@@ -2,6 +2,7 @@ package com.example.studentportal;
 
 public class HasilStudi_list {
 
+    int idNomor;
     private String kode;
     private String namaKuliah;
     private String sks;
@@ -10,8 +11,8 @@ public class HasilStudi_list {
     private String totalNilai;
 
 
-    public HasilStudi_list(  String kode, String namaKuliah, String sks, String nilaiAngka,String nilaiHuruf, String totalNilai) {
-
+    public HasilStudi_list( String kode, String namaKuliah, String sks, String nilaiAngka,String nilaiHuruf, String totalNilai) {
+        this.idNomor = idNomor;
         this.kode = kode;
         this.namaKuliah = namaKuliah;
         this.sks = sks;
@@ -21,7 +22,21 @@ public class HasilStudi_list {
 
     }
 
+    public int getIdNomor() {
+        return idNomor;
+    }
 
+    public void setIdNomor(int idNomor) {
+        this.idNomor = idNomor;
+    }
+
+    public void setNilaiAngka(String nilaiAngka) {
+        this.nilaiAngka = nilaiAngka;
+    }
+
+    public void setTotalNilai(String totalNilai) {
+        this.totalNilai = totalNilai;
+    }
 
     public String getKode() {
         return kode;

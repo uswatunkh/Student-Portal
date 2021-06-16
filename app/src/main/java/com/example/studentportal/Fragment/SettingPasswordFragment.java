@@ -120,7 +120,12 @@ public class SettingPasswordFragment extends Fragment {
                             .setNegativeButton("Retry",null)
                             .create()
                             .show();
-                }else {
+                }
+                else if (passwordBaru.length()<6){
+                    pass.setError("Password Minimal 6 Karakter");
+
+                }
+                else {
                     SaveEditDetail();
                 }
             }

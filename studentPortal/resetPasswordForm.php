@@ -1,66 +1,11 @@
 <?php
 require_once 'connect.php';
 $email = $_GET['key'];
+//$email = "khasanahnganjuk1122@gmail.com";
 $sql="SELECT * FROM mahasiswa WHERE email = '$email'";
-$query= mysqli_query($connect, $sql);
- if(mysqli_num_rows($query)==1){
- 	if(isset($_POST['submit'])){
- 		$password = $_POST['password'];
- 		$cpassword =$_POST['cpassword'];
- 		if($password == "" && $cpassword==""){
-	 	echo "Some fields are empty";
-		 }else{
-		 	if($password==$cpassword){
-		 		$password = password_hash($password, PASSWORD_DEFAULT);
-		 		$update="UPDATE mahasiswa SET passwordUser='$password' WHERE email = '$email'";
-		 		if(mysqli_query($connect, $update)){
-		 			echo "<h1> User Password are Change Successfuly !!! Please Login</h1>";
-		 		}else{
-		 			echo "Password Changing error refresh and reclick the email link";
-		 		}
-
-		 	}else{
-		 		echo "Entered Password Not Match";
-		 	}
-		 }
-
- 	}else{
- 		echo "Click Here To Submit button and Change Password";
- 	}
 
 
- }
-	// if(isset($_POST['submit'])){
-	// $password = $_POST['password'];
-	// $cpassword =$_POST['cpassword'];
-	// if($password == "" && $cpassword==""){
-	// 	echo "some password are empty";
-	// }else {
-	// 	if($password == $cpassword){
-	// 		echo "Success";
-	// 	}else{
-	// 		echo "password are not match";
-	// 	}
-	// }
-	// }
-
-?>
-
-<!-- <!DOCTYPE html>
-<html>
-<head>
-	<title>Forgot Password</title>
-</head>
-<body>
-	<form action="" method="POST">
-		<h1><?php echo "Welcome". $email?></h1>
-		Enter New Password: <input type="text" name="password"><br>
-		Enter Conform Password: <input type="text" name="cpassword"><br>
-		<input type="submit" name="submit"> 
-	</form>
-
-</body>
-</html> -->
+ ?>
 
 
 <!DOCTYPE html>
@@ -72,26 +17,67 @@ $query= mysqli_query($connect, $sql);
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
+
     <div class="center">
+    	<center><h2></h2></center>
     	<center><h2>Welcome</h2></center>
-    	<center><h3><?php echo "". $email?></h3></center>
+    	<center><h4><?php echo "". $email?></h4></center>
       <!-- <h1>Login</h1> -->
       <form action="" method="POST">
         <div class="txt_field">
-          <input type="text" name="password" required>
+          <input type="password" name="password" required>
           <span></span>
           <label>Enter New Password</label>
         </div>
         <div class="txt_field">
-          <input type="text" name="cpassword" required>
+          <input type="password" name="cpassword" required>
           <span></span>
           <label>Enter Confirm Password</label>
         </div>
         
         <input type="submit" name="submit">
         <div class="signup_link">
-          Not a member? <a href="#">Signup</a>
+           
         </div>
+         <!-- Batas php -->
+	   <font color="red"><center><?php
+	    	$query= mysqli_query($connect, $sql);
+					if(mysqli_num_rows($query)==1){
+				 	if(isset($_POST['submit'])){
+				 		$password = $_POST['password'];
+				 		$cpassword =$_POST['cpassword'];
+				 		if($password == "" && $cpassword==""){
+					 	echo "Some fields are empty";
+						 }else{
+						 	if($password==$cpassword){
+						 		$password = password_hash($password, PASSWORD_DEFAULT);
+						 		$update="UPDATE mahasiswa SET passwordUser='$password' WHERE email = '$email'";
+						 		if(mysqli_query($connect, $update)){
+						 			echo "User Password are Change Successfuly !!! Please Login";
+						 		}else{
+						 			echo "Password Changing error refresh and reclick the email link";
+						 		}
+
+						 	}else{
+						 		echo "Entered Password Not Match";
+						 	}
+						 }
+
+				 	}else{
+				 		echo "Click Here To Submit button and Change Password";
+				 	}
+
+				 } ?>    	</center></font>
+
+				  <!-- Batas php -->
+
+		<div class="signup_link">
+           
+        </div>
+
+
+
+
       </form>
     </div>
 

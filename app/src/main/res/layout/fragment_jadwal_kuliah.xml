@@ -40,27 +40,13 @@
                 android:textStyle="bold"
                 android:textColor="@android:color/white"
                 />
-            <EditText
-                android:id="@+id/edit_cari"
-                android:layout_width="126dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="17dp"
-                android:textSize="13dp"
-                android:paddingLeft="20dp"
-                android:paddingTop="0dp"
-                android:paddingBottom="0dp"
-                android:textColor="@android:color/white"
-                android:background="@drawable/edit_text_bg" />
             <ImageView
-                android:id="@+id/btn_cari"
-                android:layout_width="40dp"
-                android:layout_height="30dp"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="17dp"
-                android:layout_centerVertical="true"
-                android:padding="@dimen/cardview_compat_inset_shadow"
-                android:src="@drawable/cari" />
+                android:id="@+id/refresh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="170dp"
+                android:src="@drawable/buton_refresh"
+                android:background="@drawable/bg_refresh"/>
 
 
         </androidx.appcompat.widget.Toolbar>

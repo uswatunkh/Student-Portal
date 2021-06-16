@@ -2,12 +2,14 @@ package com.example.studentportal.Fitur;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
@@ -26,6 +28,7 @@ public class AdapterEvdos extends BaseAdapter {
     private LayoutInflater inflater;
     private List<DataEvdos> items;
     private Bitmap bitmap;
+    Boolean activate;
 
     public AdapterEvdos(Activity activity, List<DataEvdos> items) {
         this.activity = activity;
@@ -61,6 +64,7 @@ public class AdapterEvdos extends BaseAdapter {
         TextView namaDosen = (TextView) convertView.findViewById(R.id.tvNamaDosen);
         TextView namaMataKuliah = (TextView) convertView.findViewById(R.id.tvNamaMK);
         CircleImageView fotoDosen = (CircleImageView) convertView.findViewById(R.id.fotodosen);
+        Button btn_isi = (Button) convertView.findViewById(R.id.btn_isi);
 //        TextView nidn = (TextView) convertView.findViewById(R.id.tvNIDN);
 //        TextView idMataKuliah = (TextView) convertView.findViewById(R.id.tvIdMk);
 
@@ -76,6 +80,27 @@ public class AdapterEvdos extends BaseAdapter {
 //        idMataKuliah.setText(data.getIdMatakuliah());
 
 
+        btn_isi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(activity,Kuisioner.class);
+                intent.putExtra("position",position);
+                activity.startActivity(intent);
+
+            }
+        });
+
+
+
+
+
+
+
+
+
+
         return convertView;
     }
+
+
 }

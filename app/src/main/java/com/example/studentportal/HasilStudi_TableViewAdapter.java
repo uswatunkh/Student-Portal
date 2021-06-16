@@ -45,7 +45,7 @@ public class HasilStudi_TableViewAdapter  extends RecyclerView.Adapter {
         int rowPos = rowViewHolder.getAdapterPosition();
 
         if (rowPos == 0) {
-
+            //rowViewHolder.txtNomor.setBackgroundResource(R.drawable.table_bg);
             rowViewHolder.txtKode.setBackgroundResource(R.drawable.table_bg);
             rowViewHolder.txtNamaKuliah.setBackgroundResource(R.drawable.table_bg);
             rowViewHolder.txtSks.setBackgroundResource(R.drawable.table_bg);
@@ -53,6 +53,8 @@ public class HasilStudi_TableViewAdapter  extends RecyclerView.Adapter {
             rowViewHolder.txtNilaiHuruf.setBackgroundResource(R.drawable.table_bg);
             rowViewHolder.txtTotalNilai.setBackgroundResource(R.drawable.table_bg);
 
+//            rowViewHolder.txtNomor.setText("Nomor");
+//            rowViewHolder.txtNomor.setTextColor(Color.parseColor("#FFFFFF"));
             rowViewHolder.txtKode.setText("Kode");
             rowViewHolder.txtKode.setTextColor(Color.parseColor("#FFFFFF"));
             rowViewHolder.txtNamaKuliah.setText("Nama Matakuliah");
@@ -67,7 +69,7 @@ public class HasilStudi_TableViewAdapter  extends RecyclerView.Adapter {
             rowViewHolder.txtTotalNilai.setTextColor(Color.parseColor("#FFFFFF"));
         } else {
             HasilStudi_list modal = (HasilStudi_list) mData.get(rowPos - 1);
-
+//            rowViewHolder.txtNomor.setBackgroundResource(R.drawable.cardview);
             rowViewHolder.txtKode.setBackgroundResource(R.drawable.cardview);
             rowViewHolder.txtNamaKuliah.setBackgroundResource(R.drawable.cardview);
             rowViewHolder.txtSks.setBackgroundResource(R.drawable.cardview);
@@ -75,6 +77,7 @@ public class HasilStudi_TableViewAdapter  extends RecyclerView.Adapter {
             rowViewHolder.txtNilaiHuruf.setBackgroundResource(R.drawable.cardview);
             rowViewHolder.txtTotalNilai.setBackgroundResource(R.drawable.cardview);
 
+//            rowViewHolder.txtNomor.setText(modal.getIdNomor() + "");
             rowViewHolder.txtKode.setText(modal.getKode() + "");
             rowViewHolder.txtNamaKuliah.setText(modal.getNamaKuliah());
             rowViewHolder.txtSks.setText(modal.getSks() + "");
@@ -91,6 +94,7 @@ public class HasilStudi_TableViewAdapter  extends RecyclerView.Adapter {
     }
 
     public class RowViewHolder extends RecyclerView.ViewHolder {
+        TextView txtNomor;
         TextView txtKode;
         TextView txtNamaKuliah;
         TextView txtSks;
@@ -100,6 +104,7 @@ public class HasilStudi_TableViewAdapter  extends RecyclerView.Adapter {
 
         RowViewHolder(View itemView) {
             super(itemView);
+            txtNomor = itemView.findViewById(R.id.txtNomor);
             txtKode = itemView.findViewById(R.id.txtKode);
             txtNamaKuliah = itemView.findViewById(R.id.txtNamaMataKuliah);
             txtSks = itemView.findViewById(R.id.txtSks);

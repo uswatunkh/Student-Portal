@@ -1,6 +1,8 @@
 package com.example.studentportal.Fitur;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -25,6 +28,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.studentportal.Fragment.HomeFragment;
 import com.example.studentportal.R;
 import com.example.studentportal.Server;
 import com.example.studentportal.SessionManager;
@@ -53,11 +57,12 @@ public class Kuisioner extends AppCompatActivity {
     ArrayList<DataKuisioner> mData3;
     SessionManager sessionManager;
     String getId,getIdDosen;  //updateprofil
+    ImageView backKeterampilan;
     String jk;
     RadioGroup radioGroup;
     RadioButton Tidakpernah, pernah,sering,selalu;
     TextView jawaban,txtIdEvdos;
-    private static String URL_READ     = Server.URLEvaluasiDosen + "selectEvdos.php";
+    private static String URL_READ     = Server.URLEvaluasiDosen + "selectPertanyaan.php";
     private static String URL_READ2     = Server.URLEvaluasiDosen + "selectEvdos2.php";
     private static String URL_READ3     = Server.URLEvaluasiDosen + "selectEvdos3.php";
     private static String URL_EDIT = Server.URLEvaluasiDosen + "pengisianEvdos.php";
@@ -67,7 +72,14 @@ public class Kuisioner extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kuisioner);
         idDosen = findViewById(R.id.idDosen);
-        coba = findViewById(R.id.coba);
+        //coba = findViewById(R.id.coba);
+//        backKeterampilan= (ImageView) findViewById(R.id.backKeterampilan);
+//        backKeterampilan.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                openFragment(EvaluasiDosenFragment.newInstance("", ""));
+//            }
+//        });
 
         Intent intent = getIntent();
         position = intent.getExtras().getInt("position");
@@ -161,10 +173,10 @@ public class Kuisioner extends AppCompatActivity {
 
 
 
-        Tidakpernah =layout.findViewById(R.id.tidakPernah);
-        pernah =layout.findViewById(R.id.pernah);
-        sering =layout.findViewById(R.id.sering);
-        selalu =layout.findViewById(R.id.selalu);
+//        Tidakpernah =layout.findViewById(R.id.tidakPernah);
+//        pernah =layout.findViewById(R.id.pernah);
+//        sering =layout.findViewById(R.id.sering);
+//        selalu =layout.findViewById(R.id.selalu);
 
         // txtIdEvdos.setText("ID:"+EvaluasiDosenFragment.itemList.get(position).getIdDosen());
 //        radioGroup = (RadioGroup) layout.findViewById(R.id.Rad_group);
@@ -193,6 +205,14 @@ public class Kuisioner extends AppCompatActivity {
 
 
     }
+
+    public void openFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
 
 
 
@@ -223,8 +243,12 @@ public class Kuisioner extends AppCompatActivity {
                                 DataKuisioner item = new DataKuisioner();
 
                                 item.setIdNomor(i);
-                                item.setIdEvdos(ob.getString("idEvdos"));
+                                item.setIdEvdos(ob.getString("idPertanyaan"));
                                 item.setPertanyaan(ob.getString("pertanyaan"));
+                                item.setA(ob.getString("a"));
+                                item.setB(ob.getString("b"));
+                                item.setC(ob.getString("c"));
+                                item.setD(ob.getString("d"));
                                 mData.add(item);
 
 

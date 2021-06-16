@@ -155,7 +155,7 @@ public class KalenderAkademikFragment extends Fragment {
 
         try {
 
-            File fileLocation = new File(myDir, "myPDF.pdf");
+            File fileLocation = new File(myDir, "Kalender_Akademik_PDF.pdf");
 
             FileOutputStream fos = new FileOutputStream(fileLocation);
             fos.write(pdfInBytes);

@@ -22,4 +22,57 @@
         <item>Kelompok</item>
 
     </string-array>
+    <string-array name="ortu_pendidikan">
+        <item>-Pilih Pendidikan-</item>
+        <item>Tidak Sekolah</item>
+        <item>PAUD</item>
+        <item>TK/Sederajat</item>
+        <item>Putus SD</item>
+        <item>SD/Sederajat</item>
+        <item>SMP/Sederajat</item>
+        <item>SMA/Sederajat</item>
+        <item>Paket A</item>
+        <item>Paket B</item>
+        <item>Paket C</item>
+        <item>D1</item>
+        <item>D2</item>
+        <item>D3</item>
+        <item>S1</item>
+        <item>Profesi</item>
+        <item>Sp 1</item>
+        <item>S2</item>
+        <item>Sp-2</item>
+        <item>S3</item>
+        <item>Postdoc</item>
+
+    </string-array>
+
+    <string-array name="ortu_pekerjaan">
+        <item>-Pilih Pekerjaan-</item>
+        <item>Tidak Bekerja</item>
+        <item>Nelayan</item>
+        <item>Petani</item>
+        <item>Peternak</item>
+        <item>PNS/TNI/Polri</item>
+        <item>Karyawan Swasta</item>
+        <item>Pedagang Kecil</item>
+        <item>Pedagang Besar</item>
+        <item>Wiraswasta</item>
+        <item>Wirausaha</item>
+        <item>Buruh</item>
+        <item>Pensiunan</item>
+        <item>Sudah Meninggal</item>
+        <item>Lainnya</item>
+
+    </string-array>
+    <string-array name="ortu_penghasilan">
+        <item>-Pilih Penghasilan-</item>
+        <item>Kurang dari Rp. 500.000</item>
+        <item>Rp. 500.000-Rp. 999.999</item>
+        <item>Rp. 1.000.000-Rp. 1.999.999</item>
+        <item>Rp. 2000.000-Rp. 4.999.999</item>
+        <item>Rp. 5000.000-Rp. 20.000.000</item>
+        <item>Lebih dari Rp. 20.000.000</item>
+
+    </string-array>
 </resources>

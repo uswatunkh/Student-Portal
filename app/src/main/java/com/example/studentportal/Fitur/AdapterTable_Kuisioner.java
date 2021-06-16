@@ -4,12 +4,16 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.inputmethodservice.Keyboard;
+import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -18,6 +22,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.AuthFailureError;
@@ -27,9 +35,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.studentportal.HomeActivity;
 import com.example.studentportal.R;
 import com.example.studentportal.Server;
 import com.example.studentportal.SessionManager;
+import com.example.studentportal.pengumuman;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -52,10 +62,11 @@ public class AdapterTable_Kuisioner extends RecyclerView.Adapter<AdapterTable_Ku
     int ExpenseFinalTotal = 0;
     SessionManager sessionManager;
     View rootView;
-    Button save;
+    Button save,reset;
     TextView jwb;
-    String getId , getIdEvdos;  //updateprofil
-    private static String URL_EDIT = Server.URLEvaluasiDosen + "pengisianEvdos.php";
+    String getId , getIdDosen,getIdEvdos;  //updateprofil
+    private static String URL_EDIT = Server.URLEvaluasiDosen + "pengisianJawaban.php";
+    int position;
 
 
 
@@ -79,7 +90,16 @@ public class AdapterTable_Kuisioner extends RecyclerView.Adapter<AdapterTable_Ku
         HashMap<String, String> user = sessionManager.getUserDetail();
         getId = user.get(sessionManager.ID);  //updateprofil
         save =(Button)rootView.findViewById(R.id.btnSubmitEval);
-        jwb=rootView.findViewById(R.id.jawabKuisioner);
+       reset =(Button)rootView.findViewById(R.id.btnSubmitReset);
+
+
+        Intent intent = ((Kuisioner)mContext).getIntent();
+        position = intent.getExtras().getInt("position");
+        //idDosen.setText("ID:"+EvaluasiDosenFragment.itemList.get(position).getNamaDosen());
+        getIdDosen=EvaluasiDosenFragment.itemList.get(position).getIdDosen();
+        //Toast.makeText(mContext,getIdDosen,Toast.LENGTH_SHORT).show();
+
+
         //attach view to MyViewHolder
 
         RowViewHolder rowViewHolder = new RowViewHolder(itemView);
@@ -87,10 +107,13 @@ public class AdapterTable_Kuisioner extends RecyclerView.Adapter<AdapterTable_Ku
     }
 
 
+
+
     public static class RowViewHolder extends RecyclerView.ViewHolder {
         TextView txtPertanyaan, txtNomor, txtIdEvdos;
         EditText jawaban;
         RadioGroup radioGroup;
+        RadioButton radioButtonA,radioButtonB,radioButtonC,radioButtonD;
         String jk;
 
         RowViewHolder(View itemView) {
@@ -99,6 +122,10 @@ public class AdapterTable_Kuisioner extends RecyclerView.Adapter<AdapterTable_Ku
             txtPertanyaan = itemView.findViewById(R.id.txtPertanyaan);
             txtNomor = itemView.findViewById(R.id.txtnomor);
             jawaban = itemView.findViewById(R.id.jawaban);
+           radioButtonA = itemView.findViewById(R.id.tidakPernah);
+            radioButtonB = itemView.findViewById(R.id.pernah);
+            radioButtonC = itemView.findViewById(R.id.sering);
+            radioButtonD = itemView.findViewById(R.id.selalu);
             // getIdEvdos= getIdEvdos.getIdEvdos();
             radioGroup = (RadioGroup) itemView.findViewById(R.id.Rad_group);
             radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
@@ -107,18 +134,19 @@ public class AdapterTable_Kuisioner extends RecyclerView.Adapter<AdapterTable_Ku
                 public void onCheckedChanged(RadioGroup group, int checkedId) {
                     // checkedId is the RadioButton selected
                     if (checkedId == R.id.tidakPernah){
-                        jk = String.valueOf("Tidak Pernah");
+                        jk = String.valueOf("1");
 
                     }if (checkedId == R.id.pernah){
-                        jk = String.valueOf("Pernah");
+                        jk = String.valueOf("2");
                     }if (checkedId == R.id.sering){
-                        jk = String.valueOf("Sering");
+                        jk = String.valueOf("3");
                     }if (checkedId == R.id.selalu){
-                        jk = String.valueOf("Selalu");
+                        jk = String.valueOf("4");
                     }
                     jawaban.setText(jk);
                     String jawab = jawaban.getText().toString().trim();
                     Toast.makeText(mContext,jawab,Toast.LENGTH_SHORT).show();
+
                 }
             });
 
@@ -131,7 +159,7 @@ public class AdapterTable_Kuisioner extends RecyclerView.Adapter<AdapterTable_Ku
 
     @Override
     public void onBindViewHolder(@NonNull RowViewHolder holder, int position) {
-        AdapterTable_Kuisioner.RowViewHolder rowViewHolder = (AdapterTable_Kuisioner.RowViewHolder) holder;
+        RowViewHolder rowViewHolder = (RowViewHolder) holder;
 
 
         int rowPos = holder.getAdapterPosition();
@@ -139,6 +167,12 @@ public class AdapterTable_Kuisioner extends RecyclerView.Adapter<AdapterTable_Ku
        TextView tanya = holder.txtPertanyaan;
         TextView evdosid= holder.txtIdEvdos;
        EditText jawab = holder.jawaban;
+       RadioButton radButA=holder.radioButtonA;
+        RadioButton radButB=holder.radioButtonB;
+        RadioButton radButC=holder.radioButtonC;
+        RadioButton radButD=holder.radioButtonD;
+        RadioGroup radG=holder.radioGroup;
+
 
 //        if (rowPos == 0) {
 //
@@ -182,6 +216,11 @@ public class AdapterTable_Kuisioner extends RecyclerView.Adapter<AdapterTable_Ku
 //        evdosid.setText(modal.getIdEvdos());
         evdosid.setText(mData.get(position).getIdEvdos());
         tanya.setText(mData.get(position).getPertanyaan());
+
+        radButA.setText(mData.get(position).getA());
+        radButB.setText(mData.get(position).getB());
+        radButC.setText(mData.get(position).getC());
+        radButD.setText(mData.get(position).getD());
             int id = mData.get(position).getIdNomor();
             //evdosid.setText(mData.get(position).getIdEvdos());
             jawab.addTextChangedListener(new TextWatcher() {
@@ -249,27 +288,67 @@ public class AdapterTable_Kuisioner extends RecyclerView.Adapter<AdapterTable_Ku
                 public void onClick(View view) {
                     ArrayList<String> FExpenseAmtArray = new ArrayList<>();
                     ArrayList<String> FExpenseNameArray = new ArrayList<>();
-                    if (!ExpAmtArray.isEmpty()) {
-                        for (int i = 0; i < ExpAmtArray.size(); i++) {
-                            if (!ExpAmtArray.get(i).equals("0") && !ExpAmtArray.get(i).equals("")) {
-                                FExpenseAmtArray.add(ExpAmtArray.get(i));
-                                FExpenseNameArray.add(ExpNameArray.get(i));
+                    String jwb = jawab.getText().toString();
+                    if (jwb.isEmpty() || ExpAmtArray.isEmpty()) {
+                        jawab.setError("Wajib dipilih");
+                    } else {
+
+                        if (!ExpAmtArray.isEmpty()) {
+                            for (int i = 0; i < ExpAmtArray.size(); i++) {
+                                if (!ExpAmtArray.get(i).equals("0") && !ExpAmtArray.get(i).equals("")) {
+                                    FExpenseAmtArray.add(ExpAmtArray.get(i));
+                                    FExpenseNameArray.add(ExpNameArray.get(i));
+                                }
                             }
                         }
+                        Log.d("ArrayExpName", FExpenseNameArray.toString());
+                        Log.d("ArrayExpAmt", FExpenseAmtArray.toString());
+                        JSONArray jsonArrayName = new JSONArray();
+                        for (String Expname : FExpenseNameArray) {
+                            jsonArrayName.put(Expname);
+                        }
+                        JSONArray jsonArrayExpAmt = new JSONArray();
+                        for (String ExpAmt : FExpenseAmtArray) {
+                            jsonArrayExpAmt.put(ExpAmt);
+                        }
+                        SubmitExpenseData(jsonArrayName.toString(), jsonArrayExpAmt.toString());
+                     
+
                     }
-                    Log.d("ArrayExpName", FExpenseNameArray.toString());
-                    Log.d("ArrayExpAmt", FExpenseAmtArray.toString());
-                    JSONArray jsonArrayName = new JSONArray();
-                    for (String Expname : FExpenseNameArray) {
-                        jsonArrayName.put(Expname);
-                    }
-                    JSONArray jsonArrayExpAmt = new JSONArray();
-                    for (String ExpAmt : FExpenseAmtArray) {
-                        jsonArrayExpAmt.put(ExpAmt);
-                    }
-                    SubmitExpenseData( jsonArrayName.toString(), jsonArrayExpAmt.toString());
-                }
+                }//untuk else
             });
+
+            reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                radButA.setText(mData.get(position).getA());
+                radButB.setText(mData.get(position).getB());
+                radButC.setText(mData.get(position).getC());
+                radButD.setText(mData.get(position).getD());
+                String radA= mData.get(position).getA();
+//                if(radButA.isChecked()){
+//                    radButA.setChecked(get);
+//                }if(radButB.isChecked()){
+//                    radButB.setChecked(false);
+//                }if(radButC.isChecked()){
+//                    radButC.setChecked(false);
+//                }if(radButD.isChecked()){
+//                    radButD.setChecked(false);
+//                }
+//                radButA.setChecked(false);
+//                radButB.setChecked(false);
+//                radButC.setChecked(false);
+//                radButD.setChecked(false);
+                radG.setTag(position);
+                radG.clearCheck();
+//                rowViewHolder.radioButtonA.setChecked(false);
+//                rowViewHolder.radioButtonB.setChecked(false);
+//                rowViewHolder.radioButtonC.setChecked(false);
+//                rowViewHolder.radioButtonD.setChecked(false);
+//                jawab.setText("");
+//                notifyDataSetChanged();
+            }
+        });
 
 
 
@@ -285,6 +364,33 @@ public class AdapterTable_Kuisioner extends RecyclerView.Adapter<AdapterTable_Ku
                     public void onResponse(String response) {
                         //we get the successful in String response
                         Log.e("response", response);
+                        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                        builder.setMessage("Berhasil Mengisi")
+                                .setIcon(R.drawable.error)
+                                .setNegativeButton("Ok",null)
+                                .create()
+                                .show();
+                        //String message="berhasil";
+
+                        //final MyFragment myFragment = new MyFragment();
+//                        EvaluasiDosenFragment f = new EvaluasiDosenFragment();
+//                        Bundle b = new Bundle();
+//                        b.putString("message", String.valueOf(position));
+//                        f.setArguments(b);
+                        //openFragment(EvaluasiDosenFragment.newInstance("", ""));
+//                        Intent intent;
+//                        intent = new Intent(((Kuisioner)mContext), EvaluasiDosenFragment.class);
+//                        ((Kuisioner)mContext).startActivity(intent);
+                        ((Kuisioner)mContext).finish();
+//                        Intent intent =new Intent(((Kuisioner)mContext),AdapterEvdos.class);
+//                        //intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+//                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                        ((Kuisioner)mContext).startActivity(intent);
+
+//                        EvaluasiDosenFragment evaluasiDosenFragment=new EvaluasiDosenFragment();
+//                        evaluasiDosenFragment.adapter.isEmpty();
+
+
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -295,15 +401,22 @@ public class AdapterTable_Kuisioner extends RecyclerView.Adapter<AdapterTable_Ku
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
+//                params.put("npm", getId);
+//                params.put("idEvdos", idEv);
+//                params.put("jawaban", jawab);
+
                 params.put("npm", getId);
-                params.put("idEvdos", idEv);
-                params.put("jawaban", jawab);
+                params.put("idPengajaran", getIdDosen);
+                params.put("idPertanyaan", idEv);
+                params.put("skor", jawab);
                 return params;
             }
         };
         RequestQueue requestQueue = Volley.newRequestQueue(mContext);
         requestQueue.add(stringRequest);
     }
+
+
     public  void SaveEditDetail(String idEv,String jawab) {
 
 
@@ -350,8 +463,9 @@ public class AdapterTable_Kuisioner extends RecyclerView.Adapter<AdapterTable_Ku
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("npm", getId);
-                params.put("idEvdos", idEv);
-                params.put("jawaban", jawab);
+                params.put("idPengajaran", getIdDosen);
+                params.put("idPertanyaan", idEv);
+                params.put("skor", jawab);
 
                 return params;
             }

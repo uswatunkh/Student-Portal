@@ -47,6 +47,7 @@ public class JadwalKuliahFragment extends Fragment {
     SessionManager sessionManager;
     String getId;  //updateprofil
     ImageButton btn_drawer;
+    ImageView refresh;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -99,6 +100,7 @@ public class JadwalKuliahFragment extends Fragment {
         sessionManager.checkLogin();
         HashMap<String, String> user = sessionManager.getUserDetail();
         getId = user.get(sessionManager.ID);  //updateprofil
+
         backKeterampilan= (ImageView) root.findViewById(R.id.backKeterampilan);
         backKeterampilan.setOnClickListener(new View.OnClickListener() {
             @Override

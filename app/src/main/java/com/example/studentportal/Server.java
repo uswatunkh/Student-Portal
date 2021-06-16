@@ -6,6 +6,7 @@ public class Server {
     public static final String URL = "http://192.168.1.42/studentPortal/";
     public static final String URLKeterampilan = "http://192.168.1.42/studentPortal/KeterampilanApi/";
     public static final String URLEvaluasiDosen = "http://192.168.1.42/studentPortal/EvaluasiDosen/";
-    public static final String UPLOAD_URL = "http://192.168.1.42/AndroidUploadImage/Keterampilan/upKeterampilan.php";
-    public static final String IMAGES_URL = "http://192.168.1.42/AndroidUploadImage/getImages.php";
+//    public static final String UPLOAD_URL = "http://192.168.1.42/AndroidUploadImage/Keterampilan/upKeterampilan.php";
+//    public static final String IMAGES_URL = "http://192.168.1.42/AndroidUploadImage/getImages.php";
+    public static final String BASE_URL = "http://192.168.1.42/studentPortal/DownloadPdf/";
 }

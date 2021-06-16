@@ -106,7 +106,11 @@ public class SignupTabFragment extends Fragment {
                             .setNegativeButton("Retry",null)
                             .create()
                             .show();
-                }else {
+                }else if (password.length()<6){
+                    passwordUser.setError("Password Minimal 6 Karakter");
+
+                }
+                else {
                     Regist();
                 }
 
@@ -184,7 +188,7 @@ public class SignupTabFragment extends Fragment {
 
                             }else if (success.equals("2")){
                                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                                builder.setMessage("Npm yang ada masukkan sudah terdaftar")
+                                builder.setMessage("Npm yang anda masukkan sudah terdaftar")
                                         .setIcon(R.drawable.error)
                                         .setNegativeButton("Ok",null)
                                         .create()
@@ -198,7 +202,7 @@ public class SignupTabFragment extends Fragment {
                                         .show();
                             }else if (success.equals("4")){
                                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                                builder.setMessage("Ulangi Kosfirmasi Lagi")
+                                builder.setMessage("Ulangi Konfirmasi Lagi")
                                         .setIcon(R.drawable.error)
                                         .setNegativeButton("Ok",null)
                                         .create()

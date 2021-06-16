@@ -393,7 +393,7 @@ public class  KeterampilanFragment extends Fragment implements SwipeRefreshLayou
         btnSelect.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                final CharSequence[] dialogitem = {"Galeri","Kamera"};
+                final CharSequence[] dialogitem = {"Kamera","Galeri","PDF"};
                 dialog = new AlertDialog.Builder(getActivity());
                 dialog.setCancelable(true);
                 dialog.setItems(dialogitem, new DialogInterface.OnClickListener() {
@@ -404,11 +404,6 @@ public class  KeterampilanFragment extends Fragment implements SwipeRefreshLayou
                         switch (which) {
 
                             case 0:
-                                Intent pickPhoto = new Intent(Intent.ACTION_PICK,
-                                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                                startActivityForResult(pickPhoto , 1);//one can be replaced with any action code
-                                break;
-                            case 1:
                                 Dexter.withContext(getActivity().getApplicationContext())
                                         .withPermission(Manifest.permission.CAMERA)
                                         .withListener(new PermissionListener() {
@@ -429,6 +424,65 @@ public class  KeterampilanFragment extends Fragment implements SwipeRefreshLayou
                                             }
                                         }).check();
 
+                                break;
+
+                            case 1:
+
+//                                Intent intent=new Intent(Intent.ACTION_PICK);
+//                                      intent.setType("images/*");
+//                                      startActivityForResult(Intent.createChooser(intent,"Browse Image"),1);
+
+                                Dexter.withContext(getActivity().getApplicationContext())
+                                        .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+                                        .withListener(new PermissionListener() {
+                                            @Override
+                                            public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
+//                                                Intent intent=new Intent(Intent.ACTION_PICK);
+//                                                intent.setType("images/*");
+//                                                startActivityForResult(Intent.createChooser(intent,"Browse Image"),1);
+                                                Intent pickPhoto = new Intent(Intent.ACTION_PICK,
+                                                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                                                startActivityForResult(pickPhoto , 1);//one can be replaced with any action code
+                                            }
+
+                                            @Override
+                                            public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
+
+                                            }
+
+                                            @Override
+                                            public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
+                                                permissionToken.continuePermissionRequest();
+                                            }
+                                        }).check();
+                                break;
+
+                            case 2:
+                                Dexter.withContext(getActivity().getApplicationContext())
+                                        .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+                                        .withListener(new PermissionListener() {
+                                            @Override
+                                            public void onPermissionGranted(PermissionGrantedResponse response)
+                                            {
+//                                      Intent intent=new Intent(Intent.ACTION_PICK);
+//                                      intent.setType("application/pdf");
+//                                      startActivityForResult(Intent.createChooser(intent,"Browse Image"),1);
+                                                Intent chooseFile = new Intent(Intent.ACTION_GET_CONTENT);
+                                                chooseFile.setType("application/pdf");
+                                                chooseFile = Intent.createChooser(chooseFile, "Choose a file");
+                                                startActivityForResult(chooseFile, REQ_PDF);
+                                            }
+
+                                            @Override
+                                            public void onPermissionDenied(PermissionDeniedResponse response) {
+
+                                            }
+
+                                            @Override
+                                            public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {
+                                                token.continuePermissionRequest();
+                                            }
+                                        }).check();
                                 break;
                         }
                     }
@@ -488,6 +542,7 @@ public class  KeterampilanFragment extends Fragment implements SwipeRefreshLayou
                     Toast.makeText(getContext(), "Data Tidak Boleh Kosong",Toast.LENGTH_SHORT).show();
                 }else{
                     simpan_update();
+                    kosong();
                     dialog.dismiss();
                 }
 
@@ -651,7 +706,7 @@ public class  KeterampilanFragment extends Fragment implements SwipeRefreshLayou
         super.onActivityResult(requestCode, resultCode, data);
 
 
-        if(requestCode == REQ_PDF && resultCode == RESULT_OK && data != null){
+        if(requestCode == REQ_PDF && resultCode == RESULT_OK ){
 
             Uri path = data.getData();
             try {
@@ -682,7 +737,7 @@ public class  KeterampilanFragment extends Fragment implements SwipeRefreshLayou
 
             }
         }
-        else if(requestCode == 1 && resultCode == RESULT_OK && data != null){
+        else if(requestCode == 1 && resultCode == RESULT_OK ){
 
             Uri path = data.getData();
             try {
@@ -747,8 +802,9 @@ public class  KeterampilanFragment extends Fragment implements SwipeRefreshLayou
                         //Log.d("Add/update", jObj.toString());
 
                         Toast.makeText(getActivity(), "Tambah Berhasil", Toast.LENGTH_SHORT).show();
-                        callVolley();
                         kosong();
+                        callVolley();
+
                         adapter.notifyDataSetChanged();
 
 
@@ -776,10 +832,10 @@ public class  KeterampilanFragment extends Fragment implements SwipeRefreshLayou
                 Map<String, String> params = new HashMap<String, String>();
                 // jika id kosong maka simpan, jika id ada nilainya maka update
 
-                    params.put("npm", getId);
-                    params.put("namaKeterampilan", nama);
-                    params.put("jenis", jenisHide);
-                    params.put("tingkat", tingkat);
+//                    params.put("npm", getId);
+//                    params.put("namaKeterampilan", nama);
+//                    params.put("jenis", jenisHide);
+//                    params.put("tingkat", tingkat);
                     //params.put("scanBukti", scanBukti);
 //                    if (REQ_PDF==0) {
 //                        params.put("PDF", encodedimage);
@@ -790,17 +846,26 @@ public class  KeterampilanFragment extends Fragment implements SwipeRefreshLayou
 //
 //                    }
 
-//                if(bitmap==null){
-//                        params.put("PDF", encodedPDF);
-//                        params.put("namaKeterampilan", nama + ".pdf");
-//                        encodedPDF = "";
-//                        encodedimage = "";
-//                    } else{
+                if(bitmap==null){
+                    params.put("npm", getId);
+                    params.put("namaKeterampilan", nama);
+                    params.put("jenis", jenisHide);
+                    params.put("tingkat", tingkat);
+                        params.put("PDF", encodedPDF);
+                        params.put("file", nama + ".pdf");
+                        encodedPDF = "";
+                        encodedimage = "";
+                    } else{
+                    params.put("npm", getId);
+                    params.put("namaKeterampilan", nama);
+                    params.put("jenis", jenisHide);
+                    params.put("tingkat", tingkat);
                         params.put("PDF", encodedimage);
-//                        params.put("namaKeterampilan", nama + ".jpg");
-//                        encodedPDF = "";
-//                        encodedimage = "";
-//                    }
+                        params.put("file", nama + ".jpg");
+                        encodedPDF = "";
+                        encodedimage = "";
+                        bitmap = null;
+                    }
 
                 return params;
             }

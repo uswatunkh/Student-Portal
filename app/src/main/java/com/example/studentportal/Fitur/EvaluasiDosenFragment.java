@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.android.volley.Request;
@@ -126,6 +127,7 @@ public class EvaluasiDosenFragment extends Fragment implements SwipeRefreshLayou
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_evaluasi_dosen, container, false);
 
@@ -137,6 +139,7 @@ public class EvaluasiDosenFragment extends Fragment implements SwipeRefreshLayou
         fab     = (FloatingActionButton) root.findViewById(R.id.fab_add);
         swipe   = (SwipeRefreshLayout) root.findViewById(R.id.swipe_refresh_layout);
         list    = (ListView) root.findViewById(R.id.list);
+
         backKeterampilan= (ImageView) root.findViewById(R.id.backKeterampilan);
         backKeterampilan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,6 +148,9 @@ public class EvaluasiDosenFragment extends Fragment implements SwipeRefreshLayou
             }
         });
 
+//        Bundle bundle = getArguments();
+//        String message = bundle.getString("message");
+//        Toast.makeText(getActivity(),message,Toast.LENGTH_SHORT).show();
         // untuk mengisi data dari JSON ke dalam adapter
         adapter = new AdapterEvdos(getActivity(), itemList);
         list.setAdapter(adapter);
@@ -247,7 +253,7 @@ public class EvaluasiDosenFragment extends Fragment implements SwipeRefreshLayou
 //                        itemList.add(listData);
                         DataEvdos item = new DataEvdos();
 
-                        item.setIdDosen(ob.getString(TAG_ID));
+                        item.setIdDosen(ob.getString("idPengajaran"));
                         item.setNamaDosen(ob.getString(TAG_NAMADOSEN));
                         item.setNamaMatakuliah(ob.getString("namaMk"));
                         //item.setFotoDosen(ob.getString("fotoDosen"));

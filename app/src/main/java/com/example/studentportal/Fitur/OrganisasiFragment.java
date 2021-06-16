@@ -357,7 +357,7 @@ public class OrganisasiFragment extends Fragment implements SwipeRefreshLayout.O
         btnSelect.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                final CharSequence[] dialogitem = {"Kamera","Galeri"};
+                final CharSequence[] dialogitem = {"Kamera","Galeri","PDF"};
                 dialog = new AlertDialog.Builder(getActivity());
                 dialog.setCancelable(true);
                 dialog.setItems(dialogitem, new DialogInterface.OnClickListener() {
@@ -389,12 +389,64 @@ public class OrganisasiFragment extends Fragment implements SwipeRefreshLayout.O
                                         }).check();
 
                                 break;
+
                             case 1:
-                                Intent pickPhoto = new Intent(Intent.ACTION_PICK,
-                                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                                startActivityForResult(pickPhoto , 1);//one can be replaced with any action code
 
+//                                Intent intent=new Intent(Intent.ACTION_PICK);
+//                                      intent.setType("images/*");
+//                                      startActivityForResult(Intent.createChooser(intent,"Browse Image"),1);
 
+                                Dexter.withContext(getActivity().getApplicationContext())
+                                        .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+                                        .withListener(new PermissionListener() {
+                                            @Override
+                                            public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
+//                                                Intent intent=new Intent(Intent.ACTION_PICK);
+//                                                intent.setType("images/*");
+//                                                startActivityForResult(Intent.createChooser(intent,"Browse Image"),1);
+                                                Intent pickPhoto = new Intent(Intent.ACTION_PICK,
+                                                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                                                startActivityForResult(pickPhoto , 1);//one can be replaced with any action code
+                                            }
+
+                                            @Override
+                                            public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
+
+                                            }
+
+                                            @Override
+                                            public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
+                                                permissionToken.continuePermissionRequest();
+                                            }
+                                        }).check();
+                                break;
+
+                            case 2:
+                                Dexter.withContext(getActivity().getApplicationContext())
+                                        .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+                                        .withListener(new PermissionListener() {
+                                            @Override
+                                            public void onPermissionGranted(PermissionGrantedResponse response)
+                                            {
+//                                      Intent intent=new Intent(Intent.ACTION_PICK);
+//                                      intent.setType("application/pdf");
+//                                      startActivityForResult(Intent.createChooser(intent,"Browse Image"),1);
+                                                Intent chooseFile = new Intent(Intent.ACTION_GET_CONTENT);
+                                                chooseFile.setType("application/pdf");
+                                                chooseFile = Intent.createChooser(chooseFile, "Choose a file");
+                                                startActivityForResult(chooseFile, REQ_PDF);
+                                            }
+
+                                            @Override
+                                            public void onPermissionDenied(PermissionDeniedResponse response) {
+
+                                            }
+
+                                            @Override
+                                            public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {
+                                                token.continuePermissionRequest();
+                                            }
+                                        }).check();
                                 break;
                         }
                     }
@@ -415,7 +467,7 @@ public class OrganisasiFragment extends Fragment implements SwipeRefreshLayout.O
                 tahunKeluar=txt_tahunKeluar.getText().toString();
                 jabatan= txt_jabatan.getText().toString();
 
-                if (namaOrganisasi.isEmpty() ||tempat.isEmpty() ||tahunMasuk.isEmpty() ||  tahunKeluar.isEmpty() ||  jabatan.isEmpty() || encodedimage.isEmpty() ){
+                if (namaOrganisasi.isEmpty() ||tempat.isEmpty() ||tahunMasuk.isEmpty() ||  tahunKeluar.isEmpty() ||  jabatan.isEmpty()  ){
                     //Toast.makeText(getActivity(), "Data Tidak Boleh Kosong", Toast.LENGTH_SHORT).show();
                     Toast.makeText(getContext(), "Data Tidak Boleh Kosong",Toast.LENGTH_SHORT).show();
                 }else{
@@ -558,7 +610,29 @@ public class OrganisasiFragment extends Fragment implements SwipeRefreshLayout.O
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 1 && resultCode == RESULT_OK && data != null){
+        if(requestCode == REQ_PDF && resultCode == RESULT_OK ){
+
+            Uri path = data.getData();
+            try {
+                InputStream inputStream = getActivity().getContentResolver().openInputStream(path);
+                byte[] pdfInBytes = new byte[inputStream.available()];
+                inputStream.read(pdfInBytes);
+                encodedPDF = Base64.encodeToString(pdfInBytes, Base64.DEFAULT);
+
+
+
+                textView.setText("Document Selected");
+                btnSelect.setText("Change Document");
+
+                Toast.makeText(getActivity(), "Document Selected", Toast.LENGTH_SHORT).show();
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+
+            }
+        }
+        else if(requestCode == 1 && resultCode == RESULT_OK ){
 
             Uri path = data.getData();
             try {
@@ -685,23 +759,28 @@ public class OrganisasiFragment extends Fragment implements SwipeRefreshLayout.O
                 // Posting parameters ke post url
                 Map<String, String> params = new HashMap<String, String>();
                 // jika id kosong maka simpan, jika id ada nilainya maka update
-                if (idOrganisai.isEmpty()){
+
                     params.put("npm", getId);
                     params.put("namaOrganisasi", namaOrganisasi);
                     params.put("tempat", tempat);
                     params.put("tahunMasuk", tahunMasuk);
                     params.put("tahunKeluar", tahunKeluar);
                     params.put("jabatan", jabatan);
+//                    params.put("PDF", encodedimage);
+                if(bitmap==null){
+                    params.put("PDF", encodedPDF);
+                    params.put("file", namaOrganisasi + ".pdf");
+                    encodedPDF = "";
+                    encodedimage = "";
+                } else{
                     params.put("PDF", encodedimage);
+                    params.put("file", namaOrganisasi + ".jpg");
+                    encodedPDF = "";
+                    encodedimage = "";
+                    bitmap = null;
                 }
-//                else {
-//                    params.put("idKeterampilan", id);
-//                    params.put("namaKeterampilan", nama);
-//                    params.put("jenis", jenisHide);
-//                    params.put("tingkat", tingkat);
-                // params.put("scanBukti", scanBukti);
-                //params.put("PDF", idPDF);
-                //            }
+
+
 
                 return params;
             }

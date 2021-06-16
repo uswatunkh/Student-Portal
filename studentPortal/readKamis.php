@@ -4,11 +4,10 @@ require_once 'connect.php';
 
 	$npm = $_POST['npm'];;
  
-	$sql="SELECT jadwalkuliah.idJadwal,jadwalkuliah.jamke,jadwalkuliah.hari, datadosen.namaDosen, ruang.namaRuang, matakuliah.namaMK
-		FROM jadwalkuliah
-		INNER JOIN datadosen INNER JOIN ruang INNER JOIN matakuliah ON jadwalkuliah.idDosen=datadosen.idDosen 
-		AND jadwalkuliah.idRuang=ruang.idRuang AND jadwalkuliah.idMataKuliah=matakuliah.idMataKuliah 
-		AND jadwalkuliah.npm='$npm' AND jadwalkuliah.hari='kamis'";
+	$sql="SELECT jadwalkuliah.idJadwal,jadwalkuliah.jamke,jadwalkuliah.hari,  ruang.namaRuang,datadosen.namaDosen, matakuliah.namaMK, matakuliah.idMataKuliah
+		FROM jadwalkuliah INNER JOIN  ruang INNER JOIN pengajaran INNER JOIN datadosen INNER JOIN matakuliah ON jadwalkuliah.idPengajaran=pengajaran.idPengajaran AND jadwalkuliah.idRuang=ruang.idRuang AND pengajaran.idDosen=datadosen.idDosen  AND pengajaran.idMataKuliah=matakuliah.idMataKuliah 
+		AND jadwalkuliah.npm='$npm' AND jadwalkuliah.hari='kamis'  
+		INNER JOIN periode ON periode.idPeriode=jadwalkuliah.idPeriode Where periode.tanggalMulaiPeriode < NOW() And periode.tanggalSelesaiPeriode > NOW()";
 		
 	$result=mysqli_query($connect,$sql);
 		$cek=mysqli_num_rows($result);
@@ -18,11 +17,10 @@ require_once 'connect.php';
 
 		echo json_encode($pesan);
 	}else{
-		$sql="SELECT jadwalkuliah.idJadwal,jadwalkuliah.jamke,jadwalkuliah.hari, datadosen.namaDosen, ruang.namaRuang, matakuliah.namaMK
-		FROM jadwalkuliah
-		INNER JOIN datadosen INNER JOIN ruang INNER JOIN matakuliah ON jadwalkuliah.idDosen=datadosen.idDosen 
-		AND jadwalkuliah.idRuang=ruang.idRuang AND jadwalkuliah.idMataKuliah=matakuliah.idMataKuliah 
-		AND jadwalkuliah.npm='$npm' AND jadwalkuliah.hari='kamis' ";
+		$sql="SELECT jadwalkuliah.idJadwal,jadwalkuliah.jamke,jadwalkuliah.hari,  ruang.namaRuang,datadosen.namaDosen, matakuliah.namaMK, matakuliah.idMataKuliah
+		FROM jadwalkuliah INNER JOIN  ruang INNER JOIN pengajaran INNER JOIN datadosen INNER JOIN matakuliah ON jadwalkuliah.idPengajaran=pengajaran.idPengajaran AND jadwalkuliah.idRuang=ruang.idRuang AND pengajaran.idDosen=datadosen.idDosen  AND pengajaran.idMataKuliah=matakuliah.idMataKuliah 
+		AND jadwalkuliah.npm='$npm' AND jadwalkuliah.hari='kamis'  
+		INNER JOIN periode ON periode.idPeriode=jadwalkuliah.idPeriode Where periode.tanggalMulaiPeriode < NOW() And periode.tanggalSelesaiPeriode > NOW() ";
 		$result=mysqli_query($connect,$sql);
 		$data=array();
 		while($row=mysqli_fetch_assoc($result)){

@@ -9,13 +9,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$tingkat = $_POST['tingkat'];
 	$jenis = $_POST['jenis'];
 	$verifikasi = "Belum Diverifikasi";
-	$scanBukti = "scanBukti_Prestasi/$npm.$namaLomba.png";
+	$file = $_POST['file'];
+	$scanBukti = "scanBukti_Prestasi/$npm.$file";
 	$encodedPDF = $_POST['PDF'];
+	file_put_contents($scanBukti, base64_decode($encodedPDF));
 	
 	//$pdfLocation = "documents/$pdfTitle.pdf";
-	
-	
-
     require_once 'koneksi.php';
 		
 		$sql = "INSERT INTO prestasi (idPrestasi,npm,namaLomba,tahun,juara,tingkat,jenis,verifikasi,scanBukti) 
@@ -23,7 +22,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		
 			
 		if(mysqli_query($connect, $sql)) {
-			file_put_contents($scanBukti, base64_decode($encodedPDF));
+			
 			
 
           $result["success"] = "1";

@@ -8,7 +8,7 @@ require_once 'connect.php';
 	$sql="SELECT presensi.mingguKe, presensi.tanggalPresensi, matakuliah.namaMK, presensi.ket
 		 FROM presensi
 		 INNER JOIN jadwalkuliah INNER JOIN daftarulg  ON presensi.idJadwal=jadwalkuliah.idJadwal 
-		 CROSS JOIN matakuliah ON jadwalkuliah.idMataKuliah=matakuliah.idMataKuliah AND presensi.idDaftarUlang=daftarulg.idDaftarUlang
+		 CROSS JOIN pengajaran ON jadwalkuliah.idPengajaran=pengajaran.idPengajaran CROSS JOIN matakuliah ON pengajaran.idMataKuliah=matakuliah.idMataKuliah AND presensi.idDaftarUlang=daftarulg.idDaftarUlang
 		AND presensi.npm='$npm' AND daftarulg.semester='$semester'";
 		
 	$result=mysqli_query($connect,$sql);
@@ -22,7 +22,7 @@ require_once 'connect.php';
 		$sql="SELECT presensi.mingguKe, presensi.tanggalPresensi, matakuliah.namaMK, presensi.ket
 		 FROM presensi
 		 INNER JOIN jadwalkuliah INNER JOIN daftarulg  ON presensi.idJadwal=jadwalkuliah.idJadwal 
-		 CROSS JOIN matakuliah ON jadwalkuliah.idMataKuliah=matakuliah.idMataKuliah AND presensi.idDaftarUlang=daftarulg.idDaftarUlang
+		 CROSS JOIN pengajaran ON jadwalkuliah.idPengajaran=pengajaran.idPengajaran CROSS JOIN matakuliah ON pengajaran.idMataKuliah=matakuliah.idMataKuliah AND presensi.idDaftarUlang=daftarulg.idDaftarUlang
 		AND presensi.npm='$npm' AND daftarulg.semester='$semester'";
 		$result=mysqli_query($connect,$sql);
 		$data=array();

@@ -26,6 +26,7 @@ require_once 'connect.php';
 		AND hasilstd.npm='$npm' AND daftarulg.semester='$semester'";
 		$result=mysqli_query($connect,$sql);
 		$data=array();
+		
 		while($row=mysqli_fetch_assoc($result)){
 			$data["data"][]=$row;
 	 

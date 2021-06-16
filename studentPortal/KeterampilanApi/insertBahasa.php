@@ -9,7 +9,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$skor = $_POST['skor'];
 	$tanggalTes = $_POST['tanggalTes'];
 	$verifikasi = "Belum Diverifikasi";
-	$scanBukti = "scanBukti_Bahasa/$npm.$namaBahasa.png";
+	$file = $_POST['file'];
+	$scanBukti = "scanBukti_Bahasa/$npm.$file";
 	$encodedPDF = $_POST['PDF'];
 	
 	//$pdfLocation = "documents/$pdfTitle.pdf";

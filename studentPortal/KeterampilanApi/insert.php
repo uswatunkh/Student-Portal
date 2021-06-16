@@ -6,10 +6,18 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$namaKeterampilan 	= $_POST['namaKeterampilan'];
 	$jenis = $_POST['jenis'];
 	$tingkat = $_POST['tingkat'];
+	$file = $_POST['file'];
 	$verifikasi = "Belum Diverifikasi";
 	
-	$scanBukti = "documents/$npm.$namaKeterampilan.png"  ;
+	$scanBukti = "documents/$npm.$file"  ;
 	$encodedPDF = $_POST['PDF'];
+	file_put_contents($scanBukti, base64_decode($encodedPDF));
+
+	// if(explode(".", $namaKeterampilan)[1] == "pdf"){
+	// 	$scanBukti = "documents/$npm.$namaKeterampilan"  ;	
+	// }else{
+	// 	$scanBukti = "documents/$npm.$namaKeterampilan"  ;
+	// }
 	
 	//$pdfLocation = "documents/$pdfTitle.pdf";
 	
@@ -22,7 +30,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		
 			
 		if(mysqli_query($connect, $sql)) {
-			file_put_contents($scanBukti, base64_decode($encodedPDF));
+			
 			
 
           $result["success"] = "1";
@@ -40,7 +48,7 @@ else{
    $result["message"] = "error!";
    echo json_encode($result);
 
-   mysqli_close($conn);
+   mysqli_close($connect);
 }
 
 ?>

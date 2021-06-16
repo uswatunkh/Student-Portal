@@ -148,7 +148,7 @@ public class JumatFragment extends Fragment {
 
                                 for (int i=0; i< jsonArray.length(); i++){
                                     JSONObject ob = jsonArray.getJSONObject(i);
-                                    Hari_list listData=new Hari_list(ob.getString("idJadwal")
+                                    Hari_list listData=new Hari_list(ob.getString("idMataKuliah")
                                             ,ob.getString("namaMK"),ob.getString("namaDosen"),
                                             ob.getString("jamke"), ob.getString("namaRuang"));
                                     mData.add(listData);

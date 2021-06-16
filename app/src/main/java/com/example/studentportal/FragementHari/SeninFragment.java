@@ -138,6 +138,16 @@ public class SeninFragment extends Fragment {
                                 dataKosong.setText("Data Jadwal Hari Senin Masih Kosong");
 
 
+                            }if (success.equals("2")) {
+//                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+//                                builder.setMessage("Data Masih Kosong")
+//                                        .setNegativeButton("Ok",null)
+//                                        .create()
+//                                        .show();
+                                dataKosong.setVisibility(View.VISIBLE);
+                                dataKosong.setText("Data Jadwal Masih Proses");
+
+
                             }else if (success.equals("1"))  {
                                 JSONObject json =new JSONObject(response);
                                 JSONArray jsonArray =json.getJSONArray("data");
@@ -146,7 +156,7 @@ public class SeninFragment extends Fragment {
 
                                 for (int i=0; i< jsonArray.length(); i++){
                                     JSONObject ob = jsonArray.getJSONObject(i);
-                                    Hari_list listData=new Hari_list(ob.getString("idJadwal")
+                                    Hari_list listData=new Hari_list(ob.getString("idMataKuliah")
                                             ,ob.getString("namaMK"),ob.getString("namaDosen"),
                                             ob.getString("jamke"), ob.getString("namaRuang"));
                                     mData.add(listData);

@@ -4,9 +4,10 @@
 
 	//$con = mysqli_connect($HOST, $USER, $PASSWORD, $DB_NAME);
 
-	$receivedSn = $_POST["SN"];
+	//$receivedSn = $_POST["SN"];
+	$receivedSn = 16;
 
-	$sqlQuery = "SELECT * FROM `documents` WHERE sn = '$receivedSn'";
+	$sqlQuery = "SELECT * FROM `kalenderakademik` WHERE sn = '$receivedSn'";
 
 	$result = mysqli_query($connect, $sqlQuery);
 

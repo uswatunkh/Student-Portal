@@ -440,7 +440,7 @@ public class MagangFragment extends Fragment implements SwipeRefreshLayout.OnRef
         btnSelect.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                final CharSequence[] dialogitem = {"Kamera","Galeri"};
+                final CharSequence[] dialogitem = {"Kamera","Galeri","PDF"};
                 dialog = new AlertDialog.Builder(getActivity());
                 dialog.setCancelable(true);
                 dialog.setItems(dialogitem, new DialogInterface.OnClickListener() {
@@ -470,13 +470,19 @@ public class MagangFragment extends Fragment implements SwipeRefreshLayout.OnRef
                                                 permissionToken.continuePermissionRequest();
                                             }
                                         }).check();
+
                                 break;
                             case 1:
                                 Intent pickPhoto = new Intent(Intent.ACTION_PICK,
                                         android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                                 startActivityForResult(pickPhoto , 1);//one can be replaced with any action code
+                                break;
 
-
+                            case 2:
+                                Intent chooseFile = new Intent(Intent.ACTION_GET_CONTENT);
+                                chooseFile.setType("application/pdf");
+                                chooseFile = Intent.createChooser(chooseFile, "Choose a file");
+                                startActivityForResult(chooseFile, REQ_PDF);
                                 break;
                         }
                     }
@@ -699,7 +705,7 @@ public class MagangFragment extends Fragment implements SwipeRefreshLayout.OnRef
             textView.setText("Document Selected");
             btnSelect.setText("Change Document");
         }
-        if(requestCode == REQ_PDF && resultCode == RESULT_OK && data != null){
+        else if(requestCode == REQ_PDF && resultCode == RESULT_OK && data != null){
 
             Uri path2 = data.getData();
 
@@ -821,17 +827,21 @@ public class MagangFragment extends Fragment implements SwipeRefreshLayout.OnRef
                     params.put("tanggalmulaiMagang", tanggalMulai);
                     params.put("tanggalselesaiMagang", tanggalSelesai);
                     params.put("ringkasan", ringkasan);
-                    params.put("PDF", encodedimage);
+                    //params.put("PDF", encodedimage);
                     params.put("PDFLaporan", encodedPDF);
-//                }
-//                else {
-//                    params.put("idKeterampilan", id);
-//                    params.put("namaKeterampilan", nama);
-//                    params.put("jenis", jenisHide);
-//                    params.put("tingkat", tingkat);
-//                    // params.put("scanBukti", scanBukti);
-//                    //params.put("PDF", idPDF);
-//                }
+
+                if(bitmap==null){
+                    params.put("PDF", encodedPDF);
+                    params.put("file", judul + ".pdf");
+                    encodedPDF = "";
+                    encodedimage = "";
+                } else{
+                    params.put("PDF", encodedimage);
+                    params.put("file", judul + ".jpg");
+                    encodedPDF = "";
+                    encodedimage = "";
+                    bitmap = null;
+                }
 
                 return params;
             }

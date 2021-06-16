@@ -7,6 +7,7 @@
     'notification'=> array(
       'title'=>$title,
       'body'=>$body,
+      'sound'=>"default",
       'click_action'=>"SOMEACTIVITY"
 
     ),
