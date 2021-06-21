@@ -1,5 +1,7 @@
 package com.example.studentportal.Fragment;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 
@@ -12,9 +14,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -115,11 +119,14 @@ public class SettingPasswordFragment extends Fragment {
                 String passwordBaru = pass.getText().toString().trim();
                 String confirmPassword = confirm_pass.getText().toString().trim();
                 if (passwordBaru.isEmpty() || confirmPassword.isEmpty()){
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                    builder.setMessage("Password Masih Kosong")
-                            .setNegativeButton("Retry",null)
-                            .create()
-                            .show();
+//                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+//                    builder.setMessage("Password Masih Kosong")
+//                            .setNegativeButton("Retry",null)
+//                            .create()
+//                            .show();
+                    ViewDialogNotSuccess alert = new ViewDialogNotSuccess();
+                    alert.showDialog(getActivity(), "Password Masih Kosong");
+
                 }
                 else if (passwordBaru.length()<6){
                     pass.setError("Password Minimal 6 Karakter");
@@ -188,6 +195,53 @@ public class SettingPasswordFragment extends Fragment {
                 confirm_pass.setTransformationMethod(PasswordTransformationMethod.getInstance());
 
             }
+        }
+    }
+    public class ViewDialogNotSuccess {
+
+        public void showDialog(Activity activity, String msg){
+            final Dialog dialog = new Dialog(activity);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setCancelable(false);
+            dialog.setContentView(R.layout.dialog_notsuccess);
+
+            TextView text = (TextView) dialog.findViewById(R.id.text_dialog);
+            text.setText(msg);
+
+            Button dialogButton = (Button) dialog.findViewById(R.id.btn_dialog);
+            dialogButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
+
+            dialog.show();
+
+
+        }
+    }
+    public class ViewDialogSuccess {
+
+        public void showDialog(Activity activity, String msg){
+            final Dialog dialog = new Dialog(activity);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setCancelable(false);
+            dialog.setContentView(R.layout.dialog_success);
+
+            TextView text = (TextView) dialog.findViewById(R.id.text_dialog);
+            text.setText(msg);
+
+            Button dialogButton = (Button) dialog.findViewById(R.id.btn_dialog);
+            dialogButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
+
+            dialog.show();
+
         }
     }
     private void getUserDetail(){
@@ -272,21 +326,25 @@ public class SettingPasswordFragment extends Fragment {
                             JSONObject jsonObject = new JSONObject(response);
                             String success = jsonObject.getString("success");
                             if (success.equals("1")) {
-                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                                builder.setMessage("Password Berhasil Diubah")
-                                        .setNegativeButton("Ok",null)
-                                        .create()
-                                        .show();
+//                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+//                                builder.setMessage("Password Berhasil Diubah")
+//                                        .setNegativeButton("Ok",null)
+//                                        .create()
+//                                        .show();
+                                ViewDialogSuccess alert = new ViewDialogSuccess();
+                                alert.showDialog(getActivity(), "Password Berhasil Diubah");
                                 kosong();
 
 
                             }else{
-                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                                builder.setMessage("konfirmasi password tidak sama")
-                                        .setIcon(R.drawable.error)
-                                        .setNegativeButton("Ok",null)
-                                        .create()
-                                        .show();
+//                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+//                                builder.setMessage("konfirmasi password tidak sama")
+//                                        .setIcon(R.drawable.error)
+//                                        .setNegativeButton("Ok",null)
+//                                        .create()
+//                                        .show();
+                                ViewDialogNotSuccess alert = new ViewDialogNotSuccess();
+                                alert.showDialog(getActivity(), "Ulangi Konfirmasi Password");
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();

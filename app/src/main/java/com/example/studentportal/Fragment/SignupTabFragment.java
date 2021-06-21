@@ -1,18 +1,21 @@
 package com.example.studentportal.Fragment;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -48,6 +51,7 @@ public class SignupTabFragment extends Fragment {
     int dayOfMonth;
     Calendar calendar;
     private static String URL_REGIST= Server.URL + "aktivasi.php";
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -101,11 +105,13 @@ public class SignupTabFragment extends Fragment {
                 final String password = passwordUser.getText().toString().trim();
                 final String confirmPassword = confirm_pass.getText().toString();
                 if (npmUser.isEmpty() || tglLahir.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()){
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                    builder.setMessage("Data Masih Ada Yang  Kosong")
-                            .setNegativeButton("Retry",null)
-                            .create()
-                            .show();
+//                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+//                    builder.setMessage("Data Masih Ada Yang  Kosong")
+//                            .setNegativeButton("OK",null)
+//                            .create()
+//                            .show();
+                    ViewDialogNotSuccess alert = new ViewDialogNotSuccess();
+                    alert.showDialog(getActivity(), "Data Masih Ada Yang  Kosong");
                 }else if (password.length()<6){
                     passwordUser.setError("Password Minimal 6 Karakter");
 
@@ -162,6 +168,54 @@ public class SignupTabFragment extends Fragment {
         }
     }
 
+    public class ViewDialogNotSuccess {
+
+        public void showDialog(Activity activity, String msg){
+            final Dialog dialog = new Dialog(activity);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setCancelable(false);
+            dialog.setContentView(R.layout.dialog_notsuccess);
+
+            TextView text = (TextView) dialog.findViewById(R.id.text_dialog);
+            text.setText(msg);
+
+            Button dialogButton = (Button) dialog.findViewById(R.id.btn_dialog);
+            dialogButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
+
+            dialog.show();
+
+
+        }
+    }
+    public class ViewDialogSuccess {
+
+        public void showDialog(Activity activity, String msg){
+            final Dialog dialog = new Dialog(activity);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setCancelable(false);
+            dialog.setContentView(R.layout.dialog_success);
+
+            TextView text = (TextView) dialog.findViewById(R.id.text_dialog);
+            text.setText(msg);
+
+            Button dialogButton = (Button) dialog.findViewById(R.id.btn_dialog);
+            dialogButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
+
+            dialog.show();
+
+        }
+    }
+
 
     private void Regist(){
 
@@ -178,35 +232,58 @@ public class SignupTabFragment extends Fragment {
                             JSONObject jsonObject = new JSONObject(response);
                             String success = jsonObject.getString("success");
                             if (success.equals("1")) {
-                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                                builder.setMessage("Aktivasi Berhasil")
-                                        .setNegativeButton("Ok",null)
-                                        .create()
-                                        .show();
-                                         kosong();
+//                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+//                                builder.setMessage("Aktivasi Berhasil")
+//                                        .setTitle("Aktivasi")
+//                                        .setIcon(R.drawable.check_success)
+//                                        .setNegativeButton("Ok",null)
+//                                        .create()
+//                                        .show();
+//                                         kosong();
 
+                                ViewDialogSuccess alert = new ViewDialogSuccess();
+                                alert.showDialog(getActivity(), "Aktivasi Berhasil");
+                                kosong();
 
                             }else if (success.equals("2")){
-                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                                builder.setMessage("Npm yang anda masukkan sudah terdaftar")
-                                        .setIcon(R.drawable.error)
-                                        .setNegativeButton("Ok",null)
-                                        .create()
-                                        .show();
+//                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+//                                builder.setMessage("Npm yang anda masukkan sudah terdaftar")
+//                                        .setTitle("Aktivasi")
+//                                        .setIcon(R.drawable.error)
+//                                        .setNegativeButton("Ok",null)
+//                                        .create()
+//                                        .show();
+                                ViewDialogNotSuccess alert = new ViewDialogNotSuccess();
+                                alert.showDialog(getActivity(), "Npm yang anda masukkan sudah terdaftar");
                             }else if (success.equals("3")){
-                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                                builder.setMessage("Aktivasi Gagal")
-                                        .setIcon(R.drawable.error)
-                                        .setNegativeButton("Ok",null)
-                                        .create()
-                                        .show();
+//                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+//                                builder.setMessage("Aktivasi Gagal")
+//                                        .setTitle("Aktivasi")
+//                                        .setIcon(R.drawable.error)
+//                                        .setNegativeButton("Ok",null)
+//                                        .create()
+//                                        .show();
+                                ViewDialogNotSuccess alert = new ViewDialogNotSuccess();
+                                alert.showDialog(getActivity(), "Aktivasi Gagal");
                             }else if (success.equals("4")){
-                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                                builder.setMessage("Ulangi Konfirmasi Lagi")
-                                        .setIcon(R.drawable.error)
-                                        .setNegativeButton("Ok",null)
-                                        .create()
-                                        .show();
+//                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+//                                builder.setMessage("Ulangi Konfirmasi Lagi")
+//                                        .setTitle("Aktivasi")
+//                                        .setIcon(R.drawable.check_notsucces)
+//                                        .setNegativeButton("Ok",null);
+////                                        .create()
+////                                        .show();
+//                                AlertDialog dialog =builder.create();
+//                                dialog.show();
+//                                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+                                ViewDialogNotSuccess alert = new ViewDialogNotSuccess();
+                                alert.showDialog(getActivity(), "Ulangi Konfirmasi Password");
+
+
+
+
+
+
                             }
                         }catch(JSONException e){
                             e.printStackTrace();

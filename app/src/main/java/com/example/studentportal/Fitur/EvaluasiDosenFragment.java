@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -28,6 +30,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.example.studentportal.Fragment.HomeFragment;
 import com.example.studentportal.R;
 import com.example.studentportal.Server;
+import com.example.studentportal.SessionManager;
 import com.example.studentportal.app.AppController;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.squareup.picasso.MemoryPolicy;
@@ -39,7 +42,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -67,10 +72,6 @@ public class EvaluasiDosenFragment extends Fragment implements SwipeRefreshLayou
 
     private static final String TAG = EvaluasiDosenFragment.class.getSimpleName();
     private static String url_select     = Server.URLEvaluasiDosen + "select.php";
-    private static String url_insert     = Server.URLKeterampilan + "insert.php";
-    private static String url_edit       = Server.URLKeterampilan + "edit.php";
-    private static String url_update     = Server.URLKeterampilan + "update.php";
-    private static String url_delete     = Server.URLKeterampilan + "delete.php";
 
     private static String URL_UPLOAD = Server.URL + "uploadKeterampilan.php";
 
@@ -155,6 +156,7 @@ public class EvaluasiDosenFragment extends Fragment implements SwipeRefreshLayou
         adapter = new AdapterEvdos(getActivity(), itemList);
         list.setAdapter(adapter);
 
+
         // menamilkan widget refresh
         swipe.setOnRefreshListener(this);
 
@@ -165,52 +167,50 @@ public class EvaluasiDosenFragment extends Fragment implements SwipeRefreshLayou
                            itemList.clear();
                            adapter.notifyDataSetChanged();
                            callVolley();
+                           //new AdapterEvdos(getActivity(), itemList).cekKuisioner();
                        }
                    }
         );
 
 
-
-
-
         // listview ditekan lama akan menampilkan dua pilihan edit atau delete data
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(final AdapterView<?> parent, View view,
-                                           final int position, long id) {
-                // TODO Auto-generated method stub
-                final String idx = itemList.get(position).getIdMatakuliah();
+//        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//
+//            @Override
+//            public void onItemClick(final AdapterView<?> parent, View view,
+//                                           final int position, long id) {
+//                // TODO Auto-generated method stub
+//                final String idx = itemList.get(position).getIdMatakuliah();
+////                startActivity(new Intent(getActivity(), Kuisioner.class).
+////                        putExtra("position",position));
 //                startActivity(new Intent(getActivity(), Kuisioner.class).
 //                        putExtra("position",position));
-                startActivity(new Intent(getActivity(), Kuisioner.class).
-                        putExtra("position",position));
-
-
-//                final CharSequence[] dialogitem = {"Edit", "Delete"};
-//                dialog = new AlertDialog.Builder(getActivity());
-//                dialog.setCancelable(true);
-//                dialog.setItems(dialogitem, new DialogInterface.OnClickListener() {
 //
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
 //
-//                        // TODO Auto-generated method stub
-//                        switch (which) {
-//                            case 0:
-//                                startActivity(new Intent(getActivity(), Kuisioner.class).
-//                                        putExtra("position",position));
-//
-//                                break;
-//                            case 1:
-//                                //delete(idx);
-//                                break;
-//                        }
-//                    }
-//                }).show();
-               // return false;
-            }
-        });
+////                final CharSequence[] dialogitem = {"Edit", "Delete"};
+////                dialog = new AlertDialog.Builder(getActivity());
+////                dialog.setCancelable(true);
+////                dialog.setItems(dialogitem, new DialogInterface.OnClickListener() {
+////
+////                    @Override
+////                    public void onClick(DialogInterface dialog, int which) {
+////
+////                        // TODO Auto-generated method stub
+////                        switch (which) {
+////                            case 0:
+////                                startActivity(new Intent(getActivity(), Kuisioner.class).
+////                                        putExtra("position",position));
+////
+////                                break;
+////                            case 1:
+////                                //delete(idx);
+////                                break;
+////                        }
+////                    }
+////                }).show();
+//               // return false;
+//            }
+//        });
 
         return root;
     }
@@ -229,8 +229,60 @@ public class EvaluasiDosenFragment extends Fragment implements SwipeRefreshLayou
         itemList.clear();
         adapter.notifyDataSetChanged();
         callVolley();
+        //cekKuisioner();
+        //new AdapterEvdos(getActivity(), itemList).cekKuisioner();
     }
 
+//    void cekKuisioner(String getidPengajaran){
+//        SessionManager sessionManager = new SessionManager(getActivity());
+//        sessionManager.checkLogin();
+//        HashMap<String, String> user = sessionManager.getUserDetail();
+//        String getId = user.get(sessionManager.ID);
+//        //String url_select = Server.URLEvaluasiDosen + "cekKuisioner.php?npm=" + getId + "&idPengajaran=" + idPengajaran + "&namaMK=" +  namaMK ;
+//        String url_select = Server.URLEvaluasiDosen + "cekKuisioner.php";
+//        StringRequest jArr = new StringRequest(Request.Method.POST,url_select, new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) {
+//                try {
+//                    JSONObject jsonObject=new JSONObject(response);
+//                    String success = jsonObject.getString("success");
+//                    Log.e("Data: ", response.toString());
+//                    AdapterEvdos adap = new AdapterEvdos(getActivity(),itemList);
+//                    if (success.equals("0")) {
+//
+//                        adap.cekKuisioner.setText("Kuisioner sudah terisi");
+//
+//                    }else if (success.equals("1")) {
+//                        adap.cekKuisioner.setText("Kuisioner Belum terisi");
+//
+//                    }
+//                    //int success = jsonObject.getInt("success");
+////                    if(success == 1){
+////                        kuisioner = true;
+////                    }else kuisioner = false;
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                error.printStackTrace();
+//            }
+//        })
+//
+//        {
+//            protected Map<String, String> getParams() throws AuthFailureError {
+//                Map<String, String> params = new HashMap<>();
+//                params.put("npm", getId);
+//                params.put("idPengajaran", getidPengajaran);
+//                //params.put("namaMK", namaMK);
+//                return params;
+//            }
+//        };
+//        AppController.getInstance().addToRequestQueue(jArr);
+//    }
 
 
     // untuk menampilkan semua data pada listview
@@ -238,9 +290,14 @@ public class EvaluasiDosenFragment extends Fragment implements SwipeRefreshLayou
         itemList.clear();
         adapter.notifyDataSetChanged();
         swipe.setRefreshing(true);
+        SessionManager sessionManager = new SessionManager(getActivity());
+        sessionManager.checkLogin();
+        HashMap<String, String> user = sessionManager.getUserDetail();
+        String getId = user.get(sessionManager.ID);
+        //new AdapterEvdos(getActivity(), itemList).cekKuisioner();
 
         // membuat request JSON
-        StringRequest jArr = new StringRequest(Request.Method.GET,url_select, new Response.Listener<String>() {
+        StringRequest jArr = new StringRequest(Request.Method.POST,url_select, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -256,7 +313,10 @@ public class EvaluasiDosenFragment extends Fragment implements SwipeRefreshLayou
                         item.setIdDosen(ob.getString("idPengajaran"));
                         item.setNamaDosen(ob.getString(TAG_NAMADOSEN));
                         item.setNamaMatakuliah(ob.getString("namaMk"));
-                        //item.setFotoDosen(ob.getString("fotoDosen"));
+                        item.setStatusKuisioner(ob.getString("statusKuisioner"));
+
+
+
 
 //                        item.setNidn(ob.getString(TAG_NIDN));
 //                        item.setIdMatakuliah(ob.getString(TAG_IDMATAKULIAH));
@@ -271,7 +331,7 @@ public class EvaluasiDosenFragment extends Fragment implements SwipeRefreshLayou
                 }
                 adapter.notifyDataSetChanged();
                 swipe.setRefreshing(false);
-
+                //new AdapterEvdos(getActivity(), null).cekKuisioner();
             }
 
         }, new Response.ErrorListener() {
@@ -279,9 +339,15 @@ public class EvaluasiDosenFragment extends Fragment implements SwipeRefreshLayou
             public void onErrorResponse(VolleyError error) {
 
             }
-        })
 
-                ;
+        })
+        {
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("npm", getId);
+                return params;
+            }
+        };
         AppController.getInstance().addToRequestQueue(jArr);
     }
 

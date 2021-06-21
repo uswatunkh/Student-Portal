@@ -56,7 +56,7 @@ public class DaftarUlang_TableViewAdapter extends RecyclerView.Adapter {
             rowViewHolder.txtPeriode.setBackgroundResource(R.drawable.table_bg);
             rowViewHolder.txtUkt.setBackgroundResource(R.drawable.table_bg);
             rowViewHolder.txtStatus.setBackgroundResource(R.drawable.table_bg);
-            rowViewHolder.txtCetakKrs.setBackgroundResource(R.drawable.table_bg);
+            //rowViewHolder.txtCetakKrs.setBackgroundResource(R.drawable.table_bg);
 
             rowViewHolder.txtPeriode.setText("Periode Akademik");
             rowViewHolder.txtPeriode.setTextColor(Color.parseColor("#FFFFFF"));

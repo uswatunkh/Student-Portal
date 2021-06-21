@@ -1,5 +1,7 @@
 package com.example.studentportal.Fragment;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +11,7 @@ import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -214,6 +217,53 @@ public class LoginTabFragment extends Fragment {
         Toast.makeText(getActivity(), message,Toast. LENGTH_SHORT).show();
     }
 
+    public class ViewDialogNotSuccess {
+
+        public void showDialog(Activity activity, String msg){
+            final Dialog dialog = new Dialog(activity);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setCancelable(false);
+            dialog.setContentView(R.layout.dialog_notsuccess);
+
+            TextView text = (TextView) dialog.findViewById(R.id.text_dialog);
+            text.setText(msg);
+
+            Button dialogButton = (Button) dialog.findViewById(R.id.btn_dialog);
+            dialogButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
+
+            dialog.show();
+
+        }
+    }
+    public class ViewDialogSuccess {
+
+        public void showDialog(Activity activity, String msg){
+            final Dialog dialog = new Dialog(activity);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setCancelable(false);
+            dialog.setContentView(R.layout.dialog_success);
+
+            TextView text = (TextView) dialog.findViewById(R.id.text_dialog);
+            text.setText(msg);
+
+            Button dialogButton = (Button) dialog.findViewById(R.id.btn_dialog);
+            dialogButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
+
+            dialog.show();
+
+        }
+    }
+
 
     //Code hide-show password
     public void ShowHidePass (View view){
@@ -268,11 +318,13 @@ public class LoginTabFragment extends Fragment {
                                     getActivity().finish();
                                 }
                             }else{
-                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                                builder.setMessage("Npm atau Password salah")
-                                        .setNegativeButton("Ok",null)
-                                        .create()
-                                        .show();
+//                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+//                                builder.setMessage("Npm atau Password salah")
+//                                        .setNegativeButton("Ok",null)
+//                                        .create()
+//                                        .show();
+                                ViewDialogNotSuccess alert = new ViewDialogNotSuccess();
+                                alert.showDialog(getActivity(), "Npm atau Password salah");
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();

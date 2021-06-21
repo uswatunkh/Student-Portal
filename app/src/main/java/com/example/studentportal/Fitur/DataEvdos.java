@@ -2,12 +2,12 @@ package com.example.studentportal.Fitur;
 
 public class DataEvdos {
     int idNomor;
-    private String idDosen, namaDosen,fotoDosen, namaMatakuliah, nidn, idMatakuliah;
+    private String idDosen, namaDosen,fotoDosen, namaMatakuliah, nidn, idMatakuliah, statusKuisioner;
 
     public DataEvdos() {
     }
 
-    public DataEvdos(int idNomor,String idDosen, String namaDosen,String fotoDosen, String namaMatakuliah, String nidn, String idMatakuliah) {
+    public DataEvdos(int idNomor,String idDosen, String namaDosen,String fotoDosen, String namaMatakuliah, String nidn, String idMatakuliah,String statusKuisioner) {
         this.idNomor= idNomor;
         this.idDosen = idDosen;
         this.namaDosen = namaDosen;
@@ -15,6 +15,7 @@ public class DataEvdos {
         this.namaMatakuliah = namaMatakuliah;
         this.nidn = nidn;
         this.idMatakuliah = idMatakuliah;
+        this.statusKuisioner = statusKuisioner;
     }
 
     public int getIdNomor() {
@@ -71,6 +72,14 @@ public class DataEvdos {
 
     public void setIdMatakuliah(String idMatakuliah) {
         this.idMatakuliah = idMatakuliah;
+    }
+
+    public String getStatusKuisioner() {
+        return statusKuisioner;
+    }
+
+    public void setStatusKuisioner(String statusKuisioner) {
+        this.statusKuisioner = statusKuisioner;
     }
 }
 

@@ -206,13 +206,13 @@ public class AdapterTable_Kuisioner extends RecyclerView.Adapter<AdapterTable_Ku
 //            tanya.setText(modal.getPertanyaan());
 //        }
         //costum
-        nomor.setBackgroundResource(R.drawable.cardview);
+        //nomor.setBackgroundResource(R.drawable.cardview);
         evdosid.setBackgroundResource(R.drawable.cardview);
         tanya.setBackgroundResource(R.drawable.cardview);
         jawab.setBackgroundResource(R.drawable.cardview);
         holder.radioGroup.setBackgroundResource(R.drawable.cardview);
         //read
-        nomor.setText(String.valueOf(mData.get(position).getIdNomor()));
+        //nomor.setText(String.valueOf(mData.get(position).getIdNomor()));
 //        evdosid.setText(modal.getIdEvdos());
         evdosid.setText(mData.get(position).getIdEvdos());
         tanya.setText(mData.get(position).getPertanyaan());
@@ -382,6 +382,11 @@ public class AdapterTable_Kuisioner extends RecyclerView.Adapter<AdapterTable_Ku
 //                        intent = new Intent(((Kuisioner)mContext), EvaluasiDosenFragment.class);
 //                        ((Kuisioner)mContext).startActivity(intent);
                         ((Kuisioner)mContext).finish();
+
+                        //new AdapterEvdos(((Kuisioner) mContext).getParent(), null).btn_isi.setVisibility(View.GONE);
+
+
+                        //dos.btn_isi.setVisibility(View.GONE);
 //                        Intent intent =new Intent(((Kuisioner)mContext),AdapterEvdos.class);
 //                        //intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 //                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

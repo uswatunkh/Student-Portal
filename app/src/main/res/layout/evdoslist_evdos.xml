@@ -68,7 +68,15 @@
                         android:id="@+id/tvNamaMK"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Praktik Pemrograman Mobile"
+                        android:textSize="16dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:textColor="@android:color/darker_gray"/>
+                    <TextView
+                        android:id="@+id/statusKuisioner"
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:textSize="16dp"
                         android:layout_marginStart="5dp"
                         android:layout_marginEnd="5dp"
@@ -80,6 +88,15 @@
                         android:layout_marginTop="5dp"
                         android:background="@android:color/holo_blue_dark"
                         android:text="Isi Kuisioner"
+                        android:textColor="@android:color/white"/>
+                    <Button
+                        android:id="@+id/btn_sudahDiisi"
+                        android:layout_width="100dp"
+                        android:visibility="gone"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@android:color/darker_gray"
+                        android:text="Sudah Diisi"
                         android:textColor="@android:color/white"/>
 
                 </LinearLayout>
