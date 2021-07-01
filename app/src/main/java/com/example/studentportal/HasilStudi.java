@@ -135,17 +135,19 @@ public class HasilStudi  extends AppCompatActivity {
 
 
 
-                                for (int i=0; i< jsonArray.length(); i++){
-                                    JSONObject ob = jsonArray.getJSONObject(i);
-                                    String strIp = ob.getString("ip").trim();
-                                String strIpk = ob.getString("ipk").trim();
+                                for (int i=0; i< jsonArray.length(); i++) {
+                                        JSONObject ob = jsonArray.getJSONObject(i);
+                                        String strIp = ob.getString("ip").trim();
+                                        String strIpk = ob.getString("ipk").trim();
+                                        int j=i+1;
 
-                                txtIp.setText(strIp);
-                                txtIpk.setText(strIpk);
-                                HasilStudi_list listData=new HasilStudi_list(ob.getString("idMataKuliah"),ob.getString("namaMK")
-                                ,ob.getString("sks"),ob.getString("nilaiAngka"),ob.getString("nilaiHuruf")
-                                        ,ob.getString("totalNilai"));
-                                mData.add(listData);
+                                        txtIp.setText(strIp);
+                                        txtIpk.setText(strIpk);
+
+                                        HasilStudi_list listData = new HasilStudi_list(j, ob.getString("idMataKuliah"), ob.getString("namaMK")
+                                                , ob.getString("sks"), ob.getString("nilaiAngka"), ob.getString("nilaiHuruf")
+                                                , ob.getString("totalNilai"));
+                                        mData.add(listData);
 
 
 

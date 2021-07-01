@@ -17,13 +17,18 @@
         android:id="@+id/user"
         android:icon="@drawable/user"
         android:iconTint="@android:color/black"
-        android:title="Data Diri"/>
+        android:title="Profil"/>
 
     <item
         android:id="@+id/setting"
-        android:icon="@drawable/setting"
+        android:icon="@drawable/key"
         android:iconTint="@android:color/black"
-        android:title="Setting"/>
+        android:title="Ubah Password"/>
+    <item
+        android:id="@+id/tentang"
+        android:icon="@drawable/tentang"
+        android:iconTint="@android:color/black"
+        android:title="Tentang Aplikasi"/>
 
 
 

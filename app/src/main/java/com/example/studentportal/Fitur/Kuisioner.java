@@ -239,7 +239,6 @@ public class Kuisioner extends AppCompatActivity {
                                 JSONObject ob = jsonArray.getJSONObject(i);
 //                                DataKuisioner listData=new DataKuisioner(ob.getString("idEvdos"),ob.getString("pertanyaan"));
 //                                mData.add(listData);
-
                                 DataKuisioner item = new DataKuisioner();
 
                                 item.setIdNomor(i);

@@ -41,6 +41,12 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
 
         }
 
+    } else{
+        $result['success'] = "2";
+            $result['message'] = "error";
+            echo json_encode($result);
+
+            mysqli_close($connect);
     }
 
 }

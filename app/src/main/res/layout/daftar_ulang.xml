@@ -52,16 +52,19 @@
             android:textSize="25sp" />
 
     </RelativeLayout>
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp">
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/llViewTitle"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp">
+        >
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/news_rv"
@@ -73,6 +76,7 @@
             tools:listitem="@layout/hasil_studi_listitem" />
 
     </HorizontalScrollView>
+    </ScrollView>
 
 
 

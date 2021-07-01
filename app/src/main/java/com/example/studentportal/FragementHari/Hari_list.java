@@ -1,7 +1,7 @@
 package com.example.studentportal.FragementHari;
 
 public class Hari_list {
-
+    String idNomor;
     private String kode;
     private String namaMatakuliah;
     private String dosen;
@@ -10,13 +10,21 @@ public class Hari_list {
 
 
 
-    public Hari_list(  String kode, String namaMatakuliah, String dosen, String jamke,String ruang) {
-
+    public Hari_list(String idNomor, String kode, String namaMatakuliah, String dosen, String jamke, String ruang) {
+        this.idNomor = idNomor;
         this.kode = kode;
         this.namaMatakuliah = namaMatakuliah;
         this.dosen = dosen;
         this.jamke = jamke;
         this.ruang = ruang;
+    }
+
+    public String getIdNomor() {
+        return idNomor;
+    }
+
+    public void setIdNomor(String idNomor) {
+        this.idNomor = idNomor;
     }
 
     public String getKode() {

@@ -13,6 +13,7 @@
         app:layout_constraintWidth_percent="0.8"
         app:layout_constraintVertical_bias="0.3"
         app:layout_constraintHorizontal_bias=".5"
+        android:inputType="number"
         android:background="@drawable/edit_text_bg"
         android:hint="NPM"
         android:paddingLeft="20dp"

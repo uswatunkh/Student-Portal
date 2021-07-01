@@ -1,6 +1,7 @@
 package com.example.studentportal.Fitur;
 
 public class DaftarUlang_list {
+    String idNomor;
     private String periodeAkademik;
     private String ukt;
     private String status;
@@ -8,13 +9,21 @@ public class DaftarUlang_list {
 
 
 
-    public DaftarUlang_list(  String periodeAkademik, String ukt, String status, String cetakKrs) {
-
+    public DaftarUlang_list( String idNomor, String periodeAkademik, String ukt, String status, String cetakKrs) {
+        this.idNomor=idNomor;
         this.periodeAkademik = periodeAkademik;
         this.ukt = ukt;
         this.status = status;
         this.cetakKrs = cetakKrs;
 
+    }
+
+    public String getIdNomor() {
+        return idNomor;
+    }
+
+    public void setIdNomor(String idNomor) {
+        this.idNomor = idNomor;
     }
 
     public String getPeriodeAkademik() {

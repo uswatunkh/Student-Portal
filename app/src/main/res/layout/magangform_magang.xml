@@ -93,10 +93,16 @@
         android:layout_marginTop="0dp"
         android:layout_marginBottom="10dp"
         android:hint="Ringkasan"
+        android:inputType="textMultiLine"
         android:singleLine="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:drawable/editbox_background_normal"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Upload ScanBukti/Piagam"/>
 
     <LinearLayout
         android:layout_width="match_parent"

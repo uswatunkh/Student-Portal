@@ -2,6 +2,7 @@ package com.example.studentportal.Fitur;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,6 +37,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.studentportal.Fragment.SignupTabFragment;
 import com.example.studentportal.HomeActivity;
 import com.example.studentportal.R;
 import com.example.studentportal.Server;
@@ -63,6 +66,7 @@ public class AdapterTable_Kuisioner extends RecyclerView.Adapter<AdapterTable_Ku
     SessionManager sessionManager;
     View rootView;
     Button save,reset;
+    EditText kesan,pesan;
     TextView jwb;
     String getId , getIdDosen,getIdEvdos;  //updateprofil
     private static String URL_EDIT = Server.URLEvaluasiDosen + "pengisianJawaban.php";
@@ -91,6 +95,8 @@ public class AdapterTable_Kuisioner extends RecyclerView.Adapter<AdapterTable_Ku
         getId = user.get(sessionManager.ID);  //updateprofil
         save =(Button)rootView.findViewById(R.id.btnSubmitEval);
        reset =(Button)rootView.findViewById(R.id.btnSubmitReset);
+        kesan =(EditText) rootView.findViewById(R.id.kesan);
+        pesan =(EditText)rootView.findViewById(R.id.pesan);
 
 
         Intent intent = ((Kuisioner)mContext).getIntent();
@@ -174,37 +180,7 @@ public class AdapterTable_Kuisioner extends RecyclerView.Adapter<AdapterTable_Ku
         RadioGroup radG=holder.radioGroup;
 
 
-//        if (rowPos == 0) {
-//
-////            rowViewHolder.txtPeriode.setBackgroundResource(R.drawable.table_bg);
-////            rowViewHolder.txtUkt.setBackgroundResource(R.drawable.table_bg);
-////            rowViewHolder.txtStatus.setBackgroundResource(R.drawable.table_bg);
-////            rowViewHolder.txtCetakKrs.setBackgroundResource(R.drawable.table_bg);
-////
-////            rowViewHolder.txtNomor.setText("Periode Akademik");
-////            rowViewHolder.txtNomor.setTextColor(Color.parseColor("#FFFFFF"));
-////            rowViewHolder.txtPertanyaan.setText("UKT");
-////            rowViewHolder.txtPertanyaan.setTextColor(Color.parseColor("#FFFFFF"));
-//            holder.txtIdEvdos.setVisibility(View.GONE);
-//            holder.txtNomor.setVisibility(View.GONE);
-//            holder.txtPertanyaan.setVisibility(View.GONE);
-//            holder.jawaban.setVisibility(View.GONE);
-//            holder.radioGroup.setVisibility(View.GONE);
-//
-//
-//        } else {
-//            DataKuisioner modal = (DataKuisioner) mData.get(rowPos - 1);
-//            holder.txtIdEvdos.setBackgroundResource(R.drawable.cardview);
-//            holder.txtNomor.setBackgroundResource(R.drawable.cardview);
-//            holder.txtPertanyaan.setBackgroundResource(R.drawable.cardview);
-//            holder.jawaban.setBackgroundResource(R.drawable.cardview);
-//            holder.radioGroup.setBackgroundResource(R.drawable.cardview);
-//
-////            rowViewHolder.txtIdEvdos.setText(modal.getIdEvdos() );
-//            nomor.setText(String.valueOf(modal.getIdNomor()));
-//            evdosid.setText(modal.getIdEvdos());
-//            tanya.setText(modal.getPertanyaan());
-//        }
+
         //costum
         //nomor.setBackgroundResource(R.drawable.cardview);
         evdosid.setBackgroundResource(R.drawable.cardview);
@@ -316,6 +292,7 @@ public class AdapterTable_Kuisioner extends RecyclerView.Adapter<AdapterTable_Ku
 
                     }
                 }//untuk else
+
             });
 
             reset.setOnClickListener(new View.OnClickListener() {
@@ -356,37 +333,58 @@ public class AdapterTable_Kuisioner extends RecyclerView.Adapter<AdapterTable_Ku
 
 
     }
+
+//    public void openFragment(Fragment fragment) {
+//        FragmentTransaction transaction = ((Kuisioner) mContext).getSupportFragmentManager().beginTransaction();
+//
+//        transaction.replace(R.id.container, fragment);
+//        transaction.addToBackStack(null);
+//        transaction.commit();
+//    }
     private void SubmitExpenseData(String idEv,String jawab)
     {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST,URL_EDIT,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        //we get the successful in String response
-                        Log.e("response", response);
-                        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-                        builder.setMessage("Berhasil Mengisi")
-                                .setIcon(R.drawable.error)
-                                .setNegativeButton("Ok",null)
-                                .create()
-                                .show();
-                        //String message="berhasil";
+        final String kesan = this.kesan.getText().toString().trim();
+        final String pesan = this.pesan.getText().toString().trim();
 
-                        //final MyFragment myFragment = new MyFragment();
+        if (kesan.isEmpty() || pesan.isEmpty() ){
+//            this.kesan.setError("Kesan Harus Diisi ");
+//            this.pesan.setError("Pesan Harus Diisi");
+            ViewDialogNotSuccess alert = new ViewDialogNotSuccess();
+            alert.showDialog(((Kuisioner) mContext), "Kesan dan Pesan Harus Diisi");
+        }else {
+            //BATAS ELSE
+
+
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_EDIT,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            //we get the successful in String response
+                            Log.e("response", response);
+                            AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                            builder.setMessage("Berhasil Mengisi")
+                                    .setIcon(R.drawable.error)
+                                    .setNegativeButton("Ok", null)
+                                    .create()
+                                    .show();
+                            //String message="berhasil";
+
+                            //final MyFragment myFragment = new MyFragment();
 //                        EvaluasiDosenFragment f = new EvaluasiDosenFragment();
 //                        Bundle b = new Bundle();
 //                        b.putString("message", String.valueOf(position));
 //                        f.setArguments(b);
-                        //openFragment(EvaluasiDosenFragment.newInstance("", ""));
+                            //openFragment(EvaluasiDosenFragment.newInstance("", ""));
 //                        Intent intent;
 //                        intent = new Intent(((Kuisioner)mContext), EvaluasiDosenFragment.class);
 //                        ((Kuisioner)mContext).startActivity(intent);
-                        ((Kuisioner)mContext).finish();
+                            ((Kuisioner) mContext).finish();
+//                            openFragment(EvaluasiDosenFragment.newInstance("", ""));
+//                            f.callVolley();
+                            //new AdapterEvdos(((Kuisioner) mContext).getParent(), null).btn_isi.setVisibility(View.GONE);
 
-                        //new AdapterEvdos(((Kuisioner) mContext).getParent(), null).btn_isi.setVisibility(View.GONE);
 
-
-                        //dos.btn_isi.setVisibility(View.GONE);
+                            //dos.btn_isi.setVisibility(View.GONE);
 //                        Intent intent =new Intent(((Kuisioner)mContext),AdapterEvdos.class);
 //                        //intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 //                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -396,29 +394,57 @@ public class AdapterTable_Kuisioner extends RecyclerView.Adapter<AdapterTable_Ku
 //                        evaluasiDosenFragment.adapter.isEmpty();
 
 
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e("sellresponseerror", ""+error.toString());
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<>();
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.e("sellresponseerror", "" + error.toString());
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() {
+                    Map<String, String> params = new HashMap<>();
 //                params.put("npm", getId);
 //                params.put("idEvdos", idEv);
 //                params.put("jawaban", jawab);
 
-                params.put("npm", getId);
-                params.put("idPengajaran", getIdDosen);
-                params.put("idPertanyaan", idEv);
-                params.put("skor", jawab);
-                return params;
-            }
-        };
-        RequestQueue requestQueue = Volley.newRequestQueue(mContext);
-        requestQueue.add(stringRequest);
+                    params.put("npm", getId);
+                    params.put("idPengajaran", getIdDosen);
+                    params.put("idPertanyaan", idEv);
+                    params.put("skor", jawab);
+                    params.put("kesan", kesan);
+                    params.put("pesan", pesan);
+                    return params;
+                }
+            };
+            RequestQueue requestQueue = Volley.newRequestQueue(mContext);
+            requestQueue.add(stringRequest);
+        //BATAS ELSE
+        }
+    }
+    public class ViewDialogNotSuccess {
+
+        public void showDialog(Activity activity, String msg){
+            final Dialog dialog = new Dialog(activity);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setCancelable(false);
+            dialog.setContentView(R.layout.dialog_notsuccess);
+
+            TextView text = (TextView) dialog.findViewById(R.id.text_dialog);
+            text.setText(msg);
+
+            Button dialogButton = (Button) dialog.findViewById(R.id.btn_dialog);
+            dialogButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
+
+            dialog.show();
+
+
+        }
     }
 
 

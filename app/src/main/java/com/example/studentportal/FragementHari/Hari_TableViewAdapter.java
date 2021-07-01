@@ -45,13 +45,15 @@ public class Hari_TableViewAdapter extends RecyclerView.Adapter {
         int rowPos = rowViewHolder.getAdapterPosition();
 
         if (rowPos == 0) {
-
+            rowViewHolder.txtNomor.setBackgroundResource(R.drawable.table_bg);
             rowViewHolder.txtKode.setBackgroundResource(R.drawable.table_bg);
             rowViewHolder.txtNamaMataKuliah.setBackgroundResource(R.drawable.table_bg);
             rowViewHolder.txtDosen.setBackgroundResource(R.drawable.table_bg);
             rowViewHolder.txtJamke.setBackgroundResource(R.drawable.table_bg);
             rowViewHolder.txtRuang.setBackgroundResource(R.drawable.table_bg);
 
+            rowViewHolder.txtNomor.setText("#");
+            rowViewHolder.txtNomor.setTextColor(Color.parseColor("#FFFFFF"));
             rowViewHolder.txtKode.setText("Kode");
             rowViewHolder.txtKode.setTextColor(Color.parseColor("#FFFFFF"));
             rowViewHolder.txtNamaMataKuliah.setText("Nama Matakuliah");
@@ -66,12 +68,14 @@ public class Hari_TableViewAdapter extends RecyclerView.Adapter {
         } else {
             Hari_list modal = (Hari_list) mData.get(rowPos - 1);
 
+            rowViewHolder.txtNomor.setBackgroundResource(R.drawable.cardview);
             rowViewHolder.txtKode.setBackgroundResource(R.drawable.cardview);
             rowViewHolder.txtNamaMataKuliah.setBackgroundResource(R.drawable.cardview);
             rowViewHolder.txtDosen.setBackgroundResource(R.drawable.cardview);
             rowViewHolder.txtJamke.setBackgroundResource(R.drawable.cardview);
             rowViewHolder.txtRuang.setBackgroundResource(R.drawable.cardview);
 
+            rowViewHolder.txtNomor.setText(modal.getIdNomor());
             rowViewHolder.txtKode.setText(modal.getKode());
             rowViewHolder.txtNamaMataKuliah.setText(modal.getNamaMatakuliah());
             rowViewHolder.txtDosen.setText(modal.getDosen());
@@ -93,9 +97,11 @@ public class Hari_TableViewAdapter extends RecyclerView.Adapter {
         TextView txtDosen;
         TextView txtJamke;
         TextView txtRuang;
+        TextView txtNomor;
 
         RowViewHolder(View itemView) {
             super(itemView);
+            txtNomor = itemView.findViewById(R.id.txtNomor);
             txtKode = itemView.findViewById(R.id.txtKode);
             txtNamaMataKuliah = itemView.findViewById(R.id.txtNamaMataKuliah);
             txtDosen = itemView.findViewById(R.id.txtDosen);

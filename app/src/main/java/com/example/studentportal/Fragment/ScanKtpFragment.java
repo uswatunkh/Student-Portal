@@ -131,10 +131,10 @@ public class ScanKtpFragment extends Fragment {
 //                chooseFile();
 //            }
 //        });
-        btn_scanKtp.setOnLongClickListener(new View.OnLongClickListener() {
+        btn_scanKtp.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onLongClick(View v) {
-                final CharSequence[] dialogitem = {"Kamera","Galery"};
+            public void onClick(View v) {
+                final CharSequence[] dialogitem = {"Kamera","Galeri"};
                 dialog = new AlertDialog.Builder(getActivity());
                 dialog.setCancelable(true);
                 dialog.setItems(dialogitem, new DialogInterface.OnClickListener() {
@@ -180,7 +180,7 @@ public class ScanKtpFragment extends Fragment {
                 }).show();
 //
 
-                return false;
+                //return false;
             }
         });
 

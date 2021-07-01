@@ -33,7 +33,7 @@
             android:id="@+id/refresh"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-            android:layout_marginLeft="170dp"
+            android:layout_marginLeft="195dp"
                     android:src="@drawable/buton_refresh"
                     android:background="@drawable/bg_refresh"/>
 
@@ -108,21 +108,27 @@
 
 
 
-
-
     </HorizontalScrollView>
 
 
 
-    <RelativeLayout
+
+    <LinearLayout
         android:id="@+id/ipip"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/white"
+        android:gravity="center"
+        android:background="@drawable/cardview"
         android:layout_below="@+id/toolbar"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="0dp">
+        android:layout_marginTop="0dp"
+        android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/cardview">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -139,7 +145,7 @@
             android:id="@+id/semester"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="63pt"
+            android:layout_marginLeft="8dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:gravity="center"
@@ -150,11 +156,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="70pt"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:gravity="center"
-            android:text=":"
+            android:text=" :"
             android:textColor="@android:color/black"
             android:textSize="15sp"
             android:textStyle="bold" />
@@ -162,7 +167,7 @@
             android:id="@+id/ip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="73pt"
+            android:layout_marginLeft="15dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:gravity="center"
@@ -170,22 +175,41 @@
             android:textColor="@android:color/black"
             android:textSize="15sp"
             android:textStyle="bold" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cardview"
+            android:orientation="horizontal">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="110pt"
+            android:layout_gravity="center"
+            android:layout_marginLeft="22dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:gravity="center"
-            android:text="IPK :"
+            android:text="IPK"
             android:textColor="@android:color/black"
             android:textSize="15sp"
             android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="79dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:gravity="center"
+                android:text=":"
+                android:textColor="@android:color/black"
+                android:textSize="15sp"
+                android:textStyle="bold" />
         <TextView
             android:id="@+id/ipk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="130pt"
+            android:layout_marginLeft="15dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:gravity="center"
@@ -193,9 +217,10 @@
             android:textColor="@android:color/black"
             android:textSize="15sp"
             android:textStyle="bold" />
+        </LinearLayout>
 
 
-    </RelativeLayout>
+    </LinearLayout>
 
 
 

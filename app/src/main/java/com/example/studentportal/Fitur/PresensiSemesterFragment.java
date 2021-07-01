@@ -1,7 +1,6 @@
 package com.example.studentportal.Fitur;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -26,7 +25,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.studentportal.Fragment.HomeFragment;
-import com.example.studentportal.HasilStudi;
 import com.example.studentportal.Presensi;
 import com.example.studentportal.R;
 import com.example.studentportal.Server;
@@ -55,8 +53,8 @@ public class PresensiSemesterFragment extends Fragment implements SwipeRefreshLa
     FloatingActionButton fab;
     ListView list;
     SwipeRefreshLayout swipe;
-    public  static List<DataHasilStudiAwal> itemList = new ArrayList<DataHasilStudiAwal>();
-    AdapterHasilStudiAwal adapter;
+    public  static List<DataPresensiAwal> itemList = new ArrayList<DataPresensiAwal>();
+    AdapterPresensiAwal adapter;
     int success;
     AlertDialog.Builder dialog;
     LayoutInflater inflater;
@@ -71,7 +69,7 @@ public class PresensiSemesterFragment extends Fragment implements SwipeRefreshLa
 
     private static final String TAG = EvaluasiDosenFragment.class.getSimpleName();
 
-    private static String URL_READ = Server.URL + "readSemester.php";
+    private static String URL_READ = Server.URL + "readRekapPresensi.php";
 
     public static final String TAG_ID       = "idDaftarUlang";
     public static final String TAG_SEMESTER     = "semester";
@@ -146,7 +144,7 @@ public class PresensiSemesterFragment extends Fragment implements SwipeRefreshLa
         HashMap<String, String> user = sessionManager.getUserDetail();
         getId = user.get(sessionManager.ID);  //updateprofil
         // untuk mengisi data dari JSON ke dalam adapter
-        adapter = new AdapterHasilStudiAwal(getActivity(), itemList);
+        adapter = new AdapterPresensiAwal(getActivity(), itemList);
         list.setAdapter(adapter);
 
         // menamilkan widget refresh
@@ -168,36 +166,39 @@ public class PresensiSemesterFragment extends Fragment implements SwipeRefreshLa
 
 
         // listview ditekan lama akan menampilkan dua pilihan edit atau delete data
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(final AdapterView<?> parent, View view,
-                                    final int position, long id) {
-                // TODO Auto-generated method stub
-                final String idx = itemList.get(position).getSemester();
-                startActivity(new Intent(getActivity(), Presensi.class).
-                        putExtra("position",position));
-//                final CharSequence[] dialogitem = {"View Hasil Studi Semester "+idx};
-//                dialog = new AlertDialog.Builder(getActivity());
-//                dialog.setCancelable(true);
-//                dialog.setItems(dialogitem, new DialogInterface.OnClickListener() {
+//        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
+//            @Override
+//            public void onItemClick(final AdapterView<?> parent, View view,
+//                                    final int position, long id) {
+//                // TODO Auto-generated method stub
+//                final String idx = itemList.get(position).getSemester();
+//                startActivity(new Intent(getActivity(), Presensi.class).
+//                        putExtra("position",position));
+////                startActivity(new Intent(getActivity(), RekapPresensi.class).
+////                        putExtra("position",position));
 //
-//                        // TODO Auto-generated method stub
-//                        switch (which) {
-//                            case 0:
-//                                startActivity(new Intent(getActivity(), HasilStudi.class).
-//                                        putExtra("position",position));
-//
-//                                break;
-//                        }
-//                    }
-//                }).show();
-                //return false;
-            }
-        });
+////                final CharSequence[] dialogitem = {"View Hasil Studi Semester "+idx};
+////                dialog = new AlertDialog.Builder(getActivity());
+////                dialog.setCancelable(true);
+////                dialog.setItems(dialogitem, new DialogInterface.OnClickListener() {
+////
+////                    @Override
+////                    public void onClick(DialogInterface dialog, int which) {
+////
+////                        // TODO Auto-generated method stub
+////                        switch (which) {
+////                            case 0:
+////                                startActivity(new Intent(getActivity(), HasilStudi.class).
+////                                        putExtra("position",position));
+////
+////                                break;
+////                        }
+////                    }
+////                }).show();
+//                //return false;
+//            }
+//        });
 
         return root;
     }
@@ -237,10 +238,15 @@ public class PresensiSemesterFragment extends Fragment implements SwipeRefreshLa
 //                        Data listData=new Data(ob.getString("id"),ob.getString("nama")
 //                                ,ob.getString("tlp"),ob.getString("email"));
 //                        itemList.add(listData);
-                        DataHasilStudiAwal item = new DataHasilStudiAwal();
+                        DataPresensiAwal item = new DataPresensiAwal();
 
 //                        item.setId(ob.getString(TAG_ID));
                         item.setSemester(ob.getString(TAG_SEMESTER));
+                        item.setIdRekapPresensi(ob.getString("idRekapPresensi"));
+                        item.setHadir(ob.getString("hadir"));
+                        item.setIzin(ob.getString("izin"));
+                        item.setSakit(ob.getString("sakit"));
+                        item.setKosong(ob.getString("kosong"));
 
                         // menambah item ke array
                         itemList.add(item);

@@ -45,7 +45,7 @@ public class HasilStudi_TableViewAdapter  extends RecyclerView.Adapter {
         int rowPos = rowViewHolder.getAdapterPosition();
 
         if (rowPos == 0) {
-            //rowViewHolder.txtNomor.setBackgroundResource(R.drawable.table_bg);
+            rowViewHolder.txtNomor.setBackgroundResource(R.drawable.table_bg);
             rowViewHolder.txtKode.setBackgroundResource(R.drawable.table_bg);
             rowViewHolder.txtNamaKuliah.setBackgroundResource(R.drawable.table_bg);
             rowViewHolder.txtSks.setBackgroundResource(R.drawable.table_bg);
@@ -53,8 +53,8 @@ public class HasilStudi_TableViewAdapter  extends RecyclerView.Adapter {
             rowViewHolder.txtNilaiHuruf.setBackgroundResource(R.drawable.table_bg);
             rowViewHolder.txtTotalNilai.setBackgroundResource(R.drawable.table_bg);
 
-//            rowViewHolder.txtNomor.setText("Nomor");
-//            rowViewHolder.txtNomor.setTextColor(Color.parseColor("#FFFFFF"));
+            rowViewHolder.txtNomor.setText("#");
+            rowViewHolder.txtNomor.setTextColor(Color.parseColor("#FFFFFF"));
             rowViewHolder.txtKode.setText("Kode");
             rowViewHolder.txtKode.setTextColor(Color.parseColor("#FFFFFF"));
             rowViewHolder.txtNamaKuliah.setText("Nama Matakuliah");
@@ -69,7 +69,7 @@ public class HasilStudi_TableViewAdapter  extends RecyclerView.Adapter {
             rowViewHolder.txtTotalNilai.setTextColor(Color.parseColor("#FFFFFF"));
         } else {
             HasilStudi_list modal = (HasilStudi_list) mData.get(rowPos - 1);
-//            rowViewHolder.txtNomor.setBackgroundResource(R.drawable.cardview);
+            rowViewHolder.txtNomor.setBackgroundResource(R.drawable.cardview);
             rowViewHolder.txtKode.setBackgroundResource(R.drawable.cardview);
             rowViewHolder.txtNamaKuliah.setBackgroundResource(R.drawable.cardview);
             rowViewHolder.txtSks.setBackgroundResource(R.drawable.cardview);
@@ -77,13 +77,20 @@ public class HasilStudi_TableViewAdapter  extends RecyclerView.Adapter {
             rowViewHolder.txtNilaiHuruf.setBackgroundResource(R.drawable.cardview);
             rowViewHolder.txtTotalNilai.setBackgroundResource(R.drawable.cardview);
 
-//            rowViewHolder.txtNomor.setText(modal.getIdNomor() + "");
-            rowViewHolder.txtKode.setText(modal.getKode() + "");
+
+            String kode =modal.getKode();
+            rowViewHolder.txtNomor.setText(modal.getIdNomor() + "");
+            rowViewHolder.txtKode.setText(kode+ "");
             rowViewHolder.txtNamaKuliah.setText(modal.getNamaKuliah());
             rowViewHolder.txtSks.setText(modal.getSks() + "");
             rowViewHolder.txtNilaiAngka.setText(modal.getNilaiAngka() + "");
             rowViewHolder.txtNilaiHuruf.setText(modal.getNilaiHuruf() + "");
             rowViewHolder.txtTotalNilai.setText(modal.getTotalNilai() + "");
+
+
+            if (kode.isEmpty()){
+
+            }
         }
 
     }

@@ -9,7 +9,7 @@ require_once 'connect.php';
 		,daftarulg.ip, daftarulg.ipk
 		FROM hasilstd
 		INNER JOIN  matakuliah INNER JOIN  daftarulg ON hasilstd.idMataKuliah=matakuliah.idMataKuliah AND hasilstd.idDaftarUlang=daftarulg.idDaftarUlang
-		AND hasilstd.npm='$npm' AND daftarulg.semester='$semester'";
+		AND daftarulg.npm='$npm' AND daftarulg.semester='$semester'";
 		
 	$result=mysqli_query($connect,$sql);
 		$cek=mysqli_num_rows($result);
@@ -23,7 +23,7 @@ require_once 'connect.php';
 		,daftarulg.ip, daftarulg.ipk
 		FROM hasilstd
 		INNER JOIN  matakuliah INNER JOIN  daftarulg ON hasilstd.idMataKuliah=matakuliah.idMataKuliah AND hasilstd.idDaftarUlang=daftarulg.idDaftarUlang
-		AND hasilstd.npm='$npm' AND daftarulg.semester='$semester'";
+		AND daftarulg.npm='$npm' AND daftarulg.semester='$semester'";
 		$result=mysqli_query($connect,$sql);
 		$data=array();
 		

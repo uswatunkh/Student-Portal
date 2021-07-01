@@ -8,8 +8,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$tingkat = $_POST['tingkat'];
 	$file = $_POST['file'];
 	$verifikasi = "Belum Diverifikasi";
+	$filename="$npm.$file";
 	
-	$scanBukti = "documents/$npm.$file"  ;
+	$scanBukti = "documents/$filename"  ;
 	$encodedPDF = $_POST['PDF'];
 	file_put_contents($scanBukti, base64_decode($encodedPDF));
 
@@ -26,7 +27,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     require_once 'koneksi.php';
 		
 		$sql = "INSERT INTO keterampilan (idKeterampilan,npm,namaKeterampilan,jenis,tingkat,verifikasi,scanBukti) 
-		VALUES(0,'".$npm."','".$namaKeterampilan."','".$jenis."','".$tingkat."','".$verifikasi."','".$scanBukti."') ";
+		VALUES(0,'".$npm."','".$namaKeterampilan."','".$jenis."','".$tingkat."','".$verifikasi."','".$filename."') ";
 		
 			
 		if(mysqli_query($connect, $sql)) {

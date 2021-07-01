@@ -129,7 +129,8 @@ public class SabtuFragment extends Fragment {
 
                             for (int i=0; i< jsonArray.length(); i++){
                                 JSONObject ob = jsonArray.getJSONObject(i);
-                                Hari_list listData=new Hari_list(ob.getString("idMataKuliah")
+                                int j=i+1;
+                                Hari_list listData=new Hari_list(String.valueOf(j),ob.getString("idMataKuliah")
                                         ,ob.getString("namaMK"),ob.getString("namaDosen"),
                                         ob.getString("jamke"), ob.getString("namaRuang"));
                                 mData.add(listData);

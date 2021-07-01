@@ -45,7 +45,7 @@ public class Presensi extends AppCompatActivity {
     private RequestQueue requestQueue;
     List<Presensi_list> mData;
     SessionManager sessionManager;
-    String getId, getSmst;  //updateprofil
+    String getId, getSmst,getIdRekap;  //updateprofil
     ImageView refresh;
     private static String URL_READ     = Server.URL+ "readPresensi.php";
 
@@ -58,7 +58,12 @@ public class Presensi extends AppCompatActivity {
         Intent intent = getIntent();
         position = intent.getExtras().getInt("position");
         //txtSemester.setText( HasilStudiAwalFragment.itemList.get(position).getSemester());
-        getSmst= PresensiSemesterFragment.itemList.get(position).getSemester();
+        getIdRekap= PresensiSemesterFragment.itemList.get(position).getIdRekapPresensi();
+
+//        Intent intent = getIntent();
+//        position = intent.getExtras().getInt("position");
+//        //txtSemester.setText( HasilStudiAwalFragment.itemList.get(position).getSemester());
+//        getSmst= RekapPresensi_Adapter.mData.get(position).getIdRekapPresensi();
 
         sessionManager = new SessionManager(this);
         sessionManager.checkLogin();
@@ -114,7 +119,8 @@ public class Presensi extends AppCompatActivity {
 
                                 for (int i=0; i< jsonArray.length(); i++){
                                     JSONObject ob = jsonArray.getJSONObject(i);
-                                    Presensi_list listData=new Presensi_list(ob.getString("mingguKe"),ob.getString("tanggalPresensi")
+                                    int j=i+1;
+                                    Presensi_list listData=new Presensi_list(String.valueOf(j),ob.getString("mingguKe"),ob.getString("tanggalPresensi")
                                             ,ob.getString("namaMK"),ob.getString("ket"));
                                     mData.add(listData);
 
@@ -166,7 +172,7 @@ public class Presensi extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("npm", getId);
-                params.put("semester", getSmst);
+                params.put("idRekap", getIdRekap);
                 return params;
             }
         };

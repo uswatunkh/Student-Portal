@@ -1,19 +1,27 @@
 package com.example.studentportal;
 
 public class Presensi_list {
-
+    String idNomor;
     private String mingguKe;
     private String tanggalPresensi;
     private String namaMK;
     private String ket;
 
-    public Presensi_list(String mingguKe, String tanggalPresensi, String namaMK, String ket) {
-
+    public Presensi_list(String idNomor,String mingguKe, String tanggalPresensi, String namaMK, String ket) {
+        this.idNomor=idNomor;
         this.mingguKe = mingguKe;
         this.tanggalPresensi = tanggalPresensi;
         this.namaMK = namaMK;
         this.ket = ket;
 
+    }
+
+    public String getIdNomor() {
+        return idNomor;
+    }
+
+    public void setIdNomor(String idNomor) {
+        this.idNomor = idNomor;
     }
 
     public String getMingguKe() {

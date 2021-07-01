@@ -172,7 +172,8 @@ public class DaftarUlangFragment extends Fragment {
 
                                 for (int i=0; i< jsonArray.length(); i++){
                                 JSONObject ob = jsonArray.getJSONObject(i);
-                                DaftarUlang_list listData=new DaftarUlang_list(ob.getString("periode")
+                                int j=i+1;
+                                DaftarUlang_list listData=new DaftarUlang_list(String.valueOf(j),ob.getString("periode")
                                         ,ob.getString("ukt"),ob.getString("statusBayar"),ob.getString("cetakKrs"));
                                 mData.add(listData);
 

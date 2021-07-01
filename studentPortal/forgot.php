@@ -15,8 +15,9 @@ $email = $_POST['email'];
 
 	//$mail->SMTPDebug = 3;                               // Enable verbose debug output
 
-	$mail->isSMTP();                                      // Set mailer to use SMTP
-	$mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+	$mail->isSMTP();     
+	//$mail->Host = 'smtp.gmail.com';                                 // Set mailer to use SMTP
+	$mail->Host = 'smtp.googlemail.com';  // Specify main and backup SMTP servers
 	$mail->SMTPAuth = true;                               // Enable SMTP authentication
 	//Enter Your sender email
 	$mail->Username = $adminUsername;                 // SMTP username
@@ -33,7 +34,7 @@ $email = $_POST['email'];
 
 	$mail->Subject = 'Forgot Password Student Portal';
 	$mail->Body    = "Click Here the Link Below: 
-	http://192.168.43.212/studentPortal/resetPasswordForm.php?key=$email";
+	http://192.168.1.42/studentPortal/resetPasswordForm.php?key=$email";
 
 	if(!$mail->send()) {
 	    echo 'Message could not be sent.';
@@ -44,6 +45,10 @@ $email = $_POST['email'];
 	}
 //batas
  }else{
+ 	$result["mail"] = "1";
+	$result["message"] = "Envalid Email";
+
+	echo json_encode($result);
  	echo "Envalid Email";
  }
 ?>

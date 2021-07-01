@@ -24,7 +24,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout1"
         android:layout_width="327dp"
-        android:layout_height="230dp"
+        android:layout_height="470dp"
+        android:layout_marginTop="80dp"
         android:background="@drawable/vie_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,70 +35,244 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.092">
 
+        <TextView
+            android:id="@+id/namaLengkap"
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="100dp"
+            android:visibility="gone"
+            android:gravity="center"
+            android:text="CONBAAA"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_photo" />
+
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profile_image"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:background="@drawable/ayah"
-            android:layout_centerHorizontal="true"
+            android:id="@+id/btn_photo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:padding="5dp"
+            android:src="@drawable/camera"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.273" />
+            app:layout_constraintVertical_bias="0.128" />
 
-        <Button
-            android:id="@+id/btn_photo"
-            android:layout_width="93dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="146dp"
-            android:layout_marginEnd="116dp"
-            android:layout_marginRight="116dp"
-            android:text="Edit Poto"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/ubah_data_diri"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="240dp"
+            android:layout_weight="0.01"
+            android:clickable="true"
+            android:background="@android:color/holo_blue_dark"
+            android:padding="2dp"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.894"
-            app:layout_constraintStart_toEndOf="@+id/textView"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="?attr/selectableItemBackground"
+                android:orientation="horizontal"
+
+                >
+
+                <ImageView
+
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="5dp"
+                    android:padding="10dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/user" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginBottom="5dp"
+                    android:maxLines="1"
+                    android:text="UBAH DATA DIRI"
+                    android:textStyle="bold"
+                    android:textColor="#000"
+                    android:textSize="12dp" />
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/ubah_data_ortu"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="150dp"
+            android:layout_weight="0.01"
+            android:clickable="true"
+            android:background="@android:color/holo_blue_dark"
+            android:padding="2dp"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="?attr/selectableItemBackground"
+                android:orientation="horizontal"
+
+                >
+
+                <ImageView
+
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="5dp"
+                    android:padding="10dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/organisasi" />
+
+                <TextView
+                    android:id="@+id/daful"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginBottom="5dp"
+                    android:maxLines="1"
+                    android:text="UBAH DATA ORANG TUA"
+                    android:textStyle="bold"
+                    android:textColor="#000"
+                    android:textSize="12dp" />
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/scanKtp"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="60dp"
+            android:layout_weight="0.01"
+            android:clickable="true"
+            android:background="@android:color/holo_blue_dark"
+            android:padding="2dp"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="?attr/selectableItemBackground"
+                android:orientation="horizontal"
+
+                >
+
+                <ImageView
+
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="5dp"
+                    android:padding="10dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/profil" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginBottom="5dp"
+                    android:maxLines="1"
+                    android:text="SCAN KTP"
+                    android:textStyle="bold"
+                    android:textColor="#000"
+                    android:textSize="12dp" />
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+<!--    <Button-->
+<!--        android:id="@+id/ubah_data_diri"-->
+<!--        android:layout_width="354dp"-->
+<!--        android:layout_height="36dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:background="@drawable/vie_bg"-->
+<!--        android:text="UBAH DATA DIRI"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.614"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/constraintLayout1"-->
+<!--        app:layout_constraintVertical_bias="0.121" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/ubah_data_ortu"-->
+<!--        android:layout_width="354dp"-->
+<!--        android:layout_height="36dp"-->
+<!--        android:layout_marginTop="37dp"-->
+<!--        android:background="@drawable/vie_bg"-->
+<!--        android:text="UBAH DATA ORANG TUA"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.614"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/constraintLayout1"-->
+<!--        app:layout_constraintVertical_bias="0.246" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/scanKtp"-->
+<!--        android:layout_width="354dp"-->
+<!--        android:layout_height="36dp"-->
+<!--        android:layout_marginTop="60dp"-->
+<!--        android:background="@drawable/vie_bg"-->
+<!--        android:text="UPLOAD SCAN KTP"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.614"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/constraintLayout1"-->
+<!--        app:layout_constraintVertical_bias="0.367" />-->
 
     <Button
-        android:id="@+id/ubah_data_diri"
+        android:id="@+id/rekapPresensi"
         android:layout_width="354dp"
         android:layout_height="36dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="135dp"
         android:background="@drawable/vie_bg"
-        android:text="UBAH DATA DIRI"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.614"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout1"
-        app:layout_constraintVertical_bias="0.121" />
-
-    <Button
-        android:id="@+id/ubah_data_ortu"
-        android:layout_width="354dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="37dp"
-        android:background="@drawable/vie_bg"
-        android:text="UBAH DATA ORANG TUA"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.614"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout1"
-        app:layout_constraintVertical_bias="0.246" />
-
-    <Button
-        android:id="@+id/scanKtp"
-        android:layout_width="354dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="60dp"
-        android:background="@drawable/vie_bg"
-        android:text="UPLOAD SCAN KTP"
+        android:text="Rekap Presensi"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.614"
@@ -105,6 +280,17 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout1"
         app:layout_constraintVertical_bias="0.367" />
 
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginBottom="400dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/ayah"
+        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

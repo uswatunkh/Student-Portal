@@ -11,7 +11,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$tanggalselesaiMagang = $_POST['tanggalselesaiMagang'];
 	$ringkasan = $_POST['ringkasan'];
 	$file = $_POST['file'];
-	$scanBukti = "scanBukti_Magang/$npm.$file";
+	$filename="$npm.$file";
+	$scanBukti = "scanBukti_Magang/$filename";
 	$encodedPDF = $_POST['PDF'];
 	$uploadLaporan = "laporan_Magang/$npm.$judul.pdf";
 	$encodedPDFLaporan = $_POST['PDFLaporan'];
@@ -26,7 +27,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		
 		$sql = "INSERT INTO magang (idMagang,npm,judul,tempat,provinsi,kota,tanggalmulaiMagang,tanggalselesaiMagang,ringkasan,scanBukti,uploadLaporan,verifikasi) 
 		VALUES(0,'".$npm."','".$judul."','".$tempat."','".$provinsi."','".$kota."','".$tanggalmulaiMagang."','".$tanggalselesaiMagang."','".$ringkasan."'
-		,'".$scanBukti."','".$uploadLaporan."','".$verifikasi."') ";
+		,'".$filename."','".$uploadLaporan."','".$verifikasi."') ";
 		
 			
 		if(mysqli_query($connect, $sql)) {

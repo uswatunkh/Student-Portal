@@ -95,7 +95,9 @@ public class LoginTabFragment extends Fragment {
             public void onClick(View v) {
                 String mNpm = npmUser.getText().toString().trim();
                 String mPassword = passwordUser.getText().toString().trim();
-
+                if (mNpm.length()<9 ){
+                    npmUser.setError("NPM Minimal 9 Karakter");
+                }
                 if (!mNpm.isEmpty() || !mPassword.isEmpty()){
                     Login(mNpm, mPassword);
 
@@ -153,7 +155,7 @@ public class LoginTabFragment extends Fragment {
 
                 if (email.isEmpty() ){
                     progressDialog.dismiss();
-                    message("Enter a Email");
+                    message("Masukkan Email");
                 }else{
                     StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_ForgotPass,
                             new Response.Listener<String>() {
@@ -166,7 +168,7 @@ public class LoginTabFragment extends Fragment {
                                         if(mail.equals("send")){
                                             progressDialog.dismiss();
                                             dialog.dismiss();
-                                            Toast.makeText(getActivity(), "Email are successfully send",Toast. LENGTH_SHORT).show();
+                                            Toast.makeText(getActivity(), "Email Berhasil Dikirim",Toast. LENGTH_SHORT).show();
 //                                            //message("Email are successfully send");
 //                                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 //                                            builder.setMessage("Email berhasil dikirim")
@@ -174,9 +176,10 @@ public class LoginTabFragment extends Fragment {
 //                                                    .create()
 //                                                    .show();
 
-                                        }else {
+                                        }else if(mail.equals("1")){
                                             progressDialog.dismiss();
-                                            Toast.makeText(getActivity(), "Failed",Toast. LENGTH_SHORT).show();
+                                            dialog.dismiss();
+                                            Toast.makeText(getActivity(), "Email Tidak Terdaftar",Toast. LENGTH_SHORT).show();
                                             //message(response);
                                         }
 
@@ -317,7 +320,15 @@ public class LoginTabFragment extends Fragment {
                                     startActivity(intent);
                                     getActivity().finish();
                                 }
-                            }else{
+                            } else if (success.equals("2")){
+//                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+//                                builder.setMessage("Npm atau Password salah")
+//                                        .setNegativeButton("Ok",null)
+//                                        .create()
+//                                        .show();
+                                ViewDialogNotSuccess alert = new ViewDialogNotSuccess();
+                                alert.showDialog(getActivity(), "Npm atau Password salah");
+                            }else if (success.equals("0")){
 //                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 //                                builder.setMessage("Npm atau Password salah")
 //                                        .setNegativeButton("Ok",null)

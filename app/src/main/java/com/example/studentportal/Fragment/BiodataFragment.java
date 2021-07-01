@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -22,6 +23,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -31,6 +33,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.studentportal.Fitur.PresensiSemesterFragment;
 import com.example.studentportal.HomeActivity;
 import com.example.studentportal.R;
 import com.example.studentportal.Server;
@@ -66,8 +69,10 @@ import static android.app.Activity.RESULT_OK;
  */
 public class BiodataFragment extends Fragment {
     private static final String TAG= HomeActivity.class.getSimpleName() ;  //getting the info\
-    private Button btn_photo_upload;
-    Button ubah_data_diri, ubah_data_ortu, scanKtp;
+    private CircleImageView btn_photo_upload;
+    CardView ubah_data_diri, ubah_data_ortu, scanKtp;
+    Button rekapPresensi;
+    TextView namaLengkap;
     SessionManager sessionManager;
     String getId;  //updateprofil
     private static String URL_READ = Server.URL + "readDatadiri.php";
@@ -127,8 +132,10 @@ public class BiodataFragment extends Fragment {
         ubah_data_diri = root.findViewById(R.id.ubah_data_diri);
         ubah_data_ortu = root.findViewById(R.id.ubah_data_ortu);
         scanKtp = root.findViewById(R.id.scanKtp);
+        rekapPresensi = root.findViewById(R.id.rekapPresensi);
         btn_photo_upload = root.findViewById(R.id.btn_photo);
         profile_image = root.findViewById(R.id.profile_image);
+        namaLengkap = root.findViewById(R.id.namaLengkap);
 
         sessionManager = new SessionManager(getActivity());
         sessionManager.checkLogin();
@@ -143,9 +150,9 @@ public class BiodataFragment extends Fragment {
 //            }
 //        });
 
-        btn_photo_upload.setOnLongClickListener(new View.OnLongClickListener() {
+        btn_photo_upload.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onLongClick(View v) {
+            public void onClick(View v) {
                 final CharSequence[] dialogitem = {"Kamera","Galeri"};
                 dialog = new AlertDialog.Builder(getActivity());
                 dialog.setCancelable(true);
@@ -192,7 +199,7 @@ public class BiodataFragment extends Fragment {
                 }).show();
 //
 
-                return false;
+                //return false;
             }
         });
 
@@ -214,6 +221,12 @@ public class BiodataFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 openFragment(ScanKtpFragment.newInstance("oke", "oke"));
+            }
+        });
+        rekapPresensi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openFragment(PresensiSemesterFragment.newInstance("oke", "oke"));
             }
         });
         return root;
@@ -249,9 +262,10 @@ public class BiodataFragment extends Fragment {
                                 for (int i=0; i< jsonArray.length(); i++){
                                     JSONObject object = jsonArray.getJSONObject(i);
                                     String strPhoto = object.getString("imageProfil").trim();
+                                    String nama = object.getString("namaLengkap").trim();
 
                                     Picasso.get().load(strPhoto).memoryPolicy(MemoryPolicy.NO_CACHE).networkPolicy(NetworkPolicy.NO_CACHE).fit().centerCrop().into(profile_image);
-
+                                    namaLengkap.setText(nama);
 
 
 

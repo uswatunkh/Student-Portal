@@ -10,7 +10,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$tanggalTes = $_POST['tanggalTes'];
 	$verifikasi = "Belum Diverifikasi";
 	$file = $_POST['file'];
-	$scanBukti = "scanBukti_Bahasa/$npm.$file";
+	$filename="$npm.$file";
+	$scanBukti = "scanBukti_Bahasa/$filename";
 	$encodedPDF = $_POST['PDF'];
 	
 	//$pdfLocation = "documents/$pdfTitle.pdf";
@@ -20,7 +21,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     require_once 'koneksi.php';
 		
 		$sql = "INSERT INTO bahasainternational (idBahasa,npm,periodeWisuda,tahunWisuda,namaBahasa,skor,tanggalTes,verifikasi,scanBukti) 
-		VALUES(0,'".$npm."','".$periodeWisuda."','".$tahunWisuda."','".$namaBahasa."','".$skor."','".$tanggalTes."','".$verifikasi."','".$scanBukti."') ";
+		VALUES(0,'".$npm."','".$periodeWisuda."','".$tahunWisuda."','".$namaBahasa."','".$skor."','".$tanggalTes."','".$verifikasi."','".$filename."') ";
 		
 			
 		if(mysqli_query($connect, $sql)) {

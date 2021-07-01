@@ -11,7 +11,7 @@ public class HasilStudi_list {
     private String totalNilai;
 
 
-    public HasilStudi_list( String kode, String namaKuliah, String sks, String nilaiAngka,String nilaiHuruf, String totalNilai) {
+    public HasilStudi_list( int idNomor,String kode, String namaKuliah, String sks, String nilaiAngka,String nilaiHuruf, String totalNilai) {
         this.idNomor = idNomor;
         this.kode = kode;
         this.namaKuliah = namaKuliah;

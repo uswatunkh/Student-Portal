@@ -48,8 +48,8 @@ public class SettingPasswordFragment extends Fragment {
 
     private static final String TAG= SettingPasswordFragment.class.getSimpleName() ;  //getting the info
 
-    private EditText npm,namaLengkap,passLama,pass,confirm_pass;
-    ImageView showPassword, confirmshowpass;
+    private EditText npm,namaLengkap,passOld,pass,confirm_pass;
+    ImageView oldPassword, showPassword, confirmshowpass ;
     Button ubah;
     SessionManager sessionManager;
     String getId;  //updateprofil
@@ -102,11 +102,12 @@ public class SettingPasswordFragment extends Fragment {
         // Inflate the layout for this fragment
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_setting_password, container, false);
         ubah = root.findViewById(R.id.buttonUlangPassword);
+        oldPassword=root.findViewById(R.id.show_passOld_btn);
         showPassword=root.findViewById(R.id.show_pass_btn);
         confirmshowpass=root.findViewById(R.id.confirm_pass_btn);
         npm=root.findViewById(R.id.npm);
         namaLengkap=root.findViewById(R.id.namaLengkap);
-       // passLama=root.findViewById(R.id.passwordLama);
+        passOld=root.findViewById(R.id.passwordLama);
         pass=root.findViewById(R.id.passwordBaru);
         confirm_pass = root.findViewById(R.id.ulangi_password_baru);
 
@@ -115,20 +116,21 @@ public class SettingPasswordFragment extends Fragment {
         ubah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              //  String passwordLama = passLama.getText().toString().trim();
+                String passwordLama = passOld.getText().toString().trim();
                 String passwordBaru = pass.getText().toString().trim();
                 String confirmPassword = confirm_pass.getText().toString().trim();
-                if (passwordBaru.isEmpty() || confirmPassword.isEmpty()){
-//                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-//                    builder.setMessage("Password Masih Kosong")
-//                            .setNegativeButton("Retry",null)
-//                            .create()
-//                            .show();
-                    ViewDialogNotSuccess alert = new ViewDialogNotSuccess();
-                    alert.showDialog(getActivity(), "Password Masih Kosong");
-
-                }
-                else if (passwordBaru.length()<6){
+//                if (passwordLama.isEmpty() || passwordBaru.isEmpty() || confirmPassword.isEmpty()){
+////                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+////                    builder.setMessage("Password Masih Kosong")
+////                            .setNegativeButton("Retry",null)
+////                            .create()
+////                            .show();
+//                    ViewDialogNotSuccess alert = new ViewDialogNotSuccess();
+//                    alert.showDialog(getActivity(), "Password Masih Ada Yang Kosong");
+//
+//                }
+//                else
+                 if (passwordBaru.length()<6){
                     pass.setError("Password Minimal 6 Karakter");
 
                 }
@@ -139,7 +141,12 @@ public class SettingPasswordFragment extends Fragment {
         });
         HashMap<String, String> user = sessionManager.getUserDetail();
         getId = user.get(sessionManager.ID);  //updateprofil
-
+        oldPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ShowHidePassOld(v);
+            }
+        });
         showPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -157,10 +164,28 @@ public class SettingPasswordFragment extends Fragment {
     }
 
     private void kosong() {
+        passOld.setText(null);
         pass.setText(null);
         confirm_pass.setText(null);
     }
+    public void ShowHidePassOld (View view){
+        if(view.getId()==R.id.show_passOld_btn){
 
+            if(passOld.getTransformationMethod().equals(PasswordTransformationMethod.getInstance())){
+                ((ImageView)(view)).setImageResource(R.drawable.hide_password);
+
+                //Show Password
+                passOld.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+            }
+            else{
+                ((ImageView)(view)).setImageResource(R.drawable.show_password);
+
+                //Hide Password
+                passOld.setTransformationMethod(PasswordTransformationMethod.getInstance());
+
+            }
+        }
+    }
     public void ShowHidePass (View view){
         if(view.getId()==R.id.show_pass_btn){
 
@@ -307,7 +332,7 @@ public class SettingPasswordFragment extends Fragment {
     }
 
     private void SaveEditDetail() {
-        //final String passwordlama = this.passLama.getText().toString().trim();
+        final String passwordlama = this.passOld.getText().toString().trim();
         final String newpassword = this.pass.getText().toString().trim();
         final String confirmPass = this.confirm_pass.getText().toString().trim();
         final String id = getId;
@@ -333,6 +358,17 @@ public class SettingPasswordFragment extends Fragment {
 //                                        .show();
                                 ViewDialogSuccess alert = new ViewDialogSuccess();
                                 alert.showDialog(getActivity(), "Password Berhasil Diubah");
+                                kosong();
+
+
+                            }else if (success.equals("2")) {
+//                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+//                                builder.setMessage("Password Berhasil Diubah")
+//                                        .setNegativeButton("Ok",null)
+//                                        .create()
+//                                        .show();
+                                ViewDialogNotSuccess alert = new ViewDialogNotSuccess();
+                                alert.showDialog(getActivity(), "Password Lama Salah");
                                 kosong();
 
 
@@ -364,10 +400,9 @@ public class SettingPasswordFragment extends Fragment {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError{
                 Map<String, String> params = new HashMap<>();
-//                params.put("npm", npm);
-
+                params.put("oldpass", passwordlama);
                 params.put("newpass", newpassword);
-                params.put("conformPass", confirmPass);
+                params.put("conformpass", confirmPass);
                 params.put("npm", id);
                 return params;
             }

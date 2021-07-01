@@ -52,12 +52,15 @@ public class DaftarUlang_TableViewAdapter extends RecyclerView.Adapter {
         int rowPos = rowViewHolder.getAdapterPosition();
 
         if (rowPos == 0) {
-
+            rowViewHolder.txtNomor.setBackgroundResource(R.drawable.table_bg);
+            rowViewHolder.txtPeriode.setBackgroundResource(R.drawable.table_bg);
             rowViewHolder.txtPeriode.setBackgroundResource(R.drawable.table_bg);
             rowViewHolder.txtUkt.setBackgroundResource(R.drawable.table_bg);
             rowViewHolder.txtStatus.setBackgroundResource(R.drawable.table_bg);
             //rowViewHolder.txtCetakKrs.setBackgroundResource(R.drawable.table_bg);
 
+            rowViewHolder.txtNomor.setText("#");
+            rowViewHolder.txtNomor.setTextColor(Color.parseColor("#FFFFFF"));
             rowViewHolder.txtPeriode.setText("Periode Akademik");
             rowViewHolder.txtPeriode.setTextColor(Color.parseColor("#FFFFFF"));
             rowViewHolder.txtUkt.setText("UKT");
@@ -71,13 +74,13 @@ public class DaftarUlang_TableViewAdapter extends RecyclerView.Adapter {
 
         } else {
             DaftarUlang_list modal = (DaftarUlang_list) mData.get(rowPos - 1);
-
+            rowViewHolder.txtNomor.setBackgroundResource(R.drawable.cardview);
             rowViewHolder.txtPeriode.setBackgroundResource(R.drawable.cardview);
             rowViewHolder.txtUkt.setBackgroundResource(R.drawable.cardview);
             rowViewHolder.txtStatus.setBackgroundResource(R.drawable.cardview);
 //            rowViewHolder.txtCetakKrs.setBackgroundResource(R.drawable.cardview);
 
-
+            rowViewHolder.txtNomor.setText(modal.getIdNomor() + "");
             rowViewHolder.txtPeriode.setText(modal.getPeriodeAkademik() + "");
             rowViewHolder.txtUkt.setText(modal.getUkt());
             rowViewHolder.txtStatus.setText(modal.getStatus() + "");
@@ -96,23 +99,25 @@ public class DaftarUlang_TableViewAdapter extends RecyclerView.Adapter {
         TextView txtUkt;
         TextView txtStatus;
         TextView txtCetakKrs;
+        TextView txtNomor;
         Button btnDownload;
 
         RowViewHolder(View itemView) {
             super(itemView);
+            txtNomor = itemView.findViewById(R.id.txtNomor);
             txtPeriode = itemView.findViewById(R.id.txtPeriode);
             txtUkt = itemView.findViewById(R.id.txtUkt);
             txtStatus = itemView.findViewById(R.id.txtStatus);
             txtCetakKrs = itemView.findViewById(R.id.txtCetakKrs);
 //            btnDownload=itemView.findViewById(R.id.btnDownload);
-            txtCetakKrs.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                        Intent intent = new Intent(mContext,DaftarUlang.class);
-                        mContext.startActivity(intent);
-
-                }
-            });
+//            txtCetakKrs.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                        Intent intent = new Intent(mContext,DaftarUlang.class);
+//                        mContext.startActivity(intent);
+//
+//                }
+//            });
         }
     }
 }
