@@ -528,14 +528,14 @@ public class DataOrangTuaUbahFragment extends Fragment {
                             String succcess =jsonObject.getString("success");
 
                             if (succcess.equals("1")){
-                                Toast.makeText(getActivity(), "Success!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), "Berhasil Mengubah Data Orang Tua!", Toast.LENGTH_SHORT).show();
                                 
                             }
 
                         } catch (JSONException e) {
                             e.printStackTrace();
                             progressDialog.dismiss();
-                            Toast.makeText(getActivity(), "Error"+e.toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "Gagal"+e.toString(), Toast.LENGTH_SHORT).show();
 
                         }
 

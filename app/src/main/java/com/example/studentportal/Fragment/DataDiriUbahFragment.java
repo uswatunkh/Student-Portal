@@ -348,14 +348,14 @@ public class DataDiriUbahFragment extends Fragment {
                             String succcess =jsonObject.getString("success");
 
                             if (succcess.equals("1")){
-                                Toast.makeText(getActivity(), "Success!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), "Berhasil Mengubah Data Diri!", Toast.LENGTH_SHORT).show();
                                 sessionManager.createSession(id);
                             }
 
                         } catch (JSONException e) {
                             e.printStackTrace();
                             progressDialog.dismiss();
-                            Toast.makeText(getActivity(), "Error"+e.toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "Gagal"+e.toString(), Toast.LENGTH_SHORT).show();
 
                         }
 

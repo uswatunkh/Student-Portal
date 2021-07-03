@@ -26,6 +26,7 @@
             android:layout_marginTop="0dp"
             android:layout_marginBottom="10dp"
             android:hint="Periode Wisuda"
+            android:visibility="gone"
             android:textSize="15dp"
             android:singleLine="true"
             android:layout_width="130dp"
@@ -36,6 +37,7 @@
         <EditText
             android:id="@+id/txt_tahunWisuda"
             android:layout_marginTop="0dp"
+            android:visibility="gone"
             android:layout_marginBottom="10dp"
             android:hint="Tahun Wisuda"
             android:singleLine="true"

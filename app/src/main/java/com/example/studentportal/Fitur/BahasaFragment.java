@@ -237,7 +237,8 @@ public class BahasaFragment extends Fragment implements SwipeRefreshLayout.OnRef
                 // TODO Auto-generated method stub
                 idx = itemList.get(position).getIdBahasa();
 
-                final CharSequence[] dialogitem = {"View","Delete"};
+//                final CharSequence[] dialogitem = {"View","Delete"};
+                final CharSequence[] dialogitem = {"Delete"};
                 dialog = new AlertDialog.Builder(getActivity());
                 dialog.setCancelable(true);
                 dialog.setItems(dialogitem, new DialogInterface.OnClickListener() {
@@ -246,11 +247,11 @@ public class BahasaFragment extends Fragment implements SwipeRefreshLayout.OnRef
                     public void onClick(DialogInterface dialog, int which) {
                         // TODO Auto-generated method stub
                         switch (which) {
+//                            case 0:
+//                                edit(idx);
+//
+//                                break;
                             case 0:
-                                edit(idx);
-
-                                break;
-                            case 1:
                                 AlertDialog myQuittingDialogBox = new AlertDialog.Builder(getActivity())
                                         // set message, title, and icon
                                         .setTitle("Hapus")
@@ -485,13 +486,13 @@ public class BahasaFragment extends Fragment implements SwipeRefreshLayout.OnRef
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 idBahasa      = txt_idBahasa.getText().toString();
-                periodeWisuda    = txt_periodeWisuda.getText().toString();
-                tahunWisuda    = txt_tahunWisuda.getText().toString();
+//                periodeWisuda    = txt_periodeWisuda.getText().toString();
+//                tahunWisuda    = txt_tahunWisuda.getText().toString();
                 namaBahasa    = txt_namaBahasa.getText().toString();
                 skor=txt_skor.getText().toString();
                 tanggalTes= txt_tanggalTes.getText().toString();
 
-                if (periodeWisuda.isEmpty() ||tahunWisuda.isEmpty() ||namaBahasa.isEmpty() ||  skor.isEmpty() ||  tanggalTes.isEmpty()  ){
+                if (namaBahasa.isEmpty() ||  skor.isEmpty() ||  tanggalTes.isEmpty()  ){
                     //Toast.makeText(getActivity(), "Data Tidak Boleh Kosong", Toast.LENGTH_SHORT).show();
                     Toast.makeText(getContext(), "Data Tidak Boleh Kosong",Toast.LENGTH_SHORT).show();
                 }else{
@@ -592,8 +593,8 @@ public class BahasaFragment extends Fragment implements SwipeRefreshLayout.OnRef
                         DataBahasa item = new DataBahasa();
 
                         item.setIdBahasa(ob.getString("idBahasa"));
-                        item.setPeriodeBahasa(ob.getString("periodeWisuda"));
-                        item.setTahunWisuda(ob.getString("tahunWisuda"));
+//                        item.setPeriodeBahasa(ob.getString("periodeWisuda"));
+//                        item.setTahunWisuda(ob.getString("tahunWisuda"));
                         item.setNamaBahasa(ob.getString("namaBahasa"));
                         item.setSkor(ob.getString("skor"));
                         item.setTanggalTes(ob.getString("tanggalTes"));
@@ -779,8 +780,8 @@ public class BahasaFragment extends Fragment implements SwipeRefreshLayout.OnRef
                 Map<String, String> params = new HashMap<String, String>();
                 // jika id kosong maka simpan, jika id ada nilainya maka update
                     params.put("npm", getId);
-                    params.put("periodeWisuda", periodeWisuda);
-                    params.put("tahunWisuda", tahunWisuda);
+//                    params.put("periodeWisuda", periodeWisuda);
+//                    params.put("tahunWisuda", tahunWisuda);
                     params.put("namaBahasa", namaBahasa);
                     params.put("skor", skor);
                     params.put("tanggalTes", tanggalTes);

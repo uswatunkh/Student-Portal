@@ -255,7 +255,7 @@ public class MagangFragment extends Fragment implements SwipeRefreshLayout.OnRef
                 // TODO Auto-generated method stub
                 idx = itemList.get(position).getIdMagang();
 
-                final CharSequence[] dialogitem = {"View","Delete"};
+                final CharSequence[] dialogitem = {"Delete"};
                 dialog = new AlertDialog.Builder(getActivity());
                 dialog.setCancelable(true);
                 dialog.setItems(dialogitem, new DialogInterface.OnClickListener() {
@@ -264,11 +264,11 @@ public class MagangFragment extends Fragment implements SwipeRefreshLayout.OnRef
                     public void onClick(DialogInterface dialog, int which) {
                         // TODO Auto-generated method stub
                         switch (which) {
+//                            case 0:
+//                                edit(idx);
+//
+//                                break;
                             case 0:
-                                edit(idx);
-
-                                break;
-                            case 1:
                                 AlertDialog myQuittingDialogBox = new AlertDialog.Builder(getActivity())
                                         // set message, title, and icon
                                         .setTitle("Hapus")

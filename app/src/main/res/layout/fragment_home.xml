@@ -559,7 +559,7 @@
                                 android:layout_marginBottom="5dp"
                                 android:padding="10dp"
                                 android:scaleType="fitCenter"
-                                android:src="@drawable/presensi"/>
+                                android:src="@drawable/presensioke"/>
 
 
 
@@ -768,7 +768,7 @@
                                     android:layout_marginBottom="5dp"
                                     android:padding="10dp"
                                     android:scaleType="fitCenter"
-                                    android:src="@drawable/keterampilan"/>
+                                    android:src="@drawable/keterampilanoke"/>
 
 
 
@@ -927,7 +927,7 @@
                                     android:layout_marginBottom="5dp"
                                     android:padding="10dp"
                                     android:scaleType="fitCenter"
-                                    android:src="@drawable/akademik"/>
+                                    android:src="@drawable/prestasioke"/>
 
 
 
@@ -982,7 +982,7 @@
                                     android:layout_marginBottom="5dp"
                                     android:padding="10dp"
                                     android:scaleType="fitCenter"
-                                    android:src="@drawable/bahasa"/>
+                                    android:src="@drawable/bahasaoke"/>
 
 
 
@@ -997,7 +997,7 @@
                             android:layout_centerHorizontal="true"
                             android:layout_marginBottom="5dp"
                             android:maxLines="1"
-                            android:text="Bahasa"
+                            android:text="Bahasa Internasional"
                             android:textSize="12dp"
                             android:textColor="#000"
                             />

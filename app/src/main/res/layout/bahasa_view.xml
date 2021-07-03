@@ -7,8 +7,7 @@
     android:orientation="vertical"
     android:padding="16dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/table_bg">
+    android:layout_height="wrap_content">
 
 
 
@@ -59,6 +58,7 @@
                         android:hint="Periode Wisuda"
                         android:layout_marginLeft="0dp"
                         android:focusable="false"
+                        android:visibility="gone"
                         android:textColorHint="@android:color/white"
                         app:boxStrokeColor="@android:color/white"
                         app:boxBackgroundColor="@android:color/white"
@@ -81,6 +81,7 @@
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="140dp"
+                        android:visibility="gone"
                         android:layout_height="wrap_content"
                         android:hint="Tahun Wisuda "
                         android:layout_marginLeft="15dp"
@@ -222,6 +223,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Scan"
                     android:focusable="false"
+                    android:visibility="gone"
                     android:textColorHint="@android:color/white"
                     app:boxStrokeColor="@android:color/white"
                     app:boxBackgroundColor="@android:color/white"

@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,7 +22,7 @@ import com.example.studentportal.biodata;
 
 import java.util.List;
 
-public class DaftarUlang_TableViewAdapter extends RecyclerView.Adapter {
+public class DaftarUlang_TableViewAdapter extends RecyclerView.Adapter<DaftarUlang_TableViewAdapter.RowViewHolder> {
 
     List<DaftarUlang_list> mData;
     Context mContext;
@@ -36,7 +37,7 @@ public class DaftarUlang_TableViewAdapter extends RecyclerView.Adapter {
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RowViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.
                 from(parent.getContext()).
                 inflate(R.layout.daftar_ulang_lisitem, parent, false);
@@ -46,60 +47,60 @@ public class DaftarUlang_TableViewAdapter extends RecyclerView.Adapter {
 
     @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        DaftarUlang_TableViewAdapter.RowViewHolder rowViewHolder = (DaftarUlang_TableViewAdapter.RowViewHolder) holder;
+    public void onBindViewHolder(@NonNull RowViewHolder holder, int position) {
+        RowViewHolder rowViewHolder = (RowViewHolder) holder;
 
         int rowPos = rowViewHolder.getAdapterPosition();
 
-        if (rowPos == 0) {
-            rowViewHolder.txtNomor.setBackgroundResource(R.drawable.table_bg);
-            rowViewHolder.txtPeriode.setBackgroundResource(R.drawable.table_bg);
-            rowViewHolder.txtPeriode.setBackgroundResource(R.drawable.table_bg);
-            rowViewHolder.txtUkt.setBackgroundResource(R.drawable.table_bg);
-            rowViewHolder.txtStatus.setBackgroundResource(R.drawable.table_bg);
-            //rowViewHolder.txtCetakKrs.setBackgroundResource(R.drawable.table_bg);
-
-            rowViewHolder.txtNomor.setText("#");
-            rowViewHolder.txtNomor.setTextColor(Color.parseColor("#FFFFFF"));
-            rowViewHolder.txtPeriode.setText("Periode Akademik");
-            rowViewHolder.txtPeriode.setTextColor(Color.parseColor("#FFFFFF"));
-            rowViewHolder.txtUkt.setText("UKT");
-            rowViewHolder.txtUkt.setTextColor(Color.parseColor("#FFFFFF"));
-            rowViewHolder.txtStatus.setText("Status");
-            rowViewHolder.txtStatus.setTextColor(Color.parseColor("#FFFFFF"));
-//            rowViewHolder.txtCetakKrs.setText("Cetak KRS");
-//            rowViewHolder.txtCetakKrs.setTextColor(Color.parseColor("#FFFFFF"));
-//            rowViewHolder.txtCetakKrs.setText("Cetak KRS");
-//            rowViewHolder.txtCetakKrs.setTextColor(Color.parseColor("#FFFFFF"));
-
-        } else {
-            DaftarUlang_list modal = (DaftarUlang_list) mData.get(rowPos - 1);
-            rowViewHolder.txtNomor.setBackgroundResource(R.drawable.cardview);
-            rowViewHolder.txtPeriode.setBackgroundResource(R.drawable.cardview);
-            rowViewHolder.txtUkt.setBackgroundResource(R.drawable.cardview);
-            rowViewHolder.txtStatus.setBackgroundResource(R.drawable.cardview);
+//        if (rowPos == 0) {
+//            rowViewHolder.txtNomor.setBackgroundResource(R.drawable.table_bg);
+//            rowViewHolder.txtPeriode.setBackgroundResource(R.drawable.table_bg);
+//            rowViewHolder.txtPeriode.setBackgroundResource(R.drawable.table_bg);
+//            rowViewHolder.txtUkt.setBackgroundResource(R.drawable.table_bg);
+//            rowViewHolder.txtStatus.setBackgroundResource(R.drawable.table_bg);
+//            //rowViewHolder.txtCetakKrs.setBackgroundResource(R.drawable.table_bg);
+//
+//            rowViewHolder.txtNomor.setText("#");
+//            rowViewHolder.txtNomor.setTextColor(Color.parseColor("#FFFFFF"));
+//            rowViewHolder.txtPeriode.setText("Periode Akademik");
+//            rowViewHolder.txtPeriode.setTextColor(Color.parseColor("#FFFFFF"));
+//            rowViewHolder.txtUkt.setText("UKT");
+//            rowViewHolder.txtUkt.setTextColor(Color.parseColor("#FFFFFF"));
+//            rowViewHolder.txtStatus.setText("Status");
+//            rowViewHolder.txtStatus.setTextColor(Color.parseColor("#FFFFFF"));
+////            rowViewHolder.txtCetakKrs.setText("Cetak KRS");
+////            rowViewHolder.txtCetakKrs.setTextColor(Color.parseColor("#FFFFFF"));
+////            rowViewHolder.txtCetakKrs.setText("Cetak KRS");
+////            rowViewHolder.txtCetakKrs.setTextColor(Color.parseColor("#FFFFFF"));
+//
+//        } else {
+           // DaftarUlang_list modal = (DaftarUlang_list) mData.get(rowPos - 1);
+            holder.txtNomor.setBackgroundResource(R.drawable.cardview);
+            holder.txtPeriode.setBackgroundResource(R.drawable.cardview);
+            holder.txtUkt.setBackgroundResource(R.drawable.cardview);
+            holder.txtStatus.setBackgroundResource(R.drawable.cardview);
 //            rowViewHolder.txtCetakKrs.setBackgroundResource(R.drawable.cardview);
 
-            rowViewHolder.txtNomor.setText(modal.getIdNomor() + "");
-            rowViewHolder.txtPeriode.setText(modal.getPeriodeAkademik() + "");
-            rowViewHolder.txtUkt.setText(modal.getUkt());
-            rowViewHolder.txtStatus.setText(modal.getStatus() + "");
+            holder.txtNomor.setText(mData.get(position).getIdNomor() + "");
+            holder.txtPeriode.setText(mData.get(position).getPeriodeAkademik() + "");
+            holder.txtUkt.setText(mData.get(position).getUkt());
+            holder.txtStatus.setText(mData.get(position).getStatus() + "");
 //            rowViewHolder.txtCetakKrs.setBackgroundResource(R.drawable.download_pdf);
-        }
+        //}
 
     }
 
     @Override
     public int getItemCount() {
-        return mData.size() + 1;
+        return mData.size() ;
     }
 
-    public class RowViewHolder extends RecyclerView.ViewHolder {
+    public static class RowViewHolder extends RecyclerView.ViewHolder {
         TextView txtPeriode;
         TextView txtUkt;
         TextView txtStatus;
         TextView txtCetakKrs;
-        TextView txtNomor;
+        EditText txtNomor;
         Button btnDownload;
 
         RowViewHolder(View itemView) {

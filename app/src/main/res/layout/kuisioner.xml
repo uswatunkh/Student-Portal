@@ -129,7 +129,8 @@
                 android:textColor="@android:color/black"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:text=""
+                android:text="yaa"
+                android:visibility="gone"
                 android:textSize="20dp" />
         </LinearLayout>
         <ScrollView
@@ -337,7 +338,8 @@
                                             android:layout_height="wrap_content"
                                             android:paddingLeft="60dp"
                                             android:paddingRight="60dp"
-                                            android:text="Reset" />
+                                            android:text="Reset"
+                                            android:visibility="gone"/>
 
 
                                         <Button
@@ -346,7 +348,8 @@
                                             android:layout_height="wrap_content"
                                             android:paddingLeft="60dp"
                                             android:paddingRight="60dp"
-                                            android:text="Save" />
+                                            android:text="Simpan"
+                                            android:layout_gravity="center"/>
                                     </LinearLayout>
                                 </LinearLayout>
                             </androidx.constraintlayout.widget.ConstraintLayout>

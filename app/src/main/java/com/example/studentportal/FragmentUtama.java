@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.studentportal.Fragment.BiodataFragment;
 import com.example.studentportal.Fragment.HomeFragment;
 import com.example.studentportal.Fragment.SettingPasswordFragment;
+import com.example.studentportal.Fragment.TentangFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.messaging.FirebaseMessaging;
 
@@ -66,6 +67,9 @@ public class FragmentUtama extends AppCompatActivity {
                             return true;
                         case R.id.setting:
                             openFragment(SettingPasswordFragment.newInstance("", ""));
+                            return true;
+                        case R.id.tentang:
+                            openFragment(TentangFragment.newInstance("", ""));
                             return true;
                     }
                     return false;

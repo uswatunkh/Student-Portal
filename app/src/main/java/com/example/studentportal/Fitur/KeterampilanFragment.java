@@ -261,7 +261,8 @@ public class  KeterampilanFragment extends Fragment implements SwipeRefreshLayou
                 // TODO Auto-generated method stub
                 idx = itemList.get(position).getIdKeterampilan();
 
-                final CharSequence[] dialogitem = {"View","Delete"};
+//                final CharSequence[] dialogitem = {"View","Delete"};
+                final CharSequence[] dialogitem = {"Delete"};
                 dialog = new AlertDialog.Builder(getActivity());
                 dialog.setCancelable(true);
                 dialog.setItems(dialogitem, new DialogInterface.OnClickListener() {
@@ -270,11 +271,11 @@ public class  KeterampilanFragment extends Fragment implements SwipeRefreshLayou
                     public void onClick(DialogInterface dialog, int which) {
                         // TODO Auto-generated method stub
                         switch (which) {
+//                            case 0:
+//                                edit(idx);
+//
+//                                break;
                             case 0:
-                                edit(idx);
-
-                                break;
-                            case 1:
                                 AlertDialog myQuittingDialogBox = new AlertDialog.Builder(getActivity())
                                         // set message, title, and icon
                                         .setTitle("Hapus")
@@ -663,10 +664,10 @@ public class  KeterampilanFragment extends Fragment implements SwipeRefreshLayou
 
                         item.setIdKeterampilan(ob.getString(TAG_ID));
                         item.setNamaKeterampilan(ob.getString(TAG_NAMA));
-//                        item.setJenis(ob.getString(TAG_JENIS));
-//                        item.setTingkat(ob.getString(TAG_TINGKAT));
-//                        item.setVerifikasi(ob.getString(TAG_Verifikasi));
-//                        item.setScanBukti(ob.getString(TAG_SCANBUKTI));
+                        item.setJenis(ob.getString(TAG_JENIS));
+                        item.setTingkat(ob.getString(TAG_TINGKAT));
+                        item.setVerifikasi(ob.getString(TAG_Verifikasi));
+                        item.setScanBukti(ob.getString(TAG_SCANBUKTI));
 
 
                         // menambah item ke array

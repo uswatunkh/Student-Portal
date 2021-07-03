@@ -130,8 +130,10 @@ public class SettingPasswordFragment extends Fragment {
 //
 //                }
 //                else
-                 if (passwordBaru.length()<6){
+                 if (passwordBaru.length()<6 || passwordLama.length()<6 || confirmPassword.length()<6){
                     pass.setError("Password Minimal 6 Karakter");
+                     passOld.setError("Password Minimal 6 Karakter");
+                     confirm_pass.setError("Password Minimal 6 Karakter");
 
                 }
                 else {
@@ -380,7 +382,7 @@ public class SettingPasswordFragment extends Fragment {
 //                                        .create()
 //                                        .show();
                                 ViewDialogNotSuccess alert = new ViewDialogNotSuccess();
-                                alert.showDialog(getActivity(), "Ulangi Konfirmasi Password");
+                                alert.showDialog(getActivity(), "Ulangi Konfirmasi Password Baru");
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();

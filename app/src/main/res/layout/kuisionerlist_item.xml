@@ -2,8 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     >
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
     <TextView
         android:id="@+id/txtidEvdos"
         android:layout_width="30dp"
@@ -29,64 +33,73 @@
         android:textSize="17sp" />
     <EditText
         android:id="@+id/jawaban"
-        android:layout_width="70dp"
+        android:layout_width="5dp"
         android:textColor="@color/card_bg_color"
         android:layout_height="wrap_content"
         android:focusable="false"
         android:gravity="center"
         android:layout_gravity="top"
         android:textSize="1sp" />
+    </LinearLayout>
 
     <RadioGroup
         android:id="@+id/Rad_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="horizontal">
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
         <RadioButton
             android:id="@+id/tidakPernah"
-            android:layout_width="140dp"
+            android:layout_width="145dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="@font/ubunturegular"
             android:text="A"
-            android:checked="true"
+            android:checked="false"
             android:textSize="17dp" />
 
         <RadioButton
             android:id="@+id/pernah"
-            android:layout_width="105dp"
+            android:layout_width="145dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginLeft="10dp"
-            android:checked="true"
+            android:checked="false"
             android:fontFamily="@font/ubunturegular"
             android:text="B"
             android:textSize="17dp" />
-
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
         <RadioButton
             android:id="@+id/sering"
-            android:layout_width="105dp"
+            android:layout_width="145dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="10dp"
-            android:checked="true"
+            android:checked="false"
             android:fontFamily="@font/ubunturegular"
             android:text="C"
             android:textSize="17dp" />
 
         <RadioButton
             android:id="@+id/selalu"
-            android:layout_width="105dp"
+            android:layout_width="145dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:checked="true"
+            android:checked="false"
             android:layout_marginLeft="10dp"
             android:fontFamily="@font/ubunturegular"
             android:text="D
 "
             android:textSize="17dp" />
+        </LinearLayout>
+
     </RadioGroup>
 
 

@@ -58,11 +58,12 @@
 
             <Button
                 android:id="@+id/btnDownload"
-                android:layout_width="match_parent"
+                android:layout_width="330dp"
+                android:layout_gravity="center"
                 android:layout_height="60dp"
                 android:textSize="16dp"
+                android:layout_marginTop="180dp"
                 android:fontFamily="@font/mench"
-                android:layout_margin="33dp"
                 android:background="@drawable/button_bg"
                 android:text="Download Kalender Akademik "
                 android:textColor="@android:color/white"/>

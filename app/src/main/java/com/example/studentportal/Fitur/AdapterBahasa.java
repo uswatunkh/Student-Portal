@@ -10,6 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.studentportal.R;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,16 +53,17 @@ public class AdapterBahasa extends BaseAdapter {
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         if (convertView == null)
-            convertView = inflater.inflate(R.layout.bahasalist_bahasa, null);
+            convertView = inflater.inflate(R.layout.bahasa_view, null);
 
         TextView idBahasa= (TextView) convertView.findViewById(R.id.idBahasa);
 //        TextView periodeWisuda = (TextView) convertView.findViewById(R.id.periodeWisuda);
 //        TextView tahunWisuda = (TextView) convertView.findViewById(R.id.tahunWisuda);
         TextView namaBahasa = (TextView) convertView.findViewById(R.id.namaBahasa);
-//        TextView skor = (TextView) convertView.findViewById(R.id.skor);
-//        TextView tanggalTes = (TextView) convertView.findViewById(R.id.tanggalTes);
-//        TextView scanBukti = (TextView) convertView.findViewById(R.id.scanBukti);
-//        TextView verifikasi = (TextView) convertView.findViewById(R.id.verifikasi);
+        TextView skor = (TextView) convertView.findViewById(R.id.skor);
+        TextView tanggalTes = (TextView) convertView.findViewById(R.id.tanggalTes);
+        TextView scanBukti = (TextView) convertView.findViewById(R.id.scanBukti);
+        TextView verifikasi = (TextView) convertView.findViewById(R.id.verifikasi);
+        TextInputLayout inputVerifikasi = (TextInputLayout) convertView.findViewById(R.id.inputVerifikasi);
 
 
         DataBahasa data = items.get(position);
@@ -70,15 +72,23 @@ public class AdapterBahasa extends BaseAdapter {
 //        periodeWisuda.setText(data.getPeriodeBahasa());
 //        tahunWisuda.setText(data.getTahunWisuda());
         namaBahasa.setText(data.getNamaBahasa());
-//        skor.setText(data.getSkor());
-//        tanggalTes.setText(data.getTanggalTes());
-//        scanBukti.setText(data.getScanBukti());
-//        verifikasi.setText(data.getVerifikasi());
-//
-//
-//        if(verifikasi.equals("Sudah Diverifikasi")){
-//            verifikasi.setTextColor(Color.parseColor("#000000"));
-//        }
+        skor.setText(data.getSkor());
+        tanggalTes.setText(data.getTanggalTes());
+        scanBukti.setText(data.getScanBukti());
+        verifikasi.setText(data.getVerifikasi());
+        String dataVerisfikasi= data.getVerifikasi();
+
+
+        if (dataVerisfikasi.equals("Sudah Diverifikasi")) {
+            verifikasi.setTextColor(Color.parseColor("#FFFFFF"));
+            inputVerifikasi.setBoxBackgroundColor(Color.parseColor("#7ae472"));
+
+        }else if (dataVerisfikasi.equals("Belum Diverifikasi")){
+            verifikasi.setTextColor(Color.parseColor("#FFFFFF"));
+            inputVerifikasi.setBoxBackgroundColor(Color.parseColor("#F08080"));
+
+        }
+
 
         return convertView;
     }

@@ -1,61 +1,52 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".contoh" >
+    tools:context=".contoh">
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:text="Pilih Warna" />
+        android:id="@+id/appbar"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-    <RadioGroup
-        android:id="@+id/radioGroupWarna"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView1" >
-
-        <RadioButton
-            android:id="@+id/radioMerah"
-            android:layout_width="wrap_content"
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="Merah" />
+            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
+            app:contentScrim="@color/navigation_bottom"
+            app:title="@string/app_name">
 
-        <RadioButton
-            android:id="@+id/radioBiru"
-            android:layout_width="wrap_content"
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:src="@drawable/poltek"
+                android:scaleType="centerCrop"/>
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"/>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Biru" />
+            android:text="Tentang Aplikasi"
+            android:textSize="20dp"
+            android:lineSpacingExtra="8dp"
+            android:padding="18dp"/>
 
-        <RadioButton
-            android:id="@+id/radioCoklat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Coklat" />
-        <RadioButton
-            android:id="@+id/radioHijau"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hijau" />
+    </androidx.core.widget.NestedScrollView>
 
-        <RadioButton
-            android:id="@+id/radioUngu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ungu" />
-    </RadioGroup>
-
-    <Button
-        android:id="@+id/buttonJawab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/radioGroupWarna"
-        android:text="Jawab" />
-
-</RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

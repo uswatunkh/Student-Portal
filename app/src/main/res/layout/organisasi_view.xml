@@ -7,8 +7,7 @@
     android:orientation="vertical"
     android:padding="16dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_dark">
+    android:layout_height="wrap_content">
 
 
 
@@ -219,6 +218,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Scan"
                     android:focusable="false"
+                    android:visibility="gone"
                     android:textColorHint="@android:color/white"
                     app:boxStrokeColor="@android:color/white"
                     app:boxBackgroundColor="@android:color/white"

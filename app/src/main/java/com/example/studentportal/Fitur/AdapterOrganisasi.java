@@ -10,6 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.studentportal.R;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,33 +53,42 @@ public class AdapterOrganisasi extends BaseAdapter {
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         if (convertView == null)
-            convertView = inflater.inflate(R.layout.organisasilist_organisasi, null);
+            convertView = inflater.inflate(R.layout.organisasi_view, null);
 
         TextView idOrganisasi= (TextView) convertView.findViewById(R.id.idOrganisasi);
         TextView namaOrganisasi = (TextView) convertView.findViewById(R.id.namaOrganisasi);
-//        TextView tempat = (TextView) convertView.findViewById(R.id.tempat);
-//        TextView tahunMasuk = (TextView) convertView.findViewById(R.id.tahunMasuk);
-//        TextView tahunKeluar = (TextView) convertView.findViewById(R.id.tahunKeluar);
-//        TextView jabatan = (TextView) convertView.findViewById(R.id.jabatan);
-//        TextView scanBukti = (TextView) convertView.findViewById(R.id.scanBukti);
-//        TextView verifikasi = (TextView) convertView.findViewById(R.id.verifikasi);
+        TextView tempat = (TextView) convertView.findViewById(R.id.tempat);
+        TextView tahunMasuk = (TextView) convertView.findViewById(R.id.tahunMasuk);
+        TextView tahunKeluar = (TextView) convertView.findViewById(R.id.tahunKeluar);
+        TextView jabatan = (TextView) convertView.findViewById(R.id.jabatan);
+        TextView scanBukti = (TextView) convertView.findViewById(R.id.scanBukti);
+        TextView verifikasi = (TextView) convertView.findViewById(R.id.verifikasi);
+        TextInputLayout inputVerifikasi = (TextInputLayout) convertView.findViewById(R.id.inputVerifikasi);
 
 
         DataOrganisasi data = items.get(position);
 
         idOrganisasi.setText(data.getIdOrganisasi());
         namaOrganisasi.setText(data.getNamaOrganisasi());
-//        tempat.setText(data.getTempat());
-//        tahunMasuk.setText(data.getTahunMasuk());
-//        tahunKeluar.setText(data.getTahunKeluar());
-//        jabatan.setText(data.getJabatan());
-//        scanBukti.setText(data.getScanBukti());
-//        verifikasi.setText(data.getVerifikasi());
-//
-//
-//        if(verifikasi.equals("Sudah Diverifikasi")){
-//            verifikasi.setTextColor(Color.parseColor("#000000"));
-//        }
+        tempat.setText(data.getTempat());
+        tahunMasuk.setText(data.getTahunMasuk());
+        tahunKeluar.setText(data.getTahunKeluar());
+        jabatan.setText(data.getJabatan());
+        scanBukti.setText(data.getScanBukti());
+        verifikasi.setText(data.getVerifikasi());
+
+        String dataVerisfikasi= data.getVerifikasi();
+        if (dataVerisfikasi.equals("Sudah Diverifikasi")) {
+            verifikasi.setTextColor(Color.parseColor("#FFFFFF"));
+            inputVerifikasi.setBoxBackgroundColor(Color.parseColor("#7ae472"));
+
+        }else if (dataVerisfikasi.equals("Belum Diverifikasi")){
+            verifikasi.setTextColor(Color.parseColor("#FFFFFF"));
+            inputVerifikasi.setBoxBackgroundColor(Color.parseColor("#F08080"));
+
+        }
+
+
 
         return convertView;
     }

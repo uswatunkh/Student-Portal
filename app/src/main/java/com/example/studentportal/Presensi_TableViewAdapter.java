@@ -6,14 +6,17 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.studentportal.FragementHari.Hari_TableViewAdapter;
+
 import java.util.List;
 
-public class Presensi_TableViewAdapter extends RecyclerView.Adapter {
+public class Presensi_TableViewAdapter extends RecyclerView.Adapter<Presensi_TableViewAdapter.RowViewHolder> {
 
     List<Presensi_list> mData;
     Context mContext;
@@ -27,63 +30,79 @@ public class Presensi_TableViewAdapter extends RecyclerView.Adapter {
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RowViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.
                 from(parent.getContext()).
                 inflate(R.layout.presensi_lisitem, parent, false);
 
-        return new Presensi_TableViewAdapter.RowViewHolder(itemView);
+        return new RowViewHolder(itemView);
     }
 
     @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        Presensi_TableViewAdapter.RowViewHolder rowViewHolder = (Presensi_TableViewAdapter.RowViewHolder) holder;
+    public void onBindViewHolder(@NonNull RowViewHolder holder, int position) {
+        RowViewHolder rowViewHolder = (RowViewHolder) holder;
 
-        int rowPos = rowViewHolder.getAdapterPosition();
+//        int rowPos = rowViewHolder.getAdapterPosition();
+//
+//        if (rowPos == 0) {
+//
+//            rowViewHolder.txtNomor.setBackgroundResource(R.drawable.table_bg);
+//            rowViewHolder.txtMingguKe.setBackgroundResource(R.drawable.table_bg);
+//            rowViewHolder.txtTanggalPresensi.setBackgroundResource(R.drawable.table_bg);
+//            rowViewHolder.txtNamaMK.setBackgroundResource(R.drawable.table_bg);
+//            rowViewHolder.txtKet.setBackgroundResource(R.drawable.table_bg);
+//
+//            rowViewHolder.txtNomor.setText("#");
+//            rowViewHolder.txtNomor.setTextColor(Color.parseColor("#FFFFFF"));
+//            rowViewHolder.txtMingguKe.setText("Minggu Ke");
+//            rowViewHolder.txtMingguKe.setTextColor(Color.parseColor("#FFFFFF"));
+//            rowViewHolder.txtTanggalPresensi.setText("Tanggal Presensi");
+//            rowViewHolder.txtTanggalPresensi.setTextColor(Color.parseColor("#FFFFFF"));
+//            rowViewHolder.txtNamaMK.setText("Kuliah");
+//            rowViewHolder.txtNamaMK.setTextColor(Color.parseColor("#FFFFFF"));
+//            rowViewHolder.txtKet.setText("Keterangan");
+//            rowViewHolder.txtKet.setTextColor(Color.parseColor("#FFFFFF"));
+//        } else {
+//            Presensi_list modal = (Presensi_list) mData.get(rowPos - 1);
 
-        if (rowPos == 0) {
+//            rowViewHolder.txtNomor.setBackgroundResource(R.drawable.cardview);
+//            rowViewHolder.txtMingguKe.setBackgroundResource(R.drawable.cardview);
+//            rowViewHolder.txtTanggalPresensi.setBackgroundResource(R.drawable.cardview);
+//            rowViewHolder.txtNamaMK.setBackgroundResource(R.drawable.cardview);
+//            rowViewHolder.txtKet.setBackgroundResource(R.drawable.cardview);
+//
+//            rowViewHolder.txtNomor.setText(modal.getIdNomor() + "");
+//            rowViewHolder.txtMingguKe.setText(modal.getMingguKe());
+//            rowViewHolder.txtTanggalPresensi.setText(modal.getTanggalPresensi() + "");
+//            rowViewHolder.txtNamaMK.setText(modal.getNamaMK() + "");
+//            rowViewHolder.txtKet.setText(modal.getKet() + "");
+      //  }
 
-            rowViewHolder.txtNomor.setBackgroundResource(R.drawable.table_bg);
-            rowViewHolder.txtMingguKe.setBackgroundResource(R.drawable.table_bg);
-            rowViewHolder.txtTanggalPresensi.setBackgroundResource(R.drawable.table_bg);
-            rowViewHolder.txtNamaMK.setBackgroundResource(R.drawable.table_bg);
-            rowViewHolder.txtKet.setBackgroundResource(R.drawable.table_bg);
+        holder.txtNomor.setBackgroundResource(R.drawable.cardview);
+        holder.txtMingguKe.setBackgroundResource(R.drawable.cardview);
+        holder.txtTanggalPresensi.setBackgroundResource(R.drawable.cardview);
+        holder.txtNamaMK.setBackgroundResource(R.drawable.cardview);
+        holder.txtKet.setBackgroundResource(R.drawable.cardview);
 
-            rowViewHolder.txtNomor.setText("#");
-            rowViewHolder.txtNomor.setTextColor(Color.parseColor("#FFFFFF"));
-            rowViewHolder.txtMingguKe.setText("Minggu Ke");
-            rowViewHolder.txtMingguKe.setTextColor(Color.parseColor("#FFFFFF"));
-            rowViewHolder.txtTanggalPresensi.setText("Tanggal Presensi");
-            rowViewHolder.txtTanggalPresensi.setTextColor(Color.parseColor("#FFFFFF"));
-            rowViewHolder.txtNamaMK.setText("Kuliah");
-            rowViewHolder.txtNamaMK.setTextColor(Color.parseColor("#FFFFFF"));
-            rowViewHolder.txtKet.setText("Keterangan");
-            rowViewHolder.txtKet.setTextColor(Color.parseColor("#FFFFFF"));
-        } else {
-            Presensi_list modal = (Presensi_list) mData.get(rowPos - 1);
-
-            rowViewHolder.txtNomor.setBackgroundResource(R.drawable.cardview);
-            rowViewHolder.txtMingguKe.setBackgroundResource(R.drawable.cardview);
-            rowViewHolder.txtTanggalPresensi.setBackgroundResource(R.drawable.cardview);
-            rowViewHolder.txtNamaMK.setBackgroundResource(R.drawable.cardview);
-            rowViewHolder.txtKet.setBackgroundResource(R.drawable.cardview);
-
-            rowViewHolder.txtNomor.setText(modal.getIdNomor() + "");
-            rowViewHolder.txtMingguKe.setText(modal.getMingguKe());
-            rowViewHolder.txtTanggalPresensi.setText(modal.getTanggalPresensi() + "");
-            rowViewHolder.txtNamaMK.setText(modal.getNamaMK() + "");
-            rowViewHolder.txtKet.setText(modal.getKet() + "");
-        }
+        holder.txtNomor.setText(mData.get(position).getIdNomor() + "");
+        holder.txtMingguKe.setText(mData.get(position).getMingguKe());
+        holder.txtTanggalPresensi.setText(mData.get(position).getTanggalPresensi() + "");
+        holder.txtNamaMK.setText(mData.get(position).getNamaMK() + "");
+        holder.txtKet.setText(mData.get(position).getKet() + "");
 
     }
 
     @Override
     public int getItemCount() {
-        return mData.size() + 1;
+        return mData.size() ;
     }
+    //UNTUK TABLE
+//    public int getItemCount() {
+//        return mData.size() + 1;
+//    }
 
-    public class RowViewHolder extends RecyclerView.ViewHolder {
+    public static class RowViewHolder extends RecyclerView.ViewHolder {
         TextView txtNomor;
         TextView txtMingguKe;
         TextView txtTanggalPresensi;

@@ -18,34 +18,34 @@ public class contoh extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contoh);
-        radioGroupWarna = (RadioGroup) findViewById(R.id.radioGroupWarna);
-        btnJawab = (Button) findViewById(R.id.buttonJawab);
-        addListenerOnButtonJawab();
+//        radioGroupWarna = (RadioGroup) findViewById(R.id.radioGroupWarna);
+//        btnJawab = (Button) findViewById(R.id.buttonJawab);
+//        addListenerOnButtonJawab();
 
 
 
     }
 
-    public void addListenerOnButtonJawab() {
-
-        btnJawab.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                // get selected radio button from radioGroup
-                int selectedId = radioGroupWarna.getCheckedRadioButtonId();
-
-                // find the radiobutton by returned id
-                radioButtonWarna = (RadioButton) findViewById(selectedId);
-
-                Toast.makeText(contoh.this,
-                        "Anda Memilih Warna " + radioButtonWarna.getText(),
-                        Toast.LENGTH_SHORT).show();
-
-            }
-
-        });
-
-    }
+//    public void addListenerOnButtonJawab() {
+//
+//        btnJawab.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View v) {
+//
+//                // get selected radio button from radioGroup
+//                int selectedId = radioGroupWarna.getCheckedRadioButtonId();
+//
+//                // find the radiobutton by returned id
+//                radioButtonWarna = (RadioButton) findViewById(selectedId);
+//
+//                Toast.makeText(contoh.this,
+//                        "Anda Memilih Warna " + radioButtonWarna.getText(),
+//                        Toast.LENGTH_SHORT).show();
+//
+//            }
+//
+//        });
+//
+//    }
     }

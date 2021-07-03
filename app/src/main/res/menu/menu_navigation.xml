@@ -6,13 +6,13 @@
         android:id="@+id/home"
         android:icon="@drawable/home"
 
-        android:title="Home"
+        android:title="Depan"
         />
     <item
         android:id="@+id/notif"
         android:icon="@drawable/notification"
         android:iconTint="@android:color/black"
-        android:title="Pengumuman"/>
+        android:title="Info"/>
     <item
         android:id="@+id/user"
         android:icon="@drawable/user"
@@ -23,12 +23,12 @@
         android:id="@+id/setting"
         android:icon="@drawable/key"
         android:iconTint="@android:color/black"
-        android:title="Ubah Password"/>
+        android:title="Password"/>
     <item
         android:id="@+id/tentang"
-        android:icon="@drawable/tentang"
+        android:icon="@drawable/tentanginfo"
         android:iconTint="@android:color/black"
-        android:title="Tentang Aplikasi"/>
+        android:title="Tentang"/>
 
 
 

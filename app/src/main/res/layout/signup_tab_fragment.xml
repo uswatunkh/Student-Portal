@@ -81,7 +81,7 @@
         android:layout_width="0dp"
         android:inputType="textPassword"
         android:layout_height="wrap_content"
-        android:hint="Confirm Password"
+        android:hint="Konfirmasi Password"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
