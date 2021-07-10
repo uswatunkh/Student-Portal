@@ -36,8 +36,8 @@
 
         <ImageView
             android:id="@+id/ktp_image"
-            android:layout_width="300dp"
-            android:layout_height="165dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_centerHorizontal="true"
             android:background="@drawable/image"
             app:layout_constraintBottom_toBottomOf="parent"

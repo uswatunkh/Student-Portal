@@ -62,7 +62,7 @@
                 android:layout_gravity="center"
                 android:layout_height="60dp"
                 android:textSize="16dp"
-                android:layout_marginTop="180dp"
+                android:layout_marginTop="110dp"
                 android:fontFamily="@font/mench"
                 android:background="@drawable/button_bg"
                 android:text="Download Kalender Akademik "
@@ -74,11 +74,12 @@
                 android:fontFamily="@font/mench"
                 android:layout_height="60dp"
                 android:textSize="17dp"
+                android:visibility="gone"
                 android:layout_margin="33dp"
                 android:text="Save File"
                 android:background="@drawable/button_bg"
                 android:textColor="@android:color/white"
-                tools:visibility="visible" />
+                 />
 
         </LinearLayout>
     </RelativeLayout>

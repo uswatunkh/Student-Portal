@@ -23,7 +23,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.studentportal.Fitur.HasilStudiAwalFragment;
 import com.example.studentportal.Fitur.PresensiSemesterFragment;
 
 import org.json.JSONArray;
@@ -53,12 +52,15 @@ public class Presensi extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.presensi);
+        //TextView id =findViewById(R.id.id);
 
 
         Intent intent = getIntent();
         position = intent.getExtras().getInt("position");
-        //txtSemester.setText( HasilStudiAwalFragment.itemList.get(position).getSemester());
+        //id.setText( RekapPresensi.itemlist.get(position).getIdRekapPresensi());
+        //presensi fragment
         getIdRekap= PresensiSemesterFragment.itemList.get(position).getIdRekapPresensi();
+        //getIdRekap= RekapPresensi.itemlist.get(position).getIdRekapPresensi();
 
 //        Intent intent = getIntent();
 //        position = intent.getExtras().getInt("position");

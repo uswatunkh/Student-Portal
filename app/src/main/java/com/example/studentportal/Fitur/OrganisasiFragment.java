@@ -189,7 +189,7 @@ public class OrganisasiFragment extends Fragment implements SwipeRefreshLayout.O
         });
 
         // untuk mengisi data dari JSON ke dalam adapter
-        adapter = new AdapterOrganisasi(getActivity(), itemList);
+        adapter = new AdapterOrganisasi(getActivity(), itemList, OrganisasiFragment.this);
         list.setAdapter(adapter);
 
         // menamilkan widget refresh
@@ -223,59 +223,59 @@ public class OrganisasiFragment extends Fragment implements SwipeRefreshLayout.O
         });
 
         // listview ditekan lama akan menampilkan dua pilihan edit atau delete data
-        list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-
-            @Override
-            public boolean onItemLongClick(final AdapterView<?> parent, View view,
-                                           final int position, long id) {
-                // TODO Auto-generated method stub
-                idx = itemList.get(position).getIdOrganisasi();
-
-                final CharSequence[] dialogitem = {"Delete"};
-                dialog = new AlertDialog.Builder(getActivity());
-                dialog.setCancelable(true);
-                dialog.setItems(dialogitem, new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // TODO Auto-generated method stub
-                        switch (which) {
+//        list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+//
+//            @Override
+//            public boolean onItemLongClick(final AdapterView<?> parent, View view,
+//                                           final int position, long id) {
+//                // TODO Auto-generated method stub
+//                idx = itemList.get(position).getIdOrganisasi();
+//
+//                final CharSequence[] dialogitem = {"Delete"};
+//                dialog = new AlertDialog.Builder(getActivity());
+//                dialog.setCancelable(true);
+//                dialog.setItems(dialogitem, new DialogInterface.OnClickListener() {
+//
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        // TODO Auto-generated method stub
+//                        switch (which) {
+////                            case 0:
+////                                edit(idx);
+////
+////                                break;
 //                            case 0:
-//                                edit(idx);
+//                                AlertDialog myQuittingDialogBox = new AlertDialog.Builder(getActivity())
+//                                        // set message, title, and icon
+//                                        .setTitle("Hapus")
+//                                        .setMessage("Yakin mau Hapus?")
+//                                        .setIcon(R.drawable.logout)
+//
+//                                        .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+//
+//                                            public void onClick(DialogInterface dialog, int whichButton) {
+//                                                delete(idx);
+//
+//                                            }
+//
+//                                        })
+//                                        .setNegativeButton("Batal", new DialogInterface.OnClickListener() {
+//                                            public void onClick(DialogInterface dialog, int which) {
+//
+//                                                dialog.dismiss();
+//
+//                                            }
+//                                        })
+//                                        .create();
+//                                myQuittingDialogBox.show();
 //
 //                                break;
-                            case 0:
-                                AlertDialog myQuittingDialogBox = new AlertDialog.Builder(getActivity())
-                                        // set message, title, and icon
-                                        .setTitle("Hapus")
-                                        .setMessage("Yakin mau Hapus?")
-                                        .setIcon(R.drawable.logout)
-
-                                        .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
-
-                                            public void onClick(DialogInterface dialog, int whichButton) {
-                                                delete(idx);
-
-                                            }
-
-                                        })
-                                        .setNegativeButton("Batal", new DialogInterface.OnClickListener() {
-                                            public void onClick(DialogInterface dialog, int which) {
-
-                                                dialog.dismiss();
-
-                                            }
-                                        })
-                                        .create();
-                                myQuittingDialogBox.show();
-
-                                break;
-                        }
-                    }
-                }).show();
-                return false;
-            }
-        });
+//                        }
+//                    }
+//                }).show();
+//                return false;
+//            }
+//        });
 
         return root;
     }
@@ -354,9 +354,9 @@ public class OrganisasiFragment extends Fragment implements SwipeRefreshLayout.O
 //            }
 //        });
 
-        btnSelect.setOnLongClickListener(new View.OnLongClickListener() {
+        btnSelect.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onLongClick(View v) {
+            public void onClick(View v) {
                 final CharSequence[] dialogitem = {"Kamera","Galeri","PDF"};
                 dialog = new AlertDialog.Builder(getActivity());
                 dialog.setCancelable(true);
@@ -453,7 +453,7 @@ public class OrganisasiFragment extends Fragment implements SwipeRefreshLayout.O
                 }).show();
 //
 
-                return false;
+                //return false;
             }
         });
         dialog.setPositiveButton(button, new DialogInterface.OnClickListener() {
@@ -621,10 +621,10 @@ public class OrganisasiFragment extends Fragment implements SwipeRefreshLayout.O
 
 
 
-                textView.setText("Document Selected");
-                btnSelect.setText("Change Document");
+                textView.setText("Terpilih");
+                btnSelect.setText("Ubah File");
 
-                Toast.makeText(getActivity(), "Document Selected", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Terpilih", Toast.LENGTH_SHORT).show();
 
 
             } catch (IOException e) {
@@ -639,10 +639,10 @@ public class OrganisasiFragment extends Fragment implements SwipeRefreshLayout.O
                 bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), path);
                 encodebitmap(bitmap);
 
-                textView.setText("Document Selected");
-                btnSelect.setText("Change Document");
+                textView.setText("Terpilih");
+                btnSelect.setText("Ubah File");
 
-                Toast.makeText(getActivity(), "Document Selected", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Terpilih", Toast.LENGTH_SHORT).show();
 
 
             } catch (IOException e) {
@@ -656,8 +656,8 @@ public class OrganisasiFragment extends Fragment implements SwipeRefreshLayout.O
             bitmap=(Bitmap)data.getExtras().get("data");
             //img.setImageBitmap(bitmap);
             encodebitmap(bitmap);
-            textView.setText("Document Selected");
-            btnSelect.setText("Change Document");
+            textView.setText("Terpilih");
+            btnSelect.setText("Ubah File");
         }
 
 //        if(requestCode == REQ_PDF && resultCode == RESULT_OK && data != null){
@@ -793,7 +793,7 @@ public class OrganisasiFragment extends Fragment implements SwipeRefreshLayout.O
 
 
     // fungsi untuk menghapus
-    private void delete(final String idx){
+    public void delete(final String idx){
         StringRequest strReq = new StringRequest(Request.Method.POST, url_delete, new Response.Listener<String>() {
 
             @Override

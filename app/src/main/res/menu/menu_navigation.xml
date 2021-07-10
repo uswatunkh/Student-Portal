@@ -23,7 +23,7 @@
         android:id="@+id/setting"
         android:icon="@drawable/key"
         android:iconTint="@android:color/black"
-        android:title="Password"/>
+        android:title="Sandi"/>
     <item
         android:id="@+id/tentang"
         android:icon="@drawable/tentanginfo"

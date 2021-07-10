@@ -10,6 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.studentportal.HasilStudi_TableViewAdapter;
 import com.example.studentportal.Presensi;
 import com.example.studentportal.R;
 
@@ -56,7 +57,8 @@ public class AdapterPresensiAwal extends BaseAdapter {
         TextView izin = (TextView) convertView.findViewById(R.id.izin);
         TextView sakit = (TextView) convertView.findViewById(R.id.sakit);
         TextView kosong = (TextView) convertView.findViewById(R.id.kosong);
-        Button detail = (Button) convertView.findViewById(R.id.detail);
+        TextView detail = (TextView) convertView.findViewById(R.id.detail);
+        //Button detail = (Button) convertView.findViewById(R.id.detail);
 
 
         DataPresensiAwal data = items.get(position);
@@ -83,5 +85,7 @@ public class AdapterPresensiAwal extends BaseAdapter {
 
         return convertView;
     }
+
+
 
 }

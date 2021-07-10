@@ -39,7 +39,7 @@
         <item>D3</item>
         <item>S1</item>
         <item>Profesi</item>
-        <item>Sp 1</item>
+        <item>Sp-1</item>
         <item>S2</item>
         <item>Sp-2</item>
         <item>S3</item>
@@ -73,6 +73,23 @@
         <item>Rp. 2000.000-Rp. 4.999.999</item>
         <item>Rp. 5000.000-Rp. 20.000.000</item>
         <item>Lebih dari Rp. 20.000.000</item>
+
+    </string-array>
+
+    <string-array name="agama">
+        <item>-Pilih Agama-</item>
+        <item>Islam</item>
+        <item>Protestan</item>
+        <item>Katolik</item>
+        <item>Hindu</item>
+        <item>Buddha</item>
+        <item>Konghucu</item>
+
+    </string-array>
+    <string-array name="tentang">
+        <item>-Aplikasi Student Portal-</item>
+        <item>Kurang dari Rp. 500.000</item>
+
 
     </string-array>
 </resources>

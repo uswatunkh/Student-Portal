@@ -443,7 +443,265 @@ public class DataOrangTuaUbahFragment extends Fragment {
                                     penghasilanWali.setText(strPnW);
                                     instansiWali.setText(strIW);
 
+                                    if(strPENA.equals("Tidak Sekolah")){
+                                        spin_pendidikanAyah.setSelection(1);
+                                    }else if(strPENA.equals("PAUD")){
+                                        spin_pendidikanAyah.setSelection(2);
+                                    }else if(strPENA.equals("TK/Sederajat")){
+                                        spin_pendidikanAyah.setSelection(3);
+                                    }else if(strPENA.equals("Putus SD")){
+                                        spin_pendidikanAyah.setSelection(4);
+                                    }else if(strPENA.equals("SD/Sederajat")){
+                                        spin_pendidikanAyah.setSelection(5);
+                                    }else if(strPENA.equals("SMP/Sederajat")){
+                                        spin_pendidikanAyah.setSelection(6);
+                                    }else if(strPENA.equals("SMA/Sederajat")){
+                                        spin_pendidikanAyah.setSelection(7);
+                                    }else if(strPENA.equals("Paket A")){
+                                        spin_pendidikanAyah.setSelection(8);
+                                    }else if(strPENA.equals("Paket B")){
+                                        spin_pendidikanAyah.setSelection(9);
+                                    }else if(strPENA.equals("Paket C")){
+                                        spin_pendidikanAyah.setSelection(10);
+                                    }else if(strPENA.equals("D1")){
+                                        spin_pendidikanAyah.setSelection(11);
+                                    }else if(strPENA.equals("D2")){
+                                        spin_pendidikanAyah.setSelection(12);
+                                    }else if(strPENA.equals("D3")){
+                                        spin_pendidikanAyah.setSelection(13);
+                                    }else if(strPENA.equals("S1")){
+                                        spin_pendidikanAyah.setSelection(14);
+                                    }else if(strPENA.equals("Profesi")){
+                                        spin_pendidikanAyah.setSelection(15);
+                                    }else if(strPENA.equals("Sp-1")){
+                                        spin_pendidikanAyah.setSelection(16);
+                                    }else if(strPENA.equals("S2")){
+                                        spin_pendidikanAyah.setSelection(17);
+                                    }else if(strPENA.equals("Sp-2")){
+                                        spin_pendidikanAyah.setSelection(18);
+                                    }else if(strPENA.equals("S3")){
+                                        spin_pendidikanAyah.setSelection(19);
+                                    }else if(strPENA.equals("Postdoc")){
+                                        spin_pendidikanAyah.setSelection(20);
+                                    }
 
+                                    if(strPENI.equals("Tidak Sekolah")){
+                                        spin_pendidikanIbu.setSelection(1);
+                                    }else if(strPENI.equals("PAUD")){
+                                        spin_pendidikanIbu.setSelection(2);
+                                    }else if(strPENI.equals("TK/Sederajat")){
+                                        spin_pendidikanIbu.setSelection(3);
+                                    }else if(strPENI.equals("Putus SD")){
+                                        spin_pendidikanIbu.setSelection(4);
+                                    }else if(strPENI.equals("SD/Sederajat")){
+                                        spin_pendidikanIbu.setSelection(5);
+                                    }else if(strPENI.equals("SMP/Sederajat")){
+                                        spin_pendidikanIbu.setSelection(6);
+                                    }else if(strPENI.equals("SMA/Sederajat")){
+                                        spin_pendidikanIbu.setSelection(7);
+                                    }else if(strPENI.equals("Paket A")){
+                                        spin_pendidikanIbu.setSelection(8);
+                                    }else if(strPENI.equals("Paket B")){
+                                        spin_pendidikanIbu.setSelection(9);
+                                    }else if(strPENI.equals("Paket C")){
+                                        spin_pendidikanIbu.setSelection(10);
+                                    }else if(strPENI.equals("D1")){
+                                        spin_pendidikanIbu.setSelection(11);
+                                    }else if(strPENI.equals("D2")){
+                                        spin_pendidikanIbu.setSelection(12);
+                                    }else if(strPENI.equals("D3")){
+                                        spin_pendidikanIbu.setSelection(13);
+                                    }else if(strPENI.equals("S1")){
+                                        spin_pendidikanIbu.setSelection(14);
+                                    }else if(strPENI.equals("Profesi")){
+                                        spin_pendidikanIbu.setSelection(15);
+                                    }else if(strPENI.equals("Sp-1")){
+                                        spin_pendidikanIbu.setSelection(16);
+                                    }else if(strPENI.equals("S2")){
+                                        spin_pendidikanIbu.setSelection(17);
+                                    }else if(strPENI.equals("Sp-2")){
+                                        spin_pendidikanIbu.setSelection(18);
+                                    }else if(strPENI.equals("S3")){
+                                        spin_pendidikanIbu.setSelection(19);
+                                    }else if(strPENI.equals("Postdoc")){
+                                        spin_pendidikanIbu.setSelection(20);
+                                    }
+
+                                    if(strPENW.equals("Tidak Sekolah")){
+                                        spin_pendidikanWali.setSelection(1);
+                                    }else if(strPENW.equals("PAUD")){
+                                        spin_pendidikanWali.setSelection(2);
+                                    }else if(strPENW.equals("TK/Sederajat")){
+                                        spin_pendidikanWali.setSelection(3);
+                                    }else if(strPENW.equals("Putus SD")){
+                                        spin_pendidikanWali.setSelection(4);
+                                    }else if(strPENW.equals("SD/Sederajat")){
+                                        spin_pendidikanWali.setSelection(5);
+                                    }else if(strPENW.equals("SMP/Sederajat")){
+                                        spin_pendidikanWali.setSelection(6);
+                                    }else if(strPENW.equals("SMA/Sederajat")){
+                                        spin_pendidikanWali.setSelection(7);
+                                    }else if(strPENW.equals("Paket A")){
+                                        spin_pendidikanWali.setSelection(8);
+                                    }else if(strPENW.equals("Paket B")){
+                                        spin_pendidikanWali.setSelection(9);
+                                    }else if(strPENW.equals("Paket C")){
+                                        spin_pendidikanWali.setSelection(10);
+                                    }else if(strPENW.equals("D1")){
+                                        spin_pendidikanWali.setSelection(11);
+                                    }else if(strPENW.equals("D2")){
+                                        spin_pendidikanWali.setSelection(12);
+                                    }else if(strPENW.equals("D3")){
+                                        spin_pendidikanWali.setSelection(13);
+                                    }else if(strPENW.equals("S1")){
+                                        spin_pendidikanWali.setSelection(14);
+                                    }else if(strPENW.equals("Profesi")){
+                                        spin_pendidikanWali.setSelection(15);
+                                    }else if(strPENW.equals("Sp-1")){
+                                        spin_pendidikanWali.setSelection(16);
+                                    }else if(strPENW.equals("S2")){
+                                        spin_pendidikanWali.setSelection(17);
+                                    }else if(strPENW.equals("Sp-2")){
+                                        spin_pendidikanWali.setSelection(18);
+                                    }else if(strPENW.equals("S3")){
+                                        spin_pendidikanWali.setSelection(19);
+                                    }else if(strPENW.equals("Postdoc")){
+                                        spin_pendidikanWali.setSelection(20);
+                                    }
+
+
+                                    if(strPnA.equals("Tidak Bekerja")){
+                                        spin_pekerjaanAyah.setSelection(1);
+                                    }else if(strPnA.equals("Nelayan")){
+                                        spin_pekerjaanAyah.setSelection(2);
+                                    }else if(strPnA.equals("Petani")){
+                                        spin_pekerjaanAyah.setSelection(3);
+                                    }else if(strPnA.equals("Peternak")){
+                                        spin_pekerjaanAyah.setSelection(4);
+                                    }else if(strPnA.equals(">PNS/TNI/Polri")){
+                                        spin_pekerjaanAyah.setSelection(5);
+                                    }else if(strPnA.equals("Karyawan Swasta")){
+                                        spin_pekerjaanAyah.setSelection(6);
+                                    }else if(strPnA.equals("Pedagang Kecil")){
+                                        spin_pekerjaanAyah.setSelection(7);
+                                    }else if(strPnA.equals("Pedagang Besar")){
+                                        spin_pekerjaanAyah.setSelection(8);
+                                    }else if(strPnA.equals("Wiraswasta")){
+                                        spin_pekerjaanAyah.setSelection(9);
+                                    }else if(strPnA.equals("Wirausaha")){
+                                        spin_pekerjaanAyah.setSelection(10);
+                                    }else if(strPnA.equals("Buruh")){
+                                        spin_pekerjaanAyah.setSelection(12);
+                                    }else if(strPnA.equals("Pensiunan")){
+                                        spin_pekerjaanAyah.setSelection(13);
+                                    }else if(strPnA.equals("Sudah Meninggal")){
+                                        spin_pekerjaanAyah.setSelection(14);
+                                    }else if(strPnA.equals("Lainnya")){
+                                        spin_pekerjaanAyah.setSelection(15);
+                                    }
+
+                                    if(strPI.equals("Tidak Bekerja")){
+                                        spin_pekerjaanIbu.setSelection(1);
+                                    }else if(strPI.equals("Nelayan")){
+                                        spin_pekerjaanIbu.setSelection(2);
+                                    }else if(strPI.equals("Petani")){
+                                        spin_pekerjaanIbu.setSelection(3);
+                                    }else if(strPI.equals("Peternak")){
+                                        spin_pekerjaanIbu.setSelection(4);
+                                    }else if(strPI.equals(">PNS/TNI/Polri")){
+                                        spin_pekerjaanIbu.setSelection(5);
+                                    }else if(strPI.equals("Karyawan Swasta")){
+                                        spin_pekerjaanIbu.setSelection(6);
+                                    }else if(strPI.equals("Pedagang Kecil")){
+                                        spin_pekerjaanIbu.setSelection(7);
+                                    }else if(strPI.equals("Pedagang Besar")){
+                                        spin_pekerjaanIbu.setSelection(8);
+                                    }else if(strPI.equals("Wiraswasta")){
+                                        spin_pekerjaanIbu.setSelection(9);
+                                    }else if(strPI.equals("Wirausaha")){
+                                        spin_pekerjaanIbu.setSelection(10);
+                                    }else if(strPI.equals("Buruh")){
+                                        spin_pekerjaanIbu.setSelection(12);
+                                    }else if(strPI.equals("Pensiunan")){
+                                        spin_pekerjaanIbu.setSelection(13);
+                                    }else if(strPI.equals("Sudah Meninggal")){
+                                        spin_pekerjaanIbu.setSelection(14);
+                                    }else if(strPI.equals("Lainnya")){
+                                        spin_pekerjaanIbu.setSelection(15);
+                                    }
+
+                                    if(strPW.equals("Tidak Bekerja")){
+                                        spin_pekerjaanWali.setSelection(1);
+                                    }else if(strPW.equals("Nelayan")){
+                                        spin_pekerjaanWali.setSelection(2);
+                                    }else if(strPW.equals("Petani")){
+                                        spin_pekerjaanWali.setSelection(3);
+                                    }else if(strPW.equals("Peternak")){
+                                        spin_pekerjaanWali.setSelection(4);
+                                    }else if(strPW.equals(">PNS/TNI/Polri")){
+                                        spin_pekerjaanWali.setSelection(5);
+                                    }else if(strPW.equals("Karyawan Swasta")){
+                                        spin_pekerjaanWali.setSelection(6);
+                                    }else if(strPW.equals("Pedagang Kecil")){
+                                        spin_pekerjaanWali.setSelection(7);
+                                    }else if(strPW.equals("Pedagang Besar")){
+                                        spin_pekerjaanWali.setSelection(8);
+                                    }else if(strPW.equals("Wiraswasta")){
+                                        spin_pekerjaanWali.setSelection(9);
+                                    }else if(strPW.equals("Wirausaha")){
+                                        spin_pekerjaanWali.setSelection(10);
+                                    }else if(strPW.equals("Buruh")){
+                                        spin_pekerjaanWali.setSelection(12);
+                                    }else if(strPW.equals("Pensiunan")){
+                                        spin_pekerjaanWali.setSelection(13);
+                                    }else if(strPW.equals("Sudah Meninggal")){
+                                        spin_pekerjaanWali.setSelection(14);
+                                    }else if(strPW.equals("Lainnya")){
+                                        spin_pekerjaanWali.setSelection(15);
+                                    }
+
+
+                                    if(strPn.equals("Kurang dari Rp. 500.000")){
+                                        spin_penghasilanAyah.setSelection(1);
+                                    }else if(strPn.equals("Rp. 500.000-Rp. 999.999")){
+                                        spin_penghasilanAyah.setSelection(2);
+                                    }else if(strPn.equals("Rp. 1.000.000-Rp. 1.999.999")){
+                                        spin_penghasilanAyah.setSelection(3);
+                                    }else if(strPn.equals("Rp. 2000.000-Rp. 4.999.999")){
+                                        spin_penghasilanAyah.setSelection(4);
+                                    }else if(strPn.equals("Rp. 5000.000-Rp. 20.000.000")){
+                                        spin_penghasilanAyah.setSelection(5);
+                                    }else if(strPn.equals("Lebih dari Rp. 20.000.000")){
+                                        spin_penghasilanAyah.setSelection(6);
+                                    }
+
+                                    if(strPnI.equals("Kurang dari Rp. 500.000")){
+                                        spin_penghasilanIbu.setSelection(1);
+                                    }else if(strPnI.equals("Rp. 500.000-Rp. 999.999")){
+                                        spin_penghasilanIbu.setSelection(2);
+                                    }else if(strPnI.equals("Rp. 1.000.000-Rp. 1.999.999")){
+                                        spin_penghasilanIbu.setSelection(3);
+                                    }else if(strPnI.equals("Rp. 2000.000-Rp. 4.999.999")){
+                                        spin_penghasilanIbu.setSelection(4);
+                                    }else if(strPnI.equals("Rp. 5000.000-Rp. 20.000.000")){
+                                        spin_penghasilanIbu.setSelection(5);
+                                    }else if(strPnI.equals("Lebih dari Rp. 20.000.000")){
+                                        spin_penghasilanIbu.setSelection(6);
+                                    }
+
+                                    if(strPnW.equals("Kurang dari Rp. 500.000")){
+                                        spin_penghasilanWali.setSelection(1);
+                                    }else if(strPnW.equals("Rp. 500.000-Rp. 999.999")){
+                                        spin_penghasilanWali.setSelection(2);
+                                    }else if(strPnW.equals("Rp. 1.000.000-Rp. 1.999.999")){
+                                        spin_penghasilanWali.setSelection(3);
+                                    }else if(strPnW.equals("Rp. 2000.000-Rp. 4.999.999")){
+                                        spin_penghasilanWali.setSelection(4);
+                                    }else if(strPnW.equals("Rp. 5000.000-Rp. 20.000.000")){
+                                        spin_penghasilanWali.setSelection(5);
+                                    }else if(strPnW.equals("Lebih dari Rp. 20.000.000")){
+                                        spin_penghasilanWali.setSelection(6);
+                                    }
 
 
 

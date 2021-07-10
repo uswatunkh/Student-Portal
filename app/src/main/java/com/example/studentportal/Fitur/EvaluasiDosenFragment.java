@@ -32,6 +32,7 @@ import com.example.studentportal.R;
 import com.example.studentportal.Server;
 import com.example.studentportal.SessionManager;
 import com.example.studentportal.app.AppController;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
@@ -146,6 +147,7 @@ public class EvaluasiDosenFragment extends Fragment implements SwipeRefreshLayou
             @Override
             public void onClick(View view) {
                 openFragment(HomeFragment.newInstance("", ""));
+
             }
         });
 
@@ -219,6 +221,7 @@ public class EvaluasiDosenFragment extends Fragment implements SwipeRefreshLayou
         transaction.replace(R.id.container, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
+
     }
 
 
@@ -226,6 +229,7 @@ public class EvaluasiDosenFragment extends Fragment implements SwipeRefreshLayou
 
     @Override
     public void onRefresh() {
+        swipe.setRefreshing(true);
         itemList.clear();
         adapter.notifyDataSetChanged();
         callVolley();

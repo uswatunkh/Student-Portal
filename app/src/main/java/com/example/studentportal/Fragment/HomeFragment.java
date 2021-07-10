@@ -30,6 +30,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.studentportal.DaftarUlang;
+import com.example.studentportal.EvaluasiDosen;
 import com.example.studentportal.Fitur.BahasaFragment;
 import com.example.studentportal.Fitur.DaftarUlangFragment;
 import com.example.studentportal.Fitur.EvaluasiDosenFragment;
@@ -42,8 +43,10 @@ import com.example.studentportal.Fitur.PresensiSemesterFragment;
 import com.example.studentportal.Fitur.PrestasiFragment;
 import com.example.studentportal.HomeActivity;
 import com.example.studentportal.R;
+import com.example.studentportal.RekapPresensi;
 import com.example.studentportal.Server;
 import com.example.studentportal.SessionManager;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
@@ -183,6 +186,9 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 openFragment(PresensiSemesterFragment.newInstance("", ""));
+//                Intent intent;
+//                intent = new Intent(getActivity(), RekapPresensi.class);
+//                startActivity(intent);
             }
         });
         daftarulang.setOnClickListener(new View.OnClickListener() {
@@ -206,7 +212,10 @@ public class HomeFragment extends Fragment {
         evdos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openFragment(EvaluasiDosenFragment.newInstance("", ""));
+                //openFragment(EvaluasiDosenFragment.newInstance("", ""));
+                Intent intent;
+                intent = new Intent(getActivity(), EvaluasiDosen.class);
+                startActivity(intent);
             }
         });
         magang.setOnClickListener(new View.OnClickListener() {

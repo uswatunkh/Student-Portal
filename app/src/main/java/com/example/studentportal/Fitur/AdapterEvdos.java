@@ -59,7 +59,8 @@ public class AdapterEvdos extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return items.size();
+        return
+                items.size();
     }
 
     @Override
@@ -113,6 +114,7 @@ public class AdapterEvdos extends BaseAdapter {
                 Intent intent = new Intent(activity,Kuisioner.class);
                 intent.putExtra("position",position);
                 activity.startActivity(intent);
+                activity.finish();
 
             }
         });

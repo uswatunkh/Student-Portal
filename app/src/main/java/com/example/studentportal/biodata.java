@@ -194,7 +194,7 @@ public class biodata extends AppCompatActivity {
                             JSONObject jsonObject = new JSONObject(response);
                             String success = jsonObject.getString("success");
                             if (success.equals("1")){
-                                Toast.makeText(biodata.this, "Success!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(biodata.this, "Berhasil!", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();

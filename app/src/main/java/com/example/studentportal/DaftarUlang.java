@@ -84,7 +84,7 @@ public class DaftarUlang extends AppCompatActivity {
                                     JSONObject ob = jsonArray.getJSONObject(i);
                                     int j=i+1;
                                     DaftarUlang_list listData=new DaftarUlang_list(String.valueOf(j),ob.getString("idPeriode")
-                                            ,ob.getString("ukt"),ob.getString("statusBayar"),ob.getString("cetakKrs"));
+                                            ,ob.getString("ukt"),ob.getString("statusBayar"));
                                     mData.add(listData);
 
 

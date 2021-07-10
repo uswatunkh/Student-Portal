@@ -37,7 +37,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.studentportal.EvaluasiDosen;
 import com.example.studentportal.Fragment.SignupTabFragment;
+import com.example.studentportal.FragmentUtama;
 import com.example.studentportal.HomeActivity;
 import com.example.studentportal.R;
 import com.example.studentportal.Server;
@@ -102,7 +104,10 @@ public class AdapterTable_Kuisioner extends RecyclerView.Adapter<AdapterTable_Ku
         Intent intent = ((Kuisioner)mContext).getIntent();
         position = intent.getExtras().getInt("position");
         //idDosen.setText("ID:"+EvaluasiDosenFragment.itemList.get(position).getNamaDosen());
-        getIdDosen=EvaluasiDosenFragment.itemList.get(position).getIdDosen();
+        //untuk fragment
+        //getIdDosen=EvaluasiDosenFragment.itemList.get(position).getIdDosen();
+        //untuk activity
+        getIdDosen= EvaluasiDosen.itemList.get(position).getIdDosen();
         //Toast.makeText(mContext,getIdDosen,Toast.LENGTH_SHORT).show();
 
 
@@ -151,7 +156,7 @@ public class AdapterTable_Kuisioner extends RecyclerView.Adapter<AdapterTable_Ku
                     }
                     jawaban.setText(jk);
                     String jawab = jawaban.getText().toString().trim();
-                    Toast.makeText(mContext,jawab,Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(mContext,jawab,Toast.LENGTH_SHORT).show();
 
                 }
             });
@@ -288,10 +293,13 @@ public class AdapterTable_Kuisioner extends RecyclerView.Adapter<AdapterTable_Ku
                             jsonArrayExpAmt.put(ExpAmt);
                         }
                         SubmitExpenseData(jsonArrayName.toString(), jsonArrayExpAmt.toString());
-                     
+
+
+
 
                     }
                 }//untuk else
+
 
             });
 
@@ -341,6 +349,13 @@ public class AdapterTable_Kuisioner extends RecyclerView.Adapter<AdapterTable_Ku
 //        transaction.addToBackStack(null);
 //        transaction.commit();
 //    }
+//            public void openFragment(Fragment fragment) {
+//            FragmentTransaction transaction = ((Kuisioner) mContext).getSupportFragmentManager().beginTransaction();
+//            transaction.replace(R.id.container, fragment);
+//            transaction.addToBackStack(null);
+//            transaction.commit();
+////        transaction.disallowAddToBackStack();     //agar gabisa diback atau fungsi finish()
+//}
     private void SubmitExpenseData(String idEv,String jawab)
     {
         final String kesan = this.kesan.getText().toString().trim();
@@ -367,6 +382,12 @@ public class AdapterTable_Kuisioner extends RecyclerView.Adapter<AdapterTable_Ku
                                     .setNegativeButton("Ok", null)
                                     .create()
                                     .show();
+                            Intent intent;
+                            intent = new Intent(((Kuisioner)mContext), EvaluasiDosen.class);
+                            ((Kuisioner)mContext).startActivity(intent);
+                            ((Kuisioner) mContext).finish();
+                            //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                            ((Kuisioner) mContext).onBackPressed();
                             //String message="berhasil";
 
                             //final MyFragment myFragment = new MyFragment();
@@ -376,10 +397,9 @@ public class AdapterTable_Kuisioner extends RecyclerView.Adapter<AdapterTable_Ku
 //                        f.setArguments(b);
                             //openFragment(EvaluasiDosenFragment.newInstance("", ""));
 //                        Intent intent;
-//                        intent = new Intent(((Kuisioner)mContext), EvaluasiDosenFragment.class);
+//                        intent = new Intent(((Kuisioner)mContext), FragmentUtama.class);
 //                        ((Kuisioner)mContext).startActivity(intent);
-                            ((Kuisioner) mContext).finish();
-//                            openFragment(EvaluasiDosenFragment.newInstance("", ""));
+
 //                            f.callVolley();
                             //new AdapterEvdos(((Kuisioner) mContext).getParent(), null).btn_isi.setVisibility(View.GONE);
 

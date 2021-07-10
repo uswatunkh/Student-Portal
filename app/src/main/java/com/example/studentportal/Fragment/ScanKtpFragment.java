@@ -1,15 +1,19 @@
 package com.example.studentportal.Fragment;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.provider.MediaStore;
@@ -131,6 +135,13 @@ public class ScanKtpFragment extends Fragment {
 //                chooseFile();
 //            }
 //        });
+        if (ContextCompat.checkSelfPermission(getActivity(),
+        Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(getActivity(),
+                    new String[]{
+                            Manifest.permission.CAMERA
+                    },111);
+        }
         btn_scanKtp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -143,31 +154,35 @@ public class ScanKtpFragment extends Fragment {
                     public void onClick(DialogInterface dialog, int which) {
                         // TODO Auto-generated method stub
                         switch (which) {
-                            case 0:
-
-//                                Intent takePicture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//                                startActivityForResult(takePicture, 1);
-
-                                Dexter.withContext(getActivity().getApplicationContext())
-                                        .withPermission(Manifest.permission.CAMERA)
-                                        .withListener(new PermissionListener() {
-                                            @Override
-                                            public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
-                                                Intent intent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                                                startActivityForResult( intent,111);
-                                            }
-
-                                            @Override
-                                            public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
-
-                                            }
-
-                                            @Override
-                                            public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
-                                                permissionToken.continuePermissionRequest();
-                                            }
-                                        }).check();
-
+//                            case 0:
+//
+////                                Intent takePicture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+////                                startActivityForResult(takePicture, 1);
+//
+//                                Dexter.withContext(getActivity().getApplicationContext())
+//                                        .withPermission(Manifest.permission.CAMERA)
+//                                        .withListener(new PermissionListener() {
+//                                            @Override
+//                                            public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
+//                                                Intent intent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//                                                startActivityForResult( intent,111);
+//                                            }
+//
+//                                            @Override
+//                                            public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
+//
+//                                            }
+//
+//                                            @Override
+//                                            public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
+//                                                permissionToken.continuePermissionRequest();
+//                                            }
+//                                        }).check();
+//
+//                                break;
+                            case 0 :
+                                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                                startActivityForResult(intent,111);
                                 break;
                             case 1:
                                 Intent pickPhoto = new Intent(Intent.ACTION_PICK,

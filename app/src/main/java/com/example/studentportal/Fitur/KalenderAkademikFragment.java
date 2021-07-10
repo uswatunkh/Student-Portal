@@ -1,6 +1,8 @@
 package com.example.studentportal.Fitur;
 
 import android.Manifest;
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
@@ -21,14 +23,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.studentportal.BuildConfig;
 import com.example.studentportal.DocumentPOJO;
 import com.example.studentportal.Fragment.HomeFragment;
+import com.example.studentportal.Fragment.SignupTabFragment;
 import com.example.studentportal.R;
 import com.example.studentportal.RetrofitClient;
 
@@ -162,17 +167,43 @@ public class KalenderAkademikFragment extends Fragment {
             fos.flush();
             fos.close();
 
-            Toast.makeText(getActivity(), "Saved", Toast.LENGTH_SHORT).show();
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setMessage("File Berhasil di Download")
-                    .setNegativeButton("Retry",null)
-                    .create()
-                    .show();
+            //Toast.makeText(getActivity(), "Saved", Toast.LENGTH_SHORT).show();
+//            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+//            builder.setMessage("File Berhasil di Download")
+//                    .setNegativeButton("Retry",null)
+//                    .create()
+//                    .show();
+            ViewDialogSuccess alert = new ViewDialogSuccess();
+            alert.showDialog(getActivity(), "File Berhasil di Download");
 
 
         }catch (Exception e){e.printStackTrace();}
 
 
+    }
+
+    public class ViewDialogSuccess {
+
+        public void showDialog(Activity activity, String msg){
+            final Dialog dialog = new Dialog(activity);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setCancelable(false);
+            dialog.setContentView(R.layout.dialog_success);
+
+            TextView text = (TextView) dialog.findViewById(R.id.text_dialog);
+            text.setText(msg);
+
+            Button dialogButton = (Button) dialog.findViewById(R.id.btn_dialog);
+            dialogButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
+
+            dialog.show();
+
+        }
     }
 
     public boolean isStoragePermissionGranted() {
@@ -212,9 +243,16 @@ public class KalenderAkademikFragment extends Fragment {
                     String encodedPdf = response.body().getEncodedPDF();
                     pdfInBytes = Base64.decode(encodedPdf, Base64.DEFAULT);
 
-                    btnSave.setVisibility(View.VISIBLE);
+//                    btnSave.setVisibility(View.VISIBLE);
+                    if (isStoragePermissionGranted()){
+                        try {
+                            save();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
 
-                    Toast.makeText(getActivity(), "File Can be Saved", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "File dapat disimpan ", Toast.LENGTH_SHORT).show();
 
                 }else{
                     Toast.makeText(getActivity(), "Invalid SN", Toast.LENGTH_SHORT).show();

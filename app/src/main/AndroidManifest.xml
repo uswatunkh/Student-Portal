@@ -6,10 +6,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-
-
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".app.AppController"
@@ -21,14 +19,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppThemeLogin"
         android:usesCleartextTraffic="true">
-        <activity android:name=".greeting_selamat"></activity>
-<!--        <activity android:name=".contoh" />-->
+
+
+        <activity android:name=".RekapPresensi"
+            android:screenOrientation="landscape"></activity>
+        <activity android:name=".EvaluasiDosen" />
+        <activity android:name=".greeting_selamat" /> <!-- <activity android:name=".contoh" /> -->
         <activity android:name=".Fitur.Kuisioner" />
         <activity android:name=".data_ortu" />
         <activity android:name=".biodata" />
-        <activity android:name=".HasilStudi" />
-       <activity android:name=".Fitur.kuisioner_pertanyaan" />
-        <activity android:name=".Presensi" />
+        <activity
+            android:name=".HasilStudi"
+            android:screenOrientation="landscape" />
+        <activity android:name=".Fitur.kuisioner_pertanyaan" />
+        <activity android:name=".Presensi"
+            android:screenOrientation="landscape"/>
         <activity android:name=".LoginActivity" />
         <activity android:name=".DaftarUlang" /> <!-- <activity android:name=".pengumuman"></activity> -->
         <activity android:name=".data_diri" />
@@ -39,38 +44,39 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-                <action android:name="SOMEACTIVITY"></action>
-                <category android:name="android.intent.category.DEFAULT"></category>
+
+                <action android:name="SOMEACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity android:name=".NotificationFcm.SomeActivity">
             <intent-filter>
-                <action android:name="SOMEACTIVITY"></action>
-                <category android:name="android.intent.category.DEFAULT"></category>
+                <action android:name="SOMEACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
             android:name=".RegisterActivity"
             android:theme="@style/AppThemeRegist" />
 
-
-
-
-        <service android:name=".NotificationFcm.MyFirebaseMessagingService"
+        <service
+            android:name=".NotificationFcm.MyFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action
                     android:name="com.google.firebase.MESSAGING_EVENT"
-                    android:exported="false"
-                    />
+                    android:exported="false" />
             </intent-filter>
         </service>
+
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@drawable/student_blue"/>
+            android:resource="@drawable/student_blue" />
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
-            android:resource="@color/white"/>
+            android:resource="@color/white" />
     </application>
 
 </manifest>

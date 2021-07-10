@@ -106,8 +106,7 @@ public class SignupTabFragment extends Fragment {
                 final String confirmPassword = confirm_pass.getText().toString();
                 if (npmUser.length()<9 ){
                     npm.setError("NPM Minimal 9 Karakter");
-                }
-                if (npmUser.isEmpty() || tglLahir.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()){
+                }else if (npmUser.isEmpty() || tglLahir.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()){
 //                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 //                    builder.setMessage("Data Masih Ada Yang  Kosong")
 //                            .setNegativeButton("OK",null)

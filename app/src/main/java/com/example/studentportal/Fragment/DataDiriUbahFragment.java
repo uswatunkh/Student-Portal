@@ -10,12 +10,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -50,6 +53,7 @@ public class DataDiriUbahFragment extends Fragment {
 
     private EditText npm,nik,namaLengkap,tempatLahir,tanggalLahir,jenisKelamin,agama,alamatAsal,kotaAsal,
             kecamatanAsal, alamatSekarang,desa, tahunAngkatan,noHp,email,provinsiAsal;
+    Spinner agamaSpinner;
 
     Button tambah;
     SessionManager sessionManager;
@@ -135,6 +139,27 @@ public class DataDiriUbahFragment extends Fragment {
 
         date = root.findViewById(R.id.tvSelectedDate);
         tambah =root.findViewById(R.id.tambah);
+        agamaSpinner=root.findViewById(R.id.agamaSpinner);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.agama,
+                android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        agamaSpinner.setAdapter(adapter);
+//        txt_jenis.setOnItemSelectedListener(getActivity());
+        //AYAH
+        agamaSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String jenisItem =parent.getItemAtPosition(position).toString();
+                // Toast.makeText(parent.getContext(), jenisItem,Toast.LENGTH_SHORT).show();
+                agama.setText(jenisItem);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
 
 
@@ -276,6 +301,20 @@ public class DataDiriUbahFragment extends Fragment {
                                     tahunAngkatan.setText(strTahunAngkatan);
                                     noHp.setText(strNohp);
                                     email.setText(strEmail);
+
+                                    if(strAgama.equals("Islam")){
+                                        agamaSpinner.setSelection(1);
+                                    }else if(strAgama.equals("Protestan")){
+                                        agamaSpinner.setSelection(2);
+                                    }else if(strAgama.equals("Katolik")){
+                                        agamaSpinner.setSelection(3);
+                                    }else if(strAgama.equals("Hindu")){
+                                        agamaSpinner.setSelection(4);
+                                    }else if(strAgama.equals("Buddha")){
+                                        agamaSpinner.setSelection(5);
+                                    }else if(strAgama.equals("Konghucu")){
+                                        agamaSpinner.setSelection(6);
+                                    }
 
 
                                 }

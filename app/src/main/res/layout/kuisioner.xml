@@ -6,6 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".Fitur.Kuisioner">
 
+
+
+
 <!--    <TextView-->
 <!--        android:id="@+id/idDosen"-->
 <!--        android:layout_width="match_parent"-->
@@ -168,10 +171,10 @@
                             android:textSize="16dp"
                             android:textStyle="bold" />
                     </RelativeLayout>
+                        <ScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
 
-                    <HorizontalScrollView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
 
                         <TableLayout
                             android:layout_width="match_parent"
@@ -249,7 +252,7 @@
                                 android:fontFamily="@font/ubunturegular"
                                 android:gravity="center_vertical"
                                 android:paddingLeft="10dp"
-                                android:text="Kesan Mahasiswa selama Proses Perkuliahan dari Dosen"
+                                android:text="Kesan Mahasiswa selama Proses Perkuliahan "
                                 android:textColor="@android:color/black"
                                 android:textStyle="bold" />
 
@@ -287,7 +290,7 @@
                                 android:textColor="@android:color/black"
                                 android:textSize="15dp" />
                         </TableLayout>
-                    </HorizontalScrollView>
+                        </ScrollView>
                 </LinearLayout>
 
 <!--                <Button-->

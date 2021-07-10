@@ -98,10 +98,11 @@ public class LoginTabFragment extends Fragment {
                 if (mNpm.length()<9 ){
                     npmUser.setError("NPM Minimal 9 Karakter");
                 }
-                if (!mNpm.isEmpty() || !mPassword.isEmpty()){
+                else if (!mNpm.isEmpty() || !mPassword.isEmpty()){
                     Login(mNpm, mPassword);
 
-                }else{
+                }
+                else{
                     npmUser.setError("Please insert NPM");
                     passwordUser.setError("Please insert password");
                 }
@@ -141,7 +142,7 @@ public class LoginTabFragment extends Fragment {
         final EditText forgot_email =forget_password_layout.findViewById(R.id.forgot_email);
         Button btnForgotPass = forget_password_layout.findViewById(R.id.button_forgot_pass);
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("Forgot Password");
+        builder.setTitle("Lupa Password");
         builder.setView(forget_password_layout);
         builder.setCancelable(true);
         AlertDialog dialog =builder.create();

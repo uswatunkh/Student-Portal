@@ -45,7 +45,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -53,6 +56,44 @@
                 android:textSize="20dp"
                 android:lineSpacingExtra="8dp"
                 android:padding="18dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Aplikasi Student Portal"
+                    android:textSize="15dp"
+                    android:layout_marginLeft="20dp"
+                    android:lineSpacingExtra="8dp"
+                    android:padding="5dp"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Versi  4.1"
+                    android:textSize="15dp"
+                    android:layout_marginLeft="20dp"
+                    android:lineSpacingExtra="8dp"
+                    android:padding="5dp"/>
+
+                <me.biubiubiu.justifytext.library.JustifyTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Aplikasi Student Portal merupakan aplikasi untuk menampung informasi mengenai kegiatan perkuliahan  di Politeknik Negeri Madiun yang ditujukan untuk mahasiswa sebagai penerima informasi perkuliahan. Dengan aplikasi ini  mahasiswa dapat melihat informasi jadwal kuliah,hasil studi ,presensi, melakukan evaluasi penilaian dosen dan info perkuliahan lainnya. "
+                    android:textSize="15dp"
+                    android:layout_marginLeft="26dp"
+                    android:lineSpacingExtra="8dp"
+                    android:padding="5dp"/>
+
+                <me.biubiubiu.justifytext.library.JustifyTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Aplikasi student portal memiliki fitur notifikasi untuk pemberitahuan mengenai informasi pengumuman.Adanya notifikasi ini akan memudahkan mahasiswa dalam mengetahui informasi pengumuman terbaru."
+                    android:layout_marginTop="20dp"
+                    android:textSize="15dp"
+                    android:layout_marginLeft="26dp"
+                    android:lineSpacingExtra="8dp"
+                    android:padding="5dp"/>
+            </LinearLayout>
+
 
         </androidx.core.widget.NestedScrollView>
 

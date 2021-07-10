@@ -48,6 +48,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="17dp"
                     android:textSize="13dp"
+                    android:visibility="gone"
                     android:paddingLeft="20dp"
                     android:paddingTop="0dp"
                     android:paddingBottom="0dp"
@@ -56,6 +57,7 @@
                 <ImageView
                     android:id="@+id/btn_cari"
                     android:layout_width="40dp"
+                    android:visibility="gone"
                     android:layout_height="30dp"
                     android:layout_alignParentRight="true"
                     android:layout_marginTop="17dp"

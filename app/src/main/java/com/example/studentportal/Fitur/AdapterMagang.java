@@ -1,12 +1,15 @@
 package com.example.studentportal.Fitur;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -20,10 +23,13 @@ public class AdapterMagang extends BaseAdapter {
     private Activity activity;
     private LayoutInflater inflater;
     private List<DataMagang> items;
+    MagangFragment fragment;
+    String idx;
 
-    public AdapterMagang(Activity activity, List<DataMagang> items) {
+    public AdapterMagang(Activity activity, List<DataMagang> items, MagangFragment fragment) {
         this.activity = activity;
         this.items = items;
+        this.fragment = fragment;
     }
 
     @Override
@@ -68,6 +74,7 @@ public class AdapterMagang extends BaseAdapter {
         TextView uploadLaporan = (TextView) convertView.findViewById(R.id.uploadLaporan);
         TextView verifikasi = (TextView) convertView.findViewById(R.id.verifikasi);
         TextInputLayout inputVerifikasi = (TextInputLayout) convertView.findViewById(R.id.inputVerifikasi);
+        Button hapus = convertView.findViewById(R.id.hapus);
 
 
 
@@ -89,6 +96,7 @@ public class AdapterMagang extends BaseAdapter {
         if (dataVerisfikasi.equals("Sudah Diverifikasi")) {
             verifikasi.setTextColor(Color.parseColor("#FFFFFF"));
             inputVerifikasi.setBoxBackgroundColor(Color.parseColor("#7ae472"));
+            hapus.setVisibility(View.GONE);
 
         }else if (dataVerisfikasi.equals("Belum Diverifikasi")){
             verifikasi.setTextColor(Color.parseColor("#FFFFFF"));
@@ -96,6 +104,42 @@ public class AdapterMagang extends BaseAdapter {
 
         }
 
+
+
+        idx = items.get(position).getIdMagang();
+
+        hapus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //openFragment(EvaluasiDosenFragment.newInstance("", ""));
+
+                AlertDialog myQuittingDialogBox = new AlertDialog.Builder(activity)
+                        // set message, title, and icon
+                        .setTitle("Hapus")
+                        .setMessage("Yakin mau Hapus?")
+                        .setIcon(R.drawable.logout)
+
+                        .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                //manggil methode delete
+                                fragment.delete(idx);
+
+                            }
+
+                        })
+                        .setNegativeButton("Batal", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                dialog.dismiss();
+
+                            }
+                        })
+                        .create();
+                myQuittingDialogBox.show();
+            }
+
+        });
 
         return convertView;
     }

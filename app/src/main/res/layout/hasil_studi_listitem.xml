@@ -1,268 +1,270 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    >
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="300dp"
-        android:layout_marginLeft="20dp"
-        android:layout_height="match_parent"
-        android:backgroundTint="@android:color/holo_blue_dark"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="5dp">
-
-        <LinearLayout
-            android:layout_width="250dp"
-            android:layout_gravity="center"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="10dp">
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Nomor"
-                android:focusable="false"
-                android:textColorHint="@android:color/white"
-                app:boxStrokeColor="@android:color/white"
-                app:boxBackgroundColor="@color/card_bg_color"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-                <EditText
-                    android:id="@+id/txtNomor"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:focusable="false"
-                    android:text="1"
-                    android:background="@drawable/edit_text_bg"
-                    android:paddingLeft="20dp"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:textSize="15sp"/>
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Kode"
-                android:focusable="false"
-                android:textColorHint="@android:color/white"
-                app:boxStrokeColor="@android:color/white"
-                app:boxBackgroundColor="@color/card_bg_color"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-                <EditText
-                    android:id="@+id/txtKode"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:focusable="false"
-                    android:text="1"
-                    android:background="@drawable/edit_text_bg"
-                    android:paddingLeft="20dp"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:textSize="15sp"/>
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Nama Matakuliah"
-                android:focusable="false"
-                android:textColorHint="@android:color/white"
-                app:boxStrokeColor="@android:color/white"
-                app:boxBackgroundColor="@color/card_bg_color"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-                <EditText
-                    android:id="@+id/txtNamaMataKuliah"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:focusable="false"
-                    android:text="1"
-                    android:background="@drawable/edit_text_bg"
-                    android:paddingLeft="20dp"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:textSize="15sp"/>
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Sks"
-                android:focusable="false"
-                android:textColorHint="@android:color/white"
-                app:boxStrokeColor="@android:color/white"
-                app:boxBackgroundColor="@color/card_bg_color"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-                <EditText
-                    android:id="@+id/txtSks"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:focusable="false"
-                    android:text="1"
-                    android:background="@drawable/edit_text_bg"
-                    android:paddingLeft="20dp"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:textSize="15sp"/>
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Nilai Angka"
-                android:focusable="false"
-                android:textColorHint="@android:color/white"
-                app:boxStrokeColor="@android:color/white"
-                app:boxBackgroundColor="@color/card_bg_color"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-                <EditText
-                    android:id="@+id/txtNilaiAngka"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:focusable="false"
-                    android:text="1"
-                    android:background="@drawable/edit_text_bg"
-                    android:paddingLeft="20dp"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:textSize="15sp"/>
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Nilai Huruf"
-                android:focusable="false"
-                android:textColorHint="@android:color/white"
-                app:boxStrokeColor="@android:color/white"
-                app:boxBackgroundColor="@color/card_bg_color"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-                <EditText
-                    android:id="@+id/txtNilaiHuruf"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:focusable="false"
-                    android:text="1"
-                    android:background="@drawable/edit_text_bg"
-                    android:paddingLeft="20dp"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:textSize="15sp"/>
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Total Nilai"
-                android:focusable="false"
-                android:textColorHint="@android:color/white"
-                app:boxStrokeColor="@android:color/white"
-                app:boxBackgroundColor="@color/card_bg_color"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-                <EditText
-                    android:id="@+id/txtTotalNilai"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:focusable="false"
-                    android:text="1"
-                    android:background="@drawable/edit_text_bg"
-                    android:paddingLeft="20dp"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:textSize="15sp"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-
-
-    </androidx.cardview.widget.CardView>
-
-
-
-</LinearLayout>
 <!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    android:layout_width="wrap_content"-->
+<!--    android:layout_width="match_parent"-->
 <!--    android:layout_height="wrap_content"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
 <!--    android:orientation="vertical"-->
 <!--    >-->
-<!--    <LinearLayout-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="horizontal">-->
-<!--    <TextView-->
-<!--        android:id="@+id/txtNomor"-->
-<!--        android:layout_width="50dp"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:gravity="center"-->
-<!--        android:layout_gravity="top"-->
-<!--        android:textSize="18sp" />-->
-<!--    <TextView-->
-<!--        android:id="@+id/txtKode"-->
-<!--        android:layout_width="50dp"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:gravity="center"-->
-<!--        android:layout_gravity="top"-->
-<!--        android:textSize="18sp" />-->
 
-<!--    <TextView-->
-<!--        android:id="@+id/txtNamaMataKuliah"-->
-<!--        android:layout_width="260dp"-->
-<!--        android:gravity="center"-->
-<!--        android:layout_height="65dp"-->
-<!--        android:layout_gravity="top"-->
-<!--        android:textSize="18sp" />-->
+<!--    <androidx.cardview.widget.CardView-->
+<!--        android:layout_width="300dp"-->
+<!--        android:layout_marginLeft="20dp"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:backgroundTint="@android:color/holo_blue_dark"-->
+<!--        app:cardCornerRadius="20dp"-->
+<!--        app:cardElevation="5dp">-->
 
-<!--    <TextView-->
-<!--        android:id="@+id/txtSks"-->
-<!--        android:layout_width="128dp"-->
-<!--        android:gravity="center"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_gravity="top"-->
-<!--        android:textSize="18sp" />-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="250dp"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:orientation="vertical"-->
+<!--            android:padding="10dp">-->
 
-<!--    <TextView-->
-<!--        android:id="@+id/txtNilaiAngka"-->
-<!--        android:layout_width="128dp"-->
-<!--        android:gravity="center"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_gravity="top"-->
-<!--        android:textSize="18sp" />-->
-<!--    <TextView-->
-<!--        android:id="@+id/txtNilaiHuruf"-->
-<!--        android:layout_width="128dp"-->
-<!--        android:gravity="center"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_gravity="top"-->
-<!--        android:textSize="18sp" />-->
-<!--    <TextView-->
-<!--        android:id="@+id/txtTotalNilai"-->
-<!--        android:layout_width="128dp"-->
-<!--        android:gravity="center"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_gravity="top"-->
-<!--        android:textSize="18sp" />-->
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:hint="Nomor"-->
+<!--                android:focusable="false"-->
+<!--                android:textColorHint="@android:color/white"-->
+<!--                app:boxStrokeColor="@android:color/white"-->
+<!--                app:boxBackgroundColor="@color/card_bg_color"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent">-->
+<!--                <EditText-->
+<!--                    android:id="@+id/txtNomor"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:focusable="false"-->
+<!--                    android:text="1"-->
+<!--                    android:background="@drawable/edit_text_bg"-->
+<!--                    android:paddingLeft="20dp"-->
+<!--                    android:paddingTop="10dp"-->
+<!--                    android:paddingBottom="10dp"-->
+<!--                    android:textSize="15sp"/>-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:hint="Kode"-->
+<!--                android:focusable="false"-->
+<!--                android:textColorHint="@android:color/white"-->
+<!--                app:boxStrokeColor="@android:color/white"-->
+<!--                app:boxBackgroundColor="@color/card_bg_color"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent">-->
+<!--                <EditText-->
+<!--                    android:id="@+id/txtKode"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:focusable="false"-->
+<!--                    android:text="1"-->
+<!--                    android:background="@drawable/edit_text_bg"-->
+<!--                    android:paddingLeft="20dp"-->
+<!--                    android:paddingTop="10dp"-->
+<!--                    android:paddingBottom="10dp"-->
+<!--                    android:textSize="15sp"/>-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:hint="Nama Matakuliah"-->
+<!--                android:focusable="false"-->
+<!--                android:textColorHint="@android:color/white"-->
+<!--                app:boxStrokeColor="@android:color/white"-->
+<!--                app:boxBackgroundColor="@color/card_bg_color"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent">-->
+<!--                <EditText-->
+<!--                    android:id="@+id/txtNamaMataKuliah"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:focusable="false"-->
+<!--                    android:text="1"-->
+<!--                    android:background="@drawable/edit_text_bg"-->
+<!--                    android:paddingLeft="20dp"-->
+<!--                    android:paddingTop="10dp"-->
+<!--                    android:paddingBottom="10dp"-->
+<!--                    android:textSize="15sp"/>-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:hint="Sks"-->
+<!--                android:focusable="false"-->
+<!--                android:textColorHint="@android:color/white"-->
+<!--                app:boxStrokeColor="@android:color/white"-->
+<!--                app:boxBackgroundColor="@color/card_bg_color"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent">-->
+<!--                <EditText-->
+<!--                    android:id="@+id/txtSks"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:focusable="false"-->
+<!--                    android:text="1"-->
+<!--                    android:background="@drawable/edit_text_bg"-->
+<!--                    android:paddingLeft="20dp"-->
+<!--                    android:paddingTop="10dp"-->
+<!--                    android:paddingBottom="10dp"-->
+<!--                    android:textSize="15sp"/>-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:hint="Nilai Angka"-->
+<!--                android:focusable="false"-->
+<!--                android:textColorHint="@android:color/white"-->
+<!--                app:boxStrokeColor="@android:color/white"-->
+<!--                app:boxBackgroundColor="@color/card_bg_color"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent">-->
+<!--                <EditText-->
+<!--                    android:id="@+id/txtNilaiAngka"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:focusable="false"-->
+<!--                    android:text="1"-->
+<!--                    android:background="@drawable/edit_text_bg"-->
+<!--                    android:paddingLeft="20dp"-->
+<!--                    android:paddingTop="10dp"-->
+<!--                    android:paddingBottom="10dp"-->
+<!--                    android:textSize="15sp"/>-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:hint="Nilai Huruf"-->
+<!--                android:focusable="false"-->
+<!--                android:textColorHint="@android:color/white"-->
+<!--                app:boxStrokeColor="@android:color/white"-->
+<!--                app:boxBackgroundColor="@color/card_bg_color"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent">-->
+<!--                <EditText-->
+<!--                    android:id="@+id/txtNilaiHuruf"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:focusable="false"-->
+<!--                    android:text="1"-->
+<!--                    android:background="@drawable/edit_text_bg"-->
+<!--                    android:paddingLeft="20dp"-->
+<!--                    android:paddingTop="10dp"-->
+<!--                    android:paddingBottom="10dp"-->
+<!--                    android:textSize="15sp"/>-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:hint="Total Nilai"-->
+<!--                android:focusable="false"-->
+<!--                android:textColorHint="@android:color/white"-->
+<!--                app:boxStrokeColor="@android:color/white"-->
+<!--                app:boxBackgroundColor="@color/card_bg_color"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent">-->
+<!--                <EditText-->
+<!--                    android:id="@+id/txtTotalNilai"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:focusable="false"-->
+<!--                    android:text="1"-->
+<!--                    android:background="@drawable/edit_text_bg"-->
+<!--                    android:paddingLeft="20dp"-->
+<!--                    android:paddingTop="10dp"-->
+<!--                    android:paddingBottom="10dp"-->
+<!--                    android:textSize="15sp"/>-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
 
-<!--    </LinearLayout>-->
+<!--        </LinearLayout>-->
+
+
+<!--    </androidx.cardview.widget.CardView>-->
 
 
 
 <!--</LinearLayout>-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    <TextView
+        android:id="@+id/txtNomor"
+        android:layout_width="40dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_gravity="top"
+        android:textSize="15sp" />
+    <TextView
+        android:id="@+id/txtKode"
+        android:layout_width="60dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_gravity="top"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/txtNamaMataKuliah"
+        android:layout_width="230dp"
+        android:gravity="center"
+        android:layout_height="65dp"
+        android:layout_gravity="top"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/txtSks"
+        android:layout_width="95dp"
+        android:gravity="center"
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/txtNilaiAngka"
+        android:layout_width="95dp"
+        android:gravity="center"
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:textSize="15sp" />
+    <TextView
+        android:id="@+id/txtNilaiHuruf"
+        android:layout_width="100dp"
+        android:gravity="center"
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:textSize="15sp" />
+    <TextView
+        android:id="@+id/txtTotalNilai"
+        android:layout_width="128dp"
+        android:gravity="center"
+        android:visibility="gone"
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:textSize="18sp" />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

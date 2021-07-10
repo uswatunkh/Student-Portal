@@ -8,7 +8,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:background="@android:color/holo_blue_dark"
+        android:background="@drawable/cardview"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -132,7 +132,8 @@
 
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="263dp"
-                        android:layout_height="100dp"
+                        android:layout_height="60dp"
+                        android:visibility="gone"
                         android:layout_marginTop="0dp"
                         android:hint="Pendidikan Ayah"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -144,21 +145,21 @@
                             android:layout_width="262dp"
                             android:layout_height="45dp"
                             android:focusable="false"
+                            android:visibility="gone"
                             android:background="@drawable/edit_text_bg"
                             android:paddingLeft="20dp"
                             android:paddingTop="10dp"
                             android:paddingBottom="10dp"
                             android:textSize="15sp" />
-                        <Spinner
-                            android:id="@+id/spin_pendidikanAyah"
-                            android:layout_width="262dp"
-                            android:layout_height="30dp"
-                            android:background="@android:color/darker_gray"
-                            android:paddingLeft="20dp"
-                            android:paddingBottom="10dp"
-                            android:textSize="15sp" />
-                    </com.google.android.material.textfield.TextInputLayout>
 
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <Spinner
+                        android:id="@+id/spin_pendidikanAyah"
+                        android:layout_width="262dp"
+                        android:layout_height="40dp"
+                        android:paddingLeft="20dp"
+                        android:background="@drawable/edit_spinner"
+                        android:textSize="15sp" />
 
 
 
@@ -169,6 +170,7 @@
                         android:layout_height="100dp"
                         android:layout_marginTop="0dp"
                         android:hint="Pekerjaan Ayah"
+                        android:visibility="gone"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
@@ -177,21 +179,23 @@
                             android:layout_width="262dp"
                             android:layout_height="45dp"
                             android:background="@drawable/edit_text_bg"
-
+                            android:visibility="gone"
                             android:paddingLeft="20dp"
                             android:paddingTop="10dp"
                             android:paddingBottom="10dp"
                             android:textSize="15sp"
                             />
-                        <Spinner
-                            android:id="@+id/spin_pekerjaanAyah"
-                            android:layout_width="262dp"
-                            android:layout_height="30dp"
-                            android:background="@android:color/darker_gray"
-                            android:paddingLeft="20dp"
-                            android:paddingBottom="10dp"
-                            android:textSize="15sp" />
+
                     </com.google.android.material.textfield.TextInputLayout>
+
+                    <Spinner
+                        android:id="@+id/spin_pekerjaanAyah"
+                        android:layout_width="262dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="10dp"
+                        android:paddingLeft="20dp"
+                        android:background="@drawable/edit_spinner"
+                        android:textSize="15sp" />
 
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -247,6 +251,7 @@
                         android:layout_height="100dp"
                         android:layout_marginTop="0dp"
                         android:hint="Penghasilan Ayah"
+                        android:visibility="gone"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
@@ -260,15 +265,16 @@
                             android:paddingTop="10dp"
                             android:paddingBottom="10dp"
                             android:textSize="15sp" />
-                        <Spinner
-                            android:id="@+id/spin_penghasilanAyah"
-                            android:layout_width="262dp"
-                            android:layout_height="30dp"
-                            android:background="@android:color/darker_gray"
-                            android:paddingLeft="20dp"
-                            android:paddingBottom="10dp"
-                            android:textSize="15sp" />
+
                     </com.google.android.material.textfield.TextInputLayout>
+
+                    <Spinner
+                        android:id="@+id/spin_penghasilanAyah"
+                        android:layout_width="262dp"
+                        android:layout_height="40dp"
+                        android:paddingLeft="20dp"
+                        android:background="@drawable/edit_spinner"
+                        android:textSize="15sp" />
 
                     <com.google.android.material.textfield.TextInputLayout
 
@@ -388,6 +394,7 @@
                         android:layout_width="263dp"
                         android:layout_height="100dp"
                         android:layout_marginTop="0dp"
+                        android:visibility="gone"
                         android:hint="Pendidikan Ibu"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -402,15 +409,22 @@
                             android:paddingTop="10dp"
                             android:paddingBottom="10dp"
                             android:textSize="15sp" />
-                        <Spinner
-                            android:id="@+id/spin_pendidikanIbu"
-                            android:layout_width="262dp"
-                            android:layout_height="30dp"
-                            android:background="@android:color/darker_gray"
-                            android:paddingLeft="20dp"
-                            android:paddingBottom="10dp"
-                            android:textSize="15sp" />
+<!--                        <Spinner-->
+<!--                            android:id="@+id/spin_pendidikanIbu"-->
+<!--                            android:layout_width="262dp"-->
+<!--                            android:layout_height="30dp"-->
+<!--                            android:background="@android:color/darker_gray"-->
+<!--                            android:paddingLeft="20dp"-->
+<!--                            android:paddingBottom="10dp"-->
+<!--                            android:textSize="15sp" />-->
                     </com.google.android.material.textfield.TextInputLayout>
+                    <Spinner
+                        android:id="@+id/spin_pendidikanIbu"
+                        android:layout_width="262dp"
+                        android:layout_height="40dp"
+                        android:paddingLeft="20dp"
+                        android:background="@drawable/edit_spinner"
+                        android:textSize="15sp" />
 
                     <com.google.android.material.textfield.TextInputLayout
 
@@ -418,6 +432,7 @@
                         android:layout_width="263dp"
                         android:layout_height="100dp"
                         android:layout_marginTop="0dp"
+                        android:visibility="gone"
                         android:hint="Pekerjaan Ibu"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -433,16 +448,15 @@
                             android:paddingBottom="10dp"
                             android:textSize="15sp"
                             />
-                        <Spinner
-                            android:id="@+id/spin_pekerjaanIbu"
-                            android:layout_width="262dp"
-                            android:layout_height="30dp"
-                            android:background="@android:color/darker_gray"
-                            android:paddingLeft="20dp"
-                            android:paddingBottom="10dp"
-                            android:textSize="15sp" />
-                    </com.google.android.material.textfield.TextInputLayout>
 
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <Spinner
+                        android:id="@+id/spin_pekerjaanIbu"
+                        android:layout_width="262dp"
+                        android:layout_height="40dp"
+                        android:paddingLeft="20dp"
+                        android:background="@drawable/edit_spinner"
+                        android:textSize="15sp" />
 
                     <com.google.android.material.textfield.TextInputLayout
 
@@ -496,6 +510,7 @@
                         android:layout_width="263dp"
                         android:layout_height="100dp"
                         android:layout_marginTop="0dp"
+                        android:visibility="gone"
                         android:hint="Penghasilan Ibu"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -510,15 +525,16 @@
                             android:paddingTop="10dp"
                             android:paddingBottom="10dp"
                             android:textSize="15sp" />
-                        <Spinner
-                            android:id="@+id/spin_penghasilanIbu"
-                            android:layout_width="262dp"
-                            android:layout_height="30dp"
-                            android:background="@android:color/darker_gray"
-                            android:paddingLeft="20dp"
-                            android:paddingBottom="10dp"
-                            android:textSize="15sp" />
+
                     </com.google.android.material.textfield.TextInputLayout>
+
+                    <Spinner
+                        android:id="@+id/spin_penghasilanIbu"
+                        android:layout_width="262dp"
+                        android:layout_height="40dp"
+                        android:paddingLeft="20dp"
+                        android:background="@drawable/edit_spinner"
+                        android:textSize="15sp" />
 
                     <com.google.android.material.textfield.TextInputLayout
 
@@ -636,6 +652,7 @@
                         android:layout_height="100dp"
                         android:layout_marginTop="0dp"
                         android:hint="Pendidikan Wali"
+                        android:visibility="gone"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
@@ -649,15 +666,15 @@
                             android:paddingTop="10dp"
                             android:paddingBottom="10dp"
                             android:textSize="15sp" />
-                        <Spinner
-                            android:id="@+id/spin_pendidikanWali"
-                            android:layout_width="262dp"
-                            android:layout_height="30dp"
-                            android:background="@android:color/darker_gray"
-                            android:paddingLeft="20dp"
-                            android:paddingBottom="10dp"
-                            android:textSize="15sp" />
+
                     </com.google.android.material.textfield.TextInputLayout>
+                    <Spinner
+                        android:id="@+id/spin_pendidikanWali"
+                        android:layout_width="262dp"
+                        android:layout_height="40dp"
+                        android:paddingLeft="20dp"
+                        android:background="@drawable/edit_spinner"
+                        android:textSize="15sp" />
 
                     <com.google.android.material.textfield.TextInputLayout
 
@@ -665,6 +682,7 @@
                         android:layout_width="263dp"
                         android:layout_height="100dp"
                         android:layout_marginTop="0dp"
+                        android:visibility="gone"
                         android:hint="Pekerjaan Wali"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -680,16 +698,15 @@
                             android:paddingBottom="10dp"
                             android:textSize="15sp"
                             />
-                        <Spinner
-                            android:id="@+id/spin_pekerjaanWali"
-                            android:layout_width="262dp"
-                            android:layout_height="30dp"
-                            android:background="@android:color/darker_gray"
-                            android:paddingLeft="20dp"
-                            android:paddingBottom="10dp"
-                            android:textSize="15sp" />
-                    </com.google.android.material.textfield.TextInputLayout>
 
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <Spinner
+                        android:id="@+id/spin_pekerjaanWali"
+                        android:layout_width="262dp"
+                        android:layout_height="40dp"
+                        android:paddingLeft="20dp"
+                        android:background="@drawable/edit_spinner"
+                        android:textSize="15sp" />
 
                     <com.google.android.material.textfield.TextInputLayout
 
@@ -743,6 +760,7 @@
                         android:layout_width="263dp"
                         android:layout_height="100dp"
                         android:layout_marginTop="0dp"
+                        android:visibility="gone"
                         android:hint="Penghasilan Wali"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -757,15 +775,15 @@
                             android:paddingTop="10dp"
                             android:paddingBottom="10dp"
                             android:textSize="15sp" />
-                        <Spinner
-                            android:id="@+id/spin_penghasilanWali"
-                            android:layout_width="262dp"
-                            android:layout_height="30dp"
-                            android:background="@android:color/darker_gray"
-                            android:paddingLeft="20dp"
-                            android:paddingBottom="10dp"
-                            android:textSize="15sp" />
+
                     </com.google.android.material.textfield.TextInputLayout>
+                    <Spinner
+                        android:id="@+id/spin_penghasilanWali"
+                        android:layout_width="262dp"
+                        android:layout_height="40dp"
+                        android:paddingLeft="20dp"
+                        android:background="@drawable/edit_spinner"
+                        android:textSize="15sp" />
 
                     <com.google.android.material.textfield.TextInputLayout
 

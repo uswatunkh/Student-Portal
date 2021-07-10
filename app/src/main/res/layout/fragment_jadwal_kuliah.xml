@@ -40,13 +40,7 @@
                 android:textStyle="bold"
                 android:textColor="@android:color/white"
                 />
-            <ImageView
-                android:id="@+id/refresh"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="170dp"
-                android:src="@drawable/buton_refresh"
-                android:background="@drawable/bg_refresh"/>
+
 
 
         </androidx.appcompat.widget.Toolbar>

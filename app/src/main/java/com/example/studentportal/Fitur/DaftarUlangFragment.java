@@ -175,7 +175,7 @@ public class DaftarUlangFragment extends Fragment {
                                 int j=i+1;
 
                                 DaftarUlang_list listData=new DaftarUlang_list(String.valueOf(j),ob.getString("periode")
-                                        ,ob.getString("ukt"),ob.getString("statusBayar"),ob.getString("cetakKrs"));
+                                        ,ob.getString("ukt"),ob.getString("statusBayar"));
                                 mData.add(listData);
 
 

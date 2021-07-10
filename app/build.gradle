@@ -59,8 +59,8 @@ dependencies {
     //camera
     implementation 'com.karumi:dexter:6.1.0'
 
-
-
+    //Justify
+    implementation 'me.biubiubiu.justifytext:library:1.1'
 
 
 
@@ -70,4 +70,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:17.4.3'
     implementation 'com.google.firebase:firebase-iid:20.2.1'
     implementation 'com.google.firebase:firebase-messaging:20.2.1'
+
+    //sdp
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
 }

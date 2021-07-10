@@ -9,12 +9,11 @@ public class DaftarUlang_list {
 
 
 
-    public DaftarUlang_list( String idNomor, String periodeAkademik, String ukt, String status, String cetakKrs) {
+    public DaftarUlang_list( String idNomor, String periodeAkademik, String ukt, String status) {
         this.idNomor=idNomor;
         this.periodeAkademik = periodeAkademik;
         this.ukt = ukt;
         this.status = status;
-        this.cetakKrs = cetakKrs;
 
     }
 

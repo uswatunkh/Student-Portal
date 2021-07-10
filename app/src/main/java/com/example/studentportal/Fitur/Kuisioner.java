@@ -28,6 +28,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.studentportal.EvaluasiDosen;
 import com.example.studentportal.Fragment.HomeFragment;
 import com.example.studentportal.R;
 import com.example.studentportal.Server;
@@ -83,8 +84,8 @@ public class Kuisioner extends AppCompatActivity {
 
         Intent intent = getIntent();
         position = intent.getExtras().getInt("position");
-        idDosen.setText("ID:"+EvaluasiDosenFragment.itemList.get(position).getNamaDosen());
-        getIdDosen=EvaluasiDosenFragment.itemList.get(position).getIdDosen();
+        idDosen.setText("ID:"+ EvaluasiDosen.itemList.get(position).getNamaDosen());
+        getIdDosen=EvaluasiDosen.itemList.get(position).getIdDosen();
 
 
         Button button = findViewById(R.id.btnSubmitEval);
@@ -169,7 +170,7 @@ public class Kuisioner extends AppCompatActivity {
         txtIdEvdos=layout.findViewById(R.id.txtidEvdos);
         txtPertanyaan=layout.findViewById(R.id.txtPertanyaan);
         String jawab= jawaban.getText().toString().trim();
-        Toast.makeText(Kuisioner.this, jawab,Toast.LENGTH_SHORT).show();
+        //Toast.makeText(Kuisioner.this, jawab,Toast.LENGTH_SHORT).show();
 
 
 
