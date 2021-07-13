@@ -28,6 +28,7 @@ public class AdapterKeterampilan extends BaseAdapter {
     private List<DataKeterampilan> items;
     KeterampilanFragment fragment;
     String idx;
+    Button hapus;
 
     public AdapterKeterampilan(Activity activity, List<DataKeterampilan> items, KeterampilanFragment fragment) {
         this.activity = activity;
@@ -71,7 +72,7 @@ public class AdapterKeterampilan extends BaseAdapter {
         TextView verifikasi = (TextView) convertView.findViewById(R.id.txt_verifikasi);
         TextView scanBukti = (TextView) convertView.findViewById(R.id.txt_scan);
         TextInputLayout inputVerifikasi = (TextInputLayout) convertView.findViewById(R.id.inputVerifikasi);
-        Button hapus =convertView.findViewById(R.id.hapus);
+        hapus =convertView.findViewById(R.id.hapus);
 
         DataKeterampilan data = items.get(position);
 
@@ -84,20 +85,31 @@ public class AdapterKeterampilan extends BaseAdapter {
         scanBukti.setText(data.getScanBukti());
 
         String dataVerisfikasi= data.getVerifikasi();
-        if (dataVerisfikasi.equals("Sudah Diverifikasi")) {
+//        if (dataVerisfikasi.equals("Sudah Diverifikasi")) {
+//            verifikasi.setTextColor(Color.parseColor("#FFFFFF"));
+//            inputVerifikasi.setBoxBackgroundColor(Color.parseColor("#7ae472"));
+//            hapus.setVisibility(View.GONE);
+//
+//        }
+        if (dataVerisfikasi.equals("Tidak Valid")) {
+            verifikasi.setTextColor(Color.parseColor("#FFFFFF"));
+            inputVerifikasi.setBoxBackgroundColor(Color.parseColor("#F08080"));
+            hapus.setVisibility(View.GONE);
+
+        }else if (dataVerisfikasi.equals("Valid")){
             verifikasi.setTextColor(Color.parseColor("#FFFFFF"));
             inputVerifikasi.setBoxBackgroundColor(Color.parseColor("#7ae472"));
             hapus.setVisibility(View.GONE);
-
-        }else if (dataVerisfikasi.equals("Belum Diverifikasi")){
+        }
+        else if (dataVerisfikasi.equals("Belum Diverifikasi")){
             verifikasi.setTextColor(Color.parseColor("#FFFFFF"));
-            inputVerifikasi.setBoxBackgroundColor(Color.parseColor("#F08080"));
+            inputVerifikasi.setBoxBackgroundColor(Color.parseColor("#FDB44E"));
 
         }
 
 
 
-        idx = items.get(position).getIdKeterampilan();
+       // idx = data.getIdKeterampilan();
 
         hapus.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,14 +119,14 @@ public class AdapterKeterampilan extends BaseAdapter {
                 AlertDialog myQuittingDialogBox = new AlertDialog.Builder(activity)
                         // set message, title, and icon
                         .setTitle("Hapus")
-                        .setMessage("Yakin mau Hapus?")
+                        .setMessage("Yakin mau hapus"+" "+ data.getNamaKeterampilan()+"?")
                         .setIcon(R.drawable.logout)
 
                         .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
 
                             public void onClick(DialogInterface dialog, int whichButton) {
                                 //manggil methode delete
-                                fragment.delete(idx);
+                                fragment.delete(data.getIdKeterampilan());
 
                             }
 

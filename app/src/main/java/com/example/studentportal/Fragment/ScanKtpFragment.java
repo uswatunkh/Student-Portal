@@ -145,7 +145,7 @@ public class ScanKtpFragment extends Fragment {
         btn_scanKtp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final CharSequence[] dialogitem = {"Kamera","Galeri"};
+                final CharSequence[] dialogitem = {"Galeri"};
                 dialog = new AlertDialog.Builder(getActivity());
                 dialog.setCancelable(true);
                 dialog.setItems(dialogitem, new DialogInterface.OnClickListener() {
@@ -180,11 +180,11 @@ public class ScanKtpFragment extends Fragment {
 //                                        }).check();
 //
 //                                break;
-                            case 0 :
-                                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                                startActivityForResult(intent,111);
-                                break;
-                            case 1:
+//                            case 0 :
+//                                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//                                startActivityForResult(intent,111);
+//                                break;
+                            case 0:
                                 Intent pickPhoto = new Intent(Intent.ACTION_PICK,
                                         android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                                 startActivityForResult(pickPhoto , 1);//one can be replaced with any action code

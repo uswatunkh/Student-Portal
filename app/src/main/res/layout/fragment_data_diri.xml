@@ -69,275 +69,299 @@
             </LinearLayout>
             <!--      batas  -->
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="263dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:hint="NIK"
+            <ScrollView
+                android:id="@+id/lin"
+                android:layout_width="265dp"
+                android:scrollbars="none"
+                android:layout_height="460dp"
+                android:layout_marginTop="25dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
+            <LinearLayout
 
-                <EditText
-
-                    android:id="@+id/nik"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_marginTop="3dp"
-                    android:focusable="false"
-                    android:text="Belum Diisi"
-                    android:textColor="@color/colorText"
-                    android:textSize="13dp"
-
-
-                    />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout2"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="263dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="100dp"
-                android:hint="Nama Lengkap"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="@+id/linearLayout2">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="263dp"
+                    android:layout_height="wrap_content"
 
-                    android:id="@+id/namaLengkap"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:focusable="false"
-                    android:text="nama"
-                    android:textColor="@color/colorText"
-                    android:textSize="13dp"
+                    android:hint="NIK"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    >
+                    <EditText
 
-                </com.google.android.material.textfield.TextInputEditText>
+                        android:id="@+id/nik"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="3dp"
+                        android:focusable="false"
+                        android:text="Belum Diisi"
+                        android:textColor="@color/colorText"
+                        android:textSize="13dp"
 
-            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout3"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="263dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="150dp"
-                android:hint="Lahir"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                        />
 
-                <com.google.android.material.textfield.TextInputEditText
+                </com.google.android.material.textfield.TextInputLayout>
 
-                    android:id="@+id/lahir"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:focusable="false"
-                    android:text="nama"
-                    android:textColor="@color/colorText"
-                    android:textSize="13dp"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayout2"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="263dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Nama Lengkap"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    >
+                    <com.google.android.material.textfield.TextInputEditText
 
-                </com.google.android.material.textfield.TextInputEditText>
+                        android:id="@+id/namaLengkap"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:focusable="false"
+                        android:text="nama"
+                        android:textColor="@color/colorText"
+                        android:textSize="13dp"
 
-            </com.google.android.material.textfield.TextInputLayout>
+                        >
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout4"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="263dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="200dp"
-                android:hint="Jenis Kelamin"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                    </com.google.android.material.textfield.TextInputEditText>
 
-                <com.google.android.material.textfield.TextInputEditText
+                </com.google.android.material.textfield.TextInputLayout>
 
-                    android:id="@+id/jenisKelamin"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:focusable="false"
-                    android:text="nama"
-                    android:textColor="@color/colorText"
-                    android:textSize="13dp"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayout3"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="263dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="Lahir"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    >
+                    <com.google.android.material.textfield.TextInputEditText
 
-                </com.google.android.material.textfield.TextInputEditText>
+                        android:id="@+id/lahir"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:focusable="false"
+                        android:text="nama"
+                        android:textColor="@color/colorText"
+                        android:textSize="13dp"
 
-            </com.google.android.material.textfield.TextInputLayout>
+                        >
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout5"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="263dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="250dp"
-                android:hint="Agama"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                    </com.google.android.material.textfield.TextInputEditText>
 
-                <com.google.android.material.textfield.TextInputEditText
+                </com.google.android.material.textfield.TextInputLayout>
 
-                    android:id="@+id/agama"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:focusable="false"
-                    android:text="nama"
-                    android:textColor="@color/colorText"
-                    android:textSize="13dp"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayout4"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="263dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Jenis Kelamin"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    >
+                    <com.google.android.material.textfield.TextInputEditText
 
-                </com.google.android.material.textfield.TextInputEditText>
+                        android:id="@+id/jenisKelamin"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:focusable="false"
+                        android:text="nama"
+                        android:textColor="@color/colorText"
+                        android:textSize="13dp"
 
-            </com.google.android.material.textfield.TextInputLayout>
+                        >
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout6"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="263dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="298dp"
-                android:hint="Alamat Asal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                    </com.google.android.material.textfield.TextInputEditText>
 
-                <com.google.android.material.textfield.TextInputEditText
+                </com.google.android.material.textfield.TextInputLayout>
 
-                    android:id="@+id/alamatAsal"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:focusable="false"
-                    android:text="nama"
-                    android:textColor="@color/colorText"
-                    android:textSize="13dp"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayout5"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="263dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Agama"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    >
+                    <com.google.android.material.textfield.TextInputEditText
 
-                </com.google.android.material.textfield.TextInputEditText>
+                        android:id="@+id/agama"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:focusable="false"
+                        android:text="nama"
+                        android:textColor="@color/colorText"
+                        android:textSize="13dp"
 
-            </com.google.android.material.textfield.TextInputLayout>
+                        >
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout7"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="263dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="348dp"
-                android:hint="Kota/Kabupaten Asal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                    </com.google.android.material.textfield.TextInputEditText>
 
-                <com.google.android.material.textfield.TextInputEditText
+                </com.google.android.material.textfield.TextInputLayout>
 
-                    android:id="@+id/kotaAsal"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:focusable="false"
-                    android:text="nama"
-                    android:textColor="@color/colorText"
-                    android:textSize="13dp"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayout6"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="263dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Alamat Asal"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    >
+                    <com.google.android.material.textfield.TextInputEditText
 
-                </com.google.android.material.textfield.TextInputEditText>
+                        android:id="@+id/alamatAsal"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:focusable="false"
+                        android:text="nama"
+                        android:textColor="@color/colorText"
+                        android:textSize="13dp"
 
-            </com.google.android.material.textfield.TextInputLayout>
+                        >
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout8"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="263dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="398dp"
-                android:hint="Alamat Sekarang"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                    </com.google.android.material.textfield.TextInputEditText>
 
-                <com.google.android.material.textfield.TextInputEditText
+                </com.google.android.material.textfield.TextInputLayout>
 
-                    android:id="@+id/alamatSekarang"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:focusable="false"
-                    android:text="nama"
-                    android:textColor="@color/colorText"
-                    android:textSize="13dp"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayout7"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="263dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Kota/Kabupaten Asal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    >
+                    <com.google.android.material.textfield.TextInputEditText
 
-                </com.google.android.material.textfield.TextInputEditText>
+                        android:id="@+id/kotaAsal"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:focusable="false"
+                        android:text="nama"
+                        android:textColor="@color/colorText"
+                        android:textSize="13dp"
 
-            </com.google.android.material.textfield.TextInputLayout>
+                        >
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout9"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="263dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="447dp"
-                android:hint="Nomor Handphone"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                    </com.google.android.material.textfield.TextInputEditText>
 
-                <com.google.android.material.textfield.TextInputEditText
+                </com.google.android.material.textfield.TextInputLayout>
 
-                    android:id="@+id/noHp"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:focusable="false"
-                    android:text="Nama"
-                    android:textColor="@color/colorText"
-                    android:textSize="13dp"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayout8"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="263dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Alamat Sekarang"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    >
+                    <com.google.android.material.textfield.TextInputEditText
 
-                </com.google.android.material.textfield.TextInputEditText>
+                        android:id="@+id/alamatSekarang"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:focusable="false"
+                        android:text="nama"
+                        android:textColor="@color/colorText"
+                        android:textSize="13dp"
 
-            </com.google.android.material.textfield.TextInputLayout>
+                        >
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout10"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="263dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="495dp"
-                android:hint="Email"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                    </com.google.android.material.textfield.TextInputEditText>
 
-                <com.google.android.material.textfield.TextInputEditText
+                </com.google.android.material.textfield.TextInputLayout>
 
-                    android:id="@+id/email"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:focusable="false"
-                    android:text="Nama"
-                    android:textColor="@color/colorText"
-                    android:textSize="13dp"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayout9"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="263dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="Nomor Handphone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    >
+                    <com.google.android.material.textfield.TextInputEditText
 
-                </com.google.android.material.textfield.TextInputEditText>
+                        android:id="@+id/noHp"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:focusable="false"
+                        android:text="Nama"
+                        android:textColor="@color/colorText"
+                        android:textSize="13dp"
 
-            </com.google.android.material.textfield.TextInputLayout>
+                        >
+
+                    </com.google.android.material.textfield.TextInputEditText>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayout10"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="263dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="Email"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+
+                        android:id="@+id/email"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:focusable="false"
+                        android:text="Nama"
+                        android:textColor="@color/colorText"
+                        android:textSize="13dp"
+
+                        >
+
+                    </com.google.android.material.textfield.TextInputEditText>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+            </ScrollView>
 
 
             <Button
@@ -350,7 +374,7 @@
                 android:textColor="#fff"
                 android:textSize="12sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
+                app:layout_constraintBottom_toTopOf="@+id/lin"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.894"
                 app:layout_constraintStart_toEndOf="@+id/textView"

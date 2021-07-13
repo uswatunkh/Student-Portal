@@ -18,19 +18,18 @@
         android:textSize="15sp" />
     <TextView
         android:id="@+id/txtnomor"
-        android:layout_width="50dp"
-        android:visibility="gone"
+        android:layout_width="20dp"
         android:layout_height="wrap_content"
-        android:textSize="17sp"
+        android:paddingLeft="6dp"
         android:textColor="@android:color/black"
         android:text="1"/>
     <TextView
         android:id="@+id/txtPertanyaan"
-        android:layout_width="400dp"
+        android:layout_width="310dp"
+
         android:text="okeee"
         android:textColor="@android:color/black"
-        android:layout_height="wrap_content"
-        android:textSize="17sp" />
+        android:layout_height="wrap_content" />
     <EditText
         android:id="@+id/jawaban"
         android:layout_width="5dp"
@@ -50,40 +49,40 @@
 
         <RadioButton
             android:id="@+id/tidakPernah"
-            android:layout_width="300dp"
+            android:layout_width="310dp"
+            android:layout_marginLeft="20dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/ubunturegular"
             android:text="A"
-            android:checked="true"
-            android:textSize="17dp" />
+            android:checked="true" />
 
         <RadioButton
             android:id="@+id/pernah"
-            android:layout_width="300dp"
+            android:layout_width="310dp"
+            android:layout_marginLeft="20dp"
             android:layout_height="match_parent"
             android:checked="true"
             android:fontFamily="@font/ubunturegular"
-            android:text="B"
-            android:textSize="17dp" />
+            android:text="B" />
 
         <RadioButton
             android:id="@+id/sering"
-            android:layout_width="400dp"
+            android:layout_width="310dp"
+            android:layout_marginLeft="20dp"
             android:layout_height="wrap_content"
             android:checked="true"
             android:fontFamily="@font/ubunturegular"
-            android:text="C"
-            android:textSize="17dp" />
+            android:text="C" />
 
         <RadioButton
             android:id="@+id/selalu"
-            android:layout_width="400dp"
+            android:layout_width="310dp"
+            android:layout_marginLeft="20dp"
             android:layout_height="wrap_content"
             android:checked="true"
             android:fontFamily="@font/ubunturegular"
             android:text="D
-"
-            android:textSize="17dp" />
+" />
         <RadioButton
             android:layout_width="400dp"
             android:layout_height="wrap_content"

@@ -195,6 +195,7 @@ public class AdapterTable_Kuisioner extends RecyclerView.Adapter<AdapterTable_Ku
         //read
         //nomor.setText(String.valueOf(mData.get(position).getIdNomor()));
 //        evdosid.setText(modal.getIdEvdos());
+        nomor.setText(String.valueOf(mData.get(position).getNomor()));
         evdosid.setText(mData.get(position).getIdEvdos());
         tanya.setText(mData.get(position).getPertanyaan());
 
@@ -203,6 +204,7 @@ public class AdapterTable_Kuisioner extends RecyclerView.Adapter<AdapterTable_Ku
         radButC.setText(mData.get(position).getC());
         radButD.setText(mData.get(position).getD());
             int id = mData.get(position).getIdNomor();
+
             //evdosid.setText(mData.get(position).getIdEvdos());
             jawab.addTextChangedListener(new TextWatcher() {
                 @Override

@@ -5,12 +5,14 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Path;
+import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,6 +24,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.provider.MediaStore;
+import android.renderscript.Sampler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Base64;
@@ -94,7 +97,7 @@ public class  KeterampilanFragment extends Fragment implements SwipeRefreshLayou
     FloatingActionButton fab;
     ListView list;
     SwipeRefreshLayout swipe;
-    List<DataKeterampilan> itemList = new ArrayList<DataKeterampilan>();
+    ArrayList<DataKeterampilan> itemList = new ArrayList<DataKeterampilan>();
     AdapterKeterampilan adapter;
     int success;
     AlertDialog.Builder dialog;
@@ -110,6 +113,10 @@ public class  KeterampilanFragment extends Fragment implements SwipeRefreshLayou
     String getId;  //updateprofil
     Bitmap bitmap;
      String idx;
+    Uri imageUri;
+    ContentValues values;
+    Bitmap thumbnail;
+    String imageurl;
     private static final String TAG = KeterampilanFragment.class.getSimpleName();
 
     private static String url_select     = Server.URLKeterampilan + "select.php";
@@ -138,6 +145,7 @@ public class  KeterampilanFragment extends Fragment implements SwipeRefreshLayou
     private  int REQ_PDF2 = 1;
     private  String encodedPDF = "";
     String ext;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -412,6 +420,15 @@ public class  KeterampilanFragment extends Fragment implements SwipeRefreshLayou
                                             public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
                                                 Intent intent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                                                 startActivityForResult( intent,111);
+
+//                                                values = new ContentValues();
+//                                                values.put(MediaStore.Images.Media.TITLE, "New Picture");
+//                                                values.put(MediaStore.Images.Media.DESCRIPTION, "From your Camera");
+//                                                imageUri = getActivity().getContentResolver().insert(
+//                                                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+//                                                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//                                                intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+//                                                startActivityForResult(intent, 111);
                                             }
 
                                             @Override
@@ -646,7 +663,7 @@ public class  KeterampilanFragment extends Fragment implements SwipeRefreshLayou
 
 
     // untuk menampilkan semua data pada listview
-    private void callVolley() {
+    public void callVolley() {
         itemList.clear();
         adapter.notifyDataSetChanged();
         swipe.setRefreshing(true);
@@ -764,7 +781,26 @@ public class  KeterampilanFragment extends Fragment implements SwipeRefreshLayou
             encodebitmap(bitmap);
             textView.setText("Terpilih");
             btnSelect.setText("Ubah File");
+//            try {
+//                thumbnail = MediaStore.Images.Media.getBitmap(
+//                        getActivity().getContentResolver(), imageUri);
+//                //imgView.setImageBitmap(thumbnail);
+//                imageurl = getRealPathFromURI(imageUri);
+//                textView.setText("Terpilih");
+//                btnSelect.setText("Ubah File");
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
         }
+    }
+
+    public String getRealPathFromURI(Uri contentUri) {
+        String[] proj = { MediaStore.Images.Media.DATA };
+        Cursor cursor = getActivity().managedQuery(contentUri, proj, null, null, null);
+        int column_index = cursor
+                .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        return cursor.getString(column_index);
     }
 
     private void encodebitmap(Bitmap bitmap)

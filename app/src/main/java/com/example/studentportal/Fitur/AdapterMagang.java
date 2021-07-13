@@ -93,16 +93,34 @@ public class AdapterMagang extends BaseAdapter {
         verifikasi.setText(data.getVerifikasi());
 
         String dataVerisfikasi= data.getVerifikasi();
-        if (dataVerisfikasi.equals("Sudah Diverifikasi")) {
+//        if (dataVerisfikasi.equals("Sudah Diverifikasi")) {
+//            verifikasi.setTextColor(Color.parseColor("#FFFFFF"));
+//            inputVerifikasi.setBoxBackgroundColor(Color.parseColor("#7ae472"));
+//            hapus.setVisibility(View.GONE);
+//
+//        }else if (dataVerisfikasi.equals("Belum Diverifikasi")){
+//            verifikasi.setTextColor(Color.parseColor("#FFFFFF"));
+//            inputVerifikasi.setBoxBackgroundColor(Color.parseColor("#F08080"));
+//
+//        }
+
+        if (dataVerisfikasi.equals("Tidak Valid")) {
+            verifikasi.setTextColor(Color.parseColor("#FFFFFF"));
+            inputVerifikasi.setBoxBackgroundColor(Color.parseColor("#F08080"));
+            hapus.setVisibility(View.GONE);
+
+        }else if (dataVerisfikasi.equals("Valid")){
             verifikasi.setTextColor(Color.parseColor("#FFFFFF"));
             inputVerifikasi.setBoxBackgroundColor(Color.parseColor("#7ae472"));
             hapus.setVisibility(View.GONE);
-
-        }else if (dataVerisfikasi.equals("Belum Diverifikasi")){
+        }
+        else if (dataVerisfikasi.equals("Belum Diverifikasi")){
             verifikasi.setTextColor(Color.parseColor("#FFFFFF"));
-            inputVerifikasi.setBoxBackgroundColor(Color.parseColor("#F08080"));
+            inputVerifikasi.setBoxBackgroundColor(Color.parseColor("#FDB44E"));
 
         }
+
+
 
 
 
@@ -116,14 +134,14 @@ public class AdapterMagang extends BaseAdapter {
                 AlertDialog myQuittingDialogBox = new AlertDialog.Builder(activity)
                         // set message, title, and icon
                         .setTitle("Hapus")
-                        .setMessage("Yakin mau Hapus?")
+                        .setMessage("Yakin mau hapus"+" "+ data.getJudul()+"?")
                         .setIcon(R.drawable.logout)
 
                         .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
 
                             public void onClick(DialogInterface dialog, int whichButton) {
                                 //manggil methode delete
-                                fragment.delete(idx);
+                                fragment.delete(data.getIdMagang());
 
                             }
 

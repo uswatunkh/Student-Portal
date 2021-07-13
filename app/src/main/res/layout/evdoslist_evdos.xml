@@ -44,9 +44,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Susilo Veri Yulianto, S.Kom., M.T."
-                    android:textSize="20dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="5dp"
+                    android:textSize="15dp"
                     android:textColor="@android:color/black"/>
             </LinearLayout>
             <LinearLayout
@@ -68,9 +66,7 @@
                         android:id="@+id/tvNamaMK"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="16dp"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginEnd="5dp"
+                        android:textSize="15dp"
                         android:textColor="@android:color/darker_gray"/>
                     <TextView
                         android:id="@+id/statusKuisioner"

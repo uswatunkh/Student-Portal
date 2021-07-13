@@ -88,6 +88,15 @@ public class DaftarUlang_TableViewAdapter extends RecyclerView.Adapter<DaftarUla
 //            rowViewHolder.txtCetakKrs.setBackgroundResource(R.drawable.download_pdf);
         //}
 
+        String status=mData.get(position).getStatus();
+        if(status.equals("Lunas")){
+            holder.txtStatus.setBackgroundResource(R.drawable.aktif);
+            holder.txtStatus.setTextColor(Color.parseColor("#FFFFFF"));
+        } else if (status.equals("Belum Lunas")){
+            holder.txtStatus.setBackgroundResource(R.drawable.belumlunas);
+            holder.txtStatus.setTextColor(Color.parseColor("#FFFFFF"));
+        }
+
     }
 
     @Override

@@ -417,7 +417,7 @@ public class MagangFragment extends Fragment implements SwipeRefreshLayout.OnRef
                 Intent chooseFile = new Intent(Intent.ACTION_GET_CONTENT);
                 chooseFile.setType("application/pdf");
                 chooseFile = Intent.createChooser(chooseFile, "Choose a file");
-                startActivityForResult(chooseFile, REQ_PDF);
+                startActivityForResult(chooseFile, REQ_PDF2);
 
 
             }
@@ -729,29 +729,29 @@ public class MagangFragment extends Fragment implements SwipeRefreshLayout.OnRef
             }
 
         }
-//        else if(requestCode == REQ_PDF2 && resultCode == RESULT_OK && data != null){
-//
-//            Uri path2 = data.getData();
-//
-//
-//            try {
-//                InputStream inputStream = getActivity().getContentResolver().openInputStream(path2);
-//                byte[] pdfInBytes2 = new byte[inputStream.available()];
-//                inputStream.read(pdfInBytes2);
-//                encodedPDF2 = Base64.encodeToString(pdfInBytes2, Base64.DEFAULT);
-//                    textView2.setText("Document Selected");
-//                    btnSelect2.setText("Change Document");
-//
-//
-//                Toast.makeText(getActivity(), "Document Selected", Toast.LENGTH_SHORT).show();
-//
-//
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//
-//            }
-//
-//        }
+        else if(requestCode == REQ_PDF2 && resultCode == RESULT_OK && data != null){
+
+            Uri path2 = data.getData();
+
+
+            try {
+                InputStream inputStream = getActivity().getContentResolver().openInputStream(path2);
+                byte[] pdfInBytes2 = new byte[inputStream.available()];
+                inputStream.read(pdfInBytes2);
+                encodedPDF2 = Base64.encodeToString(pdfInBytes2, Base64.DEFAULT);
+                    textView2.setText("Terpilih");
+                    btnSelect2.setText("Ubah File");
+
+
+                //Toast.makeText(getActivity(), "Document Selected", Toast.LENGTH_SHORT).show();
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+
+            }
+
+        }
     }
 
     private void encodebitmap(Bitmap bitmap)

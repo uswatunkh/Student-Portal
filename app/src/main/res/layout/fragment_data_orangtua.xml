@@ -67,13 +67,31 @@
 
             </LinearLayout>
             <!--      batas  -->
+            <ScrollView
+                android:id="@+id/lin"
+                android:layout_width="265dp"
+                android:scrollbars="none"
+                android:layout_height="460dp"
+                android:layout_marginTop="25dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+            <LinearLayout
 
+                android:layout_width="263dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/linearLayout2">
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="263dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="75dp"
                 android:hint="Nama Ayah"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -101,7 +119,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="263dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="130dp"
+                android:layout_marginTop="10dp"
                 android:hint="Pekerjaan Ayah"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -126,7 +144,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="263dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="185dp"
+                android:layout_marginTop="10dp"
                 android:hint="Instansi Ayah"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -152,7 +170,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="263dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="240dp"
+                android:layout_marginTop="10dp"
                 android:hint="Nama Ibu"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -178,7 +196,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="263dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="295dp"
+                android:layout_marginTop="10dp"
                 android:hint="Pekerjaan Ibu"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -204,7 +222,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="263dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="350dp"
+                android:layout_marginTop="10dp"
                 android:hint="Instansi Ibu"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -230,7 +248,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="263dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="405dp"
+                android:layout_marginTop="10dp"
                 android:hint="Nama Wali"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -256,7 +274,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="263dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="460dp"
+                android:layout_marginTop="10dp"
                 android:hint="Pekerjaan Wali"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -282,7 +300,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="263dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="515dp"
+                android:layout_marginTop="10dp"
                 android:hint="Instansi Wali"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -304,6 +322,9 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            </LinearLayout>
+            </ScrollView>
+
 
             <Button
                 android:id="@+id/butOrangTua"
@@ -316,7 +337,7 @@
                 android:textColor="#fff"
                 android:textSize="12sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
+                app:layout_constraintBottom_toTopOf="@+id/lin"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.78"
                 app:layout_constraintStart_toEndOf="@+id/textView"

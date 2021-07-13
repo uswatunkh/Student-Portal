@@ -1,7 +1,7 @@
 package com.example.studentportal.Fitur;
 
 public class DataKuisioner {
-    int idNomor;
+    int idNomor, nomor;
     private String idEvdos;
     private String pertanyaan;
     private String a;
@@ -28,7 +28,13 @@ public class DataKuisioner {
 
     }
 
+    public int getNomor() {
+        return nomor;
+    }
 
+    public void setNomor(int nomor) {
+        this.nomor = nomor;
+    }
 
     public int getIdNomor() {
         return idNomor;
